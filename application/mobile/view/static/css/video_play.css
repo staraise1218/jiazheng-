@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+li {
+    list-style: none;
+}
+
+
+.video-play-wrapper {
+    position: relative;
+    width: 100%;
+    font-size: 0;
+}
+.video-play-wrapper video {
+    width: 100%;
+    /* height: 3.5rem; */
+    min-height: 3.5rem;
+}
+.video-play-wrapper .video-play-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+} 
+.video-play-wrapper .video-play-btn .video-play-play {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.25rem;
+    color: #fff;
+    z-index: 1;
+}
+.hint-wrap {
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 0.8rem;
+    background: #7ABEDF;
+}
+.hint-wrap .hint-bg img{
+    width: 0.24rem;
+    height: 0.23rem;
+    display: inline-block;
+    margin-top: 0.08rem;
+}
+.hint-wrap .hint-bg p {
+    font-size: 0.22rem;
+    font-weight: 300;
+    color:rgba(255,255,255,1);
+    line-height: 0.4rem;
+    margin-left: 0.1rem;
+    display: inline-block;
+    vertical-align: top
+}
+.hint-wrap .hint-bg p span {
+    width: 3.58rem;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* background: blue; */
+    vertical-align: top;
+}
+.hint-wrap .continue {
+    width:120px;
+    height: 0.49rem;
+    width: 1.2rem;
+    background:rgba(255,255,255,1);
+    border-radius:24px;
+    border: 0;
+    color: #7ABEDF;
+}
+
+.chapter {
+    margin-top: 0.2rem;
+    width: 100%;
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+}
+.chapter .chapter-title {
+    width: 100%;
+}
+.chapter .chapter-title p {
+    display: inline-block;
+    font-size: 0.34rem;
+    font-weight: 400;
+    color:rgba(28,28,28,1);
+    line-height: 0.51rem;
+}
+.chapter .chapter-title span {
+    display: inline-block;
+    padding: 0 0.16rem;
+    background: #ccc;
+    border-radius: 0.08rem;
+    color: #fff;
+    font-size: 0.26rem;
+    font-weight: 400;
+    color:rgba(255,255,255,1);
+    line-height: 0.51rem;
+}
+.chapter .chapter-part {
+    margin-top: 0.1rem;
+    display: inline-block;
+    width: 100%;
+}
+.chapter .chapter-part ul {
+    width: 100%;
+}
+.chapter .chapter-part .chapter-part-title li {
+    display: inline-block
+}
+.chapter .chapter-part .chapter-part-title li a{
+    display: inline-block;
+    background: #fff;
+    font-size: 0.18rem;
+    font-weight: 400;
+    color:#9c9c9c;
+    padding: 0 0.1rem;
+    border-radius: 0.14rem;
+}
+.chapter .chapter-part .chapter-part-title li a.active {
+    color:rgba(255,255,255,1);
+    background: #7ABEDF;
+}
+.chapter .chapter-part .content {
+    width: 100%;
+    margin-top: 0.2rem;
+}
+.chapter .chapter-part .content-wrap {
+    width: 100%;
+    height: 3.3rem;
+    overflow: hidden;
+    /* border: 1px solid red; */
+}
+.chapter .chapter-part .content-wrap .item li {
+    display: inline-block;
+    width: 1.3rem;
+    height: 0.82rem;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(229,229,229,1);
+    border-radius: 0.04rem;
+    margin: 0;
+    text-align: center;
+    line-height: 0.82rem;
+    margin-top: 0.2rem;
+}
+.chapter .chapter-part .content-wrap .item{
+    display: none;
+}
+.chapter .chapter-part .content-wrap .active {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

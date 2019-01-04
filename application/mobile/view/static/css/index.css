@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+li {
+    list-style: none;
+}
+
+
+/* 轮播图 */
+.poster {
+    position: relative;
+    width: 100%;
+    height: 3.75rem;
+    overflow: hidden;
+    font-size: 0;
+    margin: 0 auto;
+}
+.img-box {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 400%;
+    height: 100%;
+}
+.img-box li {
+    display: inline-block;
+}
+.img-box li a img {
+    width: 7.5rem;
+    height: 3.75rem;
+}
+.order {
+    position: absolute;
+    bottom: 0.1rem;
+    width: 100%;
+    height: 0.3rem;
+    text-align: center;
+}
+.order ul {
+    display: inline-block;
+}
+.order ul li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 2px;
+    border-radius: 50%;
+    background: #fff;
+}
+.order ul li {
+    cursor: pointer;
+}
+.order ul .active {
+    background: #7abedf;
+}
+/* 轮播图结束 */
+
+/* 常规课程title & 推荐课程title */
+.course-convention{
+    margin-top: 0.2rem;
+    width: 100%;
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+}
+.course-convention .course-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+.course-convention .course-title .course-icon img,
+.course-remommend .course-icon img {
+    height: 0.35rem;
+    display: inline-block;
+}
+.course-convention .course-title .course-icon h4,
+.course-remommend .course-icon h4 {
+    display: inline-block;
+    margin-left: 0.1rem;
+    vertical-align: 0.08rem;
+    font-size: 0.3rem;
+    color: #3A3A3A;
+}
+.course-convention .course-title .more a,
+.course-remommend .more a {
+    color: #8B8B8B;
+    display: inline-block;
+    font-size: 0.24rem;
+}
+.course-convention .course-title .more img,
+.course-remommend .more img{
+    height: 0.2rem;
+}
+.course-convention .course-content{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+    width: 100%;
+    height: 3.6rem;
+    /* border: 1px solid red; */
+}
+.course-convention .course-content > div {
+    position: relative;
+    width: 3.34rem;
+    border-radius: 0.06rem;
+    box-shadow: 0.04rem 0.04rem 0.04rem 0.04rem rgba(182, 181, 181, 0.4);
+    overflow: hidden;
+}
+.course-convention .course-content > div .course-poster {
+    width: 3.34rem;
+    height: 2.8rem;
+}
+.course-convention .course-content > div .course-poster img {
+    width: 100%;
+}
+.course-convention .course-content > div .course-title {
+    display: inline-block;
+    width: 100%;
+    height: 0.81rem;
+    text-align: center;
+    line-height: 0.81rem;
+    font-size: 0.28rem;
+    color: #3A3A3A;
+}
+.course-convention .course-content > div .course-like {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    width: 0.36rem;
+    height: 0.36rem;
+}
+.course-convention .course-content > div .course-like img {
+    width: 100%;
+}
+/* 常规课程结束 */
+
+/* 推荐课程 */
+.course-remommend {
+    margin-top: 0.2rem;
+    width: 100%;
+}
+.course-remommend .course-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 0.4rem;
+}
+.course-remommend .course-remommend-scroll-wrap {
+    overflow: hidden;
+    width: 7.5rem;
+    height: 2.8rem;
+}
+.course-remommend ul {
+    padding-right: 0.2rem;
+    box-sizing: border-box;
+    margin-top: 0.2rem;
+    width: 100%;
+    overflow: scroll;
+    white-space: nowrap;
+    height: 3rem;
+}
+.course-remommend ul li {
+    display: inline-block;
+    width: 2.4rem;
+    margin-right: 0.2rem;
+    border-radius: 0.06rem;
+    overflow: hidden;
+    box-shadow: 0.04rem 0.04rem 0.04rem 0.04rem rgba(182, 181, 181, 0.4);
+}
+.course-remommend ul li:first-child {
+    margin-left: 0.2rem;
+}
+.course-remommend ul li:last-child {
+    margin-right: 0;
+}
+.course-remommend ul li a {
+    display: inline-block;
+
+}
+.course-remommend ul li a img {
+    width: 100%;
+}
+.course-remommend ul li a p {
+    width: 100%;
+    text-align: center;
+    line-height: 0.7rem;
+    font-size: 0.28rem;
+    color: #3A3A3A;
+}
+/* 推荐课程结束 */
+
+/* 底部导航 */
+.nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 0.98rem;
+    background: #fff;
+    border-top: 0.01rem solid rgba(182, 181, 181, 0.13);
+}
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.nav ul li {
+    display: inline-block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: center;
+    padding-top: 0.1rem;
+}
+.nav ul li img {
+    height: 0.44rem;
+}
+.nav ul li p {
+    color: #8B8B8B;
+    font-size: 0.22rem;
+}
+.nav ul li p.active {
+    color: #7ABEDF;
+}
+/* 底部导航结束 */
