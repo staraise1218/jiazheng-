@@ -18,7 +18,7 @@ class WeixinPublic extends Base {
 	// 微信公众平台接口配置验证
 	public function configAuth(){
 
-		$params = input('get.');
+		$params = input('post.');
 		if(empty($params)) return false;
 
 
