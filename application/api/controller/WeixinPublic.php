@@ -17,14 +17,14 @@ class WeixinPublic extends Base {
 
 	// 微信公众平台接口配置验证
 	public function configAuth(){
-// 		$params = array (
-//   'signature' => '9d32c6da00aea54cedc9a8d14e2c73d0ce159233',
-//   'echostr' => '1442968030760087503',
-//   'timestamp' => '1546658631',
-//   'nonce' => '1235037838',
-// );
+		$params = array (
+		  	'signature' => 'a6049108144ec637763c89bedf06159369f8c640',
+		  	'echostr' => '5734603926770483194',
+		  	'timestamp' => '1546672090',
+		  	'nonce' => '1163146367',
+		);
 
-		$params = input('get.');
+		// $params = input('get.');
 		if(empty($params)) return false;
 
 
@@ -33,9 +33,10 @@ class WeixinPublic extends Base {
 		$nonce  = $params['nonce'];
 		$echostr  = $params['echostr'];
 		$token  = 'jiazheng';
+
 		$list = array($nonce,$timestamp,$token);
 		sort($list, SORT_STRING);
-		$list = implode(',', $list);
+		$list = implode('', $list);
 
 		if(sha1($list) == $signature){
 			echo $echostr;
