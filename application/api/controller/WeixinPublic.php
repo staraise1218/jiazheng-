@@ -10,7 +10,7 @@ class WeixinPublic extends Base {
 
 	public function __construct(){
 		// 设置所有方法的默认请求方式
-		$this->method = 'POST';
+		$this->method = 'GET';
 
 		parent::__construct();
 	}
@@ -18,7 +18,7 @@ class WeixinPublic extends Base {
 	// 微信公众平台接口配置验证
 	public function configAuth(){
 
-		$params = input('post.');
+		$params = input('get.');
 		if(empty($params)) return false;
 
 
