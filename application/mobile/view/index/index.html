@@ -8,6 +8,7 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <title>家政培训</title>
     <script src="__STATIC__/js/rem.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/public.css">
     <link rel="stylesheet" href="__STATIC__/css/index.css">
 </head>
 <body>
@@ -28,107 +29,37 @@
         </div>
     </div>
     <!-- 轮播图结束 -->
-    <!-- 常规课程 -->
-    <div class="course-convention">
-        <div class="course-title">
-            <div class="course-icon">
-                <img src="__STATIC__/image/home_common coueses@2x.png" alt="常规课程">
-                <h4>常规课程</h4>
-            </div>
-            <div class="more">
-                <a href="#">查看全部</a>
-                <img src="__STATIC__/image/more_btn.png" alt="更多">
-            </div>
-        </div>
-        <div class="course-content">
-            {foreach name="lessonList" item="item"}
-            <div>
-                <a href="{:U('lesson/detail', array('id'=>$item.id))}" class="course-poster">
-                    <img src="{$item.thumb}" alt="">
-                </a>
-                <div class="course-title">
-                    <a href="{:U('lesson/detail', array('id'=>$item.id))}">{$item.title}</a>
-                </div>
-                <a href="#" class="course-like">
-                    <img src="__STATIC__/image/home_collection_pre@2x.png" alt="">
-                </a>
-            </div>
-            {/foreach}
-        </div>
+
+    <div class="course-icon">
+        <img src="__STATIC__/image/home_common coueses@2x.png" alt="培训课程">
+        <h4>培训课程</h4>
     </div>
-    <!-- 常规课程结束 -->
-    <!-- 推荐课程 -->
-    <div class="course-remommend">
-        <div class="course-title">
-            <div class="course-icon">
-                <img src="__STATIC__/image/home_recommended courses@2x.png" alt="推荐课程">
-                <h4>推荐课程</h4>
-            </div>
-            <div class="more">
-                <a href="#">查看全部</a>
-                <img src="__STATIC__/image/more_btn.png" alt="更多">
-            </div>
-        </div>
-        <ul class="course-remommend-content">
-            <li>
-                <a href="#">
-                    <img src="__STATIC__/image/course3.jpg" alt="">
-                    <p>婴儿推拿</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="__STATIC__/image/course4.jpg" alt="">
-                    <p>家政技能</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="__STATIC__/image/course5.jpg" alt="">
-                    <p>催乳师</p>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <!-- 推荐课程结束 -->
-    <!-- 底部导航 -->
-    <div class="nav">
+    <div class="wrapper">
         <ul>
-            <li>
-                <a href="#">
-                    <img class="active" src="__STATIC__/image/tab_home@2x.png" alt="首页按钮">
-                    <p class="active">首页</p>
-                </a>
+            {foreach name="lessonList" item="item"}
+            <li onclick="window.location='{:U('lesson/detail', array('id'=>$item.id))}'">
+                <div class="poster">
+                    <img src="{$item.thumb}" alt="poster">
+                </div>
+                <div class="right">
+                    <div class="title">{$item.title}</div>
+                    <div class="price">
+                        ￥<div class="price-content">{$item.price}</div>
+                    </div>
+                </div>
             </li>
-            <li>
-                <a href="#">
-                    <img src="__STATIC__/image/tab_book_pre@2x.png" alt="首页按钮">
-                    <p>预约</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="__STATIC__/image/tab_shop_pre@2x.png" alt="首页按钮">
-                    <p>商场</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="__STATIC__/image/tab_my_pre@2x.png" alt="首页按钮">
-                    <p>我的</p>
-                </a>
-            </li>
+            {/foreach}
         </ul>
     </div>
+
+
+
+    <!-- 底部导航 -->
+    {include file="public/footer"}
+    <!-- 底部导航结束 -->
     
-    
-
-
-
     <script src="__STATIC__/js/jquery.js"></script>
     <script src="__STATIC__/js/poster.js"></script>
-    
 
-    
 </body>
 </html>

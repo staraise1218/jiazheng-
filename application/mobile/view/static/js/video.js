@@ -15,7 +15,7 @@ init();
 
 // 初始化函数
 function init() {
-    current(count)
+    current(count);
 }
 
 // 设置从……开始播放
@@ -57,7 +57,7 @@ if(video.ended == true) {
 // 获取当前视频时长
 window.onload = function() {
     full_time = video.duration;
-    console.log(video.duration);
+    // console.log(video.duration);
 }
 
 
@@ -81,7 +81,26 @@ video.onended = function() {
     flag = false;
 };
 
+// 监听页面关闭
+window.onbeforeunload=function(e){
+　　var e = window.event||e;
+    count = video.currentTime;
+    localStorage.setItem("qqq",count);
+}
 
+
+
+// router 课程集数
+var chapter_btn = document.getElementsByClassName("chapter-part-title")[0],
+    chapter_content = document.getElementsByClassName("content-wrap")[0];
+
+var chapter_count = 90;
+var chapterArray = [];
+// 15 集 一个 btn  <li><a></a></li>
+// 第一个 class ---> active
+
+// 15 集 一个 ul 
+// 第一个 class item active
 
 
 

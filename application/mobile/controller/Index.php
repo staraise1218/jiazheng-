@@ -22,11 +22,11 @@ class Index extends Base{
 			->where('is_open', 1)
 			->where('is_delete', 0)
 			->limit(2)
-			->field('id, title, thumb')
+			->field('id, title, thumb, price')
 			->select();
 
 		$this->assign('bannerList', $bannerList);
 		$this->assign('lessonList', $lessonList);
-    	return $this->fetch();
+    	return $this->fetch('index');
     }
 }

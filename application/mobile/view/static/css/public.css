@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+li {
+    list-style: none;
+}
+
+/* 轮播图 */
+.poster {
+    position: relative;
+    width: 100%;
+    height: 3.75rem;
+    overflow: hidden;
+    font-size: 0;
+    margin: 0 auto;
+}
+.img-box {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 400%;
+    height: 100%;
+}
+.img-box li {
+    display: inline-block;
+}
+.img-box li a img {
+    width: 7.5rem;
+    height: 3.75rem;
+}
+.order {
+    position: absolute;
+    bottom: 0.1rem;
+    width: 100%;
+    height: 0.3rem;
+    text-align: center;
+}
+.order ul {
+    display: inline-block;
+}
+.order ul li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 2px;
+    border-radius: 50%;
+    background: #fff;
+}
+.order ul li {
+    cursor: pointer;
+}
+.order ul .active {
+    background: #7abedf;
+}
+/* 轮播图结束 */
+
+
+
+/* 底部导航 */
+.nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 0.98rem;
+    background: #fff;
+    border-top: 0.01rem solid rgba(182, 181, 181, 0.13);
+}
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.nav ul li {
+    display: inline-block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: center;
+    padding-top: 0.1rem;
+}
+.nav ul li img {
+    height: 0.44rem;
+}
+.nav ul li p {
+    color: #8B8B8B;
+    font-size: 0.22rem;
+}
+.nav ul li p.active {
+    color: #7ABEDF;
+}
+/* 底部导航结束 */
+
