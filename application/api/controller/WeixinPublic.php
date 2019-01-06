@@ -39,4 +39,9 @@ class WeixinPublic extends Base {
 		}
 	}
 
+	// 授权回调
+	public function oauthCallback(){
+		
+	}
+
 }
