@@ -41,6 +41,6 @@ class WeixinPublicLogic {
 		$url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token_info['access_token'].'&openid='.$access_token_info['openid'].'&lang=zh_CN';
 
 		$result = file_get_contents($url);
-		return $json_decode($result, true);
+		return json_decode($result, true);
 	}
 }
