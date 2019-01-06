@@ -16,7 +16,7 @@ class WeixinPublicLogic {
 		$authUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
     	$params = array(
     		'appid' => $this->appid,
-    		'redirect_uri' => urlencode('http://jiazheng.staraise.com.cn/index.php/mobile/auth/login'),
+    		'redirect_uri' => urlencode('http://jiazheng.staraise.com.cn/index.php/mobile/weixin/get_access_token'),
 			'response_type' => 'code',
 			'scope' => 'snsapi_userinfo',
 			'state' => '1234',
