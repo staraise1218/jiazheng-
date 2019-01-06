@@ -33,7 +33,7 @@ class WeixinPublicLogic {
 	public function get_access_token($code){
 		$url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->appid.'&secret='.$this->appsecret.'&code='.$code.'&grant_type=authorization_code';
 
-		$access_token = request()->create($url);
+		$access_token = request()->create($url)->send();
 		p($access_token);
 	}
 }

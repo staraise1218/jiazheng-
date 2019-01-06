@@ -27,7 +27,9 @@ class Base extends Controller{
 
             p($session_user);
         } else {
-        	header("Location:jiazheng.staraise.com.cn/index.php/mobile/weixin/get_code");
+
+        	header("Location:/index.php/mobile/weixin/get_code");
+        	die();
         }
     }
 }
