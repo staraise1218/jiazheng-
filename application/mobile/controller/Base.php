@@ -5,7 +5,6 @@ namespace app\mobile\controller;
 use think\Controller;
 
 class Base extends Controller{
-    
 
     public function __construct(){
     	parent::__construct();
@@ -28,7 +27,7 @@ class Base extends Controller{
 
             p($session_user);
         } else {
-        	header("Location:/index.php/mobile/Weixin/get_code");
+        	header("Location:jiazheng.staraise.com.cn/index.php/mobile/weixin/get_code");
         }
     }
 }
