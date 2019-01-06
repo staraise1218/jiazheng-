@@ -34,13 +34,13 @@ class WeixinPublicLogic {
 		$url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->appid.'&secret='.$this->appsecret.'&code='.$code.'&grant_type=authorization_code';
 
 		$result = file_get_contents($url);
-		return json_decode($result);
+		return json_decode($result, true);
 	}
 
 	public function get_userinfo($access_token_info){
 		$url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token_info['access_token'].'&openid='.$access_token_info['openid'].'&lang=zh_CN';
 
 		$result = file_get_contents($url);
-		return $json_decode($result);
+		return $json_decode($result, true);
 	}
 }
