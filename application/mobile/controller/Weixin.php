@@ -24,8 +24,30 @@ class Weixin {
     	$WeixinPublicLogic = new WeixinPublicLogic();
         $access_token_info = $WeixinPublicLogic->get_access_token($code);
 
-        // 获取用户信息
+        // 拉取微信用户信息
         $userinfo = $WeixinPublicLogic->get_userinfo($access_token_info);
-        p($userinfo);
+
+        $user = Db::name('users')->where('openid', $userinfo['openid'])
+        	->field('user_id, mobile, nickname, fullname, head_pic')
+        	->find();
+        if($user){
+        	session('user',$user);
+        } else {
+        	$userdata = array(
+        		'openid' => $userinfo['openid'],
+        		'nickname' => $userinfo['nickname'],
+        		'sex' => $userinfo['sex'],
+        		'head_pic' => $userinfo['headimgurl'],
+        	);
+        	if($user_id = Db::name('users')->insertGetId($userdata)){
+        		$user = Db::name('users')->where('user_id', $user_id)
+		        	->field('user_id, mobile, nickname, fullname, head_pic')
+		        	->find();
+		        session('user',$user);
+        	}
+        }
+
+        header("Location:/index.php/mobile/index/index");
+        die();
     }
 }
