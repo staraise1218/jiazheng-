@@ -8,11 +8,7 @@ use think\Db;
 class Index extends Base{
 
     public function index(){
-    	$code = input('code', 0);
-    	if($code){
-    		$WeixinPublicLogic = new WeixinPublicLogic();
-        	$access_token = $WeixinPublicLogic->get_access_token($code);
-    	}
+    	
     	// 获取banner
 		$bannerList = Db::name('ad')
 			->where('pid', 1)

@@ -16,7 +16,7 @@ class WeixinPublicLogic {
 		$authUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
     	$params = array(
     		'appid' => $this->appid,
-    		'redirect_uri' => urlencode('http://jiazheng.staraise.com.cn'),
+    		'redirect_uri' => urlencode('http://jiazheng.staraise.com.cn/index.php/mobile/auth/login'),
 			'response_type' => 'code',
 			'scope' => 'snsapi_userinfo',
 			'state' => '1234',
@@ -31,8 +31,9 @@ class WeixinPublicLogic {
 	}
 
 	public function get_access_token($code){
-		$redirect_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->appid.'&secret='.$this->appsecret.'&code='.$code.'&grant_type=authorization_code';
-p($redirect_url);
-		header("Location:$redirect_url");
+		$url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->appid.'&secret='.$this->appsecret.'&code='.$code.'&grant_type=authorization_code';
+
+		$access_token = request()->create($url);
+		p($access_token);
 	}
 }

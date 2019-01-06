@@ -3,7 +3,6 @@
 namespace app\mobile\controller;
 
 use think\Controller;
-use app\mobile\Logic\WeixinPublicLogic;
 
 class Base extends Controller{
     
@@ -29,12 +28,7 @@ class Base extends Controller{
 
             p($session_user);
         } else {
-        	// getcode
-        	$WeixinPublicLogic = new WeixinPublicLogic();
-        	$authUrl = $WeixinPublicLogic->getAuthUrl();
-
-        	header("Location:$authUrl");
-        	die();
+        	header("Location:/index.php/mobile/Weixin/get_code");
         }
     }
 }
