@@ -25,7 +25,6 @@ class Base extends Controller{
             $this->user_id = $user['user_id'];
             $this->assign('user', $user); //存储用户信息
 
-            p($session_user);
         } else {
 
         	header("Location:/index.php/mobile/weixin/get_code");

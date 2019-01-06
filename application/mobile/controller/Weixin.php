@@ -38,6 +38,7 @@ class Weixin {
         		'nickname' => $userinfo['nickname'],
         		'sex' => $userinfo['sex'],
         		'head_pic' => $userinfo['headimgurl'],
+        		'reg_time' => time(),
         	);
         	if($user_id = Db::name('users')->insertGetId($userdata)){
         		$user = Db::name('users')->where('user_id', $user_id)
