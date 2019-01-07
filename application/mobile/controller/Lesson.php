@@ -10,7 +10,7 @@ class Lesson extends Base{
     public function detail(){
     	$id = input('id');
 
-    	$user_id = $this->auth->id;
+    	$user_id = $this->user_id;
     	p($user_id);
 
 		// 获取常规课程
