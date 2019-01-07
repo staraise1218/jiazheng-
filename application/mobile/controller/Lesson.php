@@ -22,10 +22,52 @@ class Lesson extends Base{
 
 		// 判断用户是否已购买此视频
 		$is_buyed = Db::name('lesson_order')
-			->where('');
+			->where('user_id', $user_id)
+			->where('lesson_id', $id)
+			->where('paystatus', 1)
+			->count()
+			;
+		$is_buyed = $is_buyed > 0 ? 1 : 0;
 
+		$this->assign('is_buyed', $is_buyed);
 		$this->assign('info', $info);
     	return $this->fetch();
+    }
+
+    /**
+     * [episode 课程集数]
+     * @return [type] [description]
+     */
+    public function episode(){
+    	$lesson_id = input('lesson_id');
+    	$page = input('page', 1);
+    	$user_id = $this->user_id;
+
+		// 判断用户是否已购买此视频
+		$lesson_order = Db::name('lesson_order')
+			->where('user_id', $user_id)
+			->where('lesson_id', $id)
+			->where('paystatus', 1)
+			->order('id desc')
+			->find();
+
+		if(empty($lesson_order)){
+			$this->error('您尚未购买');
+		}
+
+		$limit = 15; // 每页显示15条
+		$totalCount = Db::name('lesson_episode')->where('lesson_id', $lesson_id)->count();
+		$pageCount = ceil($totalCount/$limit); // 总页数
+		$episodeList = Db::name('lesson_episode')
+			->where('lesson_id', $lesson_id)
+			->order('number asc')
+			->limit($limit)
+			->page($page)
+			->select();
+p($pageCount,$episodeList);
+		$this->assign('pageCount', $pageCount);
+		$this->assign('episodeList', $episodeList);
+		return $this->fetch();
     }
 
     public function submitOrder(){

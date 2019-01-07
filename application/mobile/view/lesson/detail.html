@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="poster-wrap">
-        <a class="poster" href="#">
+        <a class="poster play" href="javascript:;">
             <img src="{$info.detail_pic}" alt="">
             <div class="play-btn">
                 <img src="__STATIC__/image/course broadcast_start@2x.png" alt="">
@@ -49,5 +49,18 @@
         <button class="buy">立即购买</button>
     </footer>
 
+<script src="__STATIC__/js/jquery.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var is_buyed = "{$is_buyed}";
+        $('.play').click(function(){
+            if(is_buyed == 0){
+                alert('您尚未购买，不能播放');
+            } else {
+                window.location="{:url('mobile/lesson/episode', array('lesson_id'=>$info.id))}";
+            }
+        })
+    })
+</script>
 </body>
 </html>
