@@ -10,12 +10,19 @@ class Lesson extends Base{
     public function detail(){
     	$id = input('id');
 
+    	$user_id = $this->auth->id;
+    	p($user_id);
+
 		// 获取常规课程
 		$info = Db::name('lesson')
 			->where('is_open', 1)
 			->where('is_delete', 0)
 			->where('id', $id)
 			->find();
+
+		// 判断用户是否已购买此视频
+		$is_buyed = Db::name('lesson_order')
+			->where('')
 
 		$this->assign('info', $info);
     	return $this->fetch();
@@ -55,9 +62,11 @@ class Lesson extends Base{
     	$data['user_id'] = input('user_id');
     	$data['lesson_id'] = input('lesson_id');
     	$data['lesson_episode_id'] = input('lesson_episode_id');
+    	$data['number'] = input('number');
     	$data['current_time'] = input('current_time');
     	$data['ended'] = input('ended');
 
+    	$data['add_time'] = time();
     	if(Db::name('lesson_played')->insert($data)){
     		response_success('', '操作成功');
     	} else {
