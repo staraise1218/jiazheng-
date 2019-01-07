@@ -11,7 +11,6 @@ class Lesson extends Base{
     	$id = input('id');
 
     	$user_id = $this->user_id;
-    	p($user_id);
 
 		// 获取常规课程
 		$info = Db::name('lesson')
