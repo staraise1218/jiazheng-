@@ -49,7 +49,7 @@ class Lesson extends Base{
 			->where('paystatus', 1)
 			->order('id desc')
 			->find();
-
+p($lesson_order, $lesson_id, $page,$user_id);
 		if(empty($lesson_order)){
 			$this->error('您尚未购买');
 		}
