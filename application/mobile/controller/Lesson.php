@@ -38,7 +38,7 @@ class Lesson extends Base{
      * @return [type] [description]
      */
     public function episode(){
-    	$lesson_id = input('lesson_id');
+    	$lesson_id = input('get.lesson_id');
     	$page = input('page', 1);
     	$user_id = $this->user_id;
 
