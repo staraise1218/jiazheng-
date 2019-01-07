@@ -67,6 +67,7 @@ class Lesson extends Base{
 		$this->assign('limit', $limit);
 		$this->assign('pageCount', $pageCount);
 		$this->assign('episodeList', $episodeList);
+		$this->assign('order_id', $lesson_order['id']);
 		return $this->fetch();
     }
 
