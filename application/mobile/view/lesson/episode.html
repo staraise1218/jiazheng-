@@ -37,21 +37,9 @@
             </ul>
             <div class="content-wrap">
                 <ul class="item active">
-                    <li><a href="#">30</a></li>
-                    <li><a href="#">29</a></li>
-                    <li><a href="#">28</a></li>
-                    <li><a href="#">27</a></li>
-                    <li><a href="#">26</a></li>
-                    <li><a href="#">25</a></li>
-                    <li><a href="#">24</a></li>
-                    <li><a href="#">23</a></li>
-                    <li><a href="#">22</a></li>
-                    <li><a href="#">21</a></li>
-                    <li><a href="#">20</a></li>
-                    <li><a href="#">19</a></li>
-                    <li><a href="#">18</a></li>
-                    <li><a href="#">17</a></li>
-                    <li><a href="#">16</a></li>
+                	{foreach name="episodeList" item="item"}
+                    <li><a href="#">{$item.number}</a></li>
+                	{/foreach}
                 </ul>
             </div>
         </div>

@@ -119,20 +119,19 @@ li {
     width: 100%;
 }
 .chapter .chapter-part .chapter-part-title li {
-    display: inline-block
-}
-.chapter .chapter-part .chapter-part-title li a{
     display: inline-block;
-    background: #fff;
     font-size: 0.18rem;
     font-weight: 400;
-    color:#9c9c9c;
     padding: 0 0.1rem;
+    line-height: 0.35rem;
     border-radius: 0.14rem;
 }
-.chapter .chapter-part .chapter-part-title li a.active {
-    color:rgba(255,255,255,1);
+.chapter .chapter-part .chapter-part-title .active {
+    color: #fff;
     background: #7ABEDF;
+}
+.chapter .chapter-part .chapter-part-title .active{
+    color: #fff;
 }
 .chapter .chapter-part .content {
     width: 100%;
@@ -157,6 +156,9 @@ li {
     margin-top: 0.2rem;
 }
 .chapter .chapter-part .content-wrap .item{
+    display: none;
+}
+.chapter .chapter-part .content-wrap .item {
     display: none;
 }
 .chapter .chapter-part .content-wrap .active {

@@ -16,6 +16,9 @@ a {
     padding: 0.6rem 0.7rem 0;
     box-sizing: border-box;
 }
+.wrapper .time-wrap {
+    position: relative;
+}
 .wrapper .time-wrap,
 .wrapper .choose-content {
     display: flex;

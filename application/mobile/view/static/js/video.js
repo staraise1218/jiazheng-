@@ -102,5 +102,20 @@ var chapterArray = [];
 // 15 集 一个 ul 
 // 第一个 class item active
 
+var chooseBtn = document.getElementById("active");
+var chooseBtnUl = document.getElementsByClassName('chapter-part-title')[0];
+var chooseBtnArr = chooseBtnUl.getElementsByTagName('li');
+var chooseBox = document.getElementsByClassName("content-wrap")[0].getElementsByClassName('active')[0];
+
+
+chooseBtnUl.addEventListener('click', function (e) {
+    if(e.target.tagName == "LI") {
+        for(var i = 0; i < chooseBtnArr.length; i++) {
+            chooseBtnArr[i].className = ""
+        }
+        e.target.className = "active";
+    }
+    
+})
 
 
