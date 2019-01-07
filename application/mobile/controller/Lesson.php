@@ -63,7 +63,7 @@ class Lesson extends Base{
 			->limit($limit)
 			->page($page)
 			->select();
-
+p($pageCount);
 		$this->assign('limit', $limit);
 		$this->assign('pageCount', $pageCount);
 		$this->assign('episodeList', $episodeList);
