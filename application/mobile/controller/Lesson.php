@@ -49,7 +49,6 @@ class Lesson extends Base{
 			->where('paystatus', 1)
 			->order('id desc')
 			->find();
-			p(Db::name('lesson_order')->getLastSql());
 
 		if(empty($lesson_order)){
 			$this->error('您尚未购买');
