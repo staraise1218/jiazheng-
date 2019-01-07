@@ -8,7 +8,7 @@ use think\Db;
 class Lesson extends Base{
 
     public function detail(){
-    	$id = input('id');
+    	$id = input('param.id');
 
     	$user_id = $this->user_id;
 
@@ -38,8 +38,8 @@ class Lesson extends Base{
      * @return [type] [description]
      */
     public function episode(){
-    	$lesson_id = input('get.lesson_id');
-    	$page = input('page', 1);
+    	$lesson_id = input('param.lesson_id');
+    	$page = input('param.page', 1);
     	$user_id = $this->user_id;
 
 		// 判断用户是否已购买此视频
