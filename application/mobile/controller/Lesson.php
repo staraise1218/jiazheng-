@@ -22,7 +22,7 @@ class Lesson extends Base{
 
 		// 判断用户是否已购买此视频
 		$is_buyed = Db::name('lesson_order')
-			->where('')
+			->where('');
 
 		$this->assign('info', $info);
     	return $this->fetch();
