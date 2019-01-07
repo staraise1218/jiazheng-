@@ -45,12 +45,12 @@ class Lesson extends Base{
 		// 判断用户是否已购买此视频
 		$lesson_order = Db::name('lesson_order')
 			->where('user_id', $user_id)
-			->where('lesson_id', $id)
+			->where('lesson_id', $lesson_id)
 			->where('paystatus', 1)
 			->order('id desc')
 			->find();
 			p(Db::name('lesson_order')->getLastSql());
-p($lesson_order, $lesson_id, $page,$user_id);
+
 		if(empty($lesson_order)){
 			$this->error('您尚未购买');
 		}
