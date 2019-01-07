@@ -32,7 +32,7 @@
         <div class="chapter-part">
             <ul class="chapter-part-title">
             	{for start="1" end="$pageCount+1"}
-                <li class="item-btn {$i == 1 ? 'active' : ''}">{$i}-{$i*$limit}</li>
+                <li class="item-btn {$i == 1 ? 'active' : ''}">{($i-1)*$limit}-{$i*$limit}</li>
                 {/for}
             </ul>
             <div class="content-wrap">
