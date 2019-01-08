@@ -18,13 +18,13 @@
         </div>
     </div>
     <div class="hint-wrap">
+        {if condition="!empty($lastplay)"}
         <div class="hint-bg">
             <img src="__STATIC__/image/course broadcast_record@2x.png" alt="">
-            {if condition="!empty($lastplay)"}
             <p>上次看到：<span>{$lastplay.title} {$lastplay.current_time} </span></p>
-            {/if}
         </div>
         <button class="continue">继续学</button>
+        {/if}
     </div>
     <div class="chapter">
         <div class="chapter-title">
@@ -38,11 +38,13 @@
                 {/for}
             </ul>
             <div class="content-wrap">
-                <ul class="item active">
-                	{foreach name="episodeList" item="item"}
+                {for start="1" end="$pageCount+1" name="page"}
+                <ul class="item {$page == 1 ? 'active' : ''}">
+                	{foreach name="episode_page_$page" item="item"}
                     <li><a href="#">{$item.number}</a></li>
                 	{/foreach}
                 </ul>
+                {/if}
             </div>
         </div>
     </div>

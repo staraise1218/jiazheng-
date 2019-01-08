@@ -39,7 +39,7 @@ class Lesson extends Base{
      */
     public function episode(){
     	$lesson_id = input('param.lesson_id');
-    	$page = input('param.page', 1);
+    	// $page = input('param.page', 1);
     	$user_id = $this->user_id;
 
 		// 判断用户是否已购买此视频
@@ -57,12 +57,17 @@ class Lesson extends Base{
 		$limit = 2; // 每页显示15条
 		$totalCount = Db::name('lesson_episode')->where('lesson_id', $lesson_id)->count();
 		$pageCount = ceil($totalCount/$limit); // 总页数
-		$episodeList = Db::name('lesson_episode')
-			->where('lesson_id', $lesson_id)
-			->order('number asc')
-			->limit($limit)
-			->page($page)
-			->select();
+		
+		// 分页获取所有的集
+		for($page = 1; $page < $pageCount + 1; $page++){
+			$episodeList = Db::name('lesson_episode')
+				->where('lesson_id', $lesson_id)
+				->order('number asc')
+				->limit($limit)
+				->page($page)
+				->select();
+			$this->assign('episodeList_page_1', $episodeList);
+		}
 
 		// 获取该视频最后一次播放
 		$lastplay = Db::name('lesson_played')->alias('lp')
