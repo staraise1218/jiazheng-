@@ -139,6 +139,26 @@ class Lesson extends Base{
 
     }
 
+    /**
+     * [collect 收藏]
+     * @param table_name [lesson 课程]
+     * @return [type] [description]
+     */
+    public function collect(){
+        $data['table_id'] = input('id');
+        $data['user_id'] = $this->user_id;
+        $data['table_name'] = 'lesson';
+
+        if(M('user_collect')->where($data)->count()) response_success('已收藏');
+
+        $data['add_time'] = time();
+        if( false !== M('user_collect')->insert($data)){
+            response_success('', '收藏成功');
+        } else {
+            response_error('', '收藏失败');
+        }
+    }
+
    private function generateOrderSn(){
         $order_sn = date('YmdHis').mt_rand(1000, 9999);
 
