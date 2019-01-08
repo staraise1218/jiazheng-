@@ -1,3 +1,4 @@
+// guofeng
 // video 控制
 var video = document.getElementsByClassName("video")[0], // video 组件
     play_btn = document.getElementsByClassName("video-play-btn")[0],  // 遮罩层
@@ -5,32 +6,21 @@ var video = document.getElementsByClassName("video")[0], // video 组件
     continue_wrap = document.getElementsByClassName("hint-wrap")[0], // 继续播放wrap
     continue_btn = document.getElementsByClassName("continue")[0]; // 继续播放按钮
 
-var flag = true,  // 是否购买过该视频，播放完变回false
-    count = 0,  // 记录播放过的时间
-    full_time = 0,  // 当前视频总长
-    isOver = false,  // 视频是否播放完成
-    nowEpisode = null;  // 当前集数
+var is_buy = true,          // 是否购买过该视频，播放完变回false
+    lesson_id = 0,          // 课程id	
+    lesson_episode_id = 0,  // 集数id
+    number = 0,             // 集数	
+    current_time = 66,      // 播放当前时间	
+    ended = 0               // 是否结束 0 未结束 1 已结束	
 
-
-
-var episodeArr = [
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih',
-    'asfgahdifhafih'
-]
+var postData = {
+    is_buy: is_buy,
+    lesson_id: lesson_id,
+    lesson_episode_id: lesson_episode_id,
+    number: number,
+    current_time: current_time,
+    ended: ended
+}
 
 // function createDome() {
 //     var oUl = $(".wrap");
@@ -47,7 +37,7 @@ var episodeArr = [
 
 // 初始化函数
 function init() {
-    current(count);
+    current(current_time);
     // createDome();
     continueBtnIsnone();
 }
@@ -60,30 +50,25 @@ function current(time) {
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function (e) {
+    current(current_time);
     video_play(e)
 }
 // 开始播放  点击继续播放按钮
 continue_btn.onclick = function (e) {
+    current(current_time);
     video_play(e);
 }
 // 判断继续播放部分是否显示
 function continueBtnIsnone() {
-    if(count == 0) {
+    if(current_time == 0) {
         continue_wrap.style.display = 'none';
     } else {
         continue_wrap.style.display = "flex";
-    } 
+    }
 }
 // 视频播放
 function video_play (e) {
-    $.ajax({
-        type: 'GET',
-        url: '',
-        success: function () {
-            
-        }
-    })
-    if(flag) {
+    if(is_buy) {
         video.play();
         play_none()
         e.stopPropagation();
@@ -95,20 +80,20 @@ function video_play (e) {
 video.onclick = function () {
     video.pause();
     play_block();
-    count = video.currentTime;
-    console.log(count);  // 记录count
+    current_time = video.currentTime;
+    console.log(current_time);  // 记录current_time
     console.log("播放暂停");
+    $.ajax({
+        type: 'POST',
+        data: postData,
+        url: 'jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog'
+    })
 }
 
 if(video.ended == true) {
     console.log("视频播放完了");
-    isOver = true;
-}
-
-// 获取当前视频时长
-window.onload = function() {
-    full_time = video.duration;
-    // console.log(video.duration);
+    ended = 1;
+    is_buy = false;
 }
 
 
@@ -128,20 +113,19 @@ function play_block() {
 
 video.onended = function() {
     console.log("视频播放完成"); // 记录播放完成
-    flag = false;
+    is_buy = false;
+    play_block()
 };
 
 // 监听页面关闭
 window.onbeforeunload=function(e){
-　　var e = window.event||e;
-    count = video.currentTime;
-    localStorage.setItem("qqq", count);
+    var e = window.event||e;
+    current_time = video.currentTime;
+    localStorage.setItem("qqq", current_time);
     $.ajax({
         type: 'POST',
-        url: '',
-        success: function () {
-
-        }
+        data: postData,
+        url: 'jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog'
     })
 }
 
@@ -154,14 +138,14 @@ var chapter_count = 90;
 var chapterArray = [];
 
 
- /*
- * @description: 课程集数选择 
- * @author: Guofeng
- * @update: Guofeng (2019-01-08)
- */
+/*
+* @description: 课程集数选择
+* @author: Guofeng
+* @update: Guofeng (2019-01-08)
+*/
 var nowIndex = 0,
-    w = $('.chapter-part').width(),   
-    len = $('.item').length,    
+    w = $('.chapter-part').width(),
+    len = $('.item').length,
     slider_timer = undefined,
     flag = true;
 bindEvent();
