@@ -1,21 +1,23 @@
 // video 控制
-var video = document.getElementsByClassName("video")[0], // video 组件
-    play_btn = document.getElementsByClassName("video-play-btn")[0],  // 遮罩层
-    play_btn_img = document.getElementsByClassName("video-play-play")[0], // 播放按钮
-    continue_wrap = document.getElementsByClassName("hint-wrap")[0], // 继续播放wrap
-    continue_btn = document.getElementsByClassName("continue")[0]; // 继续播放按钮
-
+var video = $(".video")[0], // video 组件
+    play_btn = $(".video-play-btn")[0],  // 遮罩层
+    play_btn_img = $(".video-play-play")[0], // 播放按钮
+    continue_wrap = $(".hint-wrap")[0], // 继续播放wrap
+    continue_btn = $(".continue")[0], // 继续播放按钮
+    video_btn = $(".video-btn"),
+    video_btn_wrap = $(".wrap")[0]
 
 var lesson_id_value = $(".lesson_id")[0].value,
-    order_id_value = $(".order_id")[0].value;
+    order_id_value = $(".order_id")[0].value,
+    lesson_episode_id = $("./wrap")
 
 
-var is_buy = true,          // 是否购买过该视频，播放完变回false
-    lesson_id = lesson_id_value,          // 课程id	
-    lesson_episode_id = 0,  // 集数id
-    number = 1,             // 集数	
-    current_time = 0,       // 播放当前时间	
-    ended = 0,              // 是否结束 0 未结束 1 已结束	
+var is_buy = true,                          // 是否购买课程
+    lesson_id = lesson_id_value,            // 课程id	
+    lesson_episode_id = 0,                  // 集数id
+    number = 1,                             // 集数	
+    current_time = 0,                       // 播放当前时间	
+    ended = 0,                              // 是否结束 0 未结束 1 已结束	
     lesson_id = lesson_id_value
 var postData = {
     order_id: lesson_id,
@@ -26,27 +28,20 @@ var postData = {
     ended: ended
 }
 
-// function createDome() {
-//     var oUl = $(".wrap");
-//     var oLi = document.createElement("li");
-//     var str = '';
-//     for(var i = 1; i < episodeArr.length; i++) {
-//         str += '<a href="#">' + i + '</a>'
-//     }
-//     oLi.innerHTML = str;
-//     console.log(oLi)
-//     console.log(oUl)
-//     oUl[0].appendChild(oLi);
-// }
 
 // 初始化函数
 function init() {
     current(current_time);
-    // createDome();
     continueBtnIsnone();
 }
 
 init();
+
+// 分集，事件代理函数
+$(video_btn_wrap).delegate("a","click",function(){
+    video.src = $(this).attr("data-video");
+    number = $(this).attr("number")
+});
 
 // 设置从……开始播放
 function current(time) {
