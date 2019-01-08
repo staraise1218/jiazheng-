@@ -39,7 +39,7 @@
             </ul>
             <div class="content-wrap">
                 {for start="1" end="$pageCount+1" name="page"}
-                    <?php $episodeList = 'episode_page_'.$page; ?>
+                    <?php $episodeList = 'episodeList_page_'.$page; ?>
                 <ul class="item {$page == 1 ? 'active' : ''}">
                 	{foreach name="$episodeList" item="item"}
                     <li><a href="#">{$item.number}</a></li>

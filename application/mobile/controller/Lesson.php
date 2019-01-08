@@ -66,7 +66,7 @@ class Lesson extends Base{
 				->limit($limit)
 				->page($page)
 				->select();
-			$this->assign('episodeList_page_1', $episodeList);
+			$this->assign('episodeList_page_'.$page, $episodeList);
 		}
 
 		// 获取该视频最后一次播放
