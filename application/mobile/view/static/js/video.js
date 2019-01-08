@@ -121,7 +121,7 @@ video.onended = function() {
 window.onbeforeunload=function(e){
     var e = window.event||e;
     current_time = video.currentTime;
-    localStorage.setItem("qqq", current_time);
+    localStorage.setItem("current_time", current_time);
     $.ajax({
         type: 'POST',
         data: postData,
