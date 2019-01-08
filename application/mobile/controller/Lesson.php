@@ -57,7 +57,7 @@ class Lesson extends Base{
 		$limit = 2; // 每页显示15条
 		$totalCount = Db::name('lesson_episode')->where('lesson_id', $lesson_id)->count();
 		$pageCount = ceil($totalCount/$limit); // 总页数
-		echo '<pre>';
+
 		// 分页获取所有的集
 		for($page = 1; $page < $pageCount + 1; $page++){
 			$episodeList = Db::name('lesson_episode')
@@ -66,10 +66,9 @@ class Lesson extends Base{
 				->limit($limit)
 				->page($page)
 				->select();
-				print_r($episodeList);
 			$this->assign('episodeList_page_'.$page, $episodeList);
 		}
-die();
+
 		// 获取该视频最后一次播放
 		$lastplay = Db::name('lesson_played')->alias('lp')
 			->join('lesson_episode le', 'lp.lesson_episode_id=le.id')
