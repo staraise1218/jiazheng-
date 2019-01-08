@@ -41,7 +41,6 @@ function init() {
     // createDome();
     continueBtnIsnone();
 }
-
 init();
 
 // 设置从……开始播放
