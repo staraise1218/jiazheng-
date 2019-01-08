@@ -128,7 +128,17 @@ class Lesson extends Base{
     	$data['ended'] = input('ended');
 
     	$data['add_time'] = time();
-    	if(Db::name('lesson_played')->insert($data)){
+
+    	// 判断是否记录
+
+    	$count = Db::name('lesson_played')
+    		->where('user_id', $data['user_id'])
+    		->where('order_id', $data['order_id'])
+    		->where('lesson_id', $data['lesson_id'])
+    		->where('lesson_episode_id', $data['lesson_episode_id'])
+    		->count();
+    	if($count){
+    		Db::name('lesson_played')->insert($data);
     		response_success('', '操作成功');
     	} else {
     		response_error('', '操作失败');
