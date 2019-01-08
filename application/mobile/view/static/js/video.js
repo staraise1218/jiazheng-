@@ -153,11 +153,8 @@ var chapter_count = 90;
 var chapterArray = [];
 
 
-/*
-* @description: 课程集数选择
-* @author: Guofeng
-* @update: Guofeng (2019-01-08)
-*/
+// @description: 课程集数选择
+
 var nowIndex = 0,
     w = $('.chapter-part').width(),
     len = $('.item').length,
