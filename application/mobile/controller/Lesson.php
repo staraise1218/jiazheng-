@@ -149,7 +149,7 @@ class Lesson extends Base{
         $data['user_id'] = $this->user_id;
         $data['table_name'] = 'lesson';
 
-        if(M('user_collect')->where($data)->count()) response_success('已收藏');
+        if(M('user_collect')->where($data)->count()) response_success('', '已收藏');
 
         $data['add_time'] = time();
         if( false !== M('user_collect')->insert($data)){
