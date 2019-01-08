@@ -88,9 +88,9 @@ class Lesson extends Base{
 		return $this->fetch();
     }
 
-    public function submitOrder(){
+    public function ajaxSubmitOrder(){
         $lesson_id = I('lesson_id');
-        $user_id = I('user_id');
+        $user_id = $this->user_id;
 
         // 检测数据是否存在
         $lesson = Db::name('lesson')
@@ -101,7 +101,7 @@ class Lesson extends Base{
         $order_sn = $this->generateOrderSn();
         $data = array(
             'lesson_id' => $lesson_id,
-            'price' => $video['price'],
+            'price' => $lesson['price'],
             'user_id' => $user_id,
             'order_sn' => $order_sn,
             'createtime' => time(),
@@ -144,7 +144,7 @@ class Lesson extends Base{
      * @param table_name [lesson 课程]
      * @return [type] [description]
      */
-    public function collect(){
+    public function ajaxCollect(){
         $data['table_id'] = input('id');
         $data['user_id'] = $this->user_id;
         $data['table_name'] = 'lesson';
@@ -162,7 +162,7 @@ class Lesson extends Base{
    private function generateOrderSn(){
         $order_sn = date('YmdHis').mt_rand(1000, 9999);
 
-        $count = Db::name('video_order')->where('order_sn', $order_sn)->count();
+        $count = Db::name('lesson_order')->where('order_sn', $order_sn)->count();
         if($count) $this->generateOrderSn();
 
         return $order_sn;

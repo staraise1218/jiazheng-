@@ -65,7 +65,7 @@
         // 收藏
         $('.collect').click(function(){
             $.ajax({
-                url: "{:url('mobile/lesson/collect')}",
+                url: "{:url('mobile/lesson/ajaxCollect')}",
                 type: 'post',
                 dateType: 'json',
                 data: {id: "{$info.id}"},
@@ -75,6 +75,26 @@
                     } else {
                         layer.msg(result.msg);
                     }
+                }
+            })
+        })
+
+        // 购买
+        $('.buy').click(function(){
+            $.ajax({
+                url: "{:url('mobile/lesson/ajaxSubmitOrder')}",
+                type: 'post',
+                dateType: 'json',
+                data: {id: "{$info.id}"},
+                success: function(result){
+                    if(result.code == 200){
+                        layer.msg(result.msg);
+                    } else {
+                        layer.msg(result.msg);
+                    }
+                },
+                error: function(){
+                    layer.msg('服务器出错，请稍后再试');
                 }
             })
         })
