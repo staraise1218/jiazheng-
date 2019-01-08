@@ -2,9 +2,9 @@
 
 namespace app\mobile\controller;
 use think\Db;
-require_once "/plugins/weixin/lib/WxPay.Api.php";
-require_once "/plugins/weixin/WxPay.JsApiPay.php";
-require_once "/plugins/weixin/WxPay.Config.php";
+require_once "./plugins/weixin/lib/WxPay.Api.php";
+require_once "./plugins/weixin/WxPay.JsApiPay.php";
+require_once "./plugins/weixin/WxPay.Config.php";
 
 class Pay {
 
