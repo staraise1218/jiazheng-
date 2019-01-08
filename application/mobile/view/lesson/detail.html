@@ -68,7 +68,7 @@
                 url: "{:url('mobile/lesson/ajaxCollect')}",
                 type: 'post',
                 dateType: 'json',
-                data: {id: "{$info.id}"},
+                data: {lesson_id: "{$info.id}"},
                 success: function(result){
                     if(result.code == 200){
                         layer.msg(result.msg);
@@ -85,7 +85,7 @@
                 url: "{:url('mobile/lesson/ajaxSubmitOrder')}",
                 type: 'post',
                 dateType: 'json',
-                data: {id: "{$info.id}"},
+                data: {lesson_id: "{$info.id}"},
                 success: function(result){
                     if(result.code == 200){
                         layer.msg(result.msg);

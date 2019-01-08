@@ -145,7 +145,7 @@ class Lesson extends Base{
      * @return [type] [description]
      */
     public function ajaxCollect(){
-        $data['table_id'] = input('id');
+        $data['table_id'] = input('lesson_id');
         $data['user_id'] = $this->user_id;
         $data['table_name'] = 'lesson';
 
