@@ -204,9 +204,8 @@ function continueBtnIsnone() {
         continue_wrap.style.display = 'none';
     } else {
         continue_wrap.style.display = "flex";
-    }
+    } 
 }
-
 
 // 视频播放
 function video_play (e) {
