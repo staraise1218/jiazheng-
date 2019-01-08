@@ -63,7 +63,7 @@
                     <?php $episodeList = 'episodeList_page_'.$page; ?>
                 <li class="{$page == 1 ? 'active' : ''}">
                     {foreach name="$$episodeList" item="item"}
-                    <a href="#" data-video="{$item.video}">{$item.number}</a>
+                    <a href="#" data-video="{$item.video}" lesson_episode="{$item.lesson_episode_id}" number="{$item.number}">{$item.number}</a>
                     {/foreach}
                 </li>
                 {/for}
