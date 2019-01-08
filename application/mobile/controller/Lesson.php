@@ -138,9 +138,6 @@ class Lesson extends Base{
     		->where('lesson_episode_id', $data['lesson_episode_id'])
     		->count();
     	if($count){
-    		$data['add_time'] = time();
-    		Db::name('lesson_played')->insert($data);
-    	} else {
     		$updatedata = array(
 				'number' => $data['number'],
 				'current_time' => $data['current_time'],
@@ -152,6 +149,9 @@ class Lesson extends Base{
 	    		->where('lesson_id', $data['lesson_id'])
 	    		->where('lesson_episode_id', $data['lesson_episode_id'])
     			->update($updatedata);
+    	} else {
+    		$data['add_time'] = time();
+    		Db::name('lesson_played')->insert($data);
     	}
 
     	response_success('', '操作成功');
