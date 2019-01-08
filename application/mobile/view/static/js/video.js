@@ -9,7 +9,7 @@ var is_buy = true,          // 是否购买过该视频，播放完变回false
     lesson_id = 0,          // 课程id	
     lesson_episode_id = 0,  // 集数id
     number = 0,             // 集数	
-    current_time = 66,      // 播放当前时间	
+    current_time = 0,       // 播放当前时间	
     ended = 0               // 是否结束 0 未结束 1 已结束	
 
 var postData = {
