@@ -81,14 +81,25 @@
 
         // 购买
         $('.buy').click(function(){
+            layer.load(1);
             $.ajax({
                 url: "{:url('mobile/lesson/ajaxSubmitOrder')}",
                 type: 'post',
                 dateType: 'json',
                 data: {lesson_id: "{$info.id}"},
                 success: function(result){
+                    layer.closeAll('loading');
                     if(result.code == 200){
-                        layer.msg(result.msg);
+                        layer.msg('下单成功，去支付', {icon:1}, function(){
+                            $.ajax({
+                                url: "{:url('mobile/pay/unifiedOrder')}",
+                                type: 'post',
+                                dateType: 'json',
+                                data: {},
+                                success:function(data){
+                                    console.log(data);
+                                }
+                        });
                     } else {
                         layer.msg(result.msg);
                     }
