@@ -17,15 +17,14 @@
             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
         </div>
     </div>
-        <!-- {if condition="!empty($lastplay)"} -->
-    <div class="hint-wrap">
+        
+    <div class="hint-wrap" {if condition="!empty($lastplay)"}style="display:none"{/if}>
         <div class="hint-bg">
             <img src="__STATIC__/image/course broadcast_record@2x.png" alt="">
             <p>上次看到：<span>{$lastplay.title} {$lastplay.current_time} </span></p>
         </div>
         <button class="continue">继续学</button>
     </div>
-        {/if}
     <div class="chapter">
         <div class="chapter-title">
             <p>课程集数:</p>
