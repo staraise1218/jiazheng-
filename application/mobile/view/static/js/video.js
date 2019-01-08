@@ -32,12 +32,12 @@ play_btn_img.onclick = function (e) {
 }
 
 // 开始播放  点击继续播放按钮
-continue_btn.onclick = function (e) {
-    video.play();
-    play_none();
-    e.stopPropagation();
-    console.log("视频开始播放");
-}
+// continue_btn.onclick = function (e) {
+//     video.play();
+//     play_none();
+//     e.stopPropagation();
+//     console.log("视频开始播放");
+// }
 
 // 暂停 记录时间
 video.onclick = function () {
