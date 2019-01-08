@@ -9,7 +9,7 @@ var video = $(".video")[0], // video 组件
 
 var lesson_id_value = $(".lesson_id")[0].value,
     order_id_value = $(".order_id")[0].value,
-    lesson_episode_id = $("./wrap")
+    lesson_episode_id = $(".wrap")
 
 
 var is_buy = true,                          // 是否购买课程
