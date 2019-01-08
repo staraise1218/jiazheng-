@@ -32,23 +32,23 @@ var episodeArr = [
     'asfgahdifhafih'
 ]
 
-function createDome() {
-    var oUl = $(".wrap");
-    var oLi = document.createElement("li");
-    var str = '';
-    for(var i = 1; i < episodeArr.length; i++) {
-        str += '<a href="#">' + i + '</a>'
-    }
-    oLi.innerHTML = str;
-    console.log(oLi)
-    console.log(oUl)
-    oUl[0].appendChild(oLi);
-}
+// function createDome() {
+//     var oUl = $(".wrap");
+//     var oLi = document.createElement("li");
+//     var str = '';
+//     for(var i = 1; i < episodeArr.length; i++) {
+//         str += '<a href="#">' + i + '</a>'
+//     }
+//     oLi.innerHTML = str;
+//     console.log(oLi)
+//     console.log(oUl)
+//     oUl[0].appendChild(oLi);
+// }
 
 // 初始化函数
 function init() {
     current(count);
-    createDome();
+    // createDome();
     continueBtnIsnone();
 }
 
