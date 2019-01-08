@@ -5,15 +5,20 @@ var video = document.getElementsByClassName("video")[0], // video 组件
     continue_wrap = document.getElementsByClassName("hint-wrap")[0], // 继续播放wrap
     continue_btn = document.getElementsByClassName("continue")[0]; // 继续播放按钮
 
-var is_buy = true,          // 是否购买过该视频，播放完变回false
-    lesson_id = 0,          // 课程id	
-    lesson_episode_id = 0,  // 集数id
-    number = 0,             // 集数	
-    current_time = 0,       // 播放当前时间	
-    ended = 0               // 是否结束 0 未结束 1 已结束	
 
+var lesson_id_value = $(".lesson_id")[0].value,
+    order_id_value = $(".order_id")[0].value;
+
+
+var is_buy = true,          // 是否购买过该视频，播放完变回false
+    lesson_id = lesson_id_value,          // 课程id	
+    lesson_episode_id = 0,  // 集数id
+    number = 1,             // 集数	
+    current_time = 0,       // 播放当前时间	
+    ended = 0,              // 是否结束 0 未结束 1 已结束	
+    lesson_id = lesson_id_value
 var postData = {
-    order_id: 1,
+    order_id: lesson_id,
     lesson_id: lesson_id,
     lesson_episode_id: lesson_episode_id,
     number: number,
