@@ -39,9 +39,9 @@
             </ul>
             <div class="content-wrap">
                 {for start="1" end="$pageCount+1" name="page"}
-                    <?php $episodeList = $'episodeList_page_'.$page; 
+                    <?php $episodeList = 'episodeList_page_'.$page; 
 
-                echo '<pre>';print_r($episodeList);
+                echo '<pre>';print_r($$episodeList);
                     ?>
 
                 <ul class="item {$page == 1 ? 'active' : ''}">
