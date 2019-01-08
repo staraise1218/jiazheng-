@@ -31,25 +31,6 @@
             <p>课程集数:</p>
             <span>已购买</span>
         </div>
-<!-- 改 -->
-        <!-- <div class="chapter-part">
-            <ul class="chapter-part-title">
-            	{for start="1" end="$pageCount+1"}
-                <li class="item-btn {$i == 1 ? 'active' : ''}" page="{$i}"><?php echo ($i-1)*$limit+1; ?>-{$i*$limit}</li>
-                {/for}
-            </ul>
-            <div class="content-wrap">
-                {for start="1" end="$pageCount+1" name="page"}
-                    <?php $episodeList = 'episodeList_page_'.$page; ?>
-
-                <ul class="item {$page == 1 ? 'active' : ''}">
-                	{foreach name="$$episodeList" item="item"}
-                    <li data-video="{$item.video}"><a href="#">{$item.number}</a></li>
-                	{/foreach}
-                </ul>
-                {/for}
-            </div>
-        </div> -->
         <div class="chapter-part">
             <div class="order">
                 <ul>
