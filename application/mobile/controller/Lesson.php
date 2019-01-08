@@ -76,7 +76,7 @@ class Lesson extends Base{
 			->where('lp.lesson_id', $lesson_id)
 			->where('lp.order_id')
 			->order('lp.number desc')
-			->field('le.title, lp.current_time, lp.lesson_episode_id')
+			->field('le.title, lp.current_time, lp.lesson_episode_id, lp.number')
 			->find();
 
 		$this->assign('limit', $limit);
