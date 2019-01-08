@@ -1,4 +1,4 @@
-// guofeng
+// guofeng  -- 线上
 // video 控制
 var video = document.getElementsByClassName("video")[0], // video 组件
     play_btn = document.getElementsByClassName("video-play-btn")[0],  // 遮罩层
@@ -14,7 +14,7 @@ var is_buy = true,          // 是否购买过该视频，播放完变回false
     ended = 0               // 是否结束 0 未结束 1 已结束	
 
 var postData = {
-    is_buy: is_buy,
+    order_id: 1,
     lesson_id: lesson_id,
     lesson_episode_id: lesson_episode_id,
     number: number,
@@ -41,6 +41,7 @@ function init() {
     // createDome();
     continueBtnIsnone();
 }
+
 init();
 
 // 设置从……开始播放
@@ -49,6 +50,7 @@ function current(time) {
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function (e) {
+    current_time = 
     current(current_time);
     video_play(e)
 }
@@ -59,6 +61,7 @@ continue_btn.onclick = function (e) {
 }
 // 判断继续播放部分是否显示
 function continueBtnIsnone() {
+    // console.log(continue_wrap);
     if(current_time == 0) {
         continue_wrap.style.display = 'none';
     } else {
@@ -82,10 +85,18 @@ video.onclick = function () {
     current_time = video.currentTime;
     console.log(current_time);  // 记录current_time
     console.log("播放暂停");
+    console.log(postData)
+    // debugger
     $.ajax({
         type: 'POST',
         data: postData,
-        url: 'jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog'
+        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+        success: function () {
+            console.log(postData)
+        },
+        error: function (e) {
+            console.log("error -- 暂停");
+        }
     })
 }
 
@@ -124,7 +135,13 @@ window.onbeforeunload=function(e){
     $.ajax({
         type: 'POST',
         data: postData,
-        url: 'jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog'
+        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+        success: function () {
+            console.log(postData)
+        },
+        error: function (e) {
+            console.log("error -- 关闭页面");
+        }
     })
 }
 
