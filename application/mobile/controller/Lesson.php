@@ -127,7 +127,7 @@ class Lesson extends Base{
     	$data['current_time'] = input('current_time');
     	$data['ended'] = input('ended');
 
-    	$data['add_time'] = time();
+    	
 
     	// 判断是否记录
 
@@ -138,11 +138,24 @@ class Lesson extends Base{
     		->where('lesson_episode_id', $data['lesson_episode_id'])
     		->count();
     	if($count){
+    		$data['add_time'] = time();
     		Db::name('lesson_played')->insert($data);
-    		response_success('', '操作成功');
     	} else {
-    		response_error('', '操作失败');
+    		$updatedata = array(
+				'number' => $data['number'],
+				'current_time' => $data['current_time'],
+				'ended' => $data['ended'],
+    		);
+    		Db::name('lesson_played')
+    			->where('user_id', $data['user_id'])
+	    		->where('order_id', $data['order_id'])
+	    		->where('lesson_id', $data['lesson_id'])
+	    		->where('lesson_episode_id', $data['lesson_episode_id'])
+    			->update($updatedata);
     	}
+
+    	response_success('', '操作成功');
+
     }
 
     // 获取播放历史
