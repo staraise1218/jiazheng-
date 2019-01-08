@@ -9,8 +9,6 @@ var flag = true;  // 是否购买过该视频，播放完变回false
 var count = 0;  // 记录播放过的时间
 var full_time = 0;  // 当前视频总长
 
-
-
 init();
 
 // 初始化函数

@@ -20,7 +20,9 @@
     <div class="hint-wrap">
         <div class="hint-bg">
             <img src="__STATIC__/image/course broadcast_record@2x.png" alt="">
-            <p>上次看到：<span>第七集 20:15 如何更好地给服务后面打点展示</span></p>
+            {if condition="!empty($lastplay)"}
+            <p>上次看到：<span>{$lastplay.title} {$lastplay.current_time} </span></p>
+            {/if}
         </div>
         <button class="continue">继续学</button>
     </div>
@@ -32,7 +34,7 @@
         <div class="chapter-part">
             <ul class="chapter-part-title">
             	{for start="1" end="$pageCount+1"}
-                <li class="item-btn {$i == 1 ? 'active' : ''}"><?php echo ($i-1)*$limit+1; ?>-{$i*$limit}</li>
+                <li class="item-btn {$i == 1 ? 'active' : ''}" page="{$i}"><?php echo ($i-1)*$limit+1; ?>-{$i*$limit}</li>
                 {/for}
             </ul>
             <div class="content-wrap">
@@ -44,7 +46,8 @@
             </div>
         </div>
     </div>
-
+	<input type="hidden" name="lesson_id" value="{$lesson_id}">
+	<input type="hidden" name="order_id" value="{$order_id}">
     <script src="__STATIC__/js/video.js"></script>
     <script src="__STATIC__/js/jquery.js"></script>
 

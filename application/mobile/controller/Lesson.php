@@ -64,10 +64,22 @@ class Lesson extends Base{
 			->page($page)
 			->select();
 
+		// 获取该视频最后一次播放
+		$lastplay = Db::name('lesson_played')->alias('lp')
+			->join('lesson_episode le', 'lp.lesson_episode_id=le.id')
+			->where('lp.user_id', $user_id)
+			->where('lp.lesson_id', $lesson_id)
+			->where('lp.order_id')
+			->order('lp.number desc')
+			->field('le.title, lp.current_time, lp.lesson_episode_id')
+			->find();
+
 		$this->assign('limit', $limit);
 		$this->assign('pageCount', $pageCount);
 		$this->assign('episodeList', $episodeList);
 		$this->assign('order_id', $lesson_order['id']);
+		$this->assign('lesson_id', $lesson_id);
+		$this->assign('lastplay', $lastplay);
 		return $this->fetch();
     }
 
@@ -115,6 +127,11 @@ class Lesson extends Base{
     	} else {
     		response_error('', '操作失败');
     	}
+    }
+
+    // 获取播放历史
+    public function ajaxGetPlayHistory(){
+
     }
 
    private function generateOrderSn(){
