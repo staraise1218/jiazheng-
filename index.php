@@ -12,6 +12,7 @@
  * $Author: IT宇宙人 2015-08-10 $
  */
 
+ header("Access-Control-Allow-Origin: *"); // 允许跨域
 // [ 应用入口文件 ]
 // 应用入口文件
 if (extension_loaded('zlib')){

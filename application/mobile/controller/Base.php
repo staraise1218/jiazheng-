@@ -8,7 +8,6 @@ class Base extends Controller{
 
     public function __construct(){
         
-        header("Access-Control-Allow-Origin: *"); // 允许跨域
     	parent::__construct();
 
     	$this->checkLogin();
