@@ -1,4 +1,4 @@
-// guofeng  -- 线上
+// guofeng xs
 // video 控制
 var video = document.getElementsByClassName("video")[0], // video 组件
     play_btn = document.getElementsByClassName("video-play-btn")[0],  // 遮罩层

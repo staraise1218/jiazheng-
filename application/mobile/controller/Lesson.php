@@ -119,7 +119,8 @@ class Lesson extends Base{
 
     // 记录播放课程、集数、时间
     public function ajaxPlayedLog(){
-    	$data['user_id'] = input('user_id');
+    	$data['user_id'] = $this->user_id;
+    	$data['order_id'] = input('order_id');
     	$data['lesson_id'] = input('lesson_id');
     	$data['lesson_episode_id'] = input('lesson_episode_id');
     	$data['number'] = input('number');
