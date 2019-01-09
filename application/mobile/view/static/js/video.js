@@ -31,7 +31,7 @@ var postData = {
 // 初始化函数
 function init() {
     continueBtnIsnone();
-    if(current_titme) {
+    if(typeof(current_titme) == "number") {
         console.log(current_titme + " 初始化播放时间");
         current(current_titme);
     } else {
@@ -41,7 +41,7 @@ function init() {
 
 
 
-video.oncanplay=function(){
+video.oncanplay = function(){
     console.log("加载完成")
 
 }
