@@ -26,6 +26,7 @@ class Aunt extends Base{
 		if(is_array($auntList) && !empty($auntList)){
 			foreach ($auntList as &$item) {
 				$item['tag'] = $item['tag'] ? explode(',', rtrim($item['tag'], ',')) : '';
+				$item['url'] = U('mobile/aunt/detail', array('id'=>$item['id']));
 			}
 		}
 

@@ -32,45 +32,36 @@
     <!-- 中间导航 -->
     <div class="nav-wrap">
         <ul>
+            {foreach name="auntCategoryList" item="item"}
             <li>
                 <a href="#">
-                    <img src=".__STATIC__/image/smallchange1.png" alt="">
+                    <img src="{$item.image}" alt="">
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <img src=".__STATIC__/image/smallchange2.png" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src=".__STATIC__/image/smallchange3.png" alt="">
-                </a>
-            </li>
+            {/foreach}
         </ul>
     </div>
     <!-- 中间导航结束 -->
     <!-- 课程展示 -->
     <div class="wrapper">
         <ul>
-            <li>
+            {foreach name="auntList" item="item"}
+            <li onclick="window.location='{$item.url}'">
                 <div class="poster">
-                    <img src=".__STATIC__/image/my course1.jpg" alt="poster">
+                    <img src="{$item.thumb}" alt="poster">
                 </div>
                 <div class="right">
                     <div class="title">
-                        <strong style="margin-right:0.2rem">刘阿姨</strong>
-                        <span>服务类型</span>
+                        <strong style="margin-right:0.2rem">{$item.title}</strong>
+                        <span>{$item.leixing}</span>
                     </div>
                     <div class="price price-symbol" style="color:#8B8B8B">
-                        <span>49岁</span>
-                        <span>辽宁人</span>
-                        <span>从业1年</span>
+                        {$item.description}
                     </div>
                     <div class="skill">
-                        <span>洗衣服</span>
-                        <span>做饭</span>
-                        <span>照顾老人</span>
+                        {foreach name="$item.tag" name="tag"}
+                        <span>{$tag}</span>
+                        {/foreach}
                     </div>
                     <div class="right-pay-wrap">
                         <div class="pay">
@@ -79,32 +70,7 @@
                     </div>
                 </div>
             </li>
-            <li>
-                <div class="poster">
-                    <img src=".__STATIC__/image/my course1.jpg" alt="poster">
-                </div>
-                <div class="right">
-                    <div class="title">
-                        <strong style="margin-right:0.2rem">刘阿姨</strong>
-                        <span>服务类型</span>
-                    </div>
-                    <div class="price price-symbol" style="color:#8B8B8B">
-                        <span>49岁</span>
-                        <span>辽宁人</span>
-                        <span>从业1年</span>
-                    </div>
-                    <div class="skill">
-                        <span>洗衣服</span>
-                        <span>做饭</span>
-                        <span>照顾老人</span>
-                    </div>
-                    <div class="right-pay-wrap">
-                        <div class="pay">
-                            <button class="pay-btn">联系家政经纪人</button>
-                        </div>
-                    </div>
-                </div>
-            </li>
+            {/foreach}
         </ul>
     </div>
 
