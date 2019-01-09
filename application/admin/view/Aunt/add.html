@@ -190,7 +190,7 @@ html, body {overflow: visible;}
 
     function img_detail_image_call_back(fileurl_tmp)
     {
-        $("#image").val(fileurl_tmp);
+        $("#detail_image").val(fileurl_tmp);
         $("#img_a_detail_image").attr('href', fileurl_tmp);
         $("#img_i_detail_image").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
     }
