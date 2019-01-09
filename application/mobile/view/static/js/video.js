@@ -15,8 +15,7 @@ var number_len = $('.wrap li .video-btn').length;
 var lastplay_title = $(".lastplay_title").get(0).value,
     lastplay_number = $(".lastplay_number").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("number") : $(".lastplay_number").get(0).value; // 当前播放集数
 
-// var is_buy = true,                          // 是否购买课程
-lesson_id = $(".lesson_id").get(0).value, // 课程id
+var lesson_id = $(".lesson_id").get(0).value, // 课程id
     lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value,// 集数id
     number = +lastplay_number,               // 当前集数
     current_time = $(".current_time").get(0).value,  // （获取上一次）播放时间
@@ -87,12 +86,10 @@ function continueBtnIsnone() {
 }
 // 视频播放
 function video_play (e) {
-    // if(is_buy) {
     video.play();
     play_none()
     e.stopPropagation();
     console.log("视频开始播放");
-}
 }
 
 // 暂停 记录时间
@@ -132,7 +129,6 @@ function play_block() {
 // 视频播放完成 记录时间
 video.onended = function() {
     console.log("视频播放完成"); // 记录播放完成
-    // is_buy = false;
     postData.ended = 1;
     number += 1;
     lastplay_number = postData.number += 1;
