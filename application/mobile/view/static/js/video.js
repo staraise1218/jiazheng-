@@ -28,17 +28,17 @@ var postData = {
 }
 
 
+
 // 初始化函数
 function init() {
     continueBtnIsnone();
-    if(typeof(current_titme) == "number") {
+    if(typeof(current_titme.toString()) == "number") {
         console.log(current_titme + " 初始化播放时间");
         current(current_titme);
     } else {
         current(0)
     }
 }
-
 
 
 video.oncanplay = function(){
@@ -89,7 +89,6 @@ function video_play (e) {
 video.onclick = function () {
     video.pause();
     play_block();
-    current_titme = video.currentTime;
     current_titme = Math.floor(video.currentTime);
     postData.current_titme = current_titme;
     console.log('播放暂停 current_titme :' + current_titme);  // 记录current_titme
@@ -128,7 +127,7 @@ function play_block() {
 
 }
 
-// 视频播放完成 记录时间
+// 视频播放完成
 video.onended = function() {
     console.log("视频播放完成"); // 记录播放完成
     is_buy = false;
@@ -148,7 +147,7 @@ video.onended = function() {
     })
 };
 
-// 监听页面关闭 记录时间
+// 监听页面关闭
 window.onbeforeunload=function(e){
     var e = window.event||e;
     current_titme = video.currentTime;
