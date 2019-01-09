@@ -18,7 +18,7 @@
         </div>
     </div>
         
-    <div class="hint-wrap" {if condition="!empty($lastplay)"}style="display:none"{/if}>
+    <div class="hint-wrap" {if condition="empty($lastplay)"}style="display:none"{/if}>
         <div class="hint-bg">
             <img src="__STATIC__/image/course broadcast_record@2x.png" alt="">
             <p>上次看到：<span>{$lastplay.title} {$lastplay.current_time} </span></p>
