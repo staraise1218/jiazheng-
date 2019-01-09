@@ -28,10 +28,11 @@ var postData = {
 }
 
 
+console.log(current_time)
 // 初始化函数
 function init() {
     if(current_time) {
-        console.log(typeof(current_time) + " 初始化播放时间");
+        console.log(current_time + " 初始化播放时间");
         current(current_time);
     } else {
         current(0)
@@ -104,6 +105,17 @@ if(video.ended == true) {
     console.log("视频播放完了");
     ended = 1;
     is_buy = false;
+    $.ajax({
+        type: 'POST',
+        data: postData,
+        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+        success: function () {
+            console.log(postData)
+        },
+        error: function (e) {
+            console.log("error -- 播放完成");
+        }
+    })
 }
 
 
