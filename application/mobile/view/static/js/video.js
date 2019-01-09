@@ -7,13 +7,18 @@ var video = $(".video")[0], // video 组件
     video_btn = $(".video-btn"),
     video_btn_wrap = $(".wrap")[0]
 
+
+var number_len = $('.wrap li .video-btn').length;
+
+
+
 var lastplay_title = $(".lastplay_title").get(0).value,
     lastplay_number = $(".lastplay_number").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("number") : $(".lastplay_number").get(0).value; // 当前播放集数
 
 var is_buy = true,                          // 是否购买课程
     lesson_id = $(".lesson_id").get(0).value, // 课程id
     lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value,// 集数id
-    number = lastplay_number,                             // 集数
+    number = +lastplay_number,               // 当前集数
     current_time = $(".current_time").get(0).value,  // （获取上一次）播放时间
     ended = 0,                              // 是否结束 0 未结束 1 已结束
     lesson_id = $(".lesson_id").get(0).value
@@ -32,26 +37,31 @@ var postData = {
 // 初始化函数
 function init() {
     continueBtnIsnone();
-    if(typeof(current_time.toString()) == "number") {
-        console.log(current_time + " 初始化播放时间");
+    if(current_time != 0) {
+        console.log(current_time + " 初始化播放时间成功");
         current(current_time);
     } else {
         current(0)
+        console.log("current_time")
     }
 }
 
 
-video.oncanplay = function(){
-    console.log("加载完成")
-
+// 视频加载完成  oncanplay
+video.onloadeddata = function(){
+    init();
+    console.log("视频--加载完成")
 }
-init();
 
 // 分集，事件代理函数
 $(video_btn_wrap).delegate("a","click",function(){
-    video.src = $(this).attr("data-video");
     number = $(this).attr("number")
+    if(number == lastplay_number) {
+        video.src = $(this).attr("data-video");
+    }
 });
+
+
 
 // 设置从……开始播放
 function current(time) {
@@ -106,14 +116,6 @@ video.onclick = function () {
     })
 }
 
-if(video.ended == true) {
-    console.log("视频播放完了");
-    ended = 1;
-    is_buy = false;
-    console.log(postData)
-}
-
-
 function play_none() {
     play_btn.style.display = "none";
     continue_wrap.style.display = "none";
@@ -127,11 +129,13 @@ function play_block() {
 
 }
 
-// 视频播放完成
+// 视频播放完成 记录时间
 video.onended = function() {
     console.log("视频播放完成"); // 记录播放完成
     is_buy = false;
     postData.ended = 1;
+    number += 1;
+    lastplay_number = postData.number += 1;
     play_block();
     console.log(postData);
     $.ajax({
