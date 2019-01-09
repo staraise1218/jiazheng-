@@ -14,7 +14,7 @@ var is_buy = true,                          // 是否购买课程
     lesson_id = $(".lesson_id").get(0).value, // 课程id
     lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value,// 集数id
     number = lastplay_number,                             // 集数
-    current_titme = $(".current_titme").get(0).value,  // （获取上一次）播放时间
+    current_time = $(".current_time").get(0).value,  // （获取上一次）播放时间
     ended = 0,                              // 是否结束 0 未结束 1 已结束
     lesson_id = $(".lesson_id").get(0).value
 
@@ -23,7 +23,7 @@ var postData = {
     lesson_id: lesson_id,
     lesson_episode_id: lesson_episode_id,
     number: number,
-    current_titme: current_titme,
+    current_time: current_time,
     ended: ended
 }
 
@@ -32,9 +32,9 @@ var postData = {
 // 初始化函数
 function init() {
     continueBtnIsnone();
-    if(typeof(current_titme.toString()) == "number") {
-        console.log(current_titme + " 初始化播放时间");
-        current(current_titme);
+    if(typeof(current_time.toString()) == "number") {
+        console.log(current_time + " 初始化播放时间");
+        current(current_time);
     } else {
         current(0)
     }
@@ -59,17 +59,17 @@ function current(time) {
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function (e) {
-    // current_titme =current_titme;
+    // current_time =current_time;
     video_play(e);
 }
 // 开始播放  点击继续播放按钮
 continue_btn.onclick = function (e) {
-    // current(current_titme);
+    // current(current_time);
     video_play(e);
 }
 // 判断继续播放部分是否显示
 function continueBtnIsnone() {
-    if(current_titme == 0) {
+    if(current_time == 0) {
         continue_wrap.style.display = 'none';
     } else {
         continue_wrap.style.display = "flex";
@@ -89,9 +89,9 @@ function video_play (e) {
 video.onclick = function () {
     video.pause();
     play_block();
-    current_titme = Math.floor(video.currentTime);
-    postData.current_titme = current_titme;
-    console.log('播放暂停 current_titme :' + current_titme);  // 记录current_titme
+    current_time = Math.floor(video.currentTime);
+    postData.current_time = current_time;
+    console.log('播放暂停 current_time :' + current_time);  // 记录current_time
     console.log(postData)
     $.ajax({
         type: 'POST',
@@ -150,10 +150,10 @@ video.onended = function() {
 // 监听页面关闭
 window.onbeforeunload=function(e){
     var e = window.event||e;
-    current_titme = video.currentTime;
-    localStorage.setItem("current_titme", current_titme);
-    current_titme = Math.floor(video.currentTime);
-    postData.current_titme = current_titme;
+    current_time = video.currentTime;
+    localStorage.setItem("current_time", current_time);
+    current_time = Math.floor(video.currentTime);
+    postData.current_time = current_time;
     console.log(postData);
     $.ajax({
         type: 'POST',
