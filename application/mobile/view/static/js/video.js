@@ -8,11 +8,11 @@ var video = $(".video")[0], // video 组件
     video_btn_wrap = $(".wrap")[0]
 
 var lastplay_title = $(".lastplay_title").get(0).value,
-    lastplay_number = $(".lastplay_number").get(0).value;
+    lastplay_number = $(".lastplay_number").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("number") : $(".lastplay_number").get(0).value; // 当前播放集数
 
 var is_buy = true,                          // 是否购买课程
     lesson_id = $(".lesson_id").get(0).value, // 课程id
-    lesson_episode_id = $(".lesson_episode_id").get(0).value, // 集数id
+    lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value,// 集数id
     number = lastplay_number,                             // 集数
     current_titme = $(".current_titme").get(0).value,  // （获取上一次）播放时间
     ended = 0,                              // 是否结束 0 未结束 1 已结束
@@ -90,6 +90,7 @@ video.onclick = function () {
     video.pause();
     play_block();
     current_titme = video.currentTime;
+    current_titme = Math.floor(video.currentTime);
     postData.current_titme = current_titme;
     console.log('播放暂停 current_titme :' + current_titme);  // 记录current_titme
     console.log(postData)
@@ -127,7 +128,7 @@ function play_block() {
 
 }
 
-// 视频播放完成
+// 视频播放完成 记录时间
 video.onended = function() {
     console.log("视频播放完成"); // 记录播放完成
     is_buy = false;
@@ -147,11 +148,12 @@ video.onended = function() {
     })
 };
 
-// 监听页面关闭
+// 监听页面关闭 记录时间
 window.onbeforeunload=function(e){
     var e = window.event||e;
     current_titme = video.currentTime;
     localStorage.setItem("current_titme", current_titme);
+    current_titme = Math.floor(video.currentTime);
     postData.current_titme = current_titme;
     console.log(postData);
     $.ajax({
