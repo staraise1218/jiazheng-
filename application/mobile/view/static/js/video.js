@@ -28,18 +28,23 @@ var postData = {
 }
 
 
-console.log(current_time)
 // 初始化函数
 function init() {
+    continueBtnIsnone();
     if(current_time) {
-        console.log(current_time + " 初始化播放时间");
+        console.log(typeof(current_time) + " 初始化播放时间");
         current(current_time);
     } else {
         current(0)
     }
-    continueBtnIsnone();
 }
 
+
+
+video.oncanplay=function(){
+    console.log("加载完成")
+
+}
 init();
 
 // 分集，事件代理函数
@@ -85,37 +90,16 @@ video.onclick = function () {
     video.pause();
     play_block();
     current_time = video.currentTime;
+    postData.current_time = current_time;
     console.log('播放暂停 current_time :' + current_time);  // 记录current_time
     console.log(postData)
-    // debugger
-    $.ajax({
-        type: 'POST',
-        data: postData,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function () {
-            console.log(postData)
-        },
-        error: function (e) {
-            console.log("error -- 暂停");
-        }
-    })
 }
 
 if(video.ended == true) {
     console.log("视频播放完了");
     ended = 1;
     is_buy = false;
-    $.ajax({
-        type: 'POST',
-        data: postData,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function () {
-            console.log(postData)
-        },
-        error: function (e) {
-            console.log("error -- 播放完成");
-        }
-    })
+    console.log(postData)
 }
 
 
@@ -132,12 +116,13 @@ function play_block() {
 
 }
 
-
+// 视频播放完成
 video.onended = function() {
     console.log("视频播放完成"); // 记录播放完成
     is_buy = false;
-    ended = 1;
-    play_block()
+    postData.ended = 1;
+    play_block();
+    console.log(postData);
 };
 
 // 监听页面关闭
@@ -145,17 +130,8 @@ window.onbeforeunload=function(e){
     var e = window.event||e;
     current_time = video.currentTime;
     localStorage.setItem("current_time", current_time);
-    $.ajax({
-        type: 'POST',
-        data: postData,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function () {
-            console.log(postData)
-        },
-        error: function (e) {
-            console.log("error -- 关闭页面");
-        }
-    })
+    postData.current_time = current_time;
+    console.log(postData)
 }
 
 
@@ -244,6 +220,6 @@ function slider_auto() {
     slider_timer = setTimeout(function () {
         move('next');
         changeOrderStyle(nowIndex);
-    }, 1000)
+    }, 300)
 }
 
