@@ -48,7 +48,7 @@ function createDom (data) {
             </div>\
             <div class="right">\
                 <div class="title">\
-                    <strong style="margin-right:0.2rem">'+ data.title +'</strong>\
+                    <strong style="margin-right:0.2rem">'+ data[i].title +'</strong>\
                     <span>'+data[i].leixing+'</span>\
                 </div>\
                 <div class="price price-symbol" style="color:#8B8B8B">\
