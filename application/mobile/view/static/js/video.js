@@ -32,7 +32,7 @@ var postData = {
 function init() {
     continueBtnIsnone();
     if(current_titme) {
-        console.log(typeof(current_titme) + " 初始化播放时间");
+        console.log(current_titme + " 初始化播放时间");
         current(current_titme);
     } else {
         current(0)
@@ -93,6 +93,17 @@ video.onclick = function () {
     postData.current_titme = current_titme;
     console.log('播放暂停 current_titme :' + current_titme);  // 记录current_titme
     console.log(postData)
+    $.ajax({
+        type: 'POST',
+        data: postData,
+        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+        success: function () {
+            console.log(postData)
+        },
+        error: function (e) {
+            console.log("error -- 暂停");
+        }
+    })
 }
 
 if(video.ended == true) {
@@ -123,6 +134,17 @@ video.onended = function() {
     postData.ended = 1;
     play_block();
     console.log(postData);
+    $.ajax({
+        type: 'POST',
+        data: postData,
+        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+        success: function () {
+            console.log(postData)
+        },
+        error: function (e) {
+            console.log("error -- 播放完成");
+        }
+    })
 };
 
 // 监听页面关闭
@@ -131,7 +153,18 @@ window.onbeforeunload=function(e){
     current_titme = video.currentTime;
     localStorage.setItem("current_titme", current_titme);
     postData.current_titme = current_titme;
-    console.log(postData)
+    console.log(postData);
+    $.ajax({
+        type: 'POST',
+        data: postData,
+        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+        success: function () {
+            console.log(postData)
+        },
+        error: function (e) {
+            console.log("error -- 关闭页面");
+        }
+    })
 }
 
 
