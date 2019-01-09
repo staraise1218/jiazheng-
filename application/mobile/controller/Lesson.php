@@ -78,7 +78,7 @@ class Lesson extends Base{
 			->order('lp.number desc')
 			->field('le.title, lp.current_time, lp.lesson_episode_id, lp.number')
 			->find();
-p($user_id, $lesson_id, $lesson_order);
+p($user_id, $lesson_id, $lesson_order, $lastplay);
 		$this->assign('limit', $limit);
 		$this->assign('pageCount', $pageCount);
 		// $this->assign('episodeList', $episodeList);
