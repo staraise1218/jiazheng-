@@ -7,7 +7,7 @@ var video = $(".video")[0], // video 组件
     video_btn = $(".video-btn"),
     video_btn_wrap = $(".wrap")[0]
 
-
+    
 var number_len = $('.wrap li .video-btn').length;
 
 
@@ -57,7 +57,7 @@ $(video_btn_wrap).delegate("a","click",function(){
     number = $(this).attr("number")
     if(number == lastplay_number) {
         video.src = $(this).attr("data-video");
-    }
+    }   
 });
 
 
