@@ -74,7 +74,7 @@ class Lesson extends Base{
 			->join('lesson_episode le', 'lp.lesson_episode_id=le.id')
 			->where('lp.user_id', $user_id)
 			->where('lp.lesson_id', $lesson_id)
-			->where('lp.order_id')
+			->where('lp.order_id', $lesson_order['id'])
 			->order('lp.number desc')
 			->field('le.title, lp.current_time, lp.lesson_episode_id, lp.number')
 			->find();
