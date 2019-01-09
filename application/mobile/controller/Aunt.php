@@ -37,7 +37,14 @@ class Aunt extends Base{
     }
 
     public function detail(){
-    	
+    	$id = I('id');
+
+		$info = Db::name('aunt')
+			->where('id', $id)
+			->where('is_delete', 0)
+			->find();
+
+		$this->assign('info', $info);
     	return $this->fetch();
     }
 }
