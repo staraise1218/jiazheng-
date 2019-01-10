@@ -56,8 +56,9 @@ function createDom(data) {
                     </div>\
                 </li>'
         
-        $(".wrapper ul").append(str);
+        
     })
+    $(".wrapper ul").append(str);
 }
 
 // 获取滚动条当前的位置 
