@@ -10,23 +10,13 @@ class User extends Base{
     public function index(){
     	
     	// 获取banner
-		$bannerList = Db::name('ad')
-			->where('pid', 1)
-			->where('enabled', 1)
-			->field('ad_name, ad_link, ad_code')
-			->order('orderby desc, ad_id desc')
-			->select();
+		$user_id = $this->user_id;
+		$info = Db::name('user')
+			->where('user_id', $user_id)
+			->where('is_lock', 0)
+			->find();
 
-		// 获取常规课程
-		$lessonList = Db::name('lesson')
-			->where('is_open', 1)
-			->where('is_delete', 0)
-			->limit(4)
-			->field('id, title, thumb, price')
-			->select();
-
-		$this->assign('bannerList', $bannerList);
-		$this->assign('lessonList', $lessonList);
+		$this->assign('info', $info);
     	return $this->fetch('index');
     }
 }
