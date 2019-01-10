@@ -41,6 +41,7 @@ function AjaxFunc() {
 function createDom(data) {
     $.each(data, function(){
         debugger
+        var str = '';
         str += '<li>\
                     <div class="poster">\
                         <img src="'+this.thumb+'" alt="poster">\
