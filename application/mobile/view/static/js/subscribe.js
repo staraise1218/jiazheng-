@@ -11,6 +11,7 @@ init()
 function init() {
     dataPost.cat_id = $(".nav-wrap ul li:eq(0) a").attr("cat_id");
     dataPost.page = 1;
+    console.log(dataPost.cat_id)
     console.log("初始化 dataPost.page : " + dataPost.cat_id);
     AjaxFunc();
     console.log("**********************************************")
