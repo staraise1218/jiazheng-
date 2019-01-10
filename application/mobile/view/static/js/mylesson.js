@@ -34,8 +34,8 @@ function AjaxFunc() {
 
 
 function createDom(data) {
+    var str = '';
     $.each(data, function(){
-        var str = '';
         str += '<li>\
                     <div class="poster">\
                         <img src="'+this.thumb+'" alt="poster">\
