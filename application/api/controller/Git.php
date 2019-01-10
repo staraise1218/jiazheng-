@@ -15,12 +15,12 @@ class Git extends Base {
 
 	public function pull(){
 		echo shell_exec("id -a");  
-		$output = shell_exec("cd /home/www/jiazheng; sudo -u shengli git pull 2<&1");
+		$output = shell_exec("cd /home/www/jiazheng; git pull 2<&1");
         echo "<pre>$output</pre>";
 
 
 
-        
+
 	}
 
 }
