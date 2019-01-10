@@ -88,10 +88,11 @@ function createDom(data) {
                 </div>\
                 <div class="right-pay-wrap">\
                     <div class="pay">\
-                        <button class="pay-btn">联系家政经纪人</button>\
+                        <a href="tel:13666666666" class="pay-btn">联系家政经纪人</a>\
                     </div>\
                 </div>\
-            </div>'
+            </div>\
+            <a href="'+ data[i].url +'" class="click_link"></a>'
         oLi.innerHTML = str;
         oUl.appendChild(oLi);
     }
