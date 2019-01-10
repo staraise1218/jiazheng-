@@ -1,6 +1,6 @@
 var oUl = $(".wrapper ul").get(0);
 var asdf = '';
-var last_btn_index = 0;
+var last_btn_index = "init";
 var dataPost = {
     page: "",
     cat_id: 0
@@ -44,7 +44,7 @@ function AjaxFunc() {
         success: function (data) {
             if(data.data != 0) {
                 createDom(data.data)
-                // console.log(data)
+                console.log(data)
                 console.log("ajax 数据获取成功")
                 dataPost.page++;
             } else {
