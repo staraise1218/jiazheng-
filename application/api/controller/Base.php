@@ -5,11 +5,13 @@ use think\Controller;
 
 class Base extends Controller {
     protected $method = 'GET';
+    protected $noLoginController;
 
     public function __construct(){
         header("Access-Control-Allow-Origin: *"); // 允许跨域
         
         parent::__construct();
+        $this->noLoginController = array('Git');
 
         // 请求写入log
         $this->requestToLog();
@@ -26,8 +28,9 @@ class Base extends Controller {
             $this->user_id = $user['user_id'];
 
         } else {
-
-            response_error('', '未登录');
+            if( ! in_array(CONTROLLER_NAME, $this->noLoginController)){
+                response_error('', '未登录');
+            }
         }
     }
 
