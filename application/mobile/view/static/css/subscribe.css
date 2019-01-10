@@ -20,7 +20,7 @@
     border-radius: 0.08rem;
     box-shadow: 0.02rem 0.02rem 0.02rem 0.02rem #B6B5B5
 }
-.nav-wrap ul li span {
+.nav-wrap ul li a {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -110,10 +110,15 @@
 }
 /*  */
 .skill {
-    margin-top: 0.1rem;
+    margin-top: 0rem;
+}
+.skill span:first-child {
+    margin: 0;
 }
 .skill span {
+    padding: 0.05rem 0.2rem;
     background: #f6f6f6;
-    font-size: 0.2rem;
+    font-size: 0.25rem;
     color: #8B8B8B;
+    margin-left: 0.1rem;
 }

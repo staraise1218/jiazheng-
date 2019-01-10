@@ -1,29 +1,33 @@
 var oUl = $(".wrapper ul").get(0);
-
 // 
+var last_btn_index = 0;
 var dataPost = {
-    page: 1,
-    cat_id: 0
+    page: "",
+    cat_id: ""
 }
 
 init()
 // 初始化函数
 function init() {
+    dataPost.cat_id = $(".nav-wrap ul li:eq(0) a").attr("cat_id");
+    dataPost.page = 1;
+    console.log("初始化 dataPost.page : " + dataPost.cat_id);
     AjaxFunc();
+    console.log("**********************************************")
 }
+
+
 // 点击导航切换 id
-$(".nav-wrap").delegate("li", "click", function (e) {
-    if($(this).index() != dataPost.cat_id) {
-        console.log("导航ID : "+$(this).index());
-        console.log("dataPost :" + dataPost.cat_id);
-        dataPost.page = 1;
-        dataPost.cat_id = $(this).index();
+$(".nav-wrap").delegate("a", "click", function (e) {
+    var index=$(".item_nav").index($(this));
+    console.log("获取cat_id :"  + $(this).attr("cat_id"));
+    console.log("index :" + index);
+    if(last_btn_index != index) {
+        last_btn_index = index;
         oUl.innerHTML = "";
-        AjaxFuncOne();
-    } else {
+        dataPost.cat_id = $(this).attr("cat_id");
+        dataPost.page = 1;
         AjaxFunc();
-        console.log("导航ID 改 : "+$(this).index());
-        console.log("dataPost 改 :" + dataPost.cat_id);
     }
 })
 
@@ -33,36 +37,13 @@ function AjaxFunc() {
         url: "http://jiazheng.staraise.com.cn/index.php/api/aunt/getlist",
         data: dataPost,
         success: function (data) {
-            console.log(data)
             if(data.data != 0) {
                 createDom(data.data)
-                console.log(data.data)
-                console.log("数据获取成功")
+                console.log(data)
+                console.log("ajax 数据获取成功")
                 dataPost.page++;
             } else {
-                console.log("数据为空")
-            }
-        },
-        error: function () {
-            console.log("error")
-        }
-    })
-}
-
-function AjaxFuncOne() {
-    $.ajax({
-        type: "POST",
-        url: "http://jiazheng.staraise.com.cn/index.php/api/aunt/getlist",
-        data: dataPost,
-        success: function (data) {
-            console.log(data)
-            if(data.data != 0) {
-                createDom(data.data)
-                console.log(data.data)
-                console.log("数据获取成功")
-                dataPost.page++;
-            } else {
-                console.log("数据为空")
+                console.log("ajax 数据为空")
             }
         },
         error: function () {
@@ -78,9 +59,17 @@ function AjaxFuncOne() {
 function createDom(data) {
     for (var i = 0; i < data.length; i++) {
         var str = '',
-            oLi = document.createElement("li");
+            tagStr = '',
+            oLi = document.createElement("li"),
+            tagArr = data[i].tag;
+        // console.log(tagArr)
         // console.log(data)
-        str +=
+        for(var j = 0; j < tagArr.length; j++) {
+            tagStr += '<span>'+ tagArr[j] +'</span>'
+        }
+        // console.log(tagArr)
+
+        str += 
             '<div class="poster">\
                 <img src="'+ data[i].thumb + '" alt="poster">\
             </div>\
@@ -90,9 +79,10 @@ function createDom(data) {
                     <span>'+ data[i].leixing + '</span>\
                 </div>\
                 <div class="price price-symbol" style="color:#8B8B8B">\
+                    '+ data[i].description+'\
                 </div>\
                 <div class="skill">\
-                    '+ data[i].tag + '\
+                '+ tagStr +'\
                 </div>\
                 <div class="right-pay-wrap">\
                     <div class="pay">\
