@@ -6,7 +6,7 @@ var dataPost = {
     cat_id: 0
 }
 var canAjax = true;
-
+ 
 init()
 // 初始化函数
 function init() {
