@@ -89,4 +89,8 @@ class User extends Base{
 
         response_success($region);
     }
+
+    public function lesson(){
+        return $this->fetch();
+    }
 }
