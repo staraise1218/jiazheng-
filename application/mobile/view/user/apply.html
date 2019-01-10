@@ -1,0 +1,44 @@
+<!-- 预约考试 -->
+<!-- 2019-01-04 -->
+<!-- 未完成：日期选择组件 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预约考试</title>
+    <script src="__STATIC__/js/rem.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/exam.css">
+    <style>
+        .everyWeekDay .weekday,.everyDay .days {/*解决span不支持width属性*/display: -moz-inline-box;display: inline-block;margin: 5px 0 0 20px;text-align: center;width: 20px;border: 1px solid #F7F7F7;cursor: pointer;}		
+        .marginTop{margin-top: 5px;}
+        .selectStyle{padding-left: 10px;border: none;border-radius: 3px;outline: none;appearance: none;-moz-appearance: none;-webkit-appearance: none;margin: 0 10px 0 10px;width: 60px;border-color: #0FB9EF;color: #0FB9EF;}       
+    </style>
+</head>
+<body>
+    <form class="wrapper" action="">
+        <div class="time-wrap">
+            <span class="title tile-title">考试时间</span>
+            <span class="time-date">
+                <input id="txt_calendar" type="text" value="2019-01-04" readonly="readonly" onfocus="showDate()">
+                <span>
+                    <img src="__STATIC__/image/rili.png" alt="">
+                </span>
+            </span>
+        </div>
+        <div class="choose-content">
+            <span class="title choose-title">考试内容</span>
+            <span class="choose-wrap">
+                <select name="exam_name" id="exam_name">
+                    <option value="">请选择</option>
+                </select>
+            </span>
+        </div>
+        <textarea name="" id="" cols="30" rows="10">备注</textarea>
+        <input class="sub_btn" type="button" value="提交报名">
+    </form>
+    <script src="__STATIC__/js/dateJs.fei.js"></script>
+</body>
+</html>

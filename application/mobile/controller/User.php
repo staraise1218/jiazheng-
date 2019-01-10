@@ -15,4 +15,10 @@ class User extends Base{
     public function modify(){
     	return $this->fetch();
     }
+
+    public function apply(){
+
+    	
+    	return $this->fetch();
+    }
 }
