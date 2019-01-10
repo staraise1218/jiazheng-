@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <form class="wrapper" action="">
+    <form class="wrapper examApply" action="">
 
         <div class="choose-content">
             <span class="title choose-title">考试名称</span>
@@ -33,7 +33,7 @@
         <div class="time-wrap">
             <span class="title tile-title">考试时间</span>
             <span class="time-date">
-                <input id="txt_calendar" type="text" value="2019-01-04" readonly="readonly" onfocus="showDate()">
+                <input id="txt_calendar" name="exam_date" type="text" value="2019-01-04" readonly="readonly" onfocus="showDate()">
                 <span>
                     <img src="__STATIC__/image/rili.png" alt="">
                 </span>
@@ -66,13 +66,13 @@
                 </select>
             </span>
         </div>
-        <textarea name="" id="" cols="30" rows="10">备注</textarea>
+        <textarea name="remark" id="" cols="30" rows="10">备注</textarea>
 
         <input class="sub_btn" type="button" value="提交报名">
     </form>
     <script src="__STATIC__/js/dateJs.fei.js"></script>
     <script src="__STATIC__/js/jquery.js"></script>
-    <script src="/plugins/layer/layer.js"></script>
+    <script src="/plugins/js/layer/layer.js"></script>
     <script type="text/javascript">
         $(function(){
             $('select[name=province_id]').change(function(){
@@ -85,7 +85,6 @@
                     dataType: 'json',
                     data: {region_id: province_id},
                     success: function(res){
-                        debugger
                         var html = '<option value="0">请选择</option>';
                         $.each(res.data, function(){
                             html += '<option name="city_id" id="city_id" value='+this.id+'>'+this.name+'</option';
@@ -109,6 +108,30 @@
                             html += '<option name="location_id" id="location_id" value='+this.id+'>'+this.name+'</option';
                         })
                         $('select[name=location_id]').html(html);
+                    }
+                })
+            })
+
+            $('.sub_btn').click(function(){
+                if($('select[name=exam_content_id]').val() == 0) layer.msg('请选择考试名称');
+                if($('select[name=province_id]').val() == 0) layer.msg('请选择考试位置');
+                if($('select[name=city_id]').val() == 0) layer.msg('请选择考试位置');
+                if($('select[name=location_id]').val() == 0) layer.msg('请选择考点');
+                layer.load(1);
+                $.ajax({
+                    url: "{:U('mobile/user/apply')}",
+                    type: 'post',
+                    dataType: 'json',
+                    data: $('form').serialize(),
+                    success: function(res){
+                        layer.closeAll('loading');
+                        if(res.code == 200){
+                            layer.msg('报名成功', {icon:1}, function(){
+                                window.location="{:U('mobile/user/index')}";
+                            })
+                        } else {
+                            layer.msg('报名失败，请稍后再试');
+                        }
                     }
                 })
             })

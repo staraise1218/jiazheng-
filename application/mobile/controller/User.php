@@ -45,7 +45,21 @@ class User extends Base{
 
     public function apply(){
         if(IS_POST){
+            $data = array(
+                'user_id' => $this->user_id,
+                'exam_date' => input('post.exam_date'),
+                'exam_content_id' => input('post.exam_content_id'),
+                'province_id' => input('post.province_id'),
+                'city_id' => input('post.city_id'),
+                'location_id' => input('post.location_id'),
+                'remark' => input('remark'),
+            );
 
+            if(Db::name('exam_apply')->insert($data)){
+                die(json_encode(array('code' => 200)));
+            } else {
+                die(json_encode(array('code'=>400)));
+            }
         }
 
         // 获取考试名称
