@@ -38,7 +38,7 @@ class User extends Base {
 		$list = Db::name('user_collect')->alias('uc')
 			->join('lesson l', 'uc.table_id=l.id')
 			->where('uc.user_id', $user_id)
-			->where('uc.table', 'lesson')
+			->where('uc.table_name', 'lesson')
 			->page($page)
 			->limit(10)
 			->field('uc.table_id lesson_id, uc.add_time, title, thumb, price')
