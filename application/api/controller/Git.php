@@ -14,7 +14,7 @@ class Git extends Base {
 	}
 
 	public function pull(){
-		$output = shell_exec("cd /root/www/jiazheng; sudo -u root git pull 2<&1");
+		$output = shell_exec("cd /root/www/jiazheng; sudo -u shengli git pull 2<&1");
         echo "<pre>$output</pre>";
 	}
 
