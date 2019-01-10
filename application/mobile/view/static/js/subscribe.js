@@ -1,35 +1,41 @@
 var oUl = $(".wrapper ul").get(0);
-// 
+
 var last_btn_index = 0;
 var dataPost = {
     page: "",
-    cat_id: ""
+    cat_id: 0
 }
+var canAjax = true;
 
 init()
 // 初始化函数
 function init() {
     dataPost.cat_id = $(".nav-wrap ul li:eq(0) a").attr("cat_id");
     dataPost.page = 1;
-    console.log(dataPost.cat_id)
-    console.log("初始化 dataPost.page : " + dataPost.cat_id);
+    // console.log(dataPost.cat_id)
+    // console.log("初始化 dataPost.page : " + dataPost.cat_id);
     AjaxFunc();
-    console.log("**********************************************")
+    // console.log("**********************************************");
 }
-
 
 // 点击导航切换 id
 $(".nav-wrap").delegate("a", "click", function (e) {
-    var index=$(".item_nav").index($(this));
-    console.log("获取cat_id :"  + $(this).attr("cat_id"));
+    console.log("-------------------------------------------")
+    var index = $(".item_nav").index($(this));
+    console.log("cat_id :"  + $(this).attr("cat_id"));
     console.log("index :" + index);
+    console.log("last_btn_index :" + last_btn_index);
     if(last_btn_index != index) {
+        console.log("刷新页面")
+        canAjax = true;
         last_btn_index = index;
         oUl.innerHTML = "";
         dataPost.cat_id = $(this).attr("cat_id");
         dataPost.page = 1;
         AjaxFunc();
+        console.log("last_btn_index :" + last_btn_index);
     }
+    console.log("============================================");
 })
 
 function AjaxFunc() {
@@ -40,11 +46,12 @@ function AjaxFunc() {
         success: function (data) {
             if(data.data != 0) {
                 createDom(data.data)
-                console.log(data)
+                // console.log(data)
                 console.log("ajax 数据获取成功")
                 dataPost.page++;
             } else {
-                console.log("ajax 数据为空")
+                console.log("ajax 没有更多数据");
+                canAjax = false;
             }
         },
         error: function () {
@@ -128,9 +135,11 @@ function getScrollHeight() {
 
 //滚动事件触发
 window.onscroll = function () {
-    if (getScrollTop() + getClientHeight() == getScrollHeight()) {
-        console.log(dataPost)
-        AjaxFunc()
+    if(canAjax) {
+        if (getScrollTop() + getClientHeight() == getScrollHeight()) {
+            console.log(dataPost)
+            AjaxFunc()
+        }
     }
 }
 // if(getScrollTop() == 0) {
