@@ -51,7 +51,7 @@ function createDom(data) {
                             ￥<div class="price price-content">'+this.price+'</div>\
                         </div>\
                         <div class="right-pay-wrap">\
-                            <div class="time">'this.paytime'</div>\
+                            <div class="time">'+this.paytime+'</div>\
                         </div>\
                     </div>\
                 </li>'
