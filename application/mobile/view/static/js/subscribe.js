@@ -59,9 +59,6 @@ function AjaxFunc() {
 }
 
 
-
-
-
 function createDom(data) {
     for (var i = 0; i < data.length; i++) {
         var str = '',
