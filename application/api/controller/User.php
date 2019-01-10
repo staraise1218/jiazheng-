@@ -41,7 +41,7 @@ class User extends Base {
 			->where('uc.table', 'lesson')
 			->page($page)
 			->limit(10)
-			->field('uc.lesson_id, uc.price, uc.paytime, title, thumb')
+			->field('uc.table_id lesson_id, uc.price, uc.paytime, title, thumb')
 			->select();
 
 		response_success($list);
