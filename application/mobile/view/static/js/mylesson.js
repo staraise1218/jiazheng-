@@ -46,7 +46,7 @@ function createDom(data) {
                             ￥<div class="price price-content">'+this.price+'</div>\
                         </div>\
                         <div class="right-pay-wrap">\
-                            <div class="time">'+this.paytime+'</div>\
+                            <div class="time">'+timestampToTime(this.paytime)+'</div>\
                         </div>\
                     </div>\
                 </li>'
@@ -54,6 +54,17 @@ function createDom(data) {
         
     })
     $(".wrapper ul").append(str);
+}
+
+function timestampToTime(timestamp) {
+    var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = date.getDate() + ' ';
+    h = date.getHours() + ':';
+    m = date.getMinutes() + ':';
+    s = date.getSeconds();
+    return Y+M+D;
 }
 
 // 获取滚动条当前的位置 
