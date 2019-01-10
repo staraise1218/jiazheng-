@@ -49,7 +49,7 @@ function createDom(data) {
                             <div class="pay">\
                                 <button class="pay-btn cancel" lesson_id="'+this.lesson_id+'">取消收藏</button>\
                             </div>\
-                            <div class="time">'+timestampToTime(this.paytime)+'</div>\
+                            <div class="time">'+timestampToTime(this.add_time)+'</div>\
                         </div>\
                     </div>\
                 </li>'
