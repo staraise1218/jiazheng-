@@ -1,6 +1,5 @@
 <!-- 预约考试 -->
 <!-- 2019-01-04 -->
-<!-- 未完成：日期选择组件 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,49 +11,64 @@
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/exam.css">
     <style>
-        .everyWeekDay .weekday,.everyDay .days {/*解决span不支持width属性*/display: -moz-inline-box;display: inline-block;margin: 5px 0 0 20px;text-align: center;width: 20px;border: 1px solid #F7F7F7;cursor: pointer;}		
+        .everyWeekDay .weekday,.everyDay .days {/*解决span不支持width属性*/display: -moz-inline-box;display: inline-block;margin: 5px 0 0 20px;text-align: center;width: 20px;border: 1px solid #F7F7F7;cursor: pointer;}      
         .marginTop{margin-top: 5px;}
         .selectStyle{padding-left: 10px;border: none;border-radius: 3px;outline: none;appearance: none;-moz-appearance: none;-webkit-appearance: none;margin: 0 10px 0 10px;width: 60px;border-color: #0FB9EF;color: #0FB9EF;}       
     </style>
 </head>
 <body>
     <form class="wrapper" action="">
+
+        <div class="choose-content">
+            <span class="title choose-title">考试名称</span>
+            <span class="choose-wrap">
+                <select name="exam_content_id" id="exam_content_id">
+                    <option value="0">请选择</option>
+                    {foreach name="examName" item="item"}
+                    <option value="{$item.id}">{$item.name}</option>
+                    {/foreach}
+                </select>
+            </span>
+        </div>
         <div class="time-wrap">
             <span class="title tile-title">考试时间</span>
             <span class="time-date">
-                <input id="txt_calendar" type="text" value="{:date('Y-m-d')}" readonly="readonly" onfocus="showDate()">
+                <input id="txt_calendar" type="text" value="2019-01-04" readonly="readonly" onfocus="showDate()">
                 <span>
                     <img src="__STATIC__/image/rili.png" alt="">
                 </span>
             </span>
         </div>
-        <div class="choose-content">
-            <span class="title choose-title">考试名称</span>
-            <span class="choose-wrap">
-                <select name="exam_name" id="exam_name">
-                    <option value="">请选择</option>
+
+        <div class="location-wrap">
+            <div class="left">
+                <span class="title choose-title">考试位置</span>
+                <span class="choose-wrap" style="width:2rem;margin-left:0.1rem">
+                    <select name="province_id" id="province">
+                        {foreach name="region" item="item"}
+                        <option value="{$item.id}">{$item.name}</option>
+                        {/foreach}
+                    </select>
+                </span>
+            </div>
+            <div class="right">
+                <select name="city_id" id="city">
+                    <option value="0">请选择</option>
                 </select>
-            </span>
+            </div>
         </div>
-        <div class="choose-content">
-            <span class="title choose-title">考试地点</span>
+        <div class="location-precise">
+            <span class="title choose-title">考 &nbsp;&nbsp;&nbsp; 点</span>
             <span class="choose-wrap">
-                <select name="exam_name" id="exam_name">
+                <select name="location)id" id="location">
                     <option value="">请选择</option>
                 </select>
             </span>
         </div>
         <textarea name="" id="" cols="30" rows="10">备注</textarea>
+
         <input class="sub_btn" type="button" value="提交报名">
     </form>
     <script src="__STATIC__/js/dateJs.fei.js"></script>
-    <script src="__STATIC__/js/jquery.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            $('.sub_btn').click(function(){
-
-            })
-        })
-    </script>
 </body>
 </html>
