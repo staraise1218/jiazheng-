@@ -98,6 +98,14 @@ class Lesson extends Base{
             ->find();
         if(empty($lesson)) response_error('', '数据不存在');
 
+        // 检测是否购买
+        $is_buy = Db::name('lesson_order')
+            ->where('user_id', $user_id)
+            ->where('lesson_id', $lesson_id)
+            ->where('paystatus', 1)
+            ->count();
+        if($is_buy) response_error('', '您已购买');
+
         $order_sn = $this->generateOrderSn();
         $data = array(
             'lesson_id' => $lesson_id,
