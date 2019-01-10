@@ -36,7 +36,7 @@ function AjaxFunc() {
 function createDom(data) {
     var str = '';
     $.each(data, function(){
-        str += '<li>\
+        str += '<li onclick="window.location=/index.php/mobile/lesson/detail/id/'+this.id+'">\
                     <div class="poster">\
                         <img src="'+this.thumb+'" alt="poster">\
                     </div>\
