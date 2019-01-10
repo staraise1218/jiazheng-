@@ -68,9 +68,9 @@ class User extends Base{
     }
 
     public function ajaxGetRegion(){
-        $parent_id = I('parent_id');
+        $region_id = I('region_id');
 
-        $region = Db::name('region')->where('parent_id', $parent_id)->select();
+        $region = Db::name('region')->where('parent_id', $region_id)->select();
 
         response_success($region);
     }
