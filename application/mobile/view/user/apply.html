@@ -113,10 +113,22 @@
             })
 
             $('.sub_btn').click(function(){
-                if($('select[name=exam_content_id]').val() == 0) layer.msg('请选择考试名称');
-                if($('select[name=province_id]').val() == 0) layer.msg('请选择考试位置');
-                if($('select[name=city_id]').val() == 0) layer.msg('请选择考试位置');
-                if($('select[name=location_id]').val() == 0) layer.msg('请选择考点');
+                if($('select[name=exam_content_id]').val() == 0) {
+                    layer.msg('请选择考试名称');
+                    return fasle;
+                }
+                if($('select[name=province_id]').val() == 0) {
+                    layer.msg('请选择考试位置');
+                    return false;
+                }
+                if($('select[name=city_id]').val() == 0) {
+                    layer.msg('请选择考试位置');
+                    return false;
+                }
+                if($('select[name=location_id]').val() == 0) {
+                    layer.msg('请选择考点');
+                    return false;
+                }
                 layer.load(1);
                 $.ajax({
                     url: "{:U('mobile/user/apply')}",
