@@ -849,6 +849,6 @@ class Goods extends Base {
         $goodsLogic = new GoodsLogic();
         $region_list = $goodsLogic->getRegionList();//获取配送地址列表
         file_put_contents(ROOT_PATH."public/js/locationJson.js", "var locationJsonInfoDyr = ".json_encode($region_list, JSON_UNESCAPED_UNICODE).';');
-        $this->success('初始化地区json.js成功。文件位置为'.ROOT_PATH."public/js/locationJson.js");
+        $this->success('初始化成功");
     }
 }

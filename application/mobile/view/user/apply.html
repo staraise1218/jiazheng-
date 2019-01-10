@@ -22,14 +22,22 @@
         <div class="time-wrap">
             <span class="title tile-title">考试时间</span>
             <span class="time-date">
-                <input id="txt_calendar" type="text" value="2019-01-04" readonly="readonly" onfocus="showDate()">
+                <input id="txt_calendar" type="text" value="{:date('Y-m-d')}" readonly="readonly" onfocus="showDate()">
                 <span>
                     <img src="__STATIC__/image/rili.png" alt="">
                 </span>
             </span>
         </div>
         <div class="choose-content">
-            <span class="title choose-title">考试内容</span>
+            <span class="title choose-title">考试名称</span>
+            <span class="choose-wrap">
+                <select name="exam_name" id="exam_name">
+                    <option value="">请选择</option>
+                </select>
+            </span>
+        </div>
+        <div class="choose-content">
+            <span class="title choose-title">考试地点</span>
             <span class="choose-wrap">
                 <select name="exam_name" id="exam_name">
                     <option value="">请选择</option>
@@ -40,5 +48,13 @@
         <input class="sub_btn" type="button" value="提交报名">
     </form>
     <script src="__STATIC__/js/dateJs.fei.js"></script>
+    <script src="__STATIC__/js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.sub_btn').click(function(){
+
+            })
+        })
+    </script>
 </body>
 </html>

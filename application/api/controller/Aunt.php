@@ -60,6 +60,12 @@ class Aunt extends Base {
 			->field('id, title, thumb, leixing, tag, description')
 			->select();
 
+		if(is_array($list) && !empty($list)){
+			foreach ($list as &$item) {
+				$item['tag'] = $item['tag'] ? explode(',', rtrim($item['tag'], ',')) : '';
+			}
+		}
+
 		response_success($list);
 	}	
 
