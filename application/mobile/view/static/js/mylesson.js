@@ -19,14 +19,10 @@ function AjaxFunc() {
         url: "http://jiazheng.staraise.com.cn/index.php/api/user/myLesson",
         data: dataPost,
         success: function (data) {
-            debugger
             if(data.data != 0) {
                 createDom(data.data)
-                console.log(data)
-                console.log("ajax 数据获取成功")
                 dataPost.page++;
             } else {
-                console.log("ajax 没有更多数据");
                 canAjax = false;
             }
         },
@@ -39,7 +35,6 @@ function AjaxFunc() {
 
 function createDom(data) {
     $.each(data, function(){
-        debugger
         var str = '';
         str += '<li>\
                     <div class="poster">\
@@ -97,6 +92,3 @@ window.onscroll = function () {
         }
     }
 }
-// if(getScrollTop() == 0) {
-//     AjaxFunc()
-// }
