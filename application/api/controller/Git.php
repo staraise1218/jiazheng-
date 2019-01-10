@@ -14,7 +14,8 @@ class Git extends Base {
 	}
 
 	public function pull(){
-		echo exec("cd /home/www/jiazheng; git pull");
+		$output = shell_exec("cd /root/www/jiazheng; git pull 2<&1");
+        echo "<pre>$output</pre>";
 	}
 
 }
