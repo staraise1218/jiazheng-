@@ -70,5 +70,27 @@
         <input class="sub_btn" type="button" value="提交报名">
     </form>
     <script src="__STATIC__/js/dateJs.fei.js"></script>
+    <script src="__STATIC__/js/jquery.js"></script>
+    <script src="./plugins/layer/layer.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('select[name=province_id]').change(function(){
+                var province_id = $(this).val();
+                if(province_id == 0) return false;
+
+                $.ajax({
+                    url: "{:U('mobile/user/ajaxGetRegion')}",
+                    type: 'post',
+                    dataType: 'json',
+                    data: {region_id: province_id},
+                    success: function(res){
+                        res.each(function(){
+                            
+                        })
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 </html>

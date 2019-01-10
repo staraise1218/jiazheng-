@@ -29,7 +29,7 @@ class Aunt extends Base {
 		$auntCategoryList = Db::name('aunt_category')->select();
 		$result['auntCategoryList'] = $auntCategoryList;
 		// 获取阿姨列表
-		$auntList = Db::name('aunt')
+		/*$auntList = Db::name('aunt')
 			->where('is_delete', 0)
 			->limit(10)
 			->select();
@@ -39,7 +39,7 @@ class Aunt extends Base {
 			}
 		}
 
-		$result['auntList'] = $auntList;
+		$result['auntList'] = $auntList;*/
 		
 		response_success($result);
 	}
@@ -63,6 +63,7 @@ class Aunt extends Base {
 		if(is_array($list) && !empty($list)){
 			foreach ($list as &$item) {
 				$item['tag'] = $item['tag'] ? explode(',', rtrim($item['tag'], ',')) : '';
+				$item['url'] = U('mobile/aunt/detail', array('id'=>$item['id']));
 			}
 		}
 

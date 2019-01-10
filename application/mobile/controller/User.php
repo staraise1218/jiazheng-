@@ -67,4 +67,11 @@ class User extends Base{
     	return $this->fetch();
     }
 
+    public function ajaxGetRegion(){
+        $parent_id = I('parent_id');
+
+        $region = Db::name('region')->where('parent_id', $parent_id)->select();
+
+        response_success($region);
+    }
 }
