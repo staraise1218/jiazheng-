@@ -14,7 +14,7 @@ class Git extends Base {
 	}
 
 	public function pull(){
-		echo exec("cd /home/www/jiazheng; sudo -u shengli git pull");
+		echo exec("cd /home/www/jiazheng; git pull");
 	}
 
 }
