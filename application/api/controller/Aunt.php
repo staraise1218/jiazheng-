@@ -67,7 +67,7 @@ class Aunt extends Base {
 		}
 
 		response_success($list);
-	}	
+	}
 
 	public function detail(){
 		$id = I('id');

@@ -8,9 +8,10 @@ use think\Paginator;
 class Exam extends Base {
     
     public function contentList(){
-        $list = M('exam_content')->order('id desc')
+        $list = M('exam_content')
+            ->where('is_delete', 0)
+            ->order('id desc')
             ->paginate(20, false, ['page'=>$page, 'path'=>U('admin/exam/contentList')]);
-
 
         $this->assign('list',$list);// 赋值数据集
         
@@ -53,14 +54,10 @@ class Exam extends Base {
         return $this->fetch();
     }
 
-    public function delCat(){
+    public function delContent(){
         $id = I('id');
 
-        // 判断该分类下是否有数据
-        $count = M('exam')->where('cat_id', $id)->count();
-        if($count) $this->ajaxReturn(['status'=>0, 'msg'=>'该分类下有数据，不能删除']);
-
-        if(false !== M('exam_content')->where('id', $id)->delete()){
+        if(false !== M('exam_content')->where('id', $id)->update(array('is_delete', 1))){
             $this->ajaxReturn(['status' => 1, 'msg' => '操作成功']);
         } else {
             $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
