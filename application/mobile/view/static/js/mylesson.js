@@ -1,4 +1,4 @@
-var oUl = $(".wrapper ul").get(0);
+var oUl = $(".wrapper ul");
 var asdf = '';
 var last_btn_index = "init";
 var dataPost = {
@@ -57,7 +57,7 @@ function createDom(data) {
                     </div>\
                 </li>'
         
-        oUl.appendChild(str);
+        oUl.appendTo(str);
     })
 }
 
