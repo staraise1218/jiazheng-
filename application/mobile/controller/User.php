@@ -11,7 +11,7 @@ class User extends Base{
     	
     	// 获取banner
 		$user_id = $this->user_id;
-		$info = Db::name('user')
+		$info = Db::name('users')
 			->where('user_id', $user_id)
 			->where('is_lock', 0)
 			->find();
