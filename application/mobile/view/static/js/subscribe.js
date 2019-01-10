@@ -3,7 +3,7 @@ var oUl = $(".wrapper ul").get(0);
 // 
 var dataPost = {
     page: 1,
-    cat_id: 2
+    cat_id: 0
 }
 
 init()
@@ -13,9 +13,18 @@ function init() {
 }
 // 点击导航切换 id
 $(".nav-wrap").delegate("li", "click", function (e) {
-    console.log($(this).index()+1);
-    dataPost.cat_id = $(this).index()+1;
-    AjaxFunc();
+    if($(this).index() != dataPost.cat_id) {
+        console.log("导航ID : "+$(this).index());
+        console.log("dataPost :" + dataPost.cat_id);
+        dataPost.page = 1;
+        dataPost.cat_id = $(this).index();
+        oUl.innerHTML = "";
+        AjaxFuncOne();
+    } else {
+        AjaxFunc();
+        console.log("导航ID 改 : "+$(this).index());
+        console.log("dataPost 改 :" + dataPost.cat_id);
+    }
 })
 
 function AjaxFunc() {
@@ -39,6 +48,30 @@ function AjaxFunc() {
         }
     })
 }
+
+function AjaxFuncOne() {
+    $.ajax({
+        type: "POST",
+        url: "http://jiazheng.staraise.com.cn/index.php/api/aunt/getlist",
+        data: dataPost,
+        success: function (data) {
+            console.log(data)
+            if(data.data != 0) {
+                createDom(data.data)
+                console.log(data.data)
+                console.log("数据获取成功")
+                dataPost.page++;
+            } else {
+                console.log("数据为空")
+            }
+        },
+        error: function () {
+            console.log("error")
+        }
+    })
+}
+
+
 
 
 
