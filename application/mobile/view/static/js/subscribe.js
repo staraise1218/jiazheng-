@@ -1,12 +1,12 @@
 var oUl = $(".wrapper ul").get(0);
-
+var asdf = '';
 var last_btn_index = 0;
 var dataPost = {
     page: "",
     cat_id: 0
 }
 var canAjax = true;
- 
+
 init()
 // 初始化函数
 function init() {
@@ -16,7 +16,6 @@ function init() {
     // console.log("初始化 dataPost.page : " + dataPost.cat_id);
     AjaxFunc();
 }
-
 // 点击导航切换 id
 $(".nav-wrap").delegate("a", "click", function (e) {
     console.log("-------------------------------------------")
@@ -69,13 +68,9 @@ function createDom(data) {
             tagStr = '',
             oLi = document.createElement("li"),
             tagArr = data[i].tag;
-        // console.log(tagArr)
-        // console.log(data)
         for(var j = 0; j < tagArr.length; j++) {
             tagStr += '<span>'+ tagArr[j] +'</span>'
         }
-        // console.log(tagArr)
-
         str += 
             '<div class="poster">\
                 <img src="'+ data[i].thumb + '" alt="poster">\
