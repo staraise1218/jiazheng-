@@ -85,6 +85,7 @@
                     dataType: 'json',
                     data: {region_id: province_id},
                     success: function(res){
+                        debugger
                         var html = '<option value="0">请选择</option>';
                         res.each(function(){
                             html += '<option name="city_id" id="city_id" value='+this.id+'>'+this.name+'</option';
