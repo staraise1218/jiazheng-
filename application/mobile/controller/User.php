@@ -53,6 +53,7 @@ class User extends Base{
                 'city_id' => input('post.city_id'),
                 'location_id' => input('post.location_id'),
                 'remark' => input('remark'),
+                'add_time' => time(),
             );
 
             if(Db::name('exam_apply')->insert($data)){
