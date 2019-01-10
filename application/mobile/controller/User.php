@@ -9,14 +9,10 @@ class User extends Base{
 
     public function index(){
     	
-    	// 获取banner
-		$user_id = $this->user_id;
-		$info = Db::name('users')
-			->where('user_id', $user_id)
-			->where('is_lock', 0)
-			->find();
+    	return $this->fetch();
+    }
 
-		$this->assign('info', $info);
-    	return $this->fetch('index');
+    public function modify(){
+    	return $this->fetch();
     }
 }
