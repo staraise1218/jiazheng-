@@ -50,9 +50,11 @@ class Aunt extends Base {
 		$page = input('page', 1);
 		if($page <= 0) $page = 1;
 
+		$where['is_delete'] = 0;
+		if($cat_id) $where['cat_id'] = $cat_id;
+
 		$list = Db::name('aunt')
-			->where('cat_id', $cat_id)
-			->where('is_delete', 0)
+			->where($where)
 			->limit(10)
 			->page($page)
 			->field('id, title, thumb, leixing, tag, description')
