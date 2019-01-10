@@ -1,5 +1,4 @@
-var oUl = $(".wrapper ul");
-var asdf = '';
+
 var last_btn_index = "init";
 var dataPost = {
     page: "",
@@ -57,12 +56,9 @@ function createDom(data) {
                     </div>\
                 </li>'
         
-        oUl.appendTo(str);
+        $(".wrapper ul").append(str);
     })
 }
-
-
-
 
 // 获取滚动条当前的位置 
 function getScrollTop() {
