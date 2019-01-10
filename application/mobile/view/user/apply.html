@@ -72,7 +72,7 @@
     </form>
     <script src="__STATIC__/js/dateJs.fei.js"></script>
     <script src="__STATIC__/js/jquery.js"></script>
-    <script src="./plugins/layer/layer.js"></script>
+    <script src="/plugins/layer/layer.js"></script>
     <script type="text/javascript">
         $(function(){
             $('select[name=province_id]').change(function(){
@@ -87,7 +87,7 @@
                     success: function(res){
                         debugger
                         var html = '<option value="0">请选择</option>';
-                        res.each(function(){
+                        $.each(res.data, function(){
                             html += '<option name="city_id" id="city_id" value='+this.id+'>'+this.name+'</option';
                         })
                         $('select[name=city_id]').html(html);
@@ -105,7 +105,7 @@
                     data: {region_id: city_id},
                     success: function(res){
                         var html = '<option value="0">请选择</option>';
-                        res.each(function(){
+                        $.each(res.data, function(){
                             html += '<option name="location_id" id="location_id" value='+this.id+'>'+this.name+'</option';
                         })
                         $('select[name=location_id]').html(html);
