@@ -5,7 +5,7 @@ var $wrap = $(".tanchuang-wrap");
 
 
 
-$(".user_name_btn").on("click", function () {
+/*$(".user_name_btn").on("click", function () {
     $(".tanchuang-wrap").get(0).style.display="flex";
     $(".tanchuang").get(0).innerHTML = `
         <input class="user_name_text" type="text" value="请输入姓名">
@@ -28,7 +28,7 @@ $(".user_code_click").on("click", function () {
         <input class="user_code" type="text" value="请输入身份证号">
         <button class="over">完成</button>`
 })
-
+*/
 
 
 
