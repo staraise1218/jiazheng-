@@ -97,6 +97,7 @@
           })
       })
 
+        // 点击修改弹窗
         $('.user_name_btn').click(function(){
             $('.fullname').show();
         })
@@ -105,6 +106,30 @@
         })
         $('.user_code_click').click(function(){
             $('.ID_number').show();
+        })
+
+        // 修改姓名
+        $('.fullname_btn').click(function(){
+            var fullname = $('input[name=fullname]').val();
+            if(fullname == '') return false;
+            layer.load(1);
+            $.ajax({
+                url: "{:U('mobile/user/changeField')}",
+                type: 'post',
+                dataType: 'json',
+                data: {field: 'fullname', fieldValue: fullname},
+                success: function(res){
+                    layer.closeAll();
+                    if(res.code == 200){
+                        layer.msg('修改成功', {icon:1}, function(){
+                            window.location.reload();
+                        });
+
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                }
+            })
         })
     </script>
 </body>
