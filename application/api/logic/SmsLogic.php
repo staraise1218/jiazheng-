@@ -51,7 +51,7 @@ class SmsLogic {
         $data = array(
             'mobile' => $mobile,
             'code' => $code,
-            'scene' => '1',
+            'scene' => $scene,
             'add_time' => time(),
         );
 

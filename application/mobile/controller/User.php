@@ -66,6 +66,7 @@ class User extends Base{
         // 判断手机号格式
         if(!check_mobile($mobile)) response_error('', '手机号格式错误');
         $smslog = Db::name('sms_log')->where('mobile', $mobile)->where('scene', 3)->find();
+        p($smslog);
         if(empty($smslog) || $smslog['code'] != $code) response_error('', '验证码错误');
 
         Db::name('users')->where('user_id', $this->user_id)->update(array('mobile'=>$mobile));
