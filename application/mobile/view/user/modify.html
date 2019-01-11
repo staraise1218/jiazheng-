@@ -26,7 +26,7 @@
         <li>
             <span class="title">头像</span>
             <img class="head_pic" src="{$user.head_pic}" alt="">
-            <form id="headPicForm" style="display: none;" enctype="multipart/form-data">
+            <form id="headPicForm" style="display: none;" action="{:url('mobile/user/changeHeadPic')}" enctype="multipart/form-data">
                 <input type="file" name="head_pic">
             </form>
         </li>
@@ -69,14 +69,34 @@
 
     <script src="__STATIC__/js/jquery.js"></script>
     <script src="/public/js/layer/layer.js"></script>
+    <script src="/public/js/jquery.form.js"></script>
     <script type="text/javascript">
         <!--头像上传 -->
         $('.head_pic').click(function(){
             $('input[name=head_pic]').click()
         })
+
         $('input[name=head_pic]').change(function(){
-            layer.msg('改变');
-        })
+
+          layer.load(1);
+          $('#headPicForm').ajaxSubmit({
+              dataType: 'json',
+              success:function(data){
+
+                  layer.closeAll();
+                  if(data.code==200){
+                      $('.head_pic').attr('src', data.data.fullPath);
+                  } else {
+                      layer.msg(data.msg);
+                  }
+
+              },
+              error:function(){
+                  layer.closeAll();
+                  layer.msg('服务器错误');
+              }
+          })
+      })
 
         $('.user_name_btn').click(function(){
             $('.fullname').show();
