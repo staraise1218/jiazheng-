@@ -85,7 +85,7 @@
 
                   layer.closeAll();
                   if(data.code==200){
-                      $('.head_pic').attr('src', data.data.fullPath);
+                      $('.head_pic').attr('src', data.data.head_pic);
                   } else {
                       layer.msg(data.msg);
                   }
