@@ -126,11 +126,11 @@
     border: 0.02rem solid #7abedf;
     color: rgba(0,0,0,0.7);
     font-size: 0.2rem;
-    padding: 0.05rem 0.2rem;
+    padding: 0.15rem 0.2rem;
     border-radius: 0.05rem;
     position: absolute;
     right: 10%;
-    top: 15%;
+    top: 10%;
 }
 .user-info .tanchuang-wrap .tanchuang .tell_code {
     margin-top: 0.1rem;
