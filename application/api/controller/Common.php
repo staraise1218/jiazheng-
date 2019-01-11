@@ -4,10 +4,9 @@ namespace app\api\controller;
 
 use think\Db;
 use app\api\logic\FileLogic;
-
 use app\api\logic\SmsLogic;
 
-class Index extends Base {
+class Common extends Base {
 
 	public function __construct(){
 		// 设置所有方法的默认请求方式
@@ -29,7 +28,7 @@ class Index extends Base {
 
         // 检测手机号
         if(check_mobile($mobile) == false) response_error('', '手机号格式错误');
-        
+
         // 注册场景检测是否注册
         if($scene == '3'){
             $count = Db::name('users')->where("mobile=$mobile")
