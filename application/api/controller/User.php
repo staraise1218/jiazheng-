@@ -51,10 +51,11 @@ class User extends Base {
 	public function cancleCollect(){
 		$user_id = $this->user_id;
 		$lesson_id = I('lesson_id');
+		$table_name = I('table_name');
 
 		if( false !== Db::name('user_collect')
 			->where('user_id', $user_id)
-			->where('table', 'lesson')
+			->where('table_name', $table_name)
 			->where('table_id', $lesson_id)
 			->delete()){
 			response_success('', '取消成功');

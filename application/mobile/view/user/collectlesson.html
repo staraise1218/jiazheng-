@@ -30,5 +30,26 @@
 
     <script src="__STATIC__/js/jquery.js"></script>
     <script src="__STATIC__/js/collectlesson.js"></script>
+    <script type="text/javascript" src="/public/js/layer/layer.js"></script>
+    <script type="text/javascript">
+        $('.wrapper').delegate('.cancel', 'click', function(){
+            var lesson_id = $(this).attr('lesson_id');
+            var thisObj = $(this);
+
+            layer.confirm('确定取消收藏吗？', function(){
+                $.ajax({
+                    url: "{:U('api/user/cancleCollect')}",
+                    type: 'post',
+                    dataType: 'json',
+                    data: {lesson_id: lesson_id, table_name: 'lesson'},
+                    success: function(res){
+                        if(res.code == 200){
+                            thisObj.parent('li').remove();
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 </html>
