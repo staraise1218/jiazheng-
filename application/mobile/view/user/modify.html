@@ -187,7 +187,7 @@
 
             $.ajax({
                 url: "{:U('api/common/sendMobileCode')}",
-                type:'get',
+                type:'post',
                 dataType:'json',
                 data: {mobile: newmobile},
                 success: function(data){
