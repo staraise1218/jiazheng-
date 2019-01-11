@@ -135,9 +135,10 @@
 .user-info .tanchuang-wrap .tanchuang .tell_code {
     margin-top: 0.1rem;
 }
+.user-info .tanchuang-wrap .tanchuang .btncon{ text-align: center; }
 .user-info .tanchuang-wrap .tanchuang button {
-    display: block;
-    width: 50%;
+    display: inline-block;
+    width: 30%;
     margin: 0 auto;
     background: #7abedf;
     border: 0;
@@ -147,6 +148,7 @@
     margin-top: 0.5rem;
     margin-bottom: 0.6rem;
 }
+.user-info .tanchuang-wrap .tanchuang button.cancel {background: #aaa; margin-right: 30px;}
 .user-info li {
     display: flex;
     justify-content: space-between;
@@ -172,6 +174,3 @@
     border-radius: 50%;
     overflow: hidden;
 }
-
-
-

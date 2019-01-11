@@ -28,8 +28,8 @@ class Base extends Controller{
 
         } else {
 
-        	header("Location:/index.php/mobile/weixin/get_code");
-        	die();
+        	// header("Location:/index.php/mobile/weixin/get_code");
+        	// die();
         }
     }
 }
