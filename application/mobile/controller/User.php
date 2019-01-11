@@ -54,7 +54,7 @@ class User extends Base{
                 response_error('', '姓名长度在2-6个字之间');
             }
         }
-        if($field == 'ID_number' && !is_idcard($fieldValue)) response_error('', '身份证号格式不正确');
+        if($field == 'ID_number' && !$this->is_idcard($fieldValue)) response_error('', '身份证号格式不正确');
 
         Db::name('users')->where('user_id', $this->user_id)->update(array($field=>$fieldValue));
         response_success('', '修改成功');
