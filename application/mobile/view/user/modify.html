@@ -131,6 +131,30 @@
                 }
             })
         })
+
+        // 修改身份证号
+        $('.ID_number_btn').click(function(){
+            var ID_number = $('input[name=ID_number]').val();
+            if(ID_number == '') return false;
+            layer.load(1);
+            $.ajax({
+                url: "{:U('mobile/user/changeField')}",
+                type: 'post',
+                dataType: 'json',
+                data: {field: 'ID_number', fieldValue: ID_number},
+                success: function(res){
+                    layer.closeAll();
+                    if(res.code == 200){
+                        layer.msg('修改成功', {icon:1}, function(){
+                            window.location.reload();
+                        });
+
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                }
+            })
+        })
     </script>
 </body>
 </html>
