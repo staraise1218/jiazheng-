@@ -40,7 +40,7 @@
         </li>
         <li>
             <span class="title">身份证号</span>
-            <span class="user_code_click">{$user.mobile ? $user.mobile : '请输入身份证号'}</span>
+            <span class="user_code_click">{$user.ID_number ? $user.ID_number : '请输入身份证号'}</span>
         </li>
         <div class="tanchuang-wrap fullname" style="display:none">
             <div class="tanchuang">
@@ -50,7 +50,7 @@
         </div>
         <div class="tanchuang-wrap mobile" style="display:none">
             <div class="tanchuang">
-                <input class="tell_number" type="text" value="" placeholder="请输手机号">
+                <input class="tell_number" type="text" value="{$user.mobile}" placeholder="请输手机号">
                 <div class="code">
                     <input class="tell_code" type="text" value="" placeholder="请输入验证码">
                     <span>获取验证码</span>
@@ -60,7 +60,7 @@
         </div>
         <div class="tanchuang-wrap ID_number" style="display:none">
             <div class="tanchuang">
-                <input class="user_code" type="text" name="ID_number" value="" placeholder="请输入身份证号">
+                <input class="user_code" type="text" name="ID_number" value="{$user.ID_number}" placeholder="请输入身份证号">
                 <button class="over ID_number_btn">完成</button>
             </div>
         </div>
