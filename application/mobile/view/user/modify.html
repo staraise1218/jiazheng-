@@ -25,19 +25,19 @@
     <ul class="user-info">
         <li>
             <span class="title">头像</span>
-            <img src="__STATIC__/image/touxiang.jpg" alt="">
+            <img src="{$user.head_pic}" alt="">
         </li>
         <li>
             <span class="title">姓名</span>
-            <span class="user_name_btn">请输入姓名</span>
+            <span class="user_name_btn">{$user.fullname ? $user.fullname : '请输入姓名'}</span>
         </li>
         <li>
             <span class="title">手机号</span>
-            <span class="user_tell_number">请输入手机号</span>
+            <span class="user_tell_number">{$user.mobile ? $user.mobile : '请输入手机号'}</span>
         </li>
         <li>
             <span class="title">身份证号</span>
-            <span class="user_code_click">请输入身份证号</span>
+            <span class="user_code_click">{$user.mobile ? $user.mobile : '请输入手机号'}</span>
         </li>
         <div class="tanchuang-wrap" style="display:none">
             <div class="tanchuang">
