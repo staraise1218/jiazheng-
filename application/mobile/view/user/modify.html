@@ -82,7 +82,7 @@
           $('#headPicForm').ajaxSubmit({
               dataType: 'json',
               success:function(data){
-
+debugger
                   layer.closeAll();
                   if(data.code==200){
                       $('.head_pic').attr('src', data.data.head_pic);
