@@ -32,29 +32,7 @@ class SmsLogic {
      * @return [type]         [description]
      */
     public function send($mobile, $scene, &$error){
-        // 检测手机号
-        if(check_mobile($mobile) == false){
-            $error = '手机号格式错误';
-            return false;
-        }
-
-        // 注册场景检测是否注册
-        // if($scene == '1'){
-        //     $count = Db::name('users')->where("account_mobile=$mobile")->count();
-        //     if($count){
-        //         $error = '该手机号已注册';
-        //         return false;
-        //     }
-        // }
-
-        // 找回密码场景检测是否注册
-        if($scene == '2'){
-            $count = Db::name('users')->where("account_mobile=$mobile")->count();
-            if(!$count){
-                $error = '该手机号未注册';
-                return false;
-            }
-        }
+        
         
         // 检测发送次数
         $day_time_start = strtotime(date('Y-m-d'));
@@ -78,17 +56,17 @@ class SmsLogic {
         );
 
         $smsLogid = Db::name('sms_log')->insertGetId($data);
-
+return $code;
         // 执行短信网关发送 12269890032
-        $result = $this->sendSms($mobile, $code);
+        // $result = $this->sendSms($mobile, $code);
 
-        if($result->Code == 'OK'){
-            Db::name('sms_log')->where("id=$smsLogid")->update(array('status'=>'1'));
-            return $code;
-        } else {
-            $error = '发送失败';
-            return false;
-        }
+        // if($result->Code == 'OK'){
+        //     Db::name('sms_log')->where("id=$smsLogid")->update(array('status'=>'1'));
+        //     return $code;
+        // } else {
+        //     $error = '发送失败';
+        //     return false;
+        // }
     }
 
     /**
