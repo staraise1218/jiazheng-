@@ -189,7 +189,7 @@
                 url: "{:U('api/common/sendMobileCode')}",
                 type:'get',
                 dataType:'json',
-                data: {mobile: newmobile}
+                data: {mobile: newmobile},
                 success: function(data){
                     if(data.code == 400){
                         layer.msg(data.msg)
