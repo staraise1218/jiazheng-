@@ -18,5 +18,4 @@ class Git extends Base {
         echo "<pre>$output</pre>";
 
 	}
-
 }
