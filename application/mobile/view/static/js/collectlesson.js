@@ -36,7 +36,7 @@ function AjaxFunc() {
 function createDom(data) {
     var str = '';
     $.each(data, function(){
-        str += '<li onclick=window.location="/index.php/mobile/lesson/detail/id/'+this.lesson_id+'">\
+        str += '<li>\
                     <div class="poster">\
                         <img src="'+this.thumb+'" alt="poster">\
                     </div>\
@@ -52,6 +52,7 @@ function createDom(data) {
                             <div class="time">'+timestampToTime(this.add_time)+'</div>\
                         </div>\
                     </div>\
+                    <a href="/index.php/mobile/lesson/detail/id/"'+this.lesson_id+'" class="url"></a> \
                 </li>'
         
         
