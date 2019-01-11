@@ -25,7 +25,10 @@
     <ul class="user-info">
         <li>
             <span class="title">头像</span>
-            <img src="{$user.head_pic}" alt="">
+            <img class="head_pic" src="{$user.head_pic}" alt="">
+            <form id="headPicForm" style="display: none;" enctype="multipart/form-data">
+                <input type="hidden" name="head_pic">
+            </form>
         </li>
         <li>
             <span class="title">姓名</span>
@@ -65,8 +68,16 @@
 
 
     <script src="__STATIC__/js/jquery.js"></script>
-    <script src="__STATIC__/js/user_info.js"></script>
+    <script src="/public/js/layer/layer.js"></script>
     <script type="text/javascript">
+        <!--头像上传 -->
+        $('.head_pic').click(function(){
+            $('input[name=head_pic]').click()
+        })
+        $('input[name=head_pic]').change(function(){
+            layer.msg('改变');
+        })
+
         $('.user_name_btn').click(function(){
             $('.fullname').show();
         })
