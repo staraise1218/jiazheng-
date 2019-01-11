@@ -27,7 +27,7 @@
             <span class="title">头像</span>
             <img class="head_pic" src="{$user.head_pic}" alt="">
             <form id="headPicForm" style="display: none;" action="{:url('mobile/user/changeHeadPic')}" enctype="multipart/form-data">
-                <input type="file" name="head_pic">
+                <input type="file" name="file">
             </form>
         </li>
         <li>
@@ -73,10 +73,10 @@
     <script type="text/javascript">
         <!--头像上传 -->
         $('.head_pic').click(function(){
-            $('input[name=head_pic]').click()
+            $('input[name=file]').click()
         })
 
-        $('input[name=head_pic]').change(function(){
+        $('input[name=file]').change(function(){
 
           layer.load(1);
           $('#headPicForm').ajaxSubmit({
