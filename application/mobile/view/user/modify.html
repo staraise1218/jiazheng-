@@ -26,7 +26,7 @@
         <li>
             <span class="title">头像</span>
             <img class="head_pic" src="{$user.head_pic}" alt="">
-            <form id="headPicForm" style="display: none;" action="{:url('mobile/user/changeHeadPic')}" enctype="multipart/form-data">
+            <form id="headPicForm" action="{:url('mobile/user/changeHeadPic')}" type="post" enctype="multipart/form-data" style="display: none;">
                 <input type="file" name="file">
             </form>
         </li>
