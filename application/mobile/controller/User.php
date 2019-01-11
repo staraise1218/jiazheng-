@@ -27,7 +27,7 @@ class User extends Base{
         $user_id = $this->user_id;
 
         $uploadPath = UPLOAD_PATH.'head_pic/';
-
+P($_FILES);
         $FileLogic = new FileLogic();
         $result = $FileLogic->uploadSingleFile('file', $uploadPath);
         if($result['status'] == '1'){
