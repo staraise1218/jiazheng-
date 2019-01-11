@@ -60,6 +60,19 @@ class User extends Base{
         response_success('', '修改成功');
     }
 
+    public function changeMobile(){
+        $mobile = input('post.mobile');
+        $code = input('post.code');
+        // 判断手机号格式
+        if(!check_mobile($mobile)) response_error('', '手机号格式错误');
+        $smslog = Db::name('sms_log')->where('mobile', $mobile)->where('sence', 3)->find();
+        if(empty($smslog) || $smslog['code'] != $code) response_error('', '验证码错误');
+
+
+        Db::name('users')->where('user_id', $this->user_id)->update(array('mobile'=>$mobile));
+        response_success('', '修改成功');
+    }
+
        //php验证身份证号码是否正确函数
     private function is_idcard( $id ){ 
         $id = strtoupper($id); 

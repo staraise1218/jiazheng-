@@ -57,7 +57,7 @@
             <div class="tanchuang">
                 <input class="tell_number" type="text" name="newmobile" value="{$user.mobile}" placeholder="请输手机号">
                 <div class="code">
-                    <input class="tell_code" type="text" value="" placeholder="请输入验证码">
+                    <input class="tell_code" type="text" name="code" value="" placeholder="请输入验证码">
                     <span class="getcode">获取验证码</span>
                 </div>
                 <div class="btncon">
@@ -145,6 +145,36 @@
             })
         })
 
+        // 修改手机号
+        $('.mobile_btn').click(function(){
+            var newmobile = $('input[name=newmobile]').val();
+            var code = $('input[name=code]').val();
+            if(newmobile == '' || code == '') return false;
+
+            if(!isPhone(newmobile)){
+                layer.msg('手机号格式错误');
+                return false;
+            }
+            layer.load(1);
+            $.ajax({
+                url: "{:U('mobile/user/changeField')}",
+                type: 'post',
+                dataType: 'json',
+                data: {mobile: newmobile, code: code},
+                success: function(res){
+                    layer.closeAll();
+                    if(res.code == 200){
+                        layer.msg('修改成功', {icon:1}, function(){
+                            window.location.reload();
+                        });
+
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                }
+            })
+        })
+
         // 修改身份证号
         $('.ID_number_btn').click(function(){
             var ID_number = $('input[name=ID_number]').val();
@@ -189,7 +219,7 @@
                 url: "{:U('api/common/sendMobileCode')}",
                 type:'post',
                 dataType:'json',
-                data: {mobile: newmobile},
+                data: {mobile: newmobile, sence: 3},
                 success: function(data){
                     if(data.code == 400){
                         layer.msg(data.msg)
