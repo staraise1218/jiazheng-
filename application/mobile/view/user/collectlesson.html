@@ -44,7 +44,7 @@
                     data: {lesson_id: lesson_id, table_name: 'lesson'},
                     success: function(res){
                         if(res.code == 200){
-                            thisObj.parent('li').remove();
+                            thisObj.parents('li').remove();
                         }
                     }
                 })
