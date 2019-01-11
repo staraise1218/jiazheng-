@@ -43,7 +43,7 @@
                     dataType: 'json',
                     data: {lesson_id: lesson_id, table_name: 'lesson'},
                     success: function(res){
-                        debugger
+                        layer.closeAll();
                         if(res.code == 200){
                             thisObj.parents('li').remove();
                         }
