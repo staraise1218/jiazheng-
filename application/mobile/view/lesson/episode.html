@@ -43,15 +43,14 @@
                     <?php $episodeList = 'episodeList_page_'.$page; ?>
                 <li class="{$page == 1 ? 'active' : ''}">
                     {foreach name="$$episodeList" item="item"}
-                    <a class="video-btn" href="javascript:" data-video="{$item.video}" lesson_episode_id="{$item.id}" number="{$item.number}">{$item.number}</a>
+                    <span class="video-btn" data-video="{$item.video}" lesson_episode_id="{$item.id}" number="{$item.number}">{$item.number}</span>
                     {/foreach}
                 </li>
-                {/for}
+                {/for} 
             </ul>
         </div>
     </div>
 
-    
     <input class="lastplay_title" type="hidden" name="lastplay_title" value="{$lastplay.title}">
 	<input class="current_time" type="hidden" name="current_time" value="{$lastplay.current_time}">
 	<input class="lesson_episode_id" type="hidden" name="lesson_episode_id" value="{$lastplay.lesson_episode_id}">
