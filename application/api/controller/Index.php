@@ -15,26 +15,22 @@ class Index extends Base {
 		parent::__construct();
 	}
 
-	public function index(){
+	public function lessonList(){
 		// 获取banner
-		$bannerList = Db::name('ad')
-			->where('pid', 1)
-			->where('enabled', 1)
-			->field('ad_name, ad_link, ad_code')
-			->order('orderby desc, ad_id desc')
+		$lessonList = Db::name('lesson')
+			->where('is_open', 1)
+			->where('is_delete', 0)
+			->limit(4)
+			->field('id, title, thumb, price')
 			->select();
 
-		$result['bannerList'] = $bannerList;
-		// 获取最新资讯
-		$info = DB::name('article')
-			->where('cat_id', 1)
-			->where('is_open', 1)
-			->order('article_id desc')
-			->field('article_id, title')
-			->find();
-		$result['info'] = $info;
+		if(is_array($lessonList) && !empty($lessonList)){
+			foreach ($lessonList as &$item) {
+				$item['url'] = U('mobile/lesson/detail', array('id'=>$item.$id));
+			}
+		}
 
-		response_success($result);
+		response_success($lessonList);
 	}
 
 }
