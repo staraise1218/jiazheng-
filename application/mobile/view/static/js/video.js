@@ -26,10 +26,12 @@ var postData = {
 }
 // 初始化函数
 function init() {
+
+    
     lastplay.number = localStorage.getItem("lastplay.number")
     lastplay.current_time = localStorage.getItem("lastplay.current_time")
-    console.log($(video_btn).eq(lastplay.number - 1).attr("data-video"))
     video.src = $(video_btn).eq(lastplay.number - 1).attr("data-video");
+    $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
     // 判断继续播放是否显示
     if(lastplay.current_time == 0) {
         continue_wrap.style.display = 'none';
@@ -141,7 +143,10 @@ window.onbeforeunload=function(e){
 }
 // 分集，事件代理函数
 $(video_btn_wrap).delegate("span","click",function(){
-    
+    $(".btn_active").removeClass("btn_active")
+    $(this).addClass("btn_active");
+    console.log(this)
+
     continue_wrap.style.display = "none";
     number = $(this).attr("number");
     postData.current_time = 0;
