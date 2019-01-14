@@ -167,6 +167,7 @@ $(video_btn_wrap).delegate("a","click",function(){
         console.log("lastplay.current_time :"+ lastplay.current_time + ": --> 视频--加载完成")
         video.currentTime = 0;
         // play_block();
+        play_none();
         video.play();
     }
 });
