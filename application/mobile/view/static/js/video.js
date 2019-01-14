@@ -31,13 +31,16 @@ function init() {
     lastplay.number = localStorage.getItem("lastplay.number")
     lastplay.current_time = localStorage.getItem("lastplay.current_time")
     video.src = $(video_btn).eq(lastplay.number - 1).attr("data-video");
-    $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
+    video.currentTime = lastplay.current_time || postData.current_time;
     // 判断继续播放是否显示
-    if(lastplay.current_time == 0) {
-        continue_wrap.style.display = 'none';
-    } else {
-        continue_wrap.style.display = "flex";
-    }
+    continue_wrap.style.display = lastplay.current_time == 0 ? "none" : "flex";
+    // 当前集按钮高亮显示
+    $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
+    // if(lastplay.current_time == 0) {
+    //     continue_wrap.style.display = 'none';
+    // } else {
+    //     continue_wrap.style.display = "flex";
+    // }
 }
 init();
 // 视频加载
@@ -45,16 +48,17 @@ video.onloadeddata = function(){
     video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
     // video.currentTime = localStorage.getItem("lastplay.current_time");
     console.log("lastplay.current_time :"+ lastplay.current_time + ": --> 视频--加载完成")
+    console.log(video.readyState)
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function () {
-    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    video.currentTime = lastplay.current_time || postData.current_time;
     video.play();
     play_none();
 }
 // 开始播放  点击继续播放按钮
 video.onloadeddata = function(){
-    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    video.currentTime = lastplay.current_time || postData.current_time;
     continue_btn.onclick = function () {        
         video.play();
         play_none();
