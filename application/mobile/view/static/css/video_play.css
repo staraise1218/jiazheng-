@@ -15,9 +15,14 @@ li {
     width: 100%;
     font-size: 0;
 }
+.video-play-wrapper .video-wrapper {
+    width: 100%;
+    /* height: 4rem;
+    overflow: hidden; */
+}
 .video-play-wrapper video {
     width: 100%;
-    height: 4.2rem;
+    height: 5rem;
 }
 .video-play-wrapper .video-play-btn {
     position: absolute;
@@ -171,3 +176,7 @@ li {
     font-size: 0.25rem;
 }
 
+.wrap li span.btn_active {
+    border: 1px solid #7abedf;
+    color: #7abedf;
+}
