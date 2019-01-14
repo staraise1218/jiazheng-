@@ -160,14 +160,14 @@ $(video_btn_wrap).delegate("span","click",function(){
     continue_wrap.style.display = "none";
     lastplay.number = postData.number = $(this).attr("number");
     lastplay.current_time = postData.current_time = 0;
-    console.log(this)
+    console.log($(this).index())
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
 
     // 记录
     localStorage.setItem("postData.order_id", postData.order_id);                       // 
     localStorage.setItem("postData.lesson_id", postData.lesson_id);                     // 课程id
     // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
-    localStorage.setItem("lastplay.number", number);                           // 播放的集数
+    localStorage.setItem("lastplay.number", lastplay.number);                           // 播放的集数
     localStorage.setItem("lastplay.current_time", postData.current_time);
     localStorage.setItem("postData.ended", postData.ended);
 
