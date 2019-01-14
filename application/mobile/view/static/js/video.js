@@ -33,14 +33,14 @@ function init() {
     video.src = $(video_btn).eq(lastplay.number - 1).attr("data-video");
     video.currentTime = lastplay.current_time || postData.current_time;
     // 判断继续播放是否显示
-    continue_wrap.style.display = lastplay.current_time == 0 ? "none" : "flex";
+    // continue_wrap.style.display = lastplay.current_time == 0 ? "none" : "flex";
     // 当前集按钮高亮显示
     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
-    // if(lastplay.current_time == 0) {
-    //     continue_wrap.style.display = 'none';
-    // } else {
-    //     continue_wrap.style.display = "flex";
-    // }
+    if(lastplay.current_time == 0) {
+        continue_wrap.style.display = 'none';
+    } else {
+        continue_wrap.style.display = "flex";
+    }
 }
 init();
 // 视频加载
@@ -154,19 +154,14 @@ window.onbeforeunload=function(e){
 $(video_btn_wrap).delegate("span","click",function(){
     $(".btn_active").removeClass("btn_active")
     $(this).addClass("btn_active");
-    console.log(this)
 
-    continue_wrap.style.display = "none";
-    number = $(this).attr("number");
-    postData.current_time = 0;
+    // change
     video.src = $(this).attr("data-video");
+    continue_wrap.style.display = "none";
+    lastplay.number = postData.number = $(this).attr("number");
+    lastplay.current_time = postData.current_time = 0;
+    console.log(this)
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
-    console.log(postData)
-    console.log(lastplay)
-    // 记录
-    console.log("number : " + number + " --> 第...集")
-    console.log(lastplay.number)
-    lastplay.number = number;
 
     // 记录
     localStorage.setItem("postData.order_id", postData.order_id);                       // 
