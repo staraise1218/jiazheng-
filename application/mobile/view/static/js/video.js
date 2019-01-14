@@ -166,7 +166,8 @@ $(video_btn_wrap).delegate("a","click",function(){
     video.onloadeddata = function(){
         console.log("lastplay.current_time :"+ lastplay.current_time + ": --> 视频--加载完成")
         video.currentTime = 0;
-        play_block();
+        // play_block();
+        video.play();
     }
 });
 // 播放按钮 继续播放 wrap 隐藏
