@@ -2,7 +2,7 @@
 .nav-wrap {
     margin-top: 0.15rem;
     width: 100%;
-    height: 1.8rem;
+    height: 2rem;
     overflow: hidden;
 }
 .nav-wrap ul {
@@ -12,7 +12,7 @@
     overflow: scroll;
 }
 .nav-wrap ul li {
-    /* position: relative; */
+    position: relative;
     display: inline-block;
     width: 2.41rem;
     height: 1.51rem;
@@ -20,7 +20,7 @@
     border-radius: 0.08rem;
     box-shadow: 0.02rem 0.02rem 0.02rem 0.02rem #B6B5B5
 }
-.nav-wrap ul li a {
+.nav-wrap ul li span {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -41,22 +41,13 @@
     width: 100%;
 }
 .wrapper ul li {
-    position: relative;
     padding: 0.25rem;
     box-sizing: border-box;
+    position: relative;
     display: flex;
     width: 100%;
     height: 2.8rem;
     border-bottom: 1px solid #E5E5E5;
-}
-.wrapper ul li .click_link {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: block;
-    width: 100%;
-    height: 2.8rem;
-    /* border: 1px solid red; */
 }
 .wrapper ul li:last-child {
     border: 0;
@@ -65,6 +56,7 @@
     display: inline-block;
     width: 1.95rem;
     height: 2.3rem;
+    /* border: 1px solid red; */
     border-radius: 0.12rem;
     overflow: hidden;
 }
@@ -73,7 +65,7 @@
     height: 100%;
 }
 .wrapper ul li .right {
-    /* position: relative; */
+    position: relative;
     width: 5rem;
     margin-left: 0.3rem;
     display: inline-block;
@@ -89,28 +81,23 @@
     font-size: 0.26rem;
     margin-top: 0.2rem;
 }
+.wrapper ul li .right .right-pay-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0.18rem;
+}
 .wrapper ul li .right .price {
     width: 4.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.wrapper ul li .right .right-pay-wrap {
-    display: flex;
-    width: 100%;
-    margin-top: 0.18rem;
-}
-.wrapper ul li .right .right-pay-wrap .pay {
-    position: relative;
-    z-index: 1;
-}
-.wrapper ul li .right .right-pay-wrap .pay .pay-btn {
+.wrapper ul li .right .pay .pay-btn {
     padding: 0 0.2rem;
     height: 0.48rem;
     background: #7ABEDF;
-    display: block;
     margin-top: 0.05rem;
-    line-height: 0.5rem;
     border: 0;
     color: #fff;
     font-size: 0.2rem;
@@ -118,21 +105,15 @@
 }
 .wrapper ul li .right .time {
     color: #8B8B8B;
-    line-height: 0.5rem;
     font-size: 0.2rem;
     float: right;
 }
 /*  */
 .skill {
-    margin-top: 0rem;
-}
-.skill span:first-child {
-    margin: 0;
+    margin-top: 0.1rem;
 }
 .skill span {
-    padding: 0.05rem 0.2rem;
     background: #f6f6f6;
-    font-size: 0.25rem;
+    font-size: 0.2rem;
     color: #8B8B8B;
-    margin-left: 0.1rem;
 }
