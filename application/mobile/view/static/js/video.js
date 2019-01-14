@@ -7,7 +7,7 @@ var video = $(".video")[0],                     // video 组件
     video_btn = $(".video-btn"),                // 视频选集按钮
     video_btn_wrap = $(".wrap")[0],             // 视频选集 wrap
     number_len = $('.wrap li .video-btn').length; // 选集长度
-// ajax 获取
+// ajax 获取 
 var lastplay = {
     title : $(".lastplay_title").get(0).value,     // 上次播放的标题
     lesson_id : $(".lesson_id").get(0).value,      // 上次课程id
