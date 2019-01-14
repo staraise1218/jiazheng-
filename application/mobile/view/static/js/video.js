@@ -166,8 +166,6 @@ $(video_btn_wrap).delegate("span","click",function(){
     video.src = $(this).attr("data-video");
     continue_wrap.style.display = "none";
 
-    // lastplay.order_id = postData.order_id = $(".order_id").get($(this).index()+1).value;
-    lastplay.lesson_episode_id = postData.lesson_episode_id = $(".lesson_episode_id").get($(this).index()+1).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     lastplay.number = postData.number = $(this).attr("number");
     lastplay.current_time = postData.current_time = 0;
     lastplay.ended = postData.ended = 0;
