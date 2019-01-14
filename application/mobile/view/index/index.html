@@ -36,19 +36,7 @@
     </div>
     <div class="wrapper">
         <ul>
-            {foreach name="lessonList" item="item"}
-            <li onclick="window.location='{:U('lesson/detail', array('id'=>$item.id))}'">
-                <div class="poster">
-                    <img src="{$item.thumb}" alt="poster">
-                </div>
-                <div class="right">
-                    <div class="title">{$item.title}</div>
-                    <div class="price">
-                        ￥<div class="price-content">{$item.price}</div>
-                    </div>
-                </div>
-            </li>
-            {/foreach}
+           
         </ul>
     </div>
 
