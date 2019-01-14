@@ -42,18 +42,20 @@ function init() {
 init();
 // 视频加载
 video.onloadeddata = function(){
-    video.currentTime = localStorage.getItem("lastplay.current_time");
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    // video.currentTime = localStorage.getItem("lastplay.current_time");
     console.log("lastplay.current_time :"+ lastplay.current_time + ": --> 视频--加载完成")
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function () {
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
     video.play();
     play_none();
 }
 // 开始播放  点击继续播放按钮
-
 video.onloadeddata = function(){
-    continue_btn.onclick = function () {
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    continue_btn.onclick = function () {        
         video.play();
         play_none();
     }
