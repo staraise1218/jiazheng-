@@ -58,19 +58,19 @@ video.onloadeddata = function(){
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function () {
-    if(video.readyState == 4) {
+    // if(video.readyState == 4) {
         video.currentTime = lastplay.current_time || postData.current_time;
         video.play();
         play_none();
-    }
+    // }
 }
 // 开始播放  点击继续播放按钮
 continue_btn.onclick = function () {        
-    if(video.readyState == 4) {
+    // if(video.readyState == 4) {
         video.currentTime = lastplay.current_time || postData.current_time;
         video.play();
         play_none();
-    }
+    // }
 }
 // 暂停 记录时间
 video.onclick = function () {
