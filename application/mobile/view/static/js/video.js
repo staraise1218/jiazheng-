@@ -51,11 +51,13 @@ play_btn_img.onclick = function () {
     play_none();
 }
 // 开始播放  点击继续播放按钮
-continue_btn.onclick = function () {
-    video.play();
-    play_none();
-}
 
+video.onloadeddata = function(){
+    continue_btn.onclick = function () {
+        video.play();
+        play_none();
+    }
+}
 // 暂停 记录时间
 video.onclick = function () {
     video.pause();
