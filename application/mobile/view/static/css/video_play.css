@@ -17,7 +17,7 @@ li {
 }
 .video-play-wrapper video {
     width: 100%;
-    min-height: 3.5rem;
+    min-height: 4rem;
 }
 .video-play-wrapper .video-play-btn {
     position: absolute;
