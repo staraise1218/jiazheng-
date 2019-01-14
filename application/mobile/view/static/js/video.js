@@ -47,13 +47,23 @@ video.onloadeddata = function(){
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function () {
-    video.play();
-    play_none();
+    video.onloadeddata = function(){
+        video.play();
+        play_none();
+    }
+    // video.play();
+    // play_none();
 }
 // 开始播放  点击继续播放按钮
 continue_btn.onclick = function (e) {
-    video.play();
-    play_none();
+    video.onloadeddata = function(){
+        // video.currentTime = localStorage.getItem("lastplay.current_time");
+        // console.log("lastplay.current_time :"+ lastplay.current_time + ": --> 视频--加载完成")
+        video.play();
+        play_none();
+    }
+    // video.play();
+    // play_none();
 }
 
 // 暂停 记录时间
