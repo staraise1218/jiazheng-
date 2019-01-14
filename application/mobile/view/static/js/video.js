@@ -48,18 +48,19 @@ video.onloadeddata = function(){
     video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
     // video.currentTime = localStorage.getItem("lastplay.current_time");
     console.log("lastplay.current_time :"+ lastplay.current_time + ": --> 视频--加载完成")
-    console.log(video.readyState)
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function () {
-    video.currentTime = lastplay.current_time || postData.current_time;
-    video.play();
-    play_none();
+    if(video.readyState == 4) {
+        video.currentTime = lastplay.current_time || postData.current_time;
+        video.play();
+        play_none();
+    }
 }
 // 开始播放  点击继续播放按钮
-video.onloadeddata = function(){
-    video.currentTime = lastplay.current_time || postData.current_time;
-    continue_btn.onclick = function () {        
+continue_btn.onclick = function () {        
+    if(video.readyState == 4) {
+        video.currentTime = lastplay.current_time || postData.current_time;
         video.play();
         play_none();
     }
@@ -86,7 +87,8 @@ video.onclick = function () {
         data: postData,
         url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
         success: function () {
-            console.log(postData)
+            console.log("数据存储成功");
+            console.log(postData);
         },
         error: function (e) {
             console.log("error -- 暂停");
@@ -97,16 +99,16 @@ video.onclick = function () {
 
 // 视频播放完成 记录时间
 video.onended = function() {
-    postData.ended = 1;
-    postData.current_time = 0;
+    lastplay.ended = postData.ended = 1;
+    lastplay.current_time = postData.current_time = 0;
     
     // 记录
-    localStorage.setItem("postData.order_id", postData.order_id);                       // 
-    localStorage.setItem("postData.lesson_id", postData.lesson_id);                     // 课程id
+    // localStorage.setItem("postData.order_id", postData.order_id);   // 
+    // localStorage.setItem("postData.lesson_id", postData.lesson_id); // 课程id
     // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
-    localStorage.setItem("lastplay.number", postData.number);                           // 播放的集数
-    localStorage.setItem("lastplay.current_time", postData.current_time);
-    localStorage.setItem("postData.ended", postData.ended);
+    // localStorage.setItem("lastplay.number", postData.number);       // 播放的集数
+    localStorage.setItem("lastplay.current_time", postData.current_time);  // 播放时间
+    localStorage.setItem("postData.ended", postData.ended)                 // 是否播放完成
     
     play_block();
     console.log("视频播放完成"); // 记录播放完成
