@@ -22,7 +22,7 @@ var postData = {
     number: lastplay.number,                         // 当前集数
     current_time: lastplay.current_time,             // 当前播放时间
     ended: 0,                                // 是否播放完 0为播放完， 1播放完
-    lesson_episode_id:$(".lesson_episode_id").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
+    lesson_episode_id:$(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
 }
 // 初始化函数
 function init() {
@@ -146,7 +146,7 @@ $(video_btn_wrap).delegate("span","click",function(){
     number = $(this).attr("number");
     postData.current_time = 0;
     video.src = $(this).attr("data-video");
-    postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
+    postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     console.log(postData)
     console.log(lastplay)
     // 记录
