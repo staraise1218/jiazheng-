@@ -115,40 +115,6 @@ video.onended = function() {
         }
     })
 };
-// 视频播放完成 记录时间
-// 兼任 Android
-video.timeupdate  = function() {
-    postData.ended = 1;
-    postData.current_time = 0;
-    
-    // 记录
-    localStorage.setItem("postData.order_id", postData.order_id);                       // 
-    localStorage.setItem("postData.lesson_id", postData.lesson_id);                     // 课程id
-    // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
-    localStorage.setItem("lastplay.number", postData.number);                           // 播放的集数
-    localStorage.setItem("lastplay.current_time", postData.current_time);
-    localStorage.setItem("postData.ended", postData.ended);
-    
-    play_block();
-    console.log("视频播放完成"); // 记录播放完成
-    
-    $.ajax({
-        type: 'POST',
-        data: postData,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function () {
-            console.log(postData)
-        },
-        error: function (e) {
-            console.log("error -- 播放完成");
-        }
-    })
-    alert("视频播放完成")
-};
-
-
-
-
 // 监听页面关闭
 window.onbeforeunload=function(e){
     var e = window.event||e;
