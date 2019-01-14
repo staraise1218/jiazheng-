@@ -59,15 +59,11 @@ video.onclick = function () {
     video.pause();
     play_block();
     
-    current_time = Math.floor(video.currentTime);
-    postData.current_time = current_time;
-    console.log('播放暂停 current_time :' + current_time); 
+    // 记录
+    lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
+    localStorage.setItem("lastplay.current_time", postData.current_time);
     console.log(postData)
     console.log(lastplay)
-    
-    // 记录
-    lastplay.current_time = postData.current_time = video.currentTime;
-    localStorage.setItem("lastplay.current_time", postData.current_time);
     // localStorage.setItem("postData.order_id", postData.order_id);                       // 
     // localStorage.setItem("postData.lesson_id", postData.lesson_id);                     // 课程id
     // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
@@ -123,7 +119,7 @@ window.onbeforeunload=function(e){
     var e = window.event||e;
     
     // 记录
-    lastplay.current_time = postData.current_time = video.currentTime;
+    lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
     localStorage.setItem("lastplay.current_time", postData.current_time);
     // localStorage.setItem("lastplay.number", postData.number);                           // 播放的集数
     // localStorage.setItem("postData.order_id", postData.order_id);                       // 
