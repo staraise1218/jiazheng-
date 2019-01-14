@@ -11,8 +11,8 @@ var video = $(".video")[0],                     // video 组件
 var lastplay = {
     title : $(".lastplay_title").get(0).value,     // 上次播放的标题
     lesson_id : $(".lesson_id").get(0).value,      // 上次课程id
-    lesson_episode_id : $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value, // 上次集数id
-    number : $(".lastplay_number").get(0).value == "" ? $(".wrap .active a:eq(0)").attr("number") : $(".lastplay_number").get(0).value, // 上次播放集数
+    lesson_episode_id : $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value, // 上次集数id
+    number : $(".lastplay_number").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("number") : $(".lastplay_number").get(0).value, // 上次播放集数
     current_time : $(".current_time").get(0).value         // 上次播放时间
 }
 // ajax 返回数据
@@ -140,7 +140,7 @@ window.onbeforeunload=function(e){
     })
 }
 // 分集，事件代理函数
-$(video_btn_wrap).delegate("a","click",function(){
+$(video_btn_wrap).delegate("span","click",function(){
     
     continue_wrap.style.display = "none";
     number = $(this).attr("number");
