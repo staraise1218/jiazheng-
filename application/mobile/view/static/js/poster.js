@@ -107,6 +107,7 @@ function slider_auto() {
             move('next');
             changeOrderStyle(nowIndex);
         }, 3000)
+        alert("left")
     };
 
     //向右滑动事件
@@ -116,6 +117,7 @@ function slider_auto() {
             move('prev');
             changeOrderStyle(nowIndex);
         }, 3000)
+        alert("right")
     }
 // };
 
