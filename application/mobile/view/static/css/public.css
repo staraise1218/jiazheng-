@@ -138,7 +138,7 @@ i,em {
 .nav ul li span {
     display: block;
     height: 0.44rem;
-    background-image: url("__STATIC__/image/icon.png");
+    background-image: url("../image/icon.png");
     background-size: 0.5rem 0.5rem;
     background-repeat: no-repeat;
     background-position: 0rem 0rem;
