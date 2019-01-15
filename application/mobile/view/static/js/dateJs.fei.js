@@ -16,7 +16,6 @@ function setInput(selectDay){
 	document.getElementById('txt_calendar').value=checkYear + splitString + checkMonth + splitString + selectDay;  
 	hidDate();  
 } 
-
 //显示控件
 function showDate() {
 	createDate(nowYear, nowMonth);//创建日历
@@ -28,7 +27,6 @@ function showDate() {
 	document.getElementById('dateOuter').style.top = y + "px";
 	document.getElementById('dateOuter').style.display = "";
 }
-
 /*
  * 以下拼接日历框
  * 并定位日历框
