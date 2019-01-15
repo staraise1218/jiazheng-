@@ -147,13 +147,13 @@ i,em {
     /* border: 1px solid red; */
     width: 0.4rem;
 }
-.nav ul li span:last-child {
+.nav ul li:last-child span {
     background-position: -1.95rem -1.6rem;
 }
-.nav ul li span.active {
+.nav ul li.active span {
     background-position: -1.3rem -0.9rem;
 }
-.nav ul li span.active:last-child {
+.nav ul li span {
     background-position: -1.95rem -0.9rem;
 }
 .nav ul li p {
