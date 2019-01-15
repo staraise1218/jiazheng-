@@ -10,7 +10,10 @@
     <title>预约考试</title>
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/exam.css">
+    <script src="__STATIC__/js/jquery.js"></script>
+    <script src="__STATIC__/js/dateJs.fei.js"></script>
     <style>
+        body,html {width:100%;height:100%;background:#fff;}
         .everyWeekDay .weekday,.everyDay .days {/*解决span不支持width属性*/display: -moz-inline-box;display: inline-block;margin: 5px 0 0 20px;text-align: center;width: 20px;border: 1px solid #F7F7F7;cursor: pointer;}      
         .marginTop{margin-top: 5px;}
         .selectStyle{padding-left: 10px;border: none;border-radius: 3px;outline: none;appearance: none;-moz-appearance: none;-webkit-appearance: none;margin: 0 10px 0 10px;width: 60px;border-color: #0FB9EF;color: #0FB9EF;}       
@@ -33,7 +36,7 @@
         <div class="time-wrap">
             <span class="title tile-title">考试时间</span>
             <span class="time-date">
-                <input id="txt_calendar" name="exam_date" type="text" value="2019-01-04" readonly="readonly" onfocus="showDate()">
+                <input id="txt_calendar" name="exam_date" type="text" value="2019-01-04" readonly="readonly" onclick="showDate()">
                 <span>
                     <img src="__STATIC__/image/rili.png" alt="">
                 </span>
@@ -69,9 +72,7 @@
         <textarea name="remark" id="" cols="30" rows="10">备注</textarea>
 
         <input class="sub_btn" type="button" value="提交报名">
-    </form>
-    <script src="__STATIC__/js/dateJs.fei.js"></script>
-    <script src="__STATIC__/js/jquery.js"></script>
+    </form> 
     <script src="/public/js/layer/layer.js"></script>
     <script type="text/javascript">
         $(function(){

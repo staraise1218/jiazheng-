@@ -7,7 +7,7 @@ var video = $(".video")[0],                     // video 组件
     video_btn = $(".video-btn"),                // 视频选集按钮
     video_btn_wrap = $(".wrap")[0],             // 视频选集 wrap
     number_len = $('.wrap li .video-btn').length; // 选集长度
-// ajax 获取
+// ajax 获取 
 var lastplay = {
     title : $(".lastplay_title").get(0).value,     // 上次播放的标题
     lesson_id : $(".lesson_id").get(0).value,      // 上次课程id
@@ -26,10 +26,12 @@ var postData = {
 }
 // 初始化函数
 function init() {
+
+    
     lastplay.number = localStorage.getItem("lastplay.number")
     lastplay.current_time = localStorage.getItem("lastplay.current_time")
-    console.log($(video_btn).eq(lastplay.number - 1).attr("data-video"))
     video.src = $(video_btn).eq(lastplay.number - 1).attr("data-video");
+    $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
     // 判断继续播放是否显示
     if(lastplay.current_time == 0) {
         continue_wrap.style.display = 'none';
@@ -40,20 +42,24 @@ function init() {
 init();
 // 视频加载
 video.onloadeddata = function(){
-    video.currentTime = localStorage.getItem("lastplay.current_time");
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    // video.currentTime = localStorage.getItem("lastplay.current_time");
     console.log("lastplay.current_time :"+ lastplay.current_time + ": --> 视频--加载完成")
 }
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function () {
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
     video.play();
     play_none();
 }
 // 开始播放  点击继续播放按钮
-continue_btn.onclick = function (e) {
-    video.play();
-    play_none();
+video.onloadeddata = function(){
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    continue_btn.onclick = function () {        
+        video.play();
+        play_none();
+    }
 }
-
 // 暂停 记录时间
 video.onclick = function () {
     video.pause();
@@ -113,7 +119,6 @@ video.onended = function() {
         }
     })
 };
-
 // 监听页面关闭
 window.onbeforeunload=function(e){
     var e = window.event||e;
@@ -141,7 +146,10 @@ window.onbeforeunload=function(e){
 }
 // 分集，事件代理函数
 $(video_btn_wrap).delegate("span","click",function(){
-    
+    $(".btn_active").removeClass("btn_active")
+    $(this).addClass("btn_active");
+    console.log(this)
+
     continue_wrap.style.display = "none";
     number = $(this).attr("number");
     postData.current_time = 0;
