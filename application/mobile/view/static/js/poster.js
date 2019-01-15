@@ -103,14 +103,14 @@ function slider_auto() {
     //向左滑动触发事件
     touch.swipeLeft = function (dom) {
         // alert(dom.innerText);
-        move('prev')
+        move('next')
         // alert("左")
     };
 
     //向右滑动事件
     touch.swipeRight = function (dom) {
         // alert(dom.innerText);
-        move('next')
+        move('prev')
     }
 // };
 
