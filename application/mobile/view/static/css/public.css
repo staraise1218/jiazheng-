@@ -142,6 +142,8 @@ i,em {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: 0rem 0rem;
+    border: 1px solid red;
+    width: 1rem;
 }
 .nav ul li span.active {
     background-position: 0rem 0rem;
