@@ -5,6 +5,7 @@
 body {
     padding-bottom: 2rem;
     box-sizing: border-box;
+    background: #fff;
 }
 a {
     text-decoration: none;
