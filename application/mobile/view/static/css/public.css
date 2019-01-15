@@ -160,7 +160,7 @@ i,em {
     color: #8B8B8B;
     font-size: 0.22rem;
 }
-.nav ul li p.active {
+.nav ul li.active p {
     color: #7ABEDF;
 }
 
