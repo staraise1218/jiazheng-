@@ -110,7 +110,7 @@
     border-radius: 0.08rem;
     z-index: 10;
 }
-.wrapper ul li .right .link-bg {
+#link-bg {
     position: absolute;
     display: inline-block;
     left: 0;
