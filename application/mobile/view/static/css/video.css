@@ -42,7 +42,7 @@ li {
 }
 .wrapper ul li .right {
     position: relative;
-    flex-grow: 1;
+    flex: 1;
     margin-left: 0.2rem;
     display: inline-block;
 }
