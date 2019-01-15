@@ -13,7 +13,7 @@ function init_poster() {
     slider_auto();
 }
 function bindEvent() {
-    $('.prevBtn').add($('.nextBtn')).add($('.item')).on('click', function () {
+    $('.prevBtn').add($('.nextBtn')).add($('.item')).on('touch', function () {
         if($(this).attr('class') == 'prevBtn') {
             move('prev');
         }else if($(this).attr('class') == 'nextBtn') {
