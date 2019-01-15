@@ -134,6 +134,7 @@ i,em {
     justify-content: center;
     align-items: center;
     padding-top: 0.1rem;
+    outline: none;
 }
 .nav ul li span {
     display: block;
