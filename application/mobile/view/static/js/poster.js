@@ -103,14 +103,19 @@ function slider_auto() {
     //向左滑动触发事件
     touch.swipeLeft = function (dom) {
         // alert(dom.innerText);
-        move('next')
-        // alert("左")
+        slider_timer = setTimeout(function () {
+            move('next');
+            changeOrderStyle(nowIndex);
+        }, 3000)
     };
 
     //向右滑动事件
     touch.swipeRight = function (dom) {
         // alert(dom.innerText);
-        move('prev')
+        slider_timer = setTimeout(function () {
+            move('prev');
+            changeOrderStyle(nowIndex);
+        }, 3000)
     }
 // };
 
