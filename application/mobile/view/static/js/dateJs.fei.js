@@ -16,7 +16,6 @@ function setInput(selectDay){
 	document.getElementById('txt_calendar').value=checkYear + splitString + checkMonth + splitString + selectDay;  
 	hidDate();  
 } 
-
 //显示控件
 function showDate() {
 	createDate(nowYear, nowMonth);//创建日历
@@ -28,13 +27,12 @@ function showDate() {
 	document.getElementById('dateOuter').style.top = y + "px";
 	document.getElementById('dateOuter').style.display = "";
 }
-
 /*
  * 以下拼接日历框
  * 并定位日历框
  * */
 //日历最外层div样式
-var outerStyle = "display: none;position: absolute;width: 6.2rem;margin-top: 0.9rem;margin-left:-1.1rem;border: 1px solid #F7F7F7;border-radius: 5px;background-color: #F7F7F7;color: #8B8B8B;padding-bottom: 0.2rem;";
+var outerStyle = "display: none;position:absolute;z-index:5 ;width: 6.2rem;margin-top: 2rem;margin-left:-1.1rem;border: 1px solid #F7F7F7;border-radius: 5px;background-color: #F7F7F7;color: #8B8B8B;padding-bottom: 0.2rem;";
 //日历控件最外层div
 document.write('<div style="' + outerStyle + '" id="dateOuter"></div>')
 	//创建日历样式 
