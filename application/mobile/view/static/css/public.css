@@ -143,18 +143,26 @@ i,em {
     background-size: 100%;
     background-size: 5rem ;
     background-repeat: no-repeat;
-    background-position: -1.25rem -1.6rem;
+    /* background-position: -1.25rem -1.6rem; */
     /* border: 1px solid red; */
     width: 0.5rem;
+}
+
+
+.nav ul li:first-child span {
+    background-position: -1.28rem -1.6rem
 }
 .nav ul li:last-child span {
     background-position: -1.95rem -1.6rem;
 }
+.nav ul li:first-child.active {
+    background-position: -1.25rem -0.9rem;
+}
+.nav ul li:last-child.active {
+    background-position: -1.95rem -0.9rem;
+}
 .nav ul li.active span {
     background-position: -1.3rem -0.9rem;
-}
-.nav ul li span {
-    background-position: -1.95rem -0.9rem;
 }
 .nav ul li p {
     color: #8B8B8B;
