@@ -12,8 +12,10 @@ function init_poster() {
     bindEvent();
     slider_auto();
 }
+init_poster()
+
 function bindEvent() {
-    $('.prevBtn').add($('.nextBtn')).add($('.item')).on('touch', function () {
+    $('.prevBtn').add($('.nextBtn')).add($('.item')).on('click', function () {
         if($(this).attr('class') == 'prevBtn') {
             move('prev');
         }else if($(this).attr('class') == 'nextBtn') {
@@ -98,7 +100,8 @@ function slider_auto() {
 // 
 
 // window.onload = function () {
-    var touch = new Touch(document.getElementsByTagName("li"),80).init();
+    // var touch = new Touch(document.getElementsByTagName("li"),80).init();
+    var touch = new Touch(document.getElementsByClassName("posterItem"),80).init();
         
     //向左滑动触发事件
     touch.swipeLeft = function (dom) {
@@ -183,6 +186,5 @@ function Touch(dom,range) {
     this.swipeRight = function (dom) {}
 }
 
-init_poster()
 
 
