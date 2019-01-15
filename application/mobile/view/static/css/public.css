@@ -129,17 +129,17 @@ i,em {
     width: 100%;
 }
 .nav ul li {
-    display: inline-block;
-    flex-grow: 1;
-    flex-shrink: 1;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding-top: 0.1rem;
 }
 .nav ul li span {
     display: block;
     height: 0.44rem;
     background-image: url("../image/icon.png");
-    background-size: 0.5rem 0.5rem;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: 0rem 0rem;
 }
