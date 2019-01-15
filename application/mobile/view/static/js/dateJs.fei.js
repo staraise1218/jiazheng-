@@ -72,7 +72,7 @@ function createDate(thisYear, thisMonth) {
 	}
 	createDoc += '</div>';
 	//创建每月天数
-	createDoc += '<div class="everyDay"><div class="marginTop">'; //日期样式DIV
+	createDoc += '<div class="everyDay"><div id="marginTop" class="marginTop">'; //日期样式DIV
 	var thisWeek = getThisWeekDay(thisYear, thisMonth, 1); //算出当前年月1号是星期几
 	/*
 	 * 如果当前不是星期天,创建空白日期占位

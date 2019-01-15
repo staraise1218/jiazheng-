@@ -87,7 +87,7 @@ i {
     flex-grow: 1;
     border: 0;
     color: #8b8b8b;
-    height: 0.6rem;
+    height: 0.6rem; 
 }
 .wrapper .time-wrap .time-date  span {
     display: inline-block;
@@ -158,5 +158,8 @@ i {
     text-align: justify;
 }
 
-
+#marginTop{
+    display: block;
+    Word-break: break-all;
+}
 
