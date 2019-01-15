@@ -141,11 +141,11 @@ i,em {
     height: 0.44rem;
     background-image: url("../image/icon.png");
     background-size: 100%;
-    background-size: 4rem;
+    background-size: 5rem ;
     background-repeat: no-repeat;
     background-position: -1.3rem -1.6rem;
     /* border: 1px solid red; */
-    width: 0.4rem;
+    width: 0.5rem;
 }
 .nav ul li:last-child span {
     background-position: -1.95rem -1.6rem;
