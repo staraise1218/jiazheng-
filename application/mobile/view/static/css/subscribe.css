@@ -18,7 +18,8 @@
     height: 1.51rem; 
     width: 2.41rem;
     border-radius: 0.08rem;
-    box-shadow: 0.02rem 0.02rem 0.02rem 0.02rem #B6B5B5
+    box-shadow: 0.02rem 0.02rem 0.02rem 0.02rem #B6B5B5;
+    overflow: hidden;
 }
 .nav-wrap ul li a {
     display: inline-block;
@@ -27,9 +28,9 @@
     -moz-border-radius: 0.5rem;
     -ms-border-radius: 0.5rem;
     -o-border-radius: 0.5rem;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-sizing: border-box;
+    /* border-radius: 0.5rem; */
+    /* overflow: hidden;
+    box-sizing: border-box; */
 }
 .nav-wrap ul li img {
     width: 100%;
