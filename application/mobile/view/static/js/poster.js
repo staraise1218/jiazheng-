@@ -476,7 +476,7 @@ init();
       * Next slide and Previous slide buttons.
       */
       function insertPrevNextButtons() {
-        slider.after('<span class="sw-next-prev sw-prev"></span>');
+        // slider.after('<span class="sw-next-prev sw-prev"></span>');
         slideContainer.find('.sw-prev').click(function(){
           if(allowSlideSwitch){
             disableAutoPlay();
@@ -484,7 +484,7 @@ init();
             enableAutoPlay();
           }
         });
-        slider.after('<span class="sw-next-prev sw-next"></span>');
+        // slider.after('<span class="sw-next-prev sw-next"></span>');
         slideContainer.find('.sw-next').click(function(){
           if(allowSlideSwitch) {
             disableAutoPlay();
