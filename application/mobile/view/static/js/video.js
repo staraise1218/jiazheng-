@@ -165,7 +165,7 @@ $(video_btn_wrap).delegate("span","click",function(){
     localStorage.setItem("postData.order_id", postData.order_id);                       // 
     localStorage.setItem("postData.lesson_id", postData.lesson_id);                     // 课程id
     // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
-    localStorage.setItem("lastplay.number", number);                           // 播放的集数
+    localStorage.setItem("lastplay.number", lastplay.number);                           // 播放的集数
     localStorage.setItem("lastplay.current_time", postData.current_time);
     localStorage.setItem("postData.ended", postData.ended);
 
