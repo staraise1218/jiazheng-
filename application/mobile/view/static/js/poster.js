@@ -95,10 +95,6 @@ function slider_auto() {
 
 
 
-
-
-// 
-
 // window.onload = function () {
     // var touch = new Touch(document.getElementsByTagName("li"),80).init();
     var touch = new Touch(document.getElementsByClassName("posterItem"),80).init();
