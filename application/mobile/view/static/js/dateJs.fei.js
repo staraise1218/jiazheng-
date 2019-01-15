@@ -34,19 +34,19 @@ function showDate() {
  * 并定位日历框
  * */
 //日历最外层div样式
-var outerStyle = "display: none;position: absolute;width: 6.2rem;margin-top: 0.9rem;margin-left:-1.1rem;border: 1px solid #F7F7F7;border-radius: 5px;background-color: #F7F7F7;color: #8B8B8B;padding-bottom: 20px;";
+var outerStyle = "display: none;position: absolute;width: 6.2rem;margin-top: 0.9rem;margin-left:-1.1rem;border: 1px solid #F7F7F7;border-radius: 5px;background-color: #F7F7F7;color: #8B8B8B;padding-bottom: 0.2rem;";
 //日历控件最外层div
 document.write('<div style="' + outerStyle + '" id="dateOuter"></div>')
 	//创建日历样式 
 function createDate(thisYear, thisMonth) {
-	var createDoc = '<div style="height: 30px;">';
+	var createDoc = '<div style="height: 0.3rem;">';
 	//当前年月日，点击此处日历自动跳到当前日期
-	createDoc += '<p style="width: 100%;height: 30px;text-align: center;color: #999;" onclick="getThisDay()">当前日期 ' + nowYear + "年" + nowMonth + "月" + nowDay + "号";
+	createDoc += '<p style="width: 100%;height: 0.3rem;text-align: center;color: #999;" onclick="getThisDay()">当前日期 ' + nowYear + "年" + nowMonth + "月" + nowDay + "号";
 	//关闭日历显示
-	createDoc += '<span id="closeDate" onClick="hidDate()" style="float: right;font-size: 25px;margin: -2tyle="float: right;font-size: 0.25rem;margin: -0.2remx 0.03rem 0 0;cursor: pointer;">×</span></p></div>';
+	createDoc += '<span id="closeDate" onClick="hidDate()" style="float:right;font-size: 0.35rem;margin-right: 0.15rem;">×</span></p></div>';
 	//上一月
 	createDoc += '<div style="margin-bottom: 8px;">';
-	createDoc += '<span id="lastMonth" onclick="lastMonthClick()" style="margin: 0 20px 0 25px;cursor:pointer;"><</span>';
+	createDoc += '<span id="lastMonth" onclick="lastMonthClick()" style="margin: 0 0.2rem 0 0.25rem;cursor:pointer;"><</span>';
 	//创建年份下拉框[1900-2099]年
 	createDoc += '<select id ="selectYear" class="selectStyle" onchange="changeYearAndMonth()">';
 	for(var i = 1900; i <= 2099; i++) {
@@ -60,7 +60,7 @@ function createDate(thisYear, thisMonth) {
 	}
 	createDoc += "</select>月";
 	//下一月
-	createDoc += '<span id="nextMonth" onClick="nextMonthClick()" style="float: right;margin-right: 25px;cursor:pointer;">></span></div>';
+	createDoc += '<span id="nextMonth" onClick="nextMonthClick()" style="float: right;margin-right: 0.25rem;cursor:pointer;">></span></div>';
 	//创建星期
 	createDoc += '<div class="everyWeekDay">';
 	for(var i = 0; i < weekDays.length; i++) {
