@@ -112,6 +112,7 @@
 }
 .wrapper ul li .right .link-bg {
     position: absolute;
+    display: inline-block;
     left: 0;
     padding: 0;
     z-index: 1;
