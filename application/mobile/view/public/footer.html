@@ -29,27 +29,22 @@
 <script src="__STATIC__/js/jquery.js"></script>
 <script>
     console.log("123")
-    $(".index").on("click", function () {
+    $(".index").click(function () {
         
     console.log("123")
         $(".index img").get(0).src = "__STATIC__/image/tab_home@2x.png";
         $(".index p").css("color","#7ABEDF");
         $(".mine img").get(0).src = "__STATIC__/image/tab_my_pre@2x.png";
         $(".index p").css("color","#8B8B8B");
-   
-        console.log("123")
     })
     
     console.log("123")
-    $(".mine").on("click", function () {
-
+    $(".mine").click(function () {
         console.log("123")
         $(".index img").get(0).src = "__STATIC__/image/tab_home@2x.png";
         $(".index p").css("color","#7ABEDF");
         $(".index img").get(0).src = "__STATIC__/image/tab_home@2x.png";
         $(".index p").css("color","#8B8B8B");
-    
-        console.log("123")
     })
 
 
