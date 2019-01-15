@@ -46,6 +46,7 @@
     width: 100%;
 }
 .wrapper ul li {
+    position: relative;
     padding: 0.25rem;
     box-sizing: border-box;
     position: relative;
@@ -107,6 +108,15 @@
     color: #fff;
     font-size: 0.2rem;
     border-radius: 0.08rem;
+    z-index: 10;
+}
+.wrapper ul li .right .link-bg {
+    position: absolute;
+    left: 0;
+    padding: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
 }
 .wrapper ul li .right .time {
     color: #8B8B8B;
