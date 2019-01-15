@@ -141,14 +141,20 @@ i,em {
     height: 0.44rem;
     background-image: url("../image/icon.png");
     background-size: 100%;
-    background-size: contain;
+    background-size: 4rem;
     background-repeat: no-repeat;
-    background-position: 0rem 0rem;
-    border: 1px solid red;
-    width: 1rem;
+    background-position: -1.3rem -1.6rem;
+    /* border: 1px solid red; */
+    width: 0.4rem;
+}
+.nav ul li span:last-child {
+    background-position: -1.95rem -1.6rem;
 }
 .nav ul li span.active {
-    background-position: 0rem 0rem;
+    background-position: -1.3rem -0.9rem;
+}
+.nav ul li span.active:last-child {
+    background-position: -1.95rem -0.9rem;
 }
 .nav ul li p {
     color: #8B8B8B;
