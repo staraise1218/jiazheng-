@@ -500,5 +500,10 @@ em {
 .aunt-btn {
     position: relative;
     display: inline-block;
-    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.aunt-btn a {
+    display: inline-block;
 }

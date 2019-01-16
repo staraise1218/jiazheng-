@@ -88,16 +88,16 @@ function createDom(data) {
                         <a href="tel:13666666666" class="pay-btn">联系家政经纪人</a>\
                     </div>\
                 </div>\
-            </div>'
+                </div>\
+                <a id="link-bg" href="' + data[i].url + '" class="click_link"></a>'
         oLi.innerHTML = str;
         oUl.appendChild(oLi);
-        ($(oLi).click(function(j) {
-            window.location.href = data[j].url;
-        }))(i)
+        // ($(oLi).click(function(j) {
+        //     window.location.href = data[j].url;
+        // }))(i)
     }
 }
 
-/* <a id="link-bg" href="' + data[i].url + '" class="click_link"></a>' */
 // $("#link-bg").click(function(e) {
 //     e.stopPropagation();
 //     window.location.href = "tel:13888888888";
