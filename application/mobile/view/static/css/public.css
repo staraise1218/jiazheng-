@@ -500,4 +500,5 @@ em {
 .aunt-btn {
     position: relative;
     display: inline-block;
+    margin: 0 auto;
 }
