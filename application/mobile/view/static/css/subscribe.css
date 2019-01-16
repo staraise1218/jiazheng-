@@ -123,7 +123,8 @@
     background: #7ABEDF;
     /* margin-top: 0.05rem; */
     border: 0;
-    color: #fff;
+    /* color: #fff; */
+    color: red;
     font-size: 0.2rem;
     border-radius: 0.08rem;
     z-index: 100;
