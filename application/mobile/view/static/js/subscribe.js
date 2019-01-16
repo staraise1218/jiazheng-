@@ -89,7 +89,7 @@ function createDom(data) {
                     </div>\
                 </div>\
             </div>\
-            <a id="link-bg" href="' + data[i].url + '" class="click_link"></a>'
+            <a id="link-bg" href="javascript:' + data[i].url + '" class="click_link"></a>'
         oLi.innerHTML = str;
         oUl.appendChild(oLi);
     }
