@@ -1,19 +1,21 @@
 <!-- 预约页面 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>找阿姨</title>
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/public.css">
     <link rel="stylesheet" href="__STATIC__/css/subscribe.css">
 </head>
+
 <body>
     <!-- 轮播图 -->
-    <div class="poster">
+    <!-- <div class="poster">
         <ul class="img-box">
             {foreach name="bannerList" item="item"}
             <li><a href="{if condition="$item.ad_link != ''"}{$item.ad_link}{else/}javascript:;{/if}"><img src="{$item.ad_code}" alt=""></a></li>
@@ -27,8 +29,27 @@
                 {/for}
             </ul>
         </div>
-    </div>
+    </div> -->
     <!-- 轮播图结束 -->
+
+
+    <!-- 轮播图2 -->
+    <section>
+        <figure id="full_feature" class="swipslider">
+            <ul class="sw-slides">
+
+                {foreach name="bannerList" item="item"}
+                <li class="sw-slide">
+                    <a href="{if condition=" $item.ad_link !='' "}{$item.ad_link}{else/}javascript:;{/if}">
+                        <img src="{$item.ad_code}" alt="">
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+        </figure>
+    </section>
+    <!-- end -->
+
     <!-- 中间导航 -->
     <div class="nav-wrap">
         <ul>
@@ -50,4 +71,5 @@
     <script src="__STATIC__/js/poster.js"></script>
     <script src="__STATIC__/js/subscribe.js"></script>
 </body>
+
 </html>
