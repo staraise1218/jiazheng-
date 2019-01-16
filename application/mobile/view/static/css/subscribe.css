@@ -117,17 +117,21 @@
     text-overflow: ellipsis;
 }
 
+.wrapper ul li .right .pay {
+    z-index: 10;
+}
+
 .wrapper ul li .right .pay .pay-btn {
     padding: 0.2rem 0.2rem;
     height: 0.48rem;
     background: #7ABEDF;
     /* margin-top: 0.05rem; */
     border: 0;
-    /* color: #fff; */
-    color: red;
+    color: #fff;
+    /* color: red; */
     font-size: 0.2rem;
     border-radius: 0.08rem;
-    z-index: 100;
+    /* z-index: 100; */
 }
 
 #link-bg {
