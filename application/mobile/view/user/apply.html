@@ -2,10 +2,11 @@
 <!-- 2019-01-04 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>预约考试</title>
     <script src="__STATIC__/js/rem.js"></script>
@@ -13,13 +14,46 @@
     <script src="__STATIC__/js/jquery.js"></script>
     <script src="__STATIC__/js/dateJs.fei.js"></script>
     <style>
-        body,html {width:100%;height:100%;background:#fff;}
-        .everyWeekDay .weekday,.everyDay .days {/*解决span不支持width属性*/display: -moz-inline-box;display: inline-block;margin: 5px 0 0 20px;text-align: center;width: 20px;border: 1px solid #F7F7F7;cursor: pointer;}      
-        .marginTop{margin-top: 5px;}
-        .selectStyle{padding-left: 10px;border: none;border-radius: 3px;outline: none;appearance: none;-moz-appearance: none;-webkit-appearance: none;margin: 0 10px 0 10px;width: 60px;border-color: #0FB9EF;color: #0FB9EF;}       
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+        
+        .everyWeekDay .weekday,
+        .everyDay .days {
+            /*解决span不支持width属性*/
+            display: -moz-inline-box;
+            display: inline-block;
+            margin: 5px 0 0 20px;
+            text-align: center;
+            width: 20px;
+            border: 1px solid #F7F7F7;
+            cursor: pointer;
+        }
+        
+        .marginTop {
+            margin-top: 5px;
+        }
+        
+        .selectStyle {
+            padding-left: 10px;
+            border: none;
+            border-radius: 3px;
+            outline: none;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            margin: 0 10px 0 10px;
+            width: 60px;
+            border-color: #0FB9EF;
+            color: #0FB9EF;
+        }
     </style>
-    
+
 </head>
+
 <body>
     <form class="wrapper examApply" action="">
 
@@ -70,64 +104,68 @@
                 </select>
             </span>
         </div>
-        <textarea name="remark" id="" cols="30" rows="10">备注</textarea>
+        <textarea name="remark" id="" cols="30" rows="10" placeholder="备注"></textarea>
 
         <input class="sub_btn" type="button" value="提交报名">
-    </form> 
+    </form>
     <script src="/public/js/layer/layer.js"></script>
     <script type="text/javascript">
-        $(function(){
-            $('select[name=province_id]').change(function(){
+        $(function() {
+            $('select[name=province_id]').change(function() {
                 var province_id = $(this).val();
-                if(province_id == 0) return false;
+                if (province_id == 0) return false;
 
                 $.ajax({
                     url: "{:U('mobile/user/ajaxGetRegion')}",
                     type: 'post',
                     dataType: 'json',
-                    data: {region_id: province_id},
-                    success: function(res){
+                    data: {
+                        region_id: province_id
+                    },
+                    success: function(res) {
                         var html = '<option value="0">请选择</option>';
-                        $.each(res.data, function(){
-                            html += '<option name="city_id" id="city_id" value='+this.id+'>'+this.name+'</option';
+                        $.each(res.data, function() {
+                            html += '<option name="city_id" id="city_id" value=' + this.id + '>' + this.name + '</option';
                         })
                         $('select[name=city_id]').html(html);
                     }
                 })
             })
-            $('select[name=city_id]').change(function(){
+            $('select[name=city_id]').change(function() {
                 var city_id = $(this).val();
-                if(city_id == 0) return false;
+                if (city_id == 0) return false;
 
                 $.ajax({
                     url: "{:U('mobile/user/ajaxGetRegion')}",
                     type: 'post',
                     dataType: 'json',
-                    data: {region_id: city_id},
-                    success: function(res){
+                    data: {
+                        region_id: city_id
+                    },
+                    success: function(res) {
                         var html = '<option value="0">请选择</option>';
-                        $.each(res.data, function(){
-                            html += '<option name="location_id" id="location_id" value='+this.id+'>'+this.name+'</option';
+                        $.each(res.data, function() {
+                            html += '<option name="location_id" id="location_id" value=' + this.id + '>' + this.name + '</option';
                         })
                         $('select[name=location_id]').html(html);
                     }
                 })
             })
 
-            $('.sub_btn').click(function(){
-                if($('select[name=exam_content_id]').val() == 0) {
+            $('.sub_btn').click(function() {
+                if ($('select[name=exam_content_id]').val() == 0) {
                     layer.msg('请选择考试名称');
                     return fasle;
                 }
-                if($('select[name=province_id]').val() == 0) {
+                if ($('select[name=province_id]').val() == 0) {
                     layer.msg('请选择考试位置');
                     return false;
                 }
-                if($('select[name=city_id]').val() == 0) {
+                if ($('select[name=city_id]').val() == 0) {
                     layer.msg('请选择考试位置');
                     return false;
                 }
-                if($('select[name=location_id]').val() == 0) {
+                if ($('select[name=location_id]').val() == 0) {
                     layer.msg('请选择考点');
                     return false;
                 }
@@ -138,11 +176,13 @@
                     type: 'post',
                     dataType: 'json',
                     data: $('form').serialize(),
-                    success: function(res){
+                    success: function(res) {
                         layer.closeAll('loading');
-                        if(res.code == 200){
-                            layer.msg('报名成功', {icon:1}, function(){
-                                window.location="{:U('mobile/user/index')}";
+                        if (res.code == 200) {
+                            layer.msg('报名成功', {
+                                icon: 1
+                            }, function() {
+                                window.location = "{:U('mobile/user/index')}";
                             })
                         } else {
                             layer.msg('报名失败，请稍后再试');
@@ -153,4 +193,5 @@
         })
     </script>
 </body>
+
 </html>
