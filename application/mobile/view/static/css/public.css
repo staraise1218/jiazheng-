@@ -104,7 +104,7 @@ i,em {
 .order ul li {
     cursor: pointer;
 }
-.order ul .active {
+.order ul .activePoster {
     background: #7abedf;
 }
 /* 轮播图结束 */

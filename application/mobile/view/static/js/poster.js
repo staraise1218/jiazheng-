@@ -81,8 +81,8 @@ function move(direction) {
     
 }
 function changeOrderStyle(index) {
-    $('.active').removeClass('active');
-    $('.item').eq(index).addClass('active');
+    $('.activePoster').removeClass('activePoster');
+    $('.item').eq(index).addClass('activePoster');
 }
 function slider_auto() {
     slider_timer = setTimeout(function () {
