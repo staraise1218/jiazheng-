@@ -85,7 +85,7 @@ function createDom(data) {
                 </div>\
                 <div class="right-pay-wrap">\
                     <div class="pay">\
-                        <a href="javascript:" class="pay-btn">联系家政经纪人</a>\
+                        <a href="" class="pay-btn">联系家政经纪人</a>\
                     </div>\
                 </div>\
             </div>\
