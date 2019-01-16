@@ -161,9 +161,9 @@ i,em {
 .nav ul li.mine.active span {
     background-position: -1.95rem -0.9rem;
 }
-.nav ul li.active span {
+/* .nav ul li span {
     background-position: -1.3rem -0.9rem;
-}
+} */
 .nav ul li p {
     color: #8B8B8B;
     font-size: 0.22rem;
