@@ -85,7 +85,7 @@ function createDom(data) {
                 </div>\
                 <div class="right-pay-wrap">\
                     <div class="pay">\
-                        <a href="tel:13888888888" class="pay-btn">联系家政经纪人</a>\
+                        <a href="javascript:void(0)" class="pay-btn">联系家政经纪人</a>\
                     </div>\
                 </div>\
             </div>\
@@ -94,11 +94,11 @@ function createDom(data) {
         oUl.appendChild(oLi);
     }
 }
-// $(".pay-btn").click(function(e) {
-//     alert("tell")
-//     e.preventDefault();
-//     window.location.href = "tel:13888888888";
-// })
+$(".pay-btn").click(function(e) {
+    alert("tell")
+    e.stopPropagation();
+    window.location.href = "tel:13888888888";
+})
 
 
 
