@@ -155,12 +155,12 @@ i,em {
 .nav ul li:last-child span {
     background-position: -1.95rem -1.6rem;
 }
-.nav ul li:first-child[class="active"] {
+/* .nav ul li:first-child[class="active"] {
     background-position: -1.25rem -0.9rem;
-}
-.nav ul li:last-child[class="active"] {
+} */
+/* .nav ul li:last-child[class="active"] {
     background-position: -1.95rem -0.9rem;
-}
+} */
 .nav ul li.active span {
     background-position: -1.3rem -0.9rem;
 }
