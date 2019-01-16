@@ -157,8 +157,8 @@ i,em {
 }
 .nav ul li:first-child[class="active"] {
     background-position: -1.25rem -0.9rem;
-} */
-/* .nav ul li:last-child[class="active"] {
+}
+.nav ul li:last-child[class="active"] {
     background-position: -1.95rem -0.9rem;
 }
 .nav ul li.active span {
