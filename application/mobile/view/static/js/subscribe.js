@@ -93,8 +93,9 @@ function createDom(data) {
         oLi.innerHTML = str;
         oUl.appendChild(oLi);
     }
+
     $(".pay-btn").click(function(e) {
-        alert("tell")
+        console.log("tell")
         e.stopPropagation();
         window.location.href = "tel:13888888888";
     })
