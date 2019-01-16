@@ -52,8 +52,8 @@
 
                 {foreach name="bannerList" item="item"}
                 <li class="sw-slide">
-                    <a href="">
-                        <img src="img/summer_beach.jpg" alt="Summer beach concept">
+                    <a href="{if condition=" $item.ad_link !='' "}{$item.ad_link}{else/}javascript:;{/if}">
+                        <img src="{$item.ad_code}" alt="">
                     </a>
                 </li>
                 {/foreach}
@@ -109,7 +109,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>
