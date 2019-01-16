@@ -85,7 +85,7 @@ function createDom(data) {
                 </div>\
                 <div class="right-pay-wrap">\
                     <div class="pay">\
-                        <a href="tel:13666666666" class="pay-btn">联系家政经纪人</a>\
+                        <a href="" class="pay-btn">联系家政经纪人</a>\
                     </div>\
                 </div>\
             </div>\
@@ -95,8 +95,9 @@ function createDom(data) {
     }
 }
 $(".pay-btn").click(function(e) {
+    alert("tell")
     e.preventDefault();
-    window.location.href = "tel:13666666666"
+    window.location.href = "tel:13666666666";
 })
 
 
