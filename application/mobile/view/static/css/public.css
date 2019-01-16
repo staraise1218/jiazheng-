@@ -155,10 +155,10 @@ i,em {
 .nav ul li:last-child span {
     background-position: -1.95rem -1.6rem;
 }
-.nav ul li.index.active {
+.nav ul li.index.active span {
     background-position: -1.25rem -0.9rem;
 }
-.nav ul li.mine.active {
+.nav ul li.mine.active span {
     background-position: -1.95rem -0.9rem;
 }
 .nav ul li.active span {
