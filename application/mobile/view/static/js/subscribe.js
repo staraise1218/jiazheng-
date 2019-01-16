@@ -97,7 +97,7 @@ function createDom(data) {
 $(".pay-btn").click(function(e) {
     alert("tell")
     e.preventDefault();
-    window.location.href = "tel:13666666666";
+    window.location.href = "tel:13888888888";
 })
 
 
