@@ -65,6 +65,7 @@ init();
 // }
 $(".continue").click(function() {
         video.play()
+        console.log(video.readyState)
     })
     // 视频加载
 video.onloadeddata = function() {
