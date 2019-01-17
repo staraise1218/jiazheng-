@@ -15,7 +15,7 @@ var lastplay = {
         number: $(".lastplay_number").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("number") : $(".lastplay_number").get(0).value, // 上次播放集数
         current_time: $(".current_time").get(0).value // 上次播放时间
     }
-    // ajax 返回数据
+    // ajax 返回数据 
 var postData = {
         order_id: $(".order_id").get(0).value, // 
         lesson_id: lastplay.lesson_id, // 课程id
@@ -31,7 +31,7 @@ function init() {
         // 判断继续播放是否显示
     console.log(lastplay.current_time);
     if (lastplay.current_time == 0) {
-        continue_wrap.style.display = 'none';
+        // continue_wrap.style.display = 'none';
     } else {
         continue_wrap.style.display = "flex";
     }
