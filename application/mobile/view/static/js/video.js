@@ -57,14 +57,16 @@ function init() {
 init();
 
 
-function readyState() {
-    if (video.readyState == 4) {
-        console.log(4)
-    }
-    video.play();
-}
-
-// 视频加载
+// function readyState() {
+//     if (video.readyState == 4) {
+//         console.log(4)
+//     }
+//     video.play();
+// }
+$(".continue").click(function() {
+        video.play()
+    })
+    // 视频加载
 video.onloadeddata = function() {
         video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
         // video.currentTime = localStorage.getItem("lastplay.current_time");
