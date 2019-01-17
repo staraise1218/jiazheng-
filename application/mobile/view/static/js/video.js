@@ -26,14 +26,10 @@ var postData = {
     }
     // 初始化函数
 function init() {
-
-
-    // lastplay.number = lastplay.number || localStorage.getItem("lastplay.number");
-    // lastplay.current_time = localStorage.getItem("lastplay.current_time")
-    // video.src = $(video_btn).eq(lastplay.number - 1).attr("data-video");
+    // 选集按钮高亮
     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
         // 判断继续播放是否显示
-    console.log(lastplay.current_time)
+    console.log(lastplay.current_time);
     if (lastplay.current_time == 0) {
         continue_wrap.style.display = 'none';
     } else {
@@ -187,14 +183,19 @@ $(video_btn_wrap).delegate("span", "click", function() {
     localStorage.setItem("lastplay.current_time", postData.current_time);
     localStorage.setItem("postData.ended", postData.ended);
 
+
+    video.play();
+    video.currentTime = 0;
+    play_none();
+
     // 加载完成
-    video.onloadeddata = function() {
-        console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
-        video.currentTime = 0;
-        // play_block();
-        play_none();
-        video.play();
-    }
+    // video.onloadeddata = function() {
+    //     console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
+    //     video.currentTime = 0;
+    //     play_block();
+    //     play_none();
+    //     video.play();
+    // }
 });
 // 播放按钮 继续播放 wrap 隐藏
 function play_none() {
