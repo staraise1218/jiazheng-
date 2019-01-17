@@ -55,6 +55,8 @@ play_btn_img.onclick = function() {
     }
     // 开始播放  点击继续播放按钮
 video.onloadeddata = function() {
+        console.log($(".current_time").get(0).value)
+        console.log(lastplay.current_time)
         video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
         continue_btn.onclick = function() {
             video.play();
