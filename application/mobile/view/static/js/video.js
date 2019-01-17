@@ -46,29 +46,7 @@ function init() {
 init();
 
 
-// function readyState() {
-//     if (video.readyState == 4) {
-//         console.log(4)
-//     }
-//     video.play();
-// }
-$(".continue").click(function() {
-        console.log(video.readyState)
-        video.play()
-        if (video.readyState == 1) {
-            console.log(1)
-        }
-        if (video.readyState == 2) {
-            console.log(2)
-        }
-        if (video.readyState == 3) {
-            console.log(3)
-        }
-        if (video.readyState == 4) {
-            console.log(4)
-        }
-    })
-    // 视频加载
+// 视频加载
 video.onloadeddata = function() {
         video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
         // video.currentTime = localStorage.getItem("lastplay.current_time");
@@ -81,16 +59,25 @@ play_btn_img.onclick = function() {
         play_none();
     }
     // 开始播放  点击继续播放按钮
-    // video.onloadeddata = function() {
-    //         console.log($(".current_time").get(0).value)
-    //         console.log(lastplay.current_time)
-    //             // video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
-    //         continue_btn.onclick = function() {
-    //             video.play();
-    //             play_none();
-    //         }
-    //     }
-    // 暂停 记录时间
+
+$(".continue").click(function() {
+    if (video.readyState == 4) {
+        console.log("readystate == 4")
+        video.play();
+        play_none();
+    }
+})
+
+// video.onloadeddata = function() {
+//         console.log($(".current_time").get(0).value)
+//         console.log(lastplay.current_time)
+//             // video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+//         continue_btn.onclick = function() {
+//             video.play();
+//             play_none();
+//         }
+//     }
+// 暂停 记录时间
 video.onclick = function() {
     video.pause();
     play_block();
