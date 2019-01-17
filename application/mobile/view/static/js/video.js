@@ -152,16 +152,16 @@ $(video_btn_wrap).delegate("span", "click", function() {
     console.log(this)
 
     continue_wrap.style.display = "none";
-    number = $(this).attr("number");
-    postData.current_time = 0;
-    video.src = $(this).attr("data-video");
+    lastplay.number = postData.number = $(this).attr("number");
+    postData.current_time = lastplay.currentTime = 0;
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     console.log(postData)
     console.log(lastplay)
-        // 记录
-    console.log("number : " + number + " --> 第...集")
-    console.log(lastplay.number)
-    lastplay.number = number;
+    video.src = $(this).attr("data-video");
+    // 记录
+    console.log("number : " + lastplay.number + " --> 第...集")
+        // lastplay.number = number;
+    console.log(lastplay.number);
 
     // 记录
     localStorage.setItem("postData.order_id", postData.order_id); // 
