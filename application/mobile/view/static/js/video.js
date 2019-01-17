@@ -28,9 +28,9 @@ var postData = {
 function init() {
 
 
-    lastplay.number = localStorage.getItem("lastplay.number")
-    lastplay.current_time = localStorage.getItem("lastplay.current_time")
-    video.src = $(video_btn).eq(lastplay.number - 1).attr("data-video");
+    // lastplay.number = lastplay.number || localStorage.getItem("lastplay.number");
+    // lastplay.current_time = localStorage.getItem("lastplay.current_time")
+    // video.src = $(video_btn).eq(lastplay.number - 1).attr("data-video");
     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
         // 判断继续播放是否显示
     console.log(lastplay.current_time)
