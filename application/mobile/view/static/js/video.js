@@ -41,6 +41,19 @@ function init() {
     }
 }
 init();
+if (video.readyState == 1) {
+    consolg.loe(1)
+}
+if (video.readyState == 2) {
+    consolg.loe(2)
+}
+if (video.readyState == 3) {
+    consolg.loe(3)
+}
+if (video.readyState == 4) {
+    consolg.loe(4)
+}
+
 // 视频加载
 video.onloadeddata = function() {
         video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
@@ -57,7 +70,7 @@ play_btn_img.onclick = function() {
 video.onloadeddata = function() {
         console.log($(".current_time").get(0).value)
         console.log(lastplay.current_time)
-        video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+            // video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
         continue_btn.onclick = function() {
             video.play();
             play_none();
