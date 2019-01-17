@@ -39,18 +39,7 @@ function init() {
     } else {
         continue_wrap.style.display = "flex";
     }
-    if (video.readyState == 1) {
-        consolg.loe(1)
-    }
-    if (video.readyState == 2) {
-        consolg.loe(2)
-    }
-    if (video.readyState == 3) {
-        consolg.loe(3)
-    }
-    if (video.readyState == 4) {
-        consolg.loe(4)
-    }
+
 
 
 }
@@ -64,8 +53,20 @@ init();
 //     video.play();
 // }
 $(".continue").click(function() {
-        video.play()
         console.log(video.readyState)
+        video.play()
+        if (video.readyState == 1) {
+            consolg.loe(1)
+        }
+        if (video.readyState == 2) {
+            consolg.loe(2)
+        }
+        if (video.readyState == 3) {
+            consolg.loe(3)
+        }
+        if (video.readyState == 4) {
+            consolg.loe(4)
+        }
     })
     // 视频加载
 video.onloadeddata = function() {
