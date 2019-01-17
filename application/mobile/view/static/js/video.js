@@ -56,16 +56,16 @@ $(".continue").click(function() {
         console.log(video.readyState)
         video.play()
         if (video.readyState == 1) {
-            consolg.loe(1)
+            console.log(1)
         }
         if (video.readyState == 2) {
-            consolg.loe(2)
+            console.log(2)
         }
         if (video.readyState == 3) {
-            consolg.loe(3)
+            console.log(3)
         }
         if (video.readyState == 4) {
-            consolg.loe(4)
+            console.log(4)
         }
     })
     // 视频加载
