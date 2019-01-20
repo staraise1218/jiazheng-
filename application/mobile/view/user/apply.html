@@ -197,7 +197,7 @@
         <div class="time-wrap">
             <span class="title tile-title">考试时间</span>
             <span class="time-date">
-                <input id="txt_calendar" id="inp" name="exam_date" type="text" value="2019-01-20" readonly="readonly">
+                <input id="txt_calendar" name="exam_date" type="text" value="2019-01-20" readonly="readonly">
                 <span>
                     <img src="__STATIC__/image/rili.png" alt="">
                 </span>
@@ -328,27 +328,27 @@
             //date: '2018-9-20',
             clickCb: function(y, m, d) {
                 // document.querySelector('#inp').value = y + '-' + m + '-' + d
-                $("#inp").val(y + '-' + m + '-' + d)
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
                 document.querySelector('#schedule-box').style.display = 'none'
             },
             nextMonthCb: function(y, m, d) {
-                // document.querySelector('#inp').value = y + '-' + m + '-' + d
-                $("#inp").val(y + '-' + m + '-' + d)
+                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
                 document.querySelector('#schedule-box').style.display = 'none'
             },
             nextYeayCb: function(y, m, d) {
-                // document.querySelector('#inp').value = y + '-' + m + '-' + d
-                $("#inp").val(y + '-' + m + '-' + d)
+                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
                 document.querySelector('#schedule-box').style.display = 'none'
             },
             prevMonthCb: function(y, m, d) {
-                // document.querySelector('#inp').value = y + '-' + m + '-' + d
-                $("#inp").val(y + '-' + m + '-' + d)
+                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
                 document.querySelector('#schedule-box').style.display = 'none'
             },
             prevYearCb: function(y, m, d) {
-                // document.querySelector('#inp').value = y + '-' + m + '-' + d
-                $("#inp").val(y + '-' + m + '-' + d)
+                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
                 document.querySelector('#schedule-box').style.display = 'none'
             }
         });
