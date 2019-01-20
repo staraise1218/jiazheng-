@@ -62,12 +62,6 @@ i {
     position: relative;
 }
 
-.wrapper .time-wrap #schedule-box {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-}
-
 .wrapper .time-wrap,
 .wrapper .choose-content,
 .wrapper .location-precise {
