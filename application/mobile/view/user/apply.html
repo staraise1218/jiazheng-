@@ -327,29 +327,21 @@
             el: '#schedule-box',
             //date: '2018-9-20',
             clickCb: function(y, m, d) {
-                // document.querySelector('#inp').value = y + '-' + m + '-' + d
-                $("#txt_calendar").val(y + '-' + m + '-' + d)
+                document.querySelector('#schedule-box').value = y + '-' + m + '-' + d
+                    // $("#txt_calendar").val(y + '-' + m + '-' + d)
                 document.querySelector('#schedule-box').style.display = 'none'
             },
             nextMonthCb: function(y, m, d) {
-                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
-                $("#txt_calendar").val(y + '-' + m + '-' + d)
-                document.querySelector('#schedule-box').style.display = 'none'
+                document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
             },
             nextYeayCb: function(y, m, d) {
-                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
-                $("#txt_calendar").val(y + '-' + m + '-' + d)
-                document.querySelector('#schedule-box').style.display = 'none'
+                document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
             },
             prevMonthCb: function(y, m, d) {
-                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
-                $("#txt_calendar").val(y + '-' + m + '-' + d)
-                document.querySelector('#schedule-box').style.display = 'none'
+                document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
             },
             prevYearCb: function(y, m, d) {
-                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
-                $("#txt_calendar").val(y + '-' + m + '-' + d)
-                document.querySelector('#schedule-box').style.display = 'none'
+                document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
             }
         });
         $("#txt_calendar").click(function() {
