@@ -57,7 +57,7 @@
         }
         
         #schedule-box {
-            /* display: none; */
+            display: none;
             width: 320px;
             margin: 0 auto;
             padding: 35px 20px;
@@ -354,7 +354,7 @@
         });
         $("#inp").click(function() {
             // document.getElementById("schedule-box").style.display = 'block'
-            $("#schedule-box").get(0).style.display = "block"
+            document.querySelector('#schedule-box').style.display = 'none'
         })
     </script>
 </body>
