@@ -69,22 +69,6 @@
 .content-wrap li a .icon {
     height: 0.4rem;
     vertical-align: -0.08rem;
-}
-
-.content-wrap li a .icon img {
-    height: 0.4rem;
-}
-
-.content-wrap li a .icon span {
-    font-size: 0.3rem;
-    font-weight: 400;
-    color: rgba(58, 58, 58, 1);
-    line-height: 0.42rem;
-}
-
-.content-wrap li .more {
-    height: 0.5rem;
-    width: 0.5rem;
     display: block;
     height: 0.44rem;
     background-image: url("../image/icon.png");
@@ -93,12 +77,28 @@
     background-repeat: no-repeat;
     background-position: -1.25rem -1.6rem;
     border: 1px solid red;
+    width: 0.5rem;
 }
 
 
-/* .content-wrap li .more img {
-    height: 0.5rem;
+/* .content-wrap li a .icon img {
+    height: 0.4rem;
+}
+
+.content-wrap li a .icon span {
+    font-size: 0.3rem;
+    font-weight: 400;
+    color: rgba(58, 58, 58, 1);
+    line-height: 0.42rem;
 } */
+
+.content-wrap li .more {
+    height: 0.5rem;
+}
+
+.content-wrap li .more img {
+    height: 0.5rem;
+}
 
 
 /* 个人信息 */
