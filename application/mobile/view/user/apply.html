@@ -12,7 +12,6 @@
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/exam.css">
     <script src="__STATIC__/js/jquery.js"></script>
-    <script src="__STATIC__/js/dateJs.fei.js"></script>
     <style>
         body,
         html {
@@ -322,6 +321,7 @@
 
 
     <!-- 日历 -->
+    <script src="__STATIC__/js/dateJs.fei.js"></script>
     <script>
         var mySchedule = new Schedule({
             el: '#schedule-box',
@@ -352,7 +352,7 @@
                 document.querySelector('#schedule-box').style.display = 'none'
             }
         });
-        $("#inp").click(function() {
+        $("#txt_calendar").click(function() {
             // document.getElementById("schedule-box").style.display = 'block'
             document.querySelector('#schedule-box').style.display = 'block'
         })
