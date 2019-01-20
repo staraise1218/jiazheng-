@@ -75,7 +75,7 @@
     background-size: 100%;
     background-size: 5rem;
     background-repeat: no-repeat;
-    background-position: -1.25rem -1.6rem;
+    /* background-position: -1.25rem -1.6rem; */
     /* border: 1px solid red; */
     width: 0.5rem;
 }
