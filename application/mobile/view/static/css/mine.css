@@ -69,7 +69,7 @@
 .content-wrap li a .icon {
     height: 0.4rem;
     vertical-align: -0.08rem;
-    display: block;
+    display: inline-block;
     height: 0.44rem;
     background-image: url("../image/icon.png");
     background-size: 100%;
