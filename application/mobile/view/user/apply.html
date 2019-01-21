@@ -175,6 +175,22 @@
         .icon-112leftarrowhead:before {
             content: "\e6f6";
         }
+        .date-icon {
+            height: 0.4rem;
+            vertical-align: -0.08rem;
+            display: inline-block;
+            height: 0.44rem;
+            background-image: url("../image/icon.png");
+            background-size: 100%;
+            background-size: 5rem;
+            background-repeat: no-repeat;
+            width: 0.5rem;
+            background-position: -1.25rem -0.4rem
+        }
+
+
+
+;
     </style>
 
 </head>
@@ -197,8 +213,8 @@
             <span class="title tile-title">考试时间</span>
             <span class="time-date">
                 <input id="txt_calendar" name="exam_date" type="text" value="" readonly="readonly">
-                <span>
-                    <img src="__STATIC__/image/rili.png" alt="">
+                <span class="date-icon">
+                    <!-- <img src="__STATIC__/image/rili.png" alt=""> -->
                 </span>
             </span>
             <div id="schedule-box"></div>
