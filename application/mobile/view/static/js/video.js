@@ -180,10 +180,11 @@ $(video_btn_wrap).delegate("span", "click", function() {
     console.log(lastplay)
     video.src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     // 记录
-    alert("number : " + lastplay.number + " --> 第...集")
-        // lastplay.number = number;
-    alert(lastplay.number);
-    video.currentTime = 0;
+    // alert("number : " + lastplay.number + " --> 第...集")
+    // alert(lastplay.number);
+    alert(video.src)
+    video.currentTime = 5;
+    alert(video.currentTime)
     video.play();
     play_none();
     
