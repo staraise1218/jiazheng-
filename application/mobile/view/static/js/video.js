@@ -169,7 +169,7 @@ $(video_btn_wrap).delegate("span", "click", function() {
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     console.log(postData)
     console.log(lastplay)
-    video.src = $(this).attr("data-video") + "http://jiazheng.staraise.com.cn";
+    video.src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     // 记录
     console.log("number : " + lastplay.number + " --> 第...集")
         // lastplay.number = number;
