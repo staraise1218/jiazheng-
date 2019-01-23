@@ -62,10 +62,12 @@ play_btn_img.onclick = function() {
     // 开始播放  点击继续播放按钮
 
 $(".continue").click(function() {
+    alert(video.readyState)
     if (video.readyState == 4) {
         console.log("readystate == 4")
         video.play();
         play_none();
+        alert(video.readyState)
     }
 })
 
