@@ -7,7 +7,7 @@ var video = $(".video")[0], // video 组件
     video_btn = $(".video-btn"), // 视频选集按钮
     video_btn_wrap = $(".wrap")[0], // 视频选集 wrap
     number_len = $('.wrap li .video-btn').length; // 选集长度
-// ajax 获取 
+// ajax 获取  
 var lastplay = {
         title: $(".lastplay_title").get(0).value, // 上次播放的标题
         lesson_id: $(".lesson_id").get(0).value, // 上次课程id
@@ -169,7 +169,7 @@ $(video_btn_wrap).delegate("span", "click", function() {
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     console.log(postData)
     console.log(lastplay)
-    video.src = $(this).attr("data-video");
+    video.src = $(this).attr("data-video") + "http://jiazheng.staraise.com.cn";
     // 记录
     console.log("number : " + lastplay.number + " --> 第...集")
         // lastplay.number = number;
