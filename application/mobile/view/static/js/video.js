@@ -59,16 +59,16 @@ play_btn_img.onclick = function() {
         video.play();
         play_none();
     }
-    // 开始播放  点击继续播放按钮
 
+// 开始播放  点击继续播放按钮
 $(".continue").click(function() {
-    alert(video.readyState)
-    if (video.readyState == 4) {
-        console.log("readystate == 4")
-        video.play();
-        play_none();
-        alert(video.readyState)
-    }
+    // alert(video.readyState)
+    // if (video.readyState == 4) {
+    //     console.log("readystate == 4")
+    //     video.play();
+    //     play_none();
+    //     alert(video.readyState)
+    // }
     video.play();
     play_none();
 
@@ -194,8 +194,8 @@ $(video_btn_wrap).delegate("span", "click", function() {
     localStorage.setItem("postData.ended", postData.ended);
 
 
-    video.play();
     video.currentTime = 0;
+    video.play();
     play_none();
 
     // 加载完成
