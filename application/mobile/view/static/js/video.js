@@ -69,6 +69,9 @@ $(".continue").click(function() {
         play_none();
         alert(video.readyState)
     }
+    video.play();
+    play_none();
+
 })
 
 // video.onloadeddata = function() {
