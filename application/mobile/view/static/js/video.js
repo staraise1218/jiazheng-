@@ -35,11 +35,13 @@ function init() {
     } else {
         continue_wrap.style.display = "flex";
     }
-
-
-
+    if (!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) { //这个是ios操作系统
+        play_btn.style.display = "none";
+    }
 }
 init();
+
+
 
 
 // 视频加载
