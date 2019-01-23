@@ -171,9 +171,8 @@ window.onbeforeunload = function(e) {
 $(video_btn_wrap).delegate("span", "click", function() {
     $(".btn_active").removeClass("btn_active")
     $(this).addClass("btn_active");
-    console.log(this)
 
-    continue_wrap.style.display = "none";
+    
     lastplay.number = postData.number = $(this).attr("number");
     postData.current_time = lastplay.currentTime = 0;
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
@@ -181,10 +180,13 @@ $(video_btn_wrap).delegate("span", "click", function() {
     console.log(lastplay)
     video.src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     // 记录
-    console.log("number : " + lastplay.number + " --> 第...集")
+    alert("number : " + lastplay.number + " --> 第...集")
         // lastplay.number = number;
-    console.log(lastplay.number);
-
+    alert(lastplay.number);
+    video.currentTime = 0;
+    video.play();
+    play_none();
+    
     // 记录
     localStorage.setItem("postData.order_id", postData.order_id); // 
     localStorage.setItem("postData.lesson_id", postData.lesson_id); // 课程id
@@ -192,11 +194,6 @@ $(video_btn_wrap).delegate("span", "click", function() {
     localStorage.setItem("lastplay.number", lastplay.number); // 播放的集数
     localStorage.setItem("lastplay.current_time", postData.current_time);
     localStorage.setItem("postData.ended", postData.ended);
-
-
-    video.currentTime = 0;
-    video.play();
-    play_none();
 
     // 加载完成
     // video.onloadeddata = function() {
