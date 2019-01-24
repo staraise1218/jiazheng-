@@ -62,15 +62,12 @@ play_btn_img.onclick = function() {
 
 // 开始播放  点击继续播放按钮
 $(".continue").click(function() {
-    video.currentTime = lastplay.current_time;
+    video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
     video.play();
     play_none();
     alert("video.currentTime" + video.currentTime)
     alert("video.readyState"+video.readyState)
     alert("video.networkState"+video.networkState)
-
-    alert("播放")
-    play_btn_img.onclick()
 })
 
 
@@ -100,25 +97,25 @@ video.onended = function() {
 
 // 监听页面关闭
 window.onbeforeunload = function(e) {
-        var e = window.event || e;
+    var e = window.event || e;
 
-        // 记录
-        lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
-        localStorage.setItem("lastplay.current_time", lastplay.current_time);
-        alert("lastplay.current_time" + lastplay.current_time)
-        alert("postData.current_time" + postData.current_time)
-        $.ajax({
-            type: 'POST',
-            data: postData,
-            url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-            success: function() {
-                console.log(postData)
-            },
-            error: function(e) {
-                console.log("error -- 关闭页面");
-            }
-        })
-    }
+    // 记录
+    lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
+    localStorage.setItem("lastplay.current_time", lastplay.current_time);
+    alert("lastplay.current_time" + lastplay.current_time)
+    alert("postData.current_time" + postData.current_time)
+    $.ajax({
+        type: 'POST',
+        data: postData,
+        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+        success: function() {
+            console.log(postData)
+        },
+        error: function(e) {
+            console.log("error -- 关闭页面");
+        }
+    })
+}
 
 // 分集，事件代理函数
 $(video_btn_wrap).delegate("span", "click", function() {
