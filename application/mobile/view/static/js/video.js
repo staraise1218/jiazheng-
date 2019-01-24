@@ -29,6 +29,7 @@ var postData = {
 
 // 初始化函数
 function init() {
+    video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
     // 选集按钮高亮
     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
     // 判断继续播放是否显示
@@ -42,13 +43,13 @@ function init() {
 init();
 
 // 视频加载
-video.onloadeddata = function() {
-    alert("视频加载完成")
-    video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
-    alert("video.currentTime" + video.currentTime)
-    alert("video.readyState"+video.readyState)
-    alert("video.networkState"+video.networkState)
-}
+// video.onloadeddata = function() {
+//     alert("视频加载完成")
+//     video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
+//     alert("video.currentTime" + video.currentTime)
+//     alert("video.readyState"+video.readyState)
+//     alert("video.networkState"+video.networkState)
+// }
 
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function() {
