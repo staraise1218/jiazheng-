@@ -124,17 +124,11 @@ $(video_btn_wrap).delegate("span", "click", function() {
     
     lastplay.number = postData.number = $(this).attr("number");
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
-    // alert(postData)
-    // alert(lastplay)
     video.src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     // 记录
-    // alert("number : " + lastplay.number + " --> 第...集")
-    // alert(lastplay.number);
-    // alert(video.src)
     video.currentTime = 0;
-    // alert("currentTime" + video.currentTime)
-    video.play();
     play_none();
+    video.play();
     
     // 记录
     localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
