@@ -43,13 +43,15 @@ init();
 
 // 视频加载
 video.onloadeddata = function() {
-    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
+    alert("video.currentTime" + video.currentTime)
     console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
 }
 
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function() {
-    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
+    alert("video.currentTime" + video.currentTime)
     video.play();
     play_none();
 }
@@ -64,7 +66,7 @@ $(".continue").click(function() {
         // alert(video.readyState)
     // }
     video.currentTime = lastplay.current_time;
-    alert(video.currentTime)
+    alert("video.currentTime" + video.currentTime)
     video.play();
     play_none();
 
@@ -78,7 +80,7 @@ video.onclick = function() {
 
     // 记录
     lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
-    localStorage.setItem("lastplay.current_time", postData.current_time);
+    localStorage.setItem("lastplay.current_time", lastplay.current_time);
     // alert(postData)
     // alert(lastplay)
 }
@@ -87,14 +89,14 @@ video.onclick = function() {
 // 视频播放完成 记录时间
 video.onended = function() {
     postData.ended = 1;
-    lastplay.current_time = postData.current_time = 0;
+    // lastplay.current_time = postData.current_time = 0;
     play_block();
 
     // 记录    
     localStorage.setItem("lastplay.current_time", postData.current_time);
-    localStorage.setItem("postData.ended", postData.ended);
+    // localStorage.setItem("postData.ended", postData.ended);
 
-    console.log("视频播放完成"); // 记录播放完成
+    // alert("视频播放完成"); // 记录播放完成
 };
 
 // 监听页面关闭
@@ -103,7 +105,7 @@ window.onbeforeunload = function(e) {
 
         // 记录
         lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
-        localStorage.setItem("lastplay.current_time", postData.current_time);
+        localStorage.setItem("lastplay.current_time", lastplay.current_time);
         alert("lastplay.current_time" + lastplay.current_time)
         alert("postData.current_time" + postData.current_time)
         $.ajax({
