@@ -47,6 +47,8 @@ video.onloadeddata = function() {
     video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
     alert("video.currentTime" + video.currentTime)
     console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
+    alert("video.readyState"+video.readyState)
+    alert("video.networkState"+video.networkState)
 }
 
 // 开始播放  点击video中按钮
