@@ -63,6 +63,7 @@ $(".continue").click(function() {
     //     play_none();
         // alert(video.readyState)
     // }
+    video.currentTime = lastplay.current_time;
     alert(video.currentTime)
     video.play();
     play_none();
@@ -103,7 +104,8 @@ window.onbeforeunload = function(e) {
         // 记录
         lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
         localStorage.setItem("lastplay.current_time", postData.current_time);
-
+        alert("lastplay.current_time" + lastplay.current_time)
+        alert("postData.current_time" + postData.current_time)
         $.ajax({
             type: 'POST',
             data: postData,
