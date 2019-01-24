@@ -56,9 +56,9 @@ play_btn_img.onclick = function() {
     video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
     video.play();
     play_none();
-    alert("video.currentTime" + video.currentTime)
-    alert("video.readyState"+video.readyState)
-    alert("video.networkState"+video.networkState)
+    // alert("video.currentTime" + video.currentTime)
+    // alert("video.readyState"+video.readyState)
+    // alert("video.networkState"+video.networkState)
 }
 
 // 开始播放  点击继续播放按钮
@@ -66,10 +66,10 @@ $(".continue").click(function() {
     video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
     video.play();
     play_none();
-    alert(video.src)
-    alert("video.currentTime" + video.currentTime)
-    alert("video.readyState"+video.readyState)
-    alert("video.networkState"+video.networkState)
+    // alert(video.src)
+    // alert("video.currentTime" + video.currentTime)
+    // alert("video.readyState"+video.readyState)
+    // alert("video.networkState"+video.networkState)
 })
 
 
@@ -104,8 +104,8 @@ window.onbeforeunload = function(e) {
     // 记录
     lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
     localStorage.setItem("lastplay.current_time", lastplay.current_time);
-    alert("lastplay.current_time" + lastplay.current_time)
-    alert("postData.current_time" + postData.current_time)
+    // alert("lastplay.current_time" + lastplay.current_time)
+    // alert("postData.current_time" + postData.current_time)
     $.ajax({
         type: 'POST',
         data: postData,
