@@ -66,6 +66,7 @@ $(".continue").click(function() {
     video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
     video.play();
     play_none();
+    alert(video.src)
     alert("video.currentTime" + video.currentTime)
     alert("video.readyState"+video.readyState)
     alert("video.networkState"+video.networkState)
