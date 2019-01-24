@@ -29,7 +29,6 @@ var postData = {
 
 // 初始化函数
 function init() {
-    video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
     // 选集按钮高亮
     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
     // 判断继续播放是否显示
@@ -43,33 +42,30 @@ function init() {
 init();
 
 // 视频加载
-// video.onloadeddata = function() {
-//     alert("视频加载完成")
-//     video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
-//     alert("video.currentTime" + video.currentTime)
-//     alert("video.readyState"+video.readyState)
-//     alert("video.networkState"+video.networkState)
-// }
+video.onloadeddata = function() {
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
+}
 
 // 开始播放  点击video中按钮
 play_btn_img.onclick = function() {
-    video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
     video.play();
     play_none();
-    // alert("video.currentTime" + video.currentTime)
-    // alert("video.readyState"+video.readyState)
-    // alert("video.networkState"+video.networkState)
 }
 
 // 开始播放  点击继续播放按钮
 $(".continue").click(function() {
-    video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
+    // alert(video.readyState)
+    // if (video.readyState == 4) {
+    //     console.log("readystate == 4")
+    //     video.play();
+    //     play_none();
+    //     alert(video.readyState)
+    // }
     video.play();
     play_none();
-    // alert(video.src)
-    // alert("video.currentTime" + video.currentTime)
-    // alert("video.readyState"+video.readyState)
-    // alert("video.networkState"+video.networkState)
+
 })
 
 
@@ -80,7 +76,7 @@ video.onclick = function() {
 
     // 记录
     lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
-    localStorage.setItem("lastplay.current_time", lastplay.current_time);
+    localStorage.setItem("lastplay.current_time", postData.current_time);
     // alert(postData)
     // alert(lastplay)
 }
@@ -89,35 +85,36 @@ video.onclick = function() {
 // 视频播放完成 记录时间
 video.onended = function() {
     postData.ended = 1;
-    // lastplay.current_time = postData.current_time = 0;
+    lastplay.current_time = postData.current_time = 0;
     play_block();
 
     // 记录    
     localStorage.setItem("lastplay.current_time", postData.current_time);
-    // localStorage.setItem("postData.ended", postData.ended);
+    localStorage.setItem("postData.ended", postData.ended);
+
+    console.log("视频播放完成"); // 记录播放完成
 };
 
 // 监听页面关闭
 window.onbeforeunload = function(e) {
-    var e = window.event || e;
+        var e = window.event || e;
 
-    // 记录
-    lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
-    localStorage.setItem("lastplay.current_time", lastplay.current_time);
-    // alert("lastplay.current_time" + lastplay.current_time)
-    // alert("postData.current_time" + postData.current_time)
-    $.ajax({
-        type: 'POST',
-        data: postData,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function() {
-            console.log(postData)
-        },
-        error: function(e) {
-            console.log("error -- 关闭页面");
-        }
-    })
-}
+        // 记录
+        lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
+        localStorage.setItem("lastplay.current_time", postData.current_time);
+
+        $.ajax({
+            type: 'POST',
+            data: postData,
+            url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+            success: function() {
+                console.log(postData)
+            },
+            error: function(e) {
+                console.log("error -- 关闭页面");
+            }
+        })
+    }
 
 // 分集，事件代理函数
 $(video_btn_wrap).delegate("span", "click", function() {
