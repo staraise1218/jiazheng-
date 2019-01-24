@@ -15,7 +15,8 @@ var lastplay = {
         number: $(".lastplay_number").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("number") : $(".lastplay_number").get(0).value, // 上次播放集数
         current_time: $(".current_time").get(0).value // 上次播放时间
     }
-    // ajax 返回数据 
+alert(lastplay)
+// ajax 返回数据 
 var postData = {
         order_id: $(".order_id").get(0).value, // 
         lesson_id: lastplay.lesson_id, // 课程id
@@ -24,41 +25,34 @@ var postData = {
         ended: 0, // 是否播放完 0为播放完， 1播放完
         lesson_episode_id: $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     }
-    // 初始化函数
+alert(postData)
+
+// 初始化函数
 function init() {
     // 选集按钮高亮
     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
-        // 判断继续播放是否显示
-    console.log(lastplay.current_time);
+    // 判断继续播放是否显示
+    alert(lastplay.current_time);
     if (lastplay.current_time == 0) {
         // continue_wrap.style.display = 'none';
     } else {
         continue_wrap.style.display = "flex";
     }
-    var u = navigator.userAgent;
-    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    if (!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) { //这个是ios操作系统
-        play_btn.style.display = "none";
-    }
 }
 init();
 
-
-
-
 // 视频加载
 video.onloadeddata = function() {
-        video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
-        // video.currentTime = localStorage.getItem("lastplay.current_time");
-        console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
-    }
-    // 开始播放  点击video中按钮
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
+}
+
+// 开始播放  点击video中按钮
 play_btn_img.onclick = function() {
-        video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
-        video.play();
-        play_none();
-    }
+    video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
+    video.play();
+    play_none();
+}
 
 // 开始播放  点击继续播放按钮
 $(".continue").click(function() {
@@ -74,15 +68,7 @@ $(".continue").click(function() {
 
 })
 
-// video.onloadeddata = function() {
-//         console.log($(".current_time").get(0).value)
-//         console.log(lastplay.current_time)
-//             // video.currentTime = $(".current_time").get(0).value || localStorage.getItem("lastplay.current_time");
-//         continue_btn.onclick = function() {
-//             video.play();
-//             play_none();
-//         }
-//     }
+
 // 暂停 记录时间
 video.onclick = function() {
     video.pause();
@@ -91,57 +77,24 @@ video.onclick = function() {
     // 记录
     lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
     localStorage.setItem("lastplay.current_time", postData.current_time);
-    console.log(postData)
-    console.log(lastplay)
-        // localStorage.setItem("postData.order_id", postData.order_id);                       // 
-        // localStorage.setItem("postData.lesson_id", postData.lesson_id);                     // 课程id
-        // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
-        // localStorage.setItem("lastplay.number", postData.number);                           // 播放的集数
-        // localStorage.setItem("lastplay.current_time", postData.current_time);
-        // localStorage.setItem("postData.ended", postData.ended);
-
-    $.ajax({
-        type: 'POST',
-        data: postData,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function() {
-            console.log(postData)
-        },
-        error: function(e) {
-            console.log("error -- 暂停");
-        }
-    })
+    alert(postData)
+    alert(lastplay)
 }
 
 
 // 视频播放完成 记录时间
 video.onended = function() {
     postData.ended = 1;
-    postData.current_time = 0;
+    lastplay.current_time = postData.current_time = 0;
+    play_block();
 
-    // 记录
-    localStorage.setItem("postData.order_id", postData.order_id); // 
-    localStorage.setItem("postData.lesson_id", postData.lesson_id); // 课程id
-    // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
-    localStorage.setItem("lastplay.number", postData.number); // 播放的集数
+    // 记录    
     localStorage.setItem("lastplay.current_time", postData.current_time);
     localStorage.setItem("postData.ended", postData.ended);
 
-    play_block();
     console.log("视频播放完成"); // 记录播放完成
-
-    $.ajax({
-        type: 'POST',
-        data: postData,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function() {
-            console.log(postData)
-        },
-        error: function(e) {
-            console.log("error -- 播放完成");
-        }
-    })
 };
+
 // 监听页面关闭
 window.onbeforeunload = function(e) {
         var e = window.event || e;
@@ -149,11 +102,6 @@ window.onbeforeunload = function(e) {
         // 记录
         lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
         localStorage.setItem("lastplay.current_time", postData.current_time);
-        // localStorage.setItem("lastplay.number", postData.number);                           // 播放的集数
-        // localStorage.setItem("postData.order_id", postData.order_id);                       // 
-        // localStorage.setItem("postData.lesson_id", postData.lesson_id);                     // 课程id
-        // // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
-        // localStorage.setItem("postData.ended", postData.ended);
 
         $.ajax({
             type: 'POST',
@@ -167,44 +115,32 @@ window.onbeforeunload = function(e) {
             }
         })
     }
-    // 分集，事件代理函数
+
+// 分集，事件代理函数
 $(video_btn_wrap).delegate("span", "click", function() {
     $(".btn_active").removeClass("btn_active")
     $(this).addClass("btn_active");
 
     
     lastplay.number = postData.number = $(this).attr("number");
-    postData.current_time = lastplay.currentTime = 0;
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
-    console.log(postData)
-    console.log(lastplay)
+    alert(postData)
+    alert(lastplay)
     video.src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     // 记录
-    // alert("number : " + lastplay.number + " --> 第...集")
-    // alert(lastplay.number);
+    alert("number : " + lastplay.number + " --> 第...集")
+    alert(lastplay.number);
     alert(video.src)
-    video.currentTime = 5;
-    alert(video.currentTime)
+    video.currentTime = 0;
+    alert("currentTime" + video.currentTime)
     video.play();
     play_none();
     
     // 记录
-    localStorage.setItem("postData.order_id", postData.order_id); // 
-    localStorage.setItem("postData.lesson_id", postData.lesson_id); // 课程id
-    // localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
+    localStorage.setItem("lastplay.lesson_episode_id", postData.lesson_episode_id);     // 播放集数id
     localStorage.setItem("lastplay.number", lastplay.number); // 播放的集数
-    localStorage.setItem("lastplay.current_time", postData.current_time);
-    localStorage.setItem("postData.ended", postData.ended);
-
-    // 加载完成
-    // video.onloadeddata = function() {
-    //     console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
-    //     video.currentTime = 0;
-    //     play_block();
-    //     play_none();
-    //     video.play();
-    // }
 });
+
 // 播放按钮 继续播放 wrap 隐藏
 function play_none() {
     play_btn.style.display = "none";
@@ -212,11 +148,13 @@ function play_none() {
     play_btn_img.style.display = "none";
     continue_btn.style.display = "none";
 }
+
 // 播放按钮显示
 function play_block() {
     play_btn.style.display = "flex";
     play_btn_img.style.display = "inline-block";
 }
+
 
 // @description: 课程集数选择
 var nowIndex = 0,
