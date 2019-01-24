@@ -43,6 +43,7 @@ init();
 
 // 视频加载
 video.onloadeddata = function() {
+    alert("视频加载完成")
     video.currentTime = localStorage.getItem("lastplay.current_time") || $(".current_time").get(0).value;
     alert("video.currentTime" + video.currentTime)
     console.log("lastplay.current_time :" + lastplay.current_time + ": --> 视频--加载完成")
@@ -58,18 +59,10 @@ play_btn_img.onclick = function() {
 
 // 开始播放  点击继续播放按钮
 $(".continue").click(function() {
-    // alert(video.readyState)
-    // if (video.readyState == 4) {
-    //     console.log("readystate == 4")
-    //     video.play();
-    //     play_none();
-        // alert(video.readyState)
-    // }
     video.currentTime = lastplay.current_time;
     alert("video.currentTime" + video.currentTime)
     video.play();
     play_none();
-
 })
 
 
