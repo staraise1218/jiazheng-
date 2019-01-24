@@ -125,6 +125,10 @@ $(video_btn_wrap).delegate("span", "click", function() {
     lastplay.number = postData.number = $(this).attr("number");
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     video.src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
+    
+    alert(lastplay.number)
+    alert(video.currentTime)
+    alert(video.src)
     // 记录
     video.currentTime = 0;
     play_none();
