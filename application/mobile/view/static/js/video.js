@@ -15,7 +15,7 @@ var lastplay = {
         number: $(".lastplay_number").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("number") : $(".lastplay_number").get(0).value, // 上次播放集数
         current_time: $(".current_time").get(0).value // 上次播放时间
     }
-alert(lastplay)
+// alert(lastplay)
 // ajax 返回数据 
 var postData = {
         order_id: $(".order_id").get(0).value, // 
@@ -25,14 +25,14 @@ var postData = {
         ended: 0, // 是否播放完 0为播放完， 1播放完
         lesson_episode_id: $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     }
-alert(postData)
+// alert(postData)
 
 // 初始化函数
 function init() {
     // 选集按钮高亮
     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
     // 判断继续播放是否显示
-    alert(lastplay.current_time);
+    // alert(lastplay.current_time);
     if (lastplay.current_time == 0) {
         // continue_wrap.style.display = 'none';
     } else {
@@ -56,12 +56,12 @@ play_btn_img.onclick = function() {
 
 // 开始播放  点击继续播放按钮
 $(".continue").click(function() {
-    // alert(video.readyState)
+    alert(video.readyState)
     // if (video.readyState == 4) {
     //     console.log("readystate == 4")
     //     video.play();
     //     play_none();
-    //     alert(video.readyState)
+        alert(video.readyState)
     // }
     video.play();
     play_none();
@@ -77,8 +77,8 @@ video.onclick = function() {
     // 记录
     lastplay.current_time = postData.current_time = Math.floor(video.currentTime);
     localStorage.setItem("lastplay.current_time", postData.current_time);
-    alert(postData)
-    alert(lastplay)
+    // alert(postData)
+    // alert(lastplay)
 }
 
 
@@ -124,15 +124,15 @@ $(video_btn_wrap).delegate("span", "click", function() {
     
     lastplay.number = postData.number = $(this).attr("number");
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
-    alert(postData)
-    alert(lastplay)
+    // alert(postData)
+    // alert(lastplay)
     video.src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     // 记录
-    alert("number : " + lastplay.number + " --> 第...集")
-    alert(lastplay.number);
-    alert(video.src)
+    // alert("number : " + lastplay.number + " --> 第...集")
+    // alert(lastplay.number);
+    // alert(video.src)
     video.currentTime = 0;
-    alert("currentTime" + video.currentTime)
+    // alert("currentTime" + video.currentTime)
     video.play();
     play_none();
     
