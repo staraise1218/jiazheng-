@@ -95,8 +95,6 @@ video.onended = function() {
     // 记录    
     localStorage.setItem("lastplay.current_time", postData.current_time);
     // localStorage.setItem("postData.ended", postData.ended);
-
-    // alert("视频播放完成"); // 记录播放完成
 };
 
 // 监听页面关闭
