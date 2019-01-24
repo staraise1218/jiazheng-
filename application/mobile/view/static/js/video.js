@@ -68,6 +68,9 @@ $(".continue").click(function() {
     alert("video.currentTime" + video.currentTime)
     alert("video.readyState"+video.readyState)
     alert("video.networkState"+video.networkState)
+
+    alert("播放")
+    play_btn_img.onclick()
 })
 
 
