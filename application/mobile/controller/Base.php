@@ -10,7 +10,7 @@ class Base extends Controller{
         
     	parent::__construct();
 
-    	$this->checkLogin();
+    	$this->checkLogin();//
     }
 
     public function checkLogin(){
