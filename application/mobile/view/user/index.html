@@ -1,19 +1,21 @@
 <!-- 我的 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>我的</title>
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/public.css">
     <link rel="stylesheet" href="__STATIC__/css/mine.css">
 </head>
+
 <body>
-    
+
     <div class="mine-poster-wrap" onclick="window.location='{:U('mobile/user/modify')}'">
         <img class="bg" src="__STATIC__/image/background.jpg" alt="">
         <div class="poster">
@@ -29,8 +31,8 @@
     <ul class="content-wrap">
         <li onclick="window.location='{:U('mobile/user/mylesson')}'">
             <a href="#">
-                <span class="icon">
-                    <img src="__STATIC__/image/kecheng.png" alt="">
+                <span class="icon myclass">
+                    <!-- <img src="__STATIC__/image/kecheng.png" alt=""> -->
                 </span>
                 <span>我的课程</span>
             </a>
@@ -40,8 +42,8 @@
         </li>
         <li onclick="window.location='{:U('mobile/user/apply')}'">
             <a href="#">
-                <span class="icon">
-                    <img src="__STATIC__/image/yuyue.png" alt="">
+                <span class="icon myexam">
+                    <!-- <img src="__STATIC__/image/yuyue.png" alt=""> -->
                 </span>
                 <span>预约考试</span>
             </a>
@@ -51,8 +53,8 @@
         </li>
         <li onclick="window.location='{:U('mobile/user/collectlesson')}'">
             <a href="#">
-                <span class="icon">
-                    <img src="__STATIC__/image/kecheng.png" alt="">
+                <span class="icon shouchang">
+                    <!-- <img src="__STATIC__/image/kecheng.png" alt=""> -->
                 </span>
                 <span>收藏课程</span>
             </a>
@@ -79,7 +81,7 @@
 
 
 
-    
+
     <!-- 底部导航 -->
     {include file="public/footer"}
     <!-- 底部导航结束 -->
@@ -88,4 +90,5 @@
 
 
 </body>
+
 </html>

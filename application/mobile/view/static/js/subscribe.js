@@ -8,7 +8,7 @@ var dataPost = {
 var canAjax = true;
 
 init()
-// 初始化函数
+    // 初始化函数
 function init() {
     // dataPost.cat_id = $(".nav-wrap ul li:eq(0) a").attr("cat_id");
     dataPost.page = 1;
@@ -17,13 +17,13 @@ function init() {
     AjaxFunc();
 }
 // 点击导航切换 id
-$(".nav-wrap").delegate("a", "click", function (e) {
+$(".nav-wrap").delegate("a", "click", function(e) {
     console.log("-------------------------------------------")
     var index = $(".item_nav").index($(this));
-    console.log("cat_id :"  + $(this).attr("cat_id"));
+    console.log("cat_id :" + $(this).attr("cat_id"));
     console.log("index :" + index);
     console.log("last_btn_index :" + last_btn_index);
-    if(last_btn_index != index) {
+    if (last_btn_index != index) {
         console.log("刷新页面")
         canAjax = true;
         last_btn_index = index;
@@ -41,8 +41,8 @@ function AjaxFunc() {
         type: "POST",
         url: "http://jiazheng.staraise.com.cn/index.php/api/aunt/getlist",
         data: dataPost,
-        success: function (data) {
-            if(data.data != 0) {
+        success: function(data) {
+            if (data.data != 0) {
                 createDom(data.data)
                 console.log(data)
                 console.log("ajax 数据获取成功")
@@ -52,7 +52,7 @@ function AjaxFunc() {
                 canAjax = false;
             }
         },
-        error: function () {
+        error: function() {
             console.log("error")
         }
     })
@@ -65,36 +65,43 @@ function createDom(data) {
             tagStr = '',
             oLi = document.createElement("li"),
             tagArr = data[i].tag;
-        for(var j = 0; j < tagArr.length; j++) {
-            tagStr += '<span>'+ tagArr[j] +'</span>'
+        for (var j = 0; j < tagArr.length; j++) {
+            tagStr += '<span>' + tagArr[j] + '</span>'
         }
-        str += 
+        str +=
             '<div class="poster">\
-                <img src="'+ data[i].thumb + '" alt="poster">\
+                <img src="' + data[i].thumb + '" alt="poster">\
             </div>\
             <div class="right">\
                 <div class="title">\
-                    <strong style="margin-right:0.2rem">'+ data[i].title + '</strong>\
-                    <span>'+ data[i].leixing + '</span>\
+                    <strong style="margin-right:0.2rem">' + data[i].title + '</strong>\
+                    <span>' + data[i].leixing + '</span>\
                 </div>\
                 <div class="price price-symbol" style="color:#8B8B8B">\
-                    '+ data[i].description+'\
+                    ' + data[i].description + '\
                 </div>\
                 <div class="skill">\
-                '+ tagStr +'\
+                ' + tagStr + '\
                 </div>\
                 <div class="right-pay-wrap">\
                     <div class="pay">\
                         <a href="tel:13666666666" class="pay-btn">联系家政经纪人</a>\
                     </div>\
                 </div>\
-            </div>\
-            <a id="link-bg" href="'+ data[i].url +'" class="click_link"></a>'
+                </div>\
+                <a id="link-bg" href="' + data[i].url + '" class="click_link"></a>'
         oLi.innerHTML = str;
         oUl.appendChild(oLi);
+        // ($(oLi).click(function(j) {
+        //     window.location.href = data[j].url;
+        // }))(i)
     }
 }
 
+// $("#link-bg").click(function(e) {
+//     e.stopPropagation();
+//     window.location.href = "tel:13888888888";
+// })
 
 
 
@@ -126,14 +133,14 @@ function getScrollHeight() {
 }
 
 //滚动事件触发
-window.onscroll = function () {
-    if(canAjax) {
-        if (getScrollTop() + getClientHeight() == getScrollHeight()) {
-            console.log(dataPost)
-            AjaxFunc()
+window.onscroll = function() {
+        if (canAjax) {
+            if (getScrollTop() + getClientHeight() == getScrollHeight()) {
+                console.log(dataPost)
+                AjaxFunc()
+            }
         }
     }
-}
-// if(getScrollTop() == 0) {
-//     AjaxFunc()
-// }
+    // if(getScrollTop() == 0) {
+    //     AjaxFunc()
+    // }
