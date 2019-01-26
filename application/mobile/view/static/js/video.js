@@ -27,7 +27,7 @@ $video.onplay = function () {
     $(".hint-wrap").hide();
     setTimeout(function () {
         alert($video.currentTime);
-        $video.currentTime = lastplay.current_time;
+        $video.currentTime = 20
     },500)
 }
 
@@ -76,7 +76,6 @@ window.onbeforeunload = function(e) {
             console.log("error");
         }
     })
-    alert(lastplay.current_time)
 }
 
 // video 播放控制函数
