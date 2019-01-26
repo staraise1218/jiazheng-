@@ -23,17 +23,14 @@ function videoInit() {
 
 function creatVideo() {
     let str = `
-                <video class="video" 
-                    x5-playsinline="true"  
-                    preload="auto" 
-                    src="{$episodeList_page_1[0]['video']}" 
-                    poster="__STATIC__/image/coursebroadcast.jpg" 
-                    style="object-fit:fill">
-                </video>
-
-                <div class="video-play-btn">
-                    <img class="video-play-play" src="../image/broadcast_start@2x.png" alt="播放">
-                </div>
+            <video class="video" 
+                preload="auto" 
+                src="./src/流浪地球.mp4" 
+                poster="./src/image/course broadcast.jpg">
+            </video>
+            <div class="video-play-btn">
+                <img class="video-play-play" src="./src/image/course broadcast_start@2x.png" alt="播放">
+            </div>
             `
     $(".video-play-wrapper").html(str);
 }
@@ -173,3 +170,6 @@ function videoStatus () {
         alert(" 未找到视频来源")
     }
 }
+
+
+videoInit();
