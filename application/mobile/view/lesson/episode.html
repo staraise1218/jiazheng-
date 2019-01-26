@@ -78,8 +78,11 @@
         let strDom = "";
         if (isAndroid) {
             strDom = `  <video class="video" x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
-                                <source src="{$episodeList_page_1[0]['video']}">
-                            </video>`
+                            <source src="{$episodeList_page_1[0]['video']}">
+                        </video>
+                        <div class="video-play-btn">
+                            <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
+                        </div>`
         }
         if (isIOS) {
             strDom = `  <video class="video" controls x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
