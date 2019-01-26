@@ -9,7 +9,7 @@ let lastplay = {
     order_id : $(".order_id").attr("value")
 }
 
-creatVideo();
+// creatVideo();
 let $video = $(".video").get(0);
 function videoInit() {
     $(".video-play-btn").height($(".video").height())
@@ -21,19 +21,19 @@ function videoInit() {
 }
 
 
-function creatVideo() {
-    let str = `
-            <video class="video" 
-                preload="auto" 
-                src="./src/流浪地球.mp4" 
-                poster="./src/image/course broadcast.jpg">
-            </video>
-            <div class="video-play-btn">
-                <img class="video-play-play" src="./src/image/course broadcast_start@2x.png" alt="播放">
-            </div>
-            `
-    $(".video-play-wrapper").html(str);
-}
+// function creatVideo() {
+//     let str = `
+//             <video class="video" 
+//                 preload="auto" 
+//                 src="./src/流浪地球.mp4" 
+//                 poster="./src/image/course broadcast.jpg">
+//             </video>
+//             <div class="video-play-btn">
+//                 <img class="video-play-play" src="./src/image/course broadcast_start@2x.png" alt="播放">
+//             </div>
+//             `
+//     $(".video-play-wrapper").html(str);
+// }
 videoInit();
 
 
