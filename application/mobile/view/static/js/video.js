@@ -92,6 +92,8 @@ window.onbeforeunload = function(e) {
 
 // video 播放控制函数
 function videoCtrl(ctrl,el) {
+    videoStatus();
+    $video.load();
     if(ctrl == "play") {
         if($video.readyState >= 3) {
             videoStatus();
@@ -112,6 +114,8 @@ function videoCtrl(ctrl,el) {
     }
     
     if(ctrl == "change") {
+        $video.load();
+        videoStatus();
         if($video.readyState >= 3) {
             videoStatus();
             $(".btn_active").removeClass("btn_active");
