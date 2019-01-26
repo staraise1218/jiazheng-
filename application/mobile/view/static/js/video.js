@@ -61,7 +61,6 @@ $video.onended = function() {
 
 // 监听页面关闭
 window.onbeforeunload = function(e) {
-    var e = window.event || e;
     lastplay.current_time = Math.floor($video.currentTime);
     localStorage.setItem("lastplay.current_time", lastplay.current_time);
 
@@ -77,6 +76,7 @@ window.onbeforeunload = function(e) {
             console.log("error");
         }
     })
+    alert(lastplay.current_time)
 }
 
 // video 播放控制函数
