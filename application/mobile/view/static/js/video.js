@@ -97,11 +97,14 @@ function videoCtrl(ctrl,el) {
         // if($video.readyState >= 3) {
             // videoStatus();
             $video.currentTime = lastplay.current_time;
-            $video.play();
             $(".video-play-btn").hide();
             $(".hint-wrap").hide();
             lastplay.ended = 0;
             localStorage.setItem("lastplay.ended",lastplay.ended);
+            setTimeout(function() {
+                $video.play();
+            },500)
+            
         // }
     }
     
@@ -126,7 +129,9 @@ function videoCtrl(ctrl,el) {
             localStorage.setItem("lastplay.ended",lastplay.ended);
     
             $("video").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
-            $video.play();
+            setTimeout(function() {
+                $video.play();
+            },500)
         // }
     }
 }
