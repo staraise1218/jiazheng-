@@ -22,6 +22,12 @@ function videoInit() {
 
 videoInit();
 
+
+$video.onplay = function () {
+    $(".hint-wrap").hide();
+}
+
+
 // 点击播放按钮 -- 播放
 $(".video-play-play").on("touchstart", function () {
     videoCtrl("play");
