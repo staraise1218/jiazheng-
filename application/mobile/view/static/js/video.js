@@ -146,6 +146,3 @@ function videoStatus () {
         alert(" 未找到视频来源")
     }
 }
-
-
-videoInit();
