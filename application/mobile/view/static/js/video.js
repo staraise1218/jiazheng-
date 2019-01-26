@@ -32,7 +32,7 @@ function creatVideo() {
                 </video>
 
                 <div class="video-play-btn">
-                    <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
+                    <img class="video-play-play" src="../image/course broadcast_start@2x.png" alt="播放">
                 </div>
             `
     $(".video-play-wrapper").html(str);
