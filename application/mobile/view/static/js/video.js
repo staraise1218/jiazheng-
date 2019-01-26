@@ -129,7 +129,7 @@ function videoCtrl(ctrl,el) {
             localStorage.setItem("lastplay.number",lastplay.number);
             localStorage.setItem("lastplay.ended",lastplay.ended);
     
-            $("video").prop("src",el.attr("data-video")).prop("currentTime",0);
+            $("video").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
             $video.play();
         }
     }
