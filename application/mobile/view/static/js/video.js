@@ -25,6 +25,9 @@ videoInit();
 
 $video.onplay = function () {
     $(".hint-wrap").hide();
+    setTimeout(function () {
+        alert($video.currentTime)
+    },4000)
 }
 
 
