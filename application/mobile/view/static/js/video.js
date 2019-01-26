@@ -93,13 +93,15 @@ window.onbeforeunload = function(e) {
 // video 播放控制函数
 function videoCtrl(ctrl,el) {
     if(ctrl == "play") {
-        videoStatus();
-        $video.currentTime = lastplay.current_time;
-        $video.play();
-        $(".video-play-btn").hide();
-        $(".hint-wrap").hide();
-        lastplay.ended = 0;
-        localStorage.setItem("lastplay.ended",lastplay.ended);
+        if($video.readyState >= 3) {
+            videoStatus();
+            $video.currentTime = lastplay.current_time;
+            $video.play();
+            $(".video-play-btn").hide();
+            $(".hint-wrap").hide();
+            lastplay.ended = 0;
+            localStorage.setItem("lastplay.ended",lastplay.ended);
+        }
     }
     
     if(ctrl == "stop") {
@@ -110,20 +112,22 @@ function videoCtrl(ctrl,el) {
     }
     
     if(ctrl == "change") {
-        videoStatus();
-        $(".btn_active").removeClass("btn_active");
-        el.addClass("btn_active");
-        
-        $(".video-play-btn").hide();
-        $(".hint-wrap").hide();
-        
-        lastplay.number = $(".wrap .video-btn").index(el);
-        lastplay.ended = 0;
-        localStorage.setItem("lastplay.number",lastplay.number);
-        localStorage.setItem("lastplay.ended",lastplay.ended);
-
-        $("video").prop("src",el.attr("data-video")).prop("currentTime",0);
-        $video.play();
+        if($video.readyState >= 3) {
+            videoStatus();
+            $(".btn_active").removeClass("btn_active");
+            el.addClass("btn_active");
+            
+            $(".video-play-btn").hide();
+            $(".hint-wrap").hide();
+            
+            lastplay.number = $(".wrap .video-btn").index(el);
+            lastplay.ended = 0;
+            localStorage.setItem("lastplay.number",lastplay.number);
+            localStorage.setItem("lastplay.ended",lastplay.ended);
+    
+            $("video").prop("src",el.attr("data-video")).prop("currentTime",0);
+            $video.play();
+        }
     }
 }
 
