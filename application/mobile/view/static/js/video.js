@@ -101,9 +101,7 @@ function videoCtrl(ctrl,el) {
             $(".hint-wrap").hide();
             lastplay.ended = 0;
             localStorage.setItem("lastplay.ended",lastplay.ended);
-            setTimeout(function() {
-                $video.play();
-            },3000)
+            $video.play();
             
         // }
     }
@@ -129,9 +127,7 @@ function videoCtrl(ctrl,el) {
             localStorage.setItem("lastplay.ended",lastplay.ended);
     
             $("video").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
-            setTimeout(function() {
                 $video.play();
-            },3000)
         // }
     }
 }
