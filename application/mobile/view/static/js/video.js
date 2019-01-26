@@ -334,6 +334,7 @@ function videoCtrl(ctrl,el) {
     }
     
     if(ctrl == "change") {
+        videoStatus();
         $(".btn_active").removeClass("btn_active");
         el.addClass("btn_active");
         
