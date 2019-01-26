@@ -13,7 +13,7 @@ let $video = $(".video").get(0);
 function videoInit() {
     $(".video-play-btn").height($(".video").height())
     $(".lastplay-number-con").text("第"+ (+lastplay.number+1) + "集 " + lastplay.current_time);
-    $video.src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
+    $(".video source").get(0).src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
     $video.currentTime = lastplay.current_time;
     $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
     console.log(lastplay)
@@ -51,7 +51,6 @@ $video.onended = function() {
 // 监听页面关闭
 window.onbeforeunload = function(e) {
     var e = window.event || e;
-    e.returnValue = ("页面关闭");
     lastplay.current_time = Math.floor($video.currentTime);
     localStorage.setItem("lastplay.current_time", lastplay.current_time);
 
@@ -98,8 +97,8 @@ function videoCtrl(ctrl,el) {
         localStorage.setItem("lastplay.number",lastplay.number);
         localStorage.setItem("lastplay.ended",lastplay.ended);
 
-        $("video").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
-            $video.play();
+        $(".video source").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
+        $video.play();
     }
 }
 
