@@ -264,7 +264,6 @@ function videoInit() {
 
 // 点击播放按钮 -- 播放
 $(".video-play-play").on("click", function () {
-    videoStatus()
     videoCtrl("play");
 })
 $(".continue").on("click", function () {
@@ -318,6 +317,7 @@ window.onbeforeunload = function(e) {
 // video 播放控制函数
 function videoCtrl(ctrl,el) {
     if(ctrl == "play") {
+        videoStatus();
         $video.currentTime = lastplay.current_time;
         $video.play();
         $(".video-play-btn").hide();
