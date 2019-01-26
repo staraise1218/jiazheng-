@@ -9,7 +9,6 @@ let lastplay = {
     order_id : $(".order_id").attr("value")
 }
 
-// creatVideo();
 let $video = $(".video").get(0);
 function videoInit() {
     $(".video-play-btn").height($(".video").height())
@@ -20,23 +19,7 @@ function videoInit() {
     console.log(lastplay)
 }
 
-
-// function creatVideo() {
-//     let str = `
-//             <video class="video" 
-//                 preload="auto" 
-//                 src="./src/流浪地球.mp4" 
-//                 poster="./src/image/course broadcast.jpg">
-//             </video>
-//             <div class="video-play-btn">
-//                 <img class="video-play-play" src="./src/image/course broadcast_start@2x.png" alt="播放">
-//             </div>
-//             `
-//     $(".video-play-wrapper").html(str);
-// }
 videoInit();
-
-
 
 // 点击播放按钮 -- 播放
 $(".video-play-play").on("touchstart", function () {
@@ -46,7 +29,6 @@ $(".continue").on("touchstart", function () {
     videoCtrl("play");
 })
 
-
 // 暂停
 $(".video").on("touchstart", function () {
     videoCtrl("stop");
@@ -55,8 +37,6 @@ $(".video").on("touchstart", function () {
 // 点击分集按钮
 $(".wrap").delegate(".video-btn", "touchstart", function() {
     videoCtrl("change",$(this));
-
-
 })
 
 // 视频播放完
@@ -71,8 +51,7 @@ $video.onended = function() {
 // 监听页面关闭
 window.onbeforeunload = function(e) {
     var e = window.event || e;
-
-    // 记录
+    e.returnValue = ("页面关闭");
     lastplay.current_time = Math.floor($video.currentTime);
     localStorage.setItem("lastplay.current_time", lastplay.current_time);
 
@@ -85,7 +64,7 @@ window.onbeforeunload = function(e) {
             console.log(lastplay);
         },
         error: function(e) {
-            console.log("error -- 关闭页面");
+            console.log("error");
         }
     })
 }
@@ -94,41 +73,33 @@ window.onbeforeunload = function(e) {
 function videoCtrl(ctrl,el) {
     // videoStatus();
     if(ctrl == "play") {
-        // if($video.readyState >= 3) {
-            // videoStatus();
-            $video.currentTime = lastplay.current_time;
-            $(".video-play-btn").hide();
-            $(".hint-wrap").hide();
-            lastplay.ended = 0;
-            localStorage.setItem("lastplay.ended",lastplay.ended);
-            $video.play();
-            
-        // }
+        $video.currentTime = lastplay.current_time;
+        $(".video-play-btn").hide();
+        $(".hint-wrap").hide();
+        lastplay.ended = 0;
+        localStorage.setItem("lastplay.ended",lastplay.ended);
+        $video.play();
     }
-    
     if(ctrl == "stop") {
         $(".video-play-btn").show();
         lastplay.current_time = Math.floor($video.currentTime);
         localStorage.setItem("lastplay.current_time",lastplay.current_time);
+        $video.pause();
     }
-    
     if(ctrl == "change") {
-        // if($video.readyState >= 3) {
-            // videoStatus();
-            $(".btn_active").removeClass("btn_active");
-            el.addClass("btn_active");
-            
-            $(".video-play-btn").hide();
-            $(".hint-wrap").hide();
-            
-            lastplay.number = $(".wrap .video-btn").index(el);
-            lastplay.ended = 0;
-            localStorage.setItem("lastplay.number",lastplay.number);
-            localStorage.setItem("lastplay.ended",lastplay.ended);
-    
-            $("video").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
-                $video.play();
-        // }
+        $(".btn_active").removeClass("btn_active");
+        el.addClass("btn_active");
+        
+        $(".video-play-btn").hide();
+        $(".hint-wrap").hide();
+        
+        lastplay.number = $(".wrap .video-btn").index(el);
+        lastplay.ended = 0;
+        localStorage.setItem("lastplay.number",lastplay.number);
+        localStorage.setItem("lastplay.ended",lastplay.ended);
+
+        $("video").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
+            $video.play();
     }
 }
 
