@@ -26,8 +26,7 @@ videoInit();
 $video.onplay = function () {
     $(".hint-wrap").hide();
     setTimeout(function () {
-        alert($video.currentTime);
-        $video.currentTime = 20
+        $video.currentTime = lastplay.current_time;
     },500)
 }
 
@@ -49,6 +48,25 @@ $(".video").on("touchstart", function () {
 $(".wrap").delegate(".video-btn", "touchstart", function() {
     videoCtrl("change",$(this));
 })
+
+// 开始播放
+$video.onplay = function () {
+    $(".hint-wrap").hide();
+    setTimeout(function () {
+        lastplay.ended = 0;
+        localStorage.setItem("lastplay.ended",lastplay.ended);
+        $video.currentTime = lastplay.current_time;
+    },500)
+}
+
+// 暂停
+$video.onabort = function () {
+    lastplay.current_time = Math.floor($video.currentTime);
+    localStorage.setItem("lastplay.current_time",lastplay.current_time);
+}
+
+
+
 
 // 视频播放完
 $video.onended = function() {
@@ -113,6 +131,9 @@ function videoCtrl(ctrl,el) {
         $video.play();
     }
 }
+
+
+
 
 
 // 分集导航切换
