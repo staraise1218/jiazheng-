@@ -72,12 +72,10 @@
     <script src="__STATIC__/js/jquery.js"></script>
 
     <script>
-        $(function () {
-            let strDom = `  <video class="video" controls x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
-                               <source src="{$episodeList_page_1[0]['video']}">
-                            </video>`
-            $(".video-play-wrapper").html(strDom)
-        })
+        let strDom = `  <video class="video" controls x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
+                            <source src="{$episodeList_page_1[0]['video']}">
+                        </video>`
+        $(".video-play-wrapper").html(strDom)
     </script>
     <script src="__STATIC__/js/video.js"></script>
 
