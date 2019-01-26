@@ -95,7 +95,7 @@ function videoCtrl(ctrl,el) {
     videoStatus();
     if(ctrl == "play") {
         // if($video.readyState >= 3) {
-            videoStatus();
+            // videoStatus();
             $video.currentTime = lastplay.current_time;
             $video.play();
             $(".video-play-btn").hide();
@@ -106,7 +106,6 @@ function videoCtrl(ctrl,el) {
     }
     
     if(ctrl == "stop") {
-        $video.pause();
         $(".video-play-btn").show();
         lastplay.current_time = Math.floor($video.currentTime);
         localStorage.setItem("lastplay.current_time",lastplay.current_time);
@@ -114,7 +113,7 @@ function videoCtrl(ctrl,el) {
     
     if(ctrl == "change") {
         // if($video.readyState >= 3) {
-            videoStatus();
+            // videoStatus();
             $(".btn_active").removeClass("btn_active");
             el.addClass("btn_active");
             
