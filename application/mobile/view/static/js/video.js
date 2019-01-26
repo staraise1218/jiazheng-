@@ -11,6 +11,7 @@ let lastplay = {
 
 let $video = $(".video").get(0);
 function videoInit() {
+    $(".video-play-btn").hide();
     $(".video-play-btn").height($(".video").height())
     $(".lastplay-number-con").text("第"+ (+lastplay.number+1) + "集 " + lastplay.current_time);
     $(".video source").get(0).src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
@@ -73,14 +74,14 @@ function videoCtrl(ctrl,el) {
     // videoStatus();
     if(ctrl == "play") {
         $video.currentTime = lastplay.current_time;
-        $(".video-play-btn").hide();
+        // $(".video-play-btn").hide();
         $(".hint-wrap").hide();
         lastplay.ended = 0;
         localStorage.setItem("lastplay.ended",lastplay.ended);
         $video.play();
     }
     if(ctrl == "stop") {
-        $(".video-play-btn").show();
+        // $(".video-play-btn").show();
         lastplay.current_time = Math.floor($video.currentTime);
         localStorage.setItem("lastplay.current_time",lastplay.current_time);
         $video.pause();
@@ -91,7 +92,7 @@ function videoCtrl(ctrl,el) {
         $(".btn_active").removeClass("btn_active");
         el.addClass("btn_active");
         
-        $(".video-play-btn").hide();
+        // $(".video-play-btn").hide();
         $(".hint-wrap").hide();
         
         lastplay.number = $(".wrap .video-btn").index(el);
