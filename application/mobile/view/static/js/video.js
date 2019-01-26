@@ -113,7 +113,6 @@ function videoCtrl(ctrl,el) {
     }
     
     if(ctrl == "change") {
-        $video.load();
         if($video.readyState >= 3) {
             videoStatus();
             $(".btn_active").removeClass("btn_active");
