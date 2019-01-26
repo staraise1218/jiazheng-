@@ -39,21 +39,21 @@ videoInit();
 
 
 // 点击播放按钮 -- 播放
-$(".video-play-play").on("click", function () {
+$(".video-play-play").on("touch", function () {
     videoCtrl("play");
 })
-$(".continue").on("click", function () {
+$(".continue").on("touch", function () {
     videoCtrl("play");
 })
 
 
 // 暂停
-$(".video").on("click", function () {
+$(".video").on("touch", function () {
     videoCtrl("stop");
 })
 
 // 点击分集按钮
-$(".wrap").delegate(".video-btn", "click", function() {
+$(".wrap").delegate(".video-btn", "touch", function() {
     videoCtrl("change",$(this));
 
 
@@ -133,7 +133,7 @@ function videoCtrl(ctrl,el) {
 
 
 // 分集导航切换
-$(".order ul").delegate("li", "click", function () {
+$(".order ul").delegate("li", "touch", function () {
     $(".order ul .active").removeClass("active");
     $(this).addClass("item active");
     let $w = $(".wrap").width();
