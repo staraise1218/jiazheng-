@@ -28,19 +28,18 @@ var postData = {
 // alert(postData)
 
 // 初始化函数
-
-// function init() {
-//     // 选集按钮高亮
-//     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
-//     // 判断继续播放是否显示
-//     // alert(lastplay.current_time);
-//     if (lastplay.current_time == 0) {
-//         // continue_wrap.style.display = 'none';
-//     } else {
-//         continue_wrap.style.display = "flex";
-//     }
-// }
-// init();
+function init() {
+    // 选集按钮高亮
+    $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
+    // 判断继续播放是否显示
+    // alert(lastplay.current_time);
+    if (lastplay.current_time == 0) {
+        // continue_wrap.style.display = 'none';
+    } else {
+        continue_wrap.style.display = "flex";
+    }
+}
+init();
 
 // 视频加载
 video.onloadeddata = function() {
@@ -236,20 +235,4 @@ function slider_auto() {
         move('next');
         changeOrderStyle(nowIndex);
     }, 300)
-}
-
-
-
-
-
-window.onload = function () {
-    // 选集按钮高亮
-    $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
-    // 判断继续播放是否显示
-    // alert(lastplay.current_time);
-    if (lastplay.current_time == 0) {
-        // continue_wrap.style.display = 'none';
-    } else {
-        continue_wrap.style.display = "flex";
-    }
 }
