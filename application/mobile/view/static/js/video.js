@@ -92,7 +92,7 @@ window.onbeforeunload = function(e) {
 
 // video 播放控制函数
 function videoCtrl(ctrl,el) {
-    videoStatus();
+    // videoStatus();
     if(ctrl == "play") {
         // if($video.readyState >= 3) {
             // videoStatus();
