@@ -28,18 +28,19 @@ var postData = {
 // alert(postData)
 
 // 初始化函数
-function init() {
-    // 选集按钮高亮
-    $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
-    // 判断继续播放是否显示
-    // alert(lastplay.current_time);
-    if (lastplay.current_time == 0) {
-        // continue_wrap.style.display = 'none';
-    } else {
-        continue_wrap.style.display = "flex";
-    }
-}
-init();
+
+// function init() {
+//     // 选集按钮高亮
+//     $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
+//     // 判断继续播放是否显示
+//     // alert(lastplay.current_time);
+//     if (lastplay.current_time == 0) {
+//         // continue_wrap.style.display = 'none';
+//     } else {
+//         continue_wrap.style.display = "flex";
+//     }
+// }
+// init();
 
 // 视频加载
 video.onloadeddata = function() {
@@ -126,9 +127,9 @@ $(video_btn_wrap).delegate("span", "click", function() {
     postData.lesson_episode_id = lastplay.lesson_episode_id = $(".lesson_episode_id").get(0).value == "" ? $(".wrap .active span:eq(0)").attr("lesson_episode_id") : $(".lesson_episode_id").get(0).value // 上次集数id
     video.src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     
-    alert(lastplay.number)
-    alert(video.currentTime)
-    alert(video.src)
+    // alert(lastplay.number)
+    // alert(video.currentTime)
+    // alert(video.src)
     // 记录
     video.currentTime = 0;
     play_none();
@@ -235,4 +236,20 @@ function slider_auto() {
         move('next');
         changeOrderStyle(nowIndex);
     }, 300)
+}
+
+
+
+
+
+window.onload = function () {
+    // 选集按钮高亮
+    $(".wrap span").eq(lastplay.number - 1).addClass("btn_active")
+    // 判断继续播放是否显示
+    // alert(lastplay.current_time);
+    if (lastplay.current_time == 0) {
+        // continue_wrap.style.display = 'none';
+    } else {
+        continue_wrap.style.display = "flex";
+    }
 }

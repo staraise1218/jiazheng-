@@ -11,7 +11,7 @@
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/video_play.css">
 </head>
-
+ 
 <body>
     <div class="video-play-wrapper">
         <video class="video" 
@@ -52,7 +52,10 @@
                 <?php $episodeList = 'episodeList_page_'.$page; ?>
                 <li class="{$page == 1 ? 'active' : ''}">
                     {foreach name="$$episodeList" item="item"}
-                    <span class="video-btn" data-video="{$item.video}" lesson_episode_id="{$item.id}" number="{$item.number}">{$item.number}</span> {/foreach}
+                    <span class="video-btn" data-video="{$item.video}" lesson_episode_id="{$item.id}" number="{$item.number}">
+                        {$item.number}
+                    </span>
+                    {/foreach}
                 </li>
                 {/for}
             </ul>
