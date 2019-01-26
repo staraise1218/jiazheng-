@@ -364,33 +364,33 @@ $(".order ul").delegate("li", "click", function () {
 
 function videoStatus () {
     if($video.readyState == 0 ) {
-        console.log("没有关于视频是否就绪的信息")
+        alert("没有关于视频是否就绪的信息")
     } 
     if ($video.readyState == 1 ) {
-        console.log("关于视频就绪的元素据")
+        alert("关于视频就绪的元素据")
     }
     if ($video.readyState == 2 ) {
-        console.log("关于当前播放位置的数据是可用的，但没有足够的数据来播放下一帧/毫秒")
+        alert("关于当前播放位置的数据是可用的，但没有足够的数据来播放下一帧/毫秒")
     }
     if ($video.readyState == 3 ) {
-        console.log("当前及至少下一帧的数据是可用的")
+        alert("当前及至少下一帧的数据是可用的")
     } 
     if ($video.readyState == 4 ) {
-        console.log("可用的数据足以开始播放")
+        alert("可用的数据足以开始播放")
     }
 
 
     if($video.networkState == 0) {
-            console.log("视频尚未初始化")
+            alert("视频尚未初始化")
     }
     if($video.networkState == 1) {
-        console.log("视频是活动的且已选区资源，但并未使用网络")
+        alert("视频是活动的且已选区资源，但并未使用网络")
     }
     if($video.networkState == 2) {
-        console.log("浏览器正在下载数据/毫秒")
+        alert("浏览器正在下载数据/毫秒")
     }
     if($video.networkState == 3) {
-        console.log(" 未找到视频来源")
+        alert(" 未找到视频来源")
     }
 }
 
