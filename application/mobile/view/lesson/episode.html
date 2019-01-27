@@ -18,13 +18,23 @@
             <source src="{$episodeList_page_1[0]['video']}">
         </video>
 
+        <video id="videoID" 
+            
+        
+            webkit-playsinline="true" 
+            x-webkit-airplay="true"  
+            playsinline="true"x5-video-player-type="h5"
+            x5-video-player-fullscreen="true"
+            
+            width="100%" height="100%"
+            preload="auto"
+            poster="" src="">
+
+
         <div class="video-play-btn">
             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
         </div> -->
     </div>
-
-
-
     <div class="hint-wrap" {if condition="empty($lastplay)" }style="display:none" {/if}>
         <div class="hint-bg">
             <img src="__STATIC__/image/course broadcast_record@2x.png" alt="">
@@ -76,8 +86,17 @@
         var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         let strDom = "";
         if (isAndroid) {
-            strDom = `  <video class="video" x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
-                            <source src="{$episodeList_page_1[0]['video']}">
+            strDom = `  <video class="video" 
+                            x5-playsinline="true" 
+                            preload="auto" 
+                            poster="__STATIC__/image/coursebroadcast.jpg" 
+                            style="object-fit:fill"
+                            webkit-playsinline="true" 
+                            x-webkit-airplay="true"  
+                            playsinline="true"x5-video-player-type="h5"
+                            x5-video-player-fullscreen="true">
+                            
+                                <source src="{$episodeList_page_1[0]['video']}">
                         </video>
                         <div class="video-play-btn">
                             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">

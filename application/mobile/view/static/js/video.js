@@ -11,7 +11,6 @@ let lastplay = {
 
 let $video = $(".video").get(0);
 function videoInit() {
-    // $(".video-play-btn").hide();
     $(".video-play-btn").height($(".video").height())
     $(".lastplay-number-con").text("第"+ (+lastplay.number+1) + "集 " + lastplay.current_time);
     $(".video source").get(0).src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
