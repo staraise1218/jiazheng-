@@ -24,7 +24,7 @@ li {
     width: 100%;
     height: 4.24rem;
 }
-.video-play-btn {
+.video-play-wrapper .video-play-btn {
     position: absolute;
     left: 0;
     top: 0;
@@ -34,9 +34,8 @@ li {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: inherit;
 } 
-.video-play-btn .video-play-play {
+.video-play-wrapper .video-play-btn .video-play-play {
     width: 1.5rem;
     height: 1.5rem;
     font-size: 0.25rem;
@@ -52,9 +51,6 @@ li {
     width: 100%;
     height: 0.8rem;
     background: #7ABEDF;
-}
-.hint-wrap .hint-bg {
-    
 }
 .hint-wrap .hint-bg img{
     width: 0.24rem;
