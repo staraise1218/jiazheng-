@@ -19,17 +19,7 @@ function videoInit() {
     $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
     console.log(lastplay)
 }
-
 videoInit();
-
-
-$video.onplay = function () {
-    $(".hint-wrap").hide();
-    setTimeout(function () {
-        $video.currentTime = lastplay.current_time;
-    },500)
-}
-
 
 // 点击播放按钮 -- 播放
 $(".video-play-play").on("touchstart", function () {
@@ -61,9 +51,6 @@ $video.onabort = function () {
     lastplay.current_time = Math.floor($video.currentTime);
     localStorage.setItem("lastplay.current_time",lastplay.current_time);
 }
-
-
-
 
 // 视频播放完
 $video.onended = function() {
@@ -129,10 +116,6 @@ function videoCtrl(ctrl,el) {
     }
 }
 
-
-
-
-
 // 分集导航切换
 $(".order ul").delegate("li", "touchstart", function () {
     $(".order ul .active").removeClass("active");
@@ -141,8 +124,6 @@ $(".order ul").delegate("li", "touchstart", function () {
     let $lw = $(".wrap li").width();
     $(".wrap").animate({"left":-($lw*$(this).index())})
 })
-
-
 
 function videoStatus () {
     if($video.readyState == 0 ) {

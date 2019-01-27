@@ -70,7 +70,6 @@
     <input class="order_id" type="hidden" name="order_id" value="{$order_id}">
 
     <script src="__STATIC__/js/jquery.js"></script>
-
     <script>
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
@@ -83,6 +82,7 @@
                         <div class="video-play-btn">
                             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
                         </div>`
+            $(".video-play-btn").height($(".video").height()).width($(".video").width());
         }
         if (isIOS) {
             strDom = `  <video class="video" controls x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
