@@ -44,6 +44,7 @@ li {
     z-index: 1;
 }
 .hint-wrap {
+    position: relative;
     padding: 0 0.2rem;
     box-sizing: border-box;
     display: flex;
@@ -52,6 +53,10 @@ li {
     width: 100%;
     height: 0.8rem;
     background: #7ABEDF;
+}
+.hint-wrap .hint-bg {
+    position: absolute;
+    top: -100px;
 }
 .hint-wrap .hint-bg img{
     width: 0.24rem;
