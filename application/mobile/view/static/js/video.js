@@ -13,7 +13,7 @@ let $video = $(".video").get(0);
 function videoInit() {
     $(".video-play-btn").height($(".video").height())
     $(".lastplay-number-con").text("第"+ (+lastplay.number+1) + "集 " + lastplay.current_time);
-    $(".video source").get(0).src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
+    $(".video").get(0).src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
     $video.currentTime = lastplay.current_time;
     $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
     console.log(lastplay)
@@ -97,7 +97,7 @@ function videoCtrl(ctrl,el) {
         $video.pause();
     }
     if(ctrl == "change") {
-        $(".video source").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
+        $(".video").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
         
         $(".btn_active").removeClass("btn_active");
         el.addClass("btn_active");
