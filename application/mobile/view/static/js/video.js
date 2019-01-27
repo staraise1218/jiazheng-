@@ -51,12 +51,9 @@ $(".wrap").delegate(".video-btn", "touchstart", function() {
 
 // 开始播放
 $video.onplay = function () {
-    $(".hint-wrap").hide();
-    setTimeout(function () {
-        lastplay.ended = 0;
-        localStorage.setItem("lastplay.ended",lastplay.ended);
-        $video.currentTime = lastplay.current_time;
-    },500)
+    lastplay.ended = 0;
+    localStorage.setItem("lastplay.ended",lastplay.ended);
+    $video.currentTime = lastplay.current_time;
 }
 
 // 暂停
@@ -101,14 +98,14 @@ function videoCtrl(ctrl,el) {
     // videoStatus();
     if(ctrl == "play") {
         $video.currentTime = lastplay.current_time;
-        // $(".video-play-btn").hide();
+        $(".video-play-btn").hide();
         $(".hint-wrap").hide();
         lastplay.ended = 0;
         localStorage.setItem("lastplay.ended",lastplay.ended);
         $video.play();
     }
     if(ctrl == "stop") {
-        // $(".video-play-btn").show();
+        $(".video-play-btn").show();
         lastplay.current_time = Math.floor($video.currentTime);
         localStorage.setItem("lastplay.current_time",lastplay.current_time);
         $video.pause();
@@ -119,7 +116,7 @@ function videoCtrl(ctrl,el) {
         $(".btn_active").removeClass("btn_active");
         el.addClass("btn_active");
         
-        // $(".video-play-btn").hide();
+        $(".video-play-btn").hide();
         $(".hint-wrap").hide();
         
         lastplay.number = $(".wrap .video-btn").index(el);
