@@ -73,7 +73,7 @@
         var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         let strDom = "";
         if (isAndroid) {
-            strDom = `<div class="video-wrapper" style="width:100%;background:red">  
+            strDom = `<div class="video-wrapper" style="width:100%;z-index:0">  
                         <video class="video" 
                             x5-playsinline="true" 
                             preload="none" 
@@ -81,7 +81,7 @@
                             style="object-fit:fill">                            
                                 <source src="{$episodeList_page_1[0]['video']}">
                         </video>
-                        <div class="video-play-btn">
+                        <div class="video-play-btn" style="z-index:100">
                             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
                         </div></div>`
             $(".video-play-btn").height($(".video").height()).width($(".video").width());
