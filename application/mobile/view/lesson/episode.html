@@ -14,9 +14,7 @@
  
 <body>
     <div class="video-play-wrapper">
-        <div class="video-wrapper" style="width:100%">
 
-        </div>
         <!-- <video class="video" controls x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
             <source src="{$episodeList_page_1[0]['video']}">
         </video>
@@ -75,7 +73,8 @@
         var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         let strDom = "";
         if (isAndroid) {
-            strDom = `  <video class="video" 
+            strDom = `<div class="video-wrapper" style="width:100%">  
+                        <video class="video" 
                             x5-playsinline="true" 
                             preload="none" 
                             poster="__STATIC__/image/coursebroadcast.jpg" 
@@ -84,7 +83,7 @@
                         </video>
                         <div class="video-play-btn">
                             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
-                        </div>`
+                        </div></div>`
             $(".video-play-btn").height($(".video").height()).width($(".video").width());
         }
         if (isIOS) {
@@ -92,7 +91,7 @@
                             <source src="{$episodeList_page_1[0]['video']}">
                         </video>`
         }
-        $(".video-wrapper").html(strDom)
+        $(".video-play-wrapper").html(strDom)
     </script>
     <script src="__STATIC__/js/video.js"></script>
 
