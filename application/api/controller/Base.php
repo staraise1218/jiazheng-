@@ -11,7 +11,7 @@ class Base extends Controller {
         header("Access-Control-Allow-Origin: *"); // 允许跨域
         
         parent::__construct();
-        $this->noLoginController = array('Git');
+        $this->noLoginController = array('Git, Weixin');
 
         // 请求写入log
         $this->requestToLog();
