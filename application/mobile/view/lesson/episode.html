@@ -11,20 +11,14 @@
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/video_play.css">
 </head>
-
+ 
 <body>
     <div class="video-play-wrapper">
-        <video class="video" 
-            x5-playsinline="true"  
-            preload="auto" 
-            src="{$episodeList_page_1[0]['video']}" 
-            poster="__STATIC__/image/coursebroadcast.jpg" 
-            style="object-fit:fill">
+        <!-- <video class="video" preload="auto" x5-playsinline="true" src="{$episodeList_page_1[0]['video']}" poster="__STATIC__/image/coursebroadcast.jpg">
         </video>
-
         <div class="video-play-btn">
             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
-        </div>
+        </div> -->
     </div>
     <div class="hint-wrap" {if condition="empty($lastplay)" }style="display:none" {/if}>
         <div class="hint-bg">
@@ -52,7 +46,10 @@
                 <?php $episodeList = 'episodeList_page_'.$page; ?>
                 <li class="{$page == 1 ? 'active' : ''}">
                     {foreach name="$$episodeList" item="item"}
-                    <span class="video-btn" data-video="{$item.video}" lesson_episode_id="{$item.id}" number="{$item.number}">{$item.number}</span> {/foreach}
+                    <span class="video-btn" data-video="{$item.video}" lesson_episode_id="{$item.id}" number="{$item.number}">
+                        {$item.number}
+                    </span>
+                    {/foreach}
                 </li>
                 {/for}
             </ul>
@@ -66,10 +63,34 @@
 
     <input class="lesson_id" type="hidden" name="lesson_id" value="{$lesson_id}">
     <input class="order_id" type="hidden" name="order_id" value="{$order_id}">
-
+ 
     <script src="__STATIC__/js/jquery.js"></script>
+    <script>
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        let strDom = "";
+        if (isAndroid) {
+            strDom = `<video class="video" 
+                            x5-playsinline="true" 
+                            preload="none" 
+                            poster="__STATIC__/image/coursebroadcast.jpg" 
+                            style="object-fit:fill">                            
+                                <source src="{$episodeList_page_1[0]['video']}">
+                        </video>
+                        <div class="video-play-btn" style="z-index:100">
+                            <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
+                        </div>`
+            $(".video-play-btn").height($(".video").height()).width($(".video").width());
+        }
+        if (isIOS) {
+            strDom = `  <video class="video" controls x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
+                            <source src="{$episodeList_page_1[0]['video']}">
+                        </video>`
+        }
+        $(".video-play-wrapper").html(strDom)
+    </script>
     <script src="__STATIC__/js/video.js"></script>
 
 </body>
-
 </html>
