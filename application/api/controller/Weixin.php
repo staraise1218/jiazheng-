@@ -33,7 +33,7 @@ class Weixin extends Base {
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];    
                 
-        $token = 'tounao';
+        $token = 'jiazheng';
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr);
         $tmpStr = implode( $tmpArr );
