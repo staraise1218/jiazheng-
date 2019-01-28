@@ -24,7 +24,6 @@ class Weixin extends Base {
             echo $echoStr;
             exit;
         }
-		
 	}
 
     private function checkSignature()
