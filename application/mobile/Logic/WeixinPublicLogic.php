@@ -8,8 +8,8 @@ class WeixinPublicLogic {
 	private $appsecret;
 
 	public function __construct(){
-		$this->appid = 'wxe6cad80231c1a3e8';
-		$this->appsecret = '9ef9f2c3567269eb5a1d66aa9b92c356';
+		$this->appid = 'wx3793044243501a14';
+		$this->appsecret = '2ddc2475cfd7e4e92e71001a8ad6658c';
 	}
 
 	public function getAuthUrl(){
