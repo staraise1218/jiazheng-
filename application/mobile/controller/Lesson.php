@@ -100,6 +100,7 @@ class Lesson extends Base{
 
         // 检测用户资料是否完善
         $user = Db::name('users')->where('user_id', $user_id)->find();
+        p($user);
         if($user['head_pic'] == '' || $user['fullname'] || $user['mobile'] || $user['ID_number']){
             response_error('', '请去个人中心完善资料');
         }
