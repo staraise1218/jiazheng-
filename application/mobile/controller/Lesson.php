@@ -98,6 +98,12 @@ class Lesson extends Base{
             ->find();
         if(empty($lesson)) response_error('', '数据不存在');
 
+        // 检测用户资料是否完善
+        $user = Db::name('users')->where('user_id', $user_id)->find();
+        if($user['head_pic'] == '' || $user['fullname'] || $user['mobile'] || $user['ID_number']){
+            response_error('', '请去个人中心完善资料');
+        }
+
         // 检测是否购买
         $is_buy = Db::name('lesson_order')
             ->where('user_id', $user_id)
