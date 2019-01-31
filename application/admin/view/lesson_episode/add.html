@@ -59,7 +59,7 @@ html, body {overflow: visible;}
                         <span class="type-file-box">
                             <input type="text" id="video" name="video" value="{$info.video}" class="type-file-text">
                             <input type="button" name="button" id="button1" value="选择上传..." class="type-file-button">
-                            <input class="type-file-file" onClick="GetUploadify(1,'','video','video_call_back', 'Flash')" size="30" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+                            <input class="type-file-file" onClick="GetUploadify(1,'','video','video_call_back', 'Flash')" size="100" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
                         </span>
                 </div>
                 <span class="err"></span>
@@ -94,7 +94,6 @@ html, body {overflow: visible;}
                     layer.msg(data.msg, {icon: 2,time: 5000});
 
                     $.each(data.result, function(index, item) {
-                      debugger
                         $('#err_' + index).text(item).show();
                     });
                 } else {

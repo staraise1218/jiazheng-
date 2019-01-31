@@ -269,8 +269,8 @@ $(function() {
 			swf: 'webuploader/Uploader.swf',
 			server: 'fileupload.php',
 			fileNumLimit: 10,
-			fileSizeLimit: 50 * 1024 * 1024,    // 50 M
-			fileSingleSizeLimit: 5 * 1024 * 1024,    // 5 M
+			fileSizeLimit: 400 * 1024 * 1024,    // 200 M
+			fileSingleSizeLimit: 200 * 1024 * 1024,    // 200 M
 			pick: {
 				id: '#filePicker',
 				label: '点击选择图片',

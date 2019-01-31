@@ -4286,7 +4286,7 @@
                 return;
             }
     
-            uploader.on( 'beforeFileQueued', function( file ) {
+            /*uploader.on( 'beforeFileQueued', function( file ) {
     
                 if ( file.size > max ) {
                     file.setStatus( WUFile.Status.INVALID, 'exceed_size' );
@@ -4294,7 +4294,7 @@
                     return false;
                 }
     
-            });
+            });*/
     
         });
     

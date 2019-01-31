@@ -549,7 +549,7 @@ class Ueditor extends Base
         }
         $result = $this->validate(
             ['file' => $file],
-            ['file'=>'fileSize:40000000|fileExt:mp4,3gp,flv,avi,wmv'],
+            ['file'=>'fileSize:209715200|fileExt:mp4,3gp,flv,avi,wmv'],
             ['file.fileSize' => '上传文件过大','file.fileExt'=>'上传文件后缀名必须为mp4,3gp,flv,avi,wmv']
         );
         if (true !== $result || !$file) {
