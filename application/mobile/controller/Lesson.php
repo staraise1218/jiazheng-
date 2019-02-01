@@ -28,8 +28,11 @@ class Lesson extends Base{
 			;
 		$is_buyed = $is_buyed > 0 ? 1 : 0;
 
+        
+
 		$this->assign('is_buyed', $is_buyed);
-		$this->assign('info', $info);
+        $this->assign('info', $info);
+        $this->assign('user', $user);
     	return $this->fetch();
     }
 
@@ -132,6 +135,13 @@ class Lesson extends Base{
     }
 
     public function payMethod(){
+        $order_sn = I('order_sn');
+
+        // 获取用户信息
+        $user = Db::name('users')->where('user_id', $this->user_id)->find();
+
+        $this->assign('openid', $user['openid']);
+        $this->assign('order_sn', $order_sn);
         return $this->fetch();
     }
 

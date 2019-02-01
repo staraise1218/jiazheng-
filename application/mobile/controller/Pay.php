@@ -11,7 +11,7 @@ class Pay {
 	// 统一下单 unifiedOrder
     public function unifiedOrder(){
         $order_sn = I('order_sn');
-        $openId = 'okXuBs-fUupkipNeLpFCjEfggfxc';
+        $openId = I('openid');
     	//②、统一下单
         $input = new \WxPayUnifiedOrder();
         $input->SetBody("视频课程");
@@ -26,6 +26,9 @@ class Pay {
         $input->SetOpenid($openId);
         $config = new \WxPayConfig();
         $order = WxPayApi::unifiedOrder($config, $input);
-        die(json_encode($order));
+        
+        $JsApiPay = new JsApiPay();
+        $jsApiParameters = $JsApiPay->GetJsApiParameters($order);
+        echo $jsApiParameters;
     }
 }

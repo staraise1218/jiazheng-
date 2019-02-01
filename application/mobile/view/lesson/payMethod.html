@@ -11,22 +11,35 @@
     <link rel="stylesheet" href="__STATIC__/css/course_info.css">
 </head>
 <body>
-  <div class="weixinpay">微信支付</div>
+  <div class="wxpay">微信支付</div>
 
   
 
 <script src="__STATIC__/js/jquery.js"></script>
 <script src="/public/js/layer/layer.js"></script>
 <script type="text/javascript">
-    /*$.ajax({
-        url: "{:url('mobile/pay/unifiedOrder')}",
-        type: 'post',
-        dateType: 'json',
-        data: {},
-        success:function(data){
-            console.log(data);
-        }
-    })*/
+    var order_sn = "{$order_sn}";
+    var openid = "{$openid}";
+    $(function(){
+        $('.wxpay').click(function(){
+            $.ajax({
+                url: "{:url('mobile/pay/unifiedOrder')}",
+                type: 'post',
+                dateType: 'json',
+                data: {order_sn:order_sn, openid:openid},
+                success:function(data){
+                    WeixinJSBridge.invoke(
+                        'getBrandWCPayRequest',
+                        data,
+                        function(res){
+                            WeixinJSBridge.log(res.err_msg);
+                            alert(res.err_code+res.err_desc+res.err_msg);
+                        }
+                    );
+                }
+            })
+        })
+    })
 </script>
 </body>
 </html>
