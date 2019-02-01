@@ -6,7 +6,7 @@
 * 请勿直接直接使用样例对外提供服务
 * 
 **/
-require_once __DIR__."./lib/WxPay.Api.php";
+require_once __DIR__."/lib/WxPay.Api.php";
 require_once __DIR__."WxPay.Config.php";
 /**
  * 
