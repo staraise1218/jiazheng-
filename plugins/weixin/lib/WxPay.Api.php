@@ -53,11 +53,11 @@ class WxPayApi
 		$inputObj->SetMch_id($config->GetMerchantId());//商户号
 		$inputObj->SetSpbill_create_ip($_SERVER['REMOTE_ADDR']);//终端ip	   	    
 		$inputObj->SetNonce_str(self::getNonceStr());//随机字符串
-		p($config);
+		
 		//签名
 		$inputObj->SetSign($config);
 		$xml = $inputObj->ToXml();
-		
+		p($xml);
 		$startTimeStamp = self::getMillisecond();//请求开始时间
 		$response = self::postXmlCurl($config, $xml, $url, false, $timeOut);
 		$result = WxPayResults::Init($config, $response);
