@@ -7,7 +7,7 @@
 * 
 **/
 require_once __DIR__."/lib/WxPay.Api.php";
-require_once __DIR__."WxPay.Config.php";
+require_once __DIR__."/WxPay.Config.php";
 /**
  * 
  * JSAPI支付实现类
