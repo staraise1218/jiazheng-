@@ -25,9 +25,9 @@ class Pay {
         $input->SetTrade_type("JSAPI");
         $input->SetOpenid($openId);
         $config = new \WxPayConfig();
-        $order = WxPayApi::unifiedOrder($config, $input);
+        $order = \WxPayApi::unifiedOrder($config, $input);
         
-        $JsApiPay = new JsApiPay();
+        $JsApiPay = new \JsApiPay();
         $jsApiParameters = $JsApiPay->GetJsApiParameters($order);
         echo $jsApiParameters;
     }
