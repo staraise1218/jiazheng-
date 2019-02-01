@@ -119,7 +119,6 @@ class Lesson extends Base{
             'user_id' => $user_id,
             'order_sn' => $order_sn,
             'createtime' => time(),
-            'paystatus' => 1
         );
 
         if(Db::name('lesson_order')->insert($data)){
