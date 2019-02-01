@@ -47,7 +47,7 @@ class WxPayConfig extends WxPayConfigInterface
 	}
 	public function GetSignType()
 	{
-		return "HMAC-SHA256";
+		return "MD5";
 	}
 
 	//=======【curl代理设置】===================================
