@@ -26,7 +26,7 @@ class Pay {
         $input->SetOpenid($openId);
         $config = new \WxPayConfig();
         $order = \WxPayApi::unifiedOrder($config, $input);
-        p($order);
+
         $JsApiPay = new \JsApiPay();
         $jsApiParameters = $JsApiPay->GetJsApiParameters($order);
         echo $jsApiParameters;
