@@ -29,7 +29,6 @@ class Pay {
 
         $JsApiPay = new \JsApiPay();
         $jsApiParameters = $JsApiPay->GetJsApiParameters($order);
-        p($jsApiParameters);
         echo $jsApiParameters;
     }
 }
