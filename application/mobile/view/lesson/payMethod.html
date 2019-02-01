@@ -28,13 +28,12 @@
                 dateType: 'json',
                 data: {order_sn:order_sn, openid:openid},
                 success:function(data){
-                    console.log(data);
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest',
                         data,
                         function(res){
-                            WeixinJSBridge.log(res.err_msg);
-                            alert(res.err_code+res.err_desc+res.err_msg);
+                           console.log(res.err_msg);
+                            console.log(res.err_code+res.err_desc+res.err_msg);
                         }
                     );
                 }
