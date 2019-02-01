@@ -38,14 +38,15 @@
 
     function jsApiCall()
     {
-        alert(jsApiParameters);
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest',
             jsApiParameters,
             function(res){
                 if(res.err_msg == "get_brand_wcpay_request:ok" ){
-                  alerr('支付 成功');
-                } 
+                  aler('支付 成功');
+                } else {
+                    alert('失败');
+                }
             }
         );
     }
