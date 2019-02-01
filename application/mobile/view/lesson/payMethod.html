@@ -28,6 +28,7 @@
                 dateType: 'json',
                 data: {order_sn:order_sn, openid:openid},
                 success:function(data){
+                    console.log(data);
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest',
                         data,
