@@ -131,6 +131,10 @@ class Lesson extends Base{
         }
     }
 
+    public function payMethod(){
+        return $this->fetch();
+    }
+
     // 记录播放课程、集数、时间
     public function ajaxPlayedLog(){
     	$data['user_id'] = $this->user_id;

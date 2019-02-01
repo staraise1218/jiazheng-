@@ -91,16 +91,9 @@
                 success: function(result){
                     layer.closeAll('loading');
                     if(result.code == 200){
+                        var order_sn = result.data.order_sn;
                         layer.msg('下单成功，去支付', {icon:1}, function(){
-                            $.ajax({
-                                url: "{:url('mobile/pay/unifiedOrder')}",
-                                type: 'post',
-                                dateType: 'json',
-                                data: {},
-                                success:function(data){
-                                    console.log(data);
-                                }
-                            })
+                            window.location="index.php/mobile/lesson/payMehod?order_sn="+order_sn;
                         });
                     } else {
                         layer.msg(result.msg);
