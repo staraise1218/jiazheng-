@@ -20,6 +20,7 @@
 <script type="text/javascript">
     var order_sn = "{$order_sn}";
     var openid = "{$openid}";
+    var jsApiParameters = {};
     $(function(){
         $('.wxpay').click(function(){
             $.ajax({
@@ -28,18 +29,38 @@
                 dateType: 'json',
                 data: {order_sn:order_sn, openid:openid},
                 success:function(data){
-                    WeixinJSBridge.invoke(
-                        'getBrandWCPayRequest',
-                        data,
-                        function(res){
-                           console.log(res.err_msg);
-                            console.log(res.err_code+res.err_desc+res.err_msg);
-                        }
-                    );
+                    jsApiParameters = data;
+                    callpay();
                 }
             })
         })
     })
+
+    function jsApiCall()
+    {
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+            jsApiParameters,
+            function(res){
+                WeixinJSBridge.log(res.err_msg);
+                alert(res.err_code+res.err_desc+res.err_msg);
+            }
+        );
+    }
+
+    function callpay()
+    {
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        }else{
+            jsApiCall();
+        }
+    }
 </script>
 </body>
 </html>
