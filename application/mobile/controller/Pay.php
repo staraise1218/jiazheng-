@@ -21,7 +21,7 @@ class Pay {
         $input->SetTime_start(date("YmdHis"));
         $input->SetTime_expire(date("YmdHis", time() + 600));
         $input->SetGoods_tag("视频课程");
-        $input->SetNotify_url("http://paysdk.weixin.qq.com/notify.php");
+        $input->SetNotify_url("http://jiazheng.staraise.com.cn/api/LessonPayNotifyCallBack/exec");
         $input->SetTrade_type("JSAPI");
         $input->SetOpenid($openId);
         $config = new \WxPayConfig();
