@@ -98,9 +98,12 @@ function videoCtrl(ctrl,el) {
     }
     if(ctrl == "change") {
 
-        $(".video source").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
+        $(".video source").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video"))
+        // .prop("currentTime",0);
         
+        console.log(el.attr("data-video"))
         console.log($(".video source"))
+        console.log(el)
 
         $(".btn_active").removeClass("btn_active");
         el.addClass("btn_active");
