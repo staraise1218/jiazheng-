@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>课程详情</title>
+    <title>购买课程</title>
     <script src="__STATIC__/js/rem.js"></script>
-    <link rel="stylesheet" href="__STATIC__/css/course_info.css">
+    <!-- <link rel="stylesheet" href="__STATIC__/css/course_info.css"> -->
+    <style type="text/css">
+        .paymethod{margin: 20px auto 0; width: 90%;}
+        .wxpay {width: 50%;}
+        .wxpay img {width: 100%;}
+    </style>
 </head>
 <body>
-  <div class="wxpay">微信支付</div>
+
+    <div class="paymethod">
+        <div class="wxpay"><img src="__STATIC__/images/weixin.png" alt=""></div>
+        
+    </div>
 
   
 
@@ -43,7 +52,7 @@
             JSON.parse(jsApiParameters),
             function(res){
                 if(res.err_msg == "get_brand_wcpay_request:ok" ){
-                  aler('支付 成功');
+                    window.history.back(-1);
                 } else {
                     alert('支付失败')
                 }
