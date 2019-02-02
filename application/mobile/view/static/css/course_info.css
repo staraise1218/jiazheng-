@@ -40,7 +40,7 @@ li {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 3.51rem;
+    height: 4.3rem;
     background: rgba(0,0,0,0.5);
 }
 .poster-wrap .poster > div img {
@@ -113,6 +113,7 @@ li {
 }
 .course-info-wrapper .course-info-title .bg {
     width: 1rem;
+    background: none !important;
 }
 .course-info-wrapper .course-info-title .bg img {
     width: 100%;

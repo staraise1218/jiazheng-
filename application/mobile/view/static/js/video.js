@@ -18,7 +18,7 @@ function videoInit() {
     $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
     console.log(lastplay)
 }
-videoInit();
+videoInit(); 
 
 // 点击播放按钮 -- 播放
 $(".video-play-play").on("touchstart", function () {
