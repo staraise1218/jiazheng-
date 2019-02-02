@@ -55,7 +55,7 @@ file_put_contents('runtime/log/request.log', $data, FILE_APPEND);
 	**/
 	public function LogAfterProcess($xmlData)
 	{
-		Log::DEBUG("call back， return xml:" . $xmlData);
+		// Log::DEBUG("call back， return xml:" . $xmlData);
 		return;
 	}
 	
