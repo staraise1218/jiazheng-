@@ -14,8 +14,8 @@
  
 <body>
     <div class="video-play-wrapper">
-        <video class="video" preload="auto" x5-playsinline="true" src="{$episodeList_page_1[0]['video']}" poster="__STATIC__/image/coursebroadcast.jpg">
-        </video>
+        <!-- <video class="video" preload="auto" x5-playsinline="true" src="{$episodeList_page_1[0]['video']}" poster="__STATIC__/image/coursebroadcast.jpg">
+        </video> -->
         <div class="video-play-btn">
             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
         </div>
@@ -66,29 +66,30 @@
  
     <script src="__STATIC__/js/jquery.js"></script>
     <script>
-        // var u = navigator.userAgent, app = navigator.appVersion;
-        // var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
-        // var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        // let strDom = "";
-        // if (isAndroid) {
-        //     strDom = `<video class="video" 
-        //                     x5-playsinline="true" 
-        //                     preload="none" 
-        //                     poster="__STATIC__/image/coursebroadcast.jpg" 
-        //                     style="object-fit:fill">                            
-        //                         <source src="{$episodeList_page_1[0]['video']}">
-        //                 </video>
-        //                 <div class="video-play-btn" style="z-index:100">
-        //                     <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
-        //                 </div>`
-        //     $(".video-play-btn").height($(".video").height()).width($(".video").width());
-        // }
-        // if (isIOS) {
-        //     strDom = `  <video class="video" controls x5-playsinline="true" preload="auto" poster="__STATIC__/image/coursebroadcast.jpg" style="object-fit:fill">
-        //                     <source src="{$episodeList_page_1[0]['video']}">
-        //                 </video>`
-        // }
-        // $(".video-play-wrapper").html(strDom)
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        let strDom = "";
+        if (isAndroid) {
+            strDom = `<video class="video" 
+                            x5-playsinline="true" 
+                            preload="none" 
+                            poster="__STATIC__/image/coursebroadcast.jpg" 
+                            src="{$episodeList_page_1[0]['video']}"
+                            style="object-fit:fill">
+                        </video>`
+            $(".video-play-btn").height($(".video").height()).width($(".video").width());
+        }
+        if (isIOS) {
+            strDom = `  <video class="video" 
+                                controls x5-playsinline="true"
+                                src="{$episodeList_page_1[0]['video']}"
+                                preload="auto" 
+                                poster="__STATIC__/image/coursebroadcast.jpg" 
+                                style="object-fit:fill">
+                        </video>`
+        }
+        $(".video-play-wrapper").html(strDom)
     </script>
     <script src="__STATIC__/js/video.js"></script>
 
