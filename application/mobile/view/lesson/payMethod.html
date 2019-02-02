@@ -29,7 +29,7 @@
                 dateType: 'json',
                 data: {order_sn:order_sn, openid:openid},
                 success:function(data){
-                    jsApiParameters = data.parseJSON();
+                    jsApiParameters = data;
                     callpay();
                 }
             })
@@ -45,7 +45,7 @@
                 if(res.err_msg == "get_brand_wcpay_request:ok" ){
                   aler('支付 成功');
                 } else {
-                    alert(res.err_code+res.err_desc+res.err_msg+jsApiParameters)
+                    alert(res.err_code+res.err_desc+res.err_msg+jsApiParameters.appId)
                 }
             }
         );
