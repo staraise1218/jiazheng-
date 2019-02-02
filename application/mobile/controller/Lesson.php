@@ -57,7 +57,7 @@ class Lesson extends Base{
 			$this->error('您尚未购买');
 		}
 
-		$limit = 2; // 每页显示15条
+		$limit = 15; // 每页显示15条
 		$totalCount = Db::name('lesson_episode')->where('lesson_id', $lesson_id)->count();
 		$pageCount = ceil($totalCount/$limit); // 总页数
 
