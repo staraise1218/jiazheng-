@@ -35,7 +35,6 @@ $(".video").on("touchstart", function () {
 
 // 点击分集按钮
 $(".wrap").delegate(".video-btn", "touchstart", function() {
-    // videoCtrl("change",$(this));
     console.log($(this))
     console.log($(this).index())
     var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
