@@ -142,7 +142,7 @@ class Lesson extends Base{
 
         // 获取用户信息
         $user = Db::name('users')->where('user_id', $this->user_id)->find();
-
+p($order_sn);
         $this->assign('openid', $user['openid']);
         $this->assign('order_sn', $order_sn);
         return $this->fetch();
