@@ -5,7 +5,7 @@ namespace app\mobile\controller;
 use think\Controller;
 use think\Db;
 
-class Index extends Base{
+class Article extends Base{
 
     public function about(){
     	$info = Db::name('article')
