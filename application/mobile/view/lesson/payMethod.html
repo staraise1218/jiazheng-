@@ -29,7 +29,7 @@
                 dateType: 'json',
                 data: {order_sn:order_sn, openid:openid},
                 success:function(data){
-                    jsApiParameters = data;
+                    jsApiParameters = data.parseJSON();
                     callpay();
                 }
             })
