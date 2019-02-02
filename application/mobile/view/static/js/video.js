@@ -39,7 +39,9 @@ $(".wrap").delegate(".video-btn", "touchstart", function() {
     console.log($(this))
     // $(".video source").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video"))
 
-    $(".video source").get(0).src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
+    var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
+
+    $(".video source").prop("src", $src) 
     // .prop("currentTime",0);
     
     console.log($(this).attr("data-video"))
