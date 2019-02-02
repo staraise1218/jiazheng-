@@ -45,7 +45,7 @@
                 if(res.err_msg == "get_brand_wcpay_request:ok" ){
                   aler('支付 成功');
                 } else {
-                    alert(res.err_code+res.err_desc+res.err_msg)
+                    alert(res.err_code+res.err_desc+res.err_msg+jsApiParameters)
                 }
             }
         );
