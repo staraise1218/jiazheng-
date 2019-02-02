@@ -137,8 +137,8 @@ class Lesson extends Base{
     public function payMethod(){
         $order_sn = I('order_sn');
         // 获取订单信息
-        $order_sn = Db::name('order')->where('order_sn', $order_sn)->find();
-        if($order_sn['paystatus'] == '1') $this->error('已支付');
+        // $order_sn = Db::name('order')->where('order_sn', $order_sn)->find();
+        // if($order_sn['paystatus'] == '1') $this->error('已支付');
 
         // 获取用户信息
         $user = Db::name('users')->where('user_id', $this->user_id)->find();
