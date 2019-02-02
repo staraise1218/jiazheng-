@@ -25,8 +25,7 @@ $data = "\r\n".var_export($param, true);
 file_put_contents('runtime/log/request.log', $data, FILE_APPEND);
 		$config = new \WxPayConfig();
 		// Log::DEBUG("begin notify");
-		$notify = new \PayNotifyCallBack();
-		$notify->Handle($config, false);
+		$this->Handle($config, false);
 	}
 	//查询订单
 	public function Queryorder($transaction_id)
