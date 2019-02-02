@@ -97,8 +97,11 @@ function videoCtrl(ctrl,el) {
         $video.pause();
     }
     if(ctrl == "change") {
+
         $(".video source").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
         
+        console.log($(".video source"))
+
         $(".btn_active").removeClass("btn_active");
         el.addClass("btn_active");
         
