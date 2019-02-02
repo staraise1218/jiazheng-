@@ -36,23 +36,23 @@ $(".video").on("touchstart", function () {
 // 点击分集按钮
 $(".wrap").delegate(".video-btn", "touchstart", function() {
     // videoCtrl("change",$(this));
-    console.log($this)
+    console.log($(this))
     // $(".video source").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video"))
 
     $(".video source").get(0).src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     // .prop("currentTime",0);
     
-    console.log(el.attr("data-video"))
+    console.log($(this).attr("data-video"))
     console.log($(".video source"))
-    console.log(el)
+    console.log($(this))
 
     $(".btn_active").removeClass("btn_active");
-    el.addClass("btn_active");
+    $(this).addClass("btn_active");
     
     $(".video-play-btn").hide();
     $(".hint-wrap").hide();
     
-    lastplay.number = $(".wrap .video-btn").index(el);
+    lastplay.number = $(".wrap .video-btn").index($(this));
     lastplay.ended = 0;
     localStorage.setItem("lastplay.number",lastplay.number);
     localStorage.setItem("lastplay.ended",lastplay.ended);
