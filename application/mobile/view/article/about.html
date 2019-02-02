@@ -13,16 +13,21 @@
     <link rel="stylesheet" href="__STATIC__/css/store.css">
 </head>
 <body>
-    <div class="pagecontainer">
-        <div class="particular-title">
-            <p>COMPANY INDRODUCE</p>
-            <div>
-                <img src="__STATIC__/image/course details_line@2x.png" alt="">
-                <strong>关于我们</strong>
-                <img src="__STATIC__/image/course details_line@2x.png" alt="">
+    <div class="poster" style="width:100%">
+        <img style="width:100%" src="__STATIC__/image/company.jpg" alt="">
+    </div>
+    <div class="particular-introduce-wrap" style="margin-top:-0.2rem">
+        <div class="item">
+            <div class="particular-title">
+                <p>COMPANY INDRODUCE</p>
+                <div>
+                    <img src="__STATIC__/image/course details_line@2x.png" alt="">
+                    <strong>关于我们</strong>
+                    <img src="__STATIC__/image/course details_line@2x.png" alt="">
+                </div>
             </div>
+            {$info.content}
         </div>
-        {$info.content}
     </div>
 </body>
 </html>
