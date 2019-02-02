@@ -112,6 +112,7 @@ li {
     vertical-align: 1px;
 }
 .course-info-wrapper .course-info-title .bg {
+    display: none;
     width: 1rem;
     background: none !important;
 }
