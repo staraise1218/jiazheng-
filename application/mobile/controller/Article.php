@@ -15,6 +15,6 @@ class Index extends Base{
 
 
 		$this->assign('info', $info);
-    	return $this->fetch('index');
+    	return $this->fetch();
     }
 }
