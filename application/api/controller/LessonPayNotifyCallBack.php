@@ -15,7 +15,7 @@ require_once './plugins/weixin/lib/WxPay.Notify.php';
 require_once "./plugins/weixin/WxPay.Config.php";
 // require_once 'log.php';
 
-class LessonPayNotifyCallBack extends WxPayNotify
+class LessonPayNotifyCallBack extends \WxPayNotify
 {
 
 	// 执行回调
@@ -35,7 +35,7 @@ file_put_contents('runtime/log/request.log', $data, FILE_APPEND);
 		$input->SetTransaction_id($transaction_id);
 
 		$config = new \WxPayConfig();
-		$result = WxPayApi::orderQuery($config, $input);
+		$result = \WxPayApi::orderQuery($config, $input);
 		// Log::DEBUG("query:" . json_encode($result));
 		if(array_key_exists("return_code", $result)
 			&& array_key_exists("result_code", $result)
