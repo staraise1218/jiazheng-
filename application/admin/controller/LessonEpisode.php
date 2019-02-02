@@ -18,7 +18,7 @@ class LessonEpisode extends Base {
         $list = M('lessonEpisode')
             ->where($where)
             ->order('id desc')
-            ->paginate(20, false, ['page'=>$page, 'path'=>U('admin/lessonEpisode/index')]);
+            ->paginate(20, false, ['page'=>$page, 'path'=>U('admin/lessonEpisode/index', array('lesson_id'=>$lesson_id))]);
 
         $this->assign('lesson_id',$lesson_id);
         $this->assign('list',$list);
