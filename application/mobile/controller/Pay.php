@@ -12,6 +12,8 @@ class Pay {
     public function unifiedOrder(){
         $order_sn = I('order_sn');
         $openId = I('openid');
+
+        p($order_sn);
     	//②、统一下单
         $input = new \WxPayUnifiedOrder();
         $input->SetBody("视频课程");
