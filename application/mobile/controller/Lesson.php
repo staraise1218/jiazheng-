@@ -135,7 +135,7 @@ class Lesson extends Base{
     }
 
     public function payMethod(){
-        $order_sn = input('param.order_sn');
+        $order_sn = I('order_sn');
         // 获取订单信息
         $order = Db::name('order')->where('order_sn', $order_sn)->find();
         if($order['paystatus'] == '1') $this->error('已支付');
