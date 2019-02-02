@@ -40,7 +40,7 @@ $(".wrap").delegate(".video-btn", "touchstart", function() {
     console.log($(this).index())
     var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
 
-    $(".video").prop("src", "$src")
+    $(".video").prop("src", $src)
     $(".video").get(0).currentTime = 0;
     // .prop("currentTime",0);
     
