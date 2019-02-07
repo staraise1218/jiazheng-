@@ -13,12 +13,12 @@ let $video = $(".video").get(0);
 function videoInit() {
     // $(".video-play-btn").height($(".video").height())
     $(".lastplay-number-con").text("第"+ (+lastplay.number+1) + "集 " + lastplay.current_time);
-    $(".video source").get(0).src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
-    $video.currentTime = lastplay.current_time;
+    // $(".video").get(0).src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
+    // $video.currentTime = lastplay.current_time;
     $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
     console.log(lastplay)
 }
-videoInit();
+videoInit(); 
 
 // 点击播放按钮 -- 播放
 $(".video-play-play").on("touchstart", function () {
@@ -35,7 +35,31 @@ $(".video").on("touchstart", function () {
 
 // 点击分集按钮
 $(".wrap").delegate(".video-btn", "touchstart", function() {
-    videoCtrl("change",$(this));
+    console.log($(this))
+    console.log($(this).index())
+    var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
+
+    $(".video").prop("src", $src)
+    $(".video").get(0).currentTime = 0;
+    // .prop("currentTime",0);
+    
+    console.log($(this).attr("data-video"))
+    console.log($(".video"))
+    console.log($(this))
+
+    $(".btn_active").removeClass("btn_active");
+    $(this).addClass("btn_active");
+    
+    $(".video-play-btn").hide();
+    $(".hint-wrap").hide();
+    
+    lastplay.number = $(".wrap .video-btn").index($(this));
+    lastplay.ended = 0;
+    localStorage.setItem("lastplay.number",lastplay.number);
+    localStorage.setItem("lastplay.ended",lastplay.ended);
+
+    $video.currentTime = 0;
+    $video.play();
 })
 
 // 开始播放
@@ -95,23 +119,6 @@ function videoCtrl(ctrl,el) {
         lastplay.current_time = Math.floor($video.currentTime);
         localStorage.setItem("lastplay.current_time",lastplay.current_time);
         $video.pause();
-    }
-    if(ctrl == "change") {
-        $(".video source").prop("src","http://jiazheng.staraise.com.cn" + el.attr("data-video")).prop("currentTime",0);
-        
-        $(".btn_active").removeClass("btn_active");
-        el.addClass("btn_active");
-        
-        $(".video-play-btn").hide();
-        $(".hint-wrap").hide();
-        
-        lastplay.number = $(".wrap .video-btn").index(el);
-        lastplay.ended = 0;
-        localStorage.setItem("lastplay.number",lastplay.number);
-        localStorage.setItem("lastplay.ended",lastplay.ended);
-
-        $video.currentTime = 0;
-        $video.play();
     }
 }
 

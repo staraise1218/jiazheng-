@@ -158,7 +158,7 @@ li {
     width: 7.5rem;
     height: 100%;
     display: inline-block;
-    padding: 0 0.2rem;
+    /* padding: 0 0.2rem; */
     box-sizing: border-box;
 }
 .wrap li span {
@@ -168,7 +168,7 @@ li {
     background:rgba(255,255,255,1);
     border:1px solid rgba(229,229,229,1);
     border-radius: 0.04rem;
-    margin: 0.14rem;
+    margin-left: 0.3rem;
     text-align: center;
     line-height: 0.82rem;
     margin-top: 0.1rem;
