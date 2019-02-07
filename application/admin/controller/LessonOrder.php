@@ -24,21 +24,4 @@ class LessonOrder extends Base {
         
         return $this->fetch();
     }
-
-    public function add(){
-        if($this->request->isPost()){
-            $data = I('post.');
-            if(trim($data['title']) == '') $this->ajaxReturn(['status' => 0, 'msg' => '参数错误', 'result' => ['title' =>'标题不能为空']]);
-
-            $data['createtime'] = time();
-            if(M('lesson')->insert($data)){
-                $this->ajaxReturn(['status' => 1, 'msg' => '操作成功']);
-            } else {
-                $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
-            }
-        }
-
-        
-        return $this->fetch();
-    }
 }
