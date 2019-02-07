@@ -35,7 +35,7 @@ class Weixin {
         } else {
         	$userdata = array(
         		'openid' => $userinfo['openid'],
-        		'nickname' => $userinfo['nickname'],
+        		'nickname' => base64_encode($userinfo['nickname']),
         		'sex' => $userinfo['sex'],
         		'head_pic' => $userinfo['headimgurl'],
         		'reg_time' => time(),
