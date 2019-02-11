@@ -20,54 +20,52 @@ function videoInit() {
 videoInit(); 
 
 // 点击播放按钮 -- 播放
-$(".video-play-play").on("touchstart", function () {
+$(".video-play-play").on("click", function () {
     // videoCtrl("play");
-    $(".video-play-btn").hide();
-    $(".hint-wrap").hide();
     $video.play();
 })
-$(".continue").on("touchstart", function () {
-    videoCtrl("play");
-})
+// $(".continue").on("click", function () {
+//     videoCtrl("play");
+// })
 
 // 暂停
-$(".video").on("touchstart", function () {
-    videoCtrl("stop");
+$(".video").on("click", function () {
+    $video.pause();
 })
 
 // 点击分集按钮
-$(".wrap").delegate(".video-btn", "touchstart", function() {
+$(".wrap").delegate(".video-btn", "click", function() {
     var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
 
     $(".video").prop("src", $src)
     $(".btn_active").removeClass("btn_active");
     $(this).addClass("btn_active");
-    $(".video-play-btn").hide();
-    $(".hint-wrap").hide();
+    // $(".video-play-btn").hide();
+    // $(".hint-wrap").hide();
 
-    lastplay.number = $(".wrap .video-btn").index($(this));
-    localStorage.setItem("lastplay.number",lastplay.number);
+    // lastplay.number = $(".wrap .video-btn").index($(this));
+    // localStorage.setItem("lastplay.number",lastplay.number);
     $video.currentTime = 0;
     $video.play();
 })
 
 // 开始播放
-$video.onplay = function () {
-    // $video.currentTime = lastplay.current_time;
-}
+// $video.onplay = function () {
+//     // $video.currentTime = lastplay.current_time;
+// }
 
 // 暂停
-$video.onabort = function () {
-    // lastplay.current_time = Math.floor($video.currentTime);
-    // localStorage.setItem("lastplay.current_time",lastplay.current_time);
-}
+// $video.onabort = function () {
+//     // lastplay.current_time = Math.floor($video.currentTime);
+//     // localStorage.setItem("lastplay.current_time",lastplay.current_time);
+// }
 
 // 视频播放完
-$video.onended = function() {
-    videoCtrl("stop");
-    // lastplay.current_time = 0;
-    // localStorage.setItem("lastplay.current_time",lastplay.current_time);
-}
+// $video.onended = function() {
+//     videoCtrl("stop");
+//     // lastplay.current_time = 0;
+//     // localStorage.setItem("lastplay.current_time",lastplay.current_time);
+// }
 
 // 监听页面关闭
 window.onbeforeunload = function(e) {
@@ -106,7 +104,7 @@ function videoCtrl(ctrl) {
 }
 
 // 分集导航切换
-$(".order ul").delegate("li", "touchstart", function () {
+$(".order ul").delegate("li", "click", function () {
     $(".order ul .active").removeClass("active");
     $(this).addClass("item active");
     let $w = $(".wrap").width();
