@@ -48,6 +48,34 @@
         .tanchuang-wrap .tanchuang .code {
             margin-top: 0.5rem;
         }
+
+
+
+        .tanchuang-wrap .tanchuang .tell_code {
+            margin-top: 0.1rem;
+        }
+
+        .tanchuang-wrap .tanchuang .btncon {
+            text-align: center;
+        }
+
+        .tanchuang-wrap .tanchuang button {
+            display: inline-block;
+            width: 30%;
+            margin: 0 auto;
+            background: #7abedf;
+            border: 0;
+            color: #fff;
+            line-height: 0.7rem;
+            border-radius: 0.05rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .tanchuang-wrap .tanchuang button.cancel {
+            background: #aaa;
+            margin-right: 30px;
+        }
     </style>
 </head>
 <body style="background: #FFF">
@@ -125,8 +153,12 @@
 <script type="text/javascript">
     $(function(){
         // $('.code').click(function(){
-            
+
         // })
+    })
+
+    $(document).delegate('.cancel', 'click', function(){
+        $('.tanchuang-wrap').hide();
     })
 </script>
 </body>
