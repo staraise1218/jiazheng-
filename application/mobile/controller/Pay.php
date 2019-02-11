@@ -34,8 +34,55 @@ class Pay {
         echo $jsApiParameters;
     }
 
-    public function lessoncode(){
+    public function lessoncodepay(){
         $order_sn = I('order_sn');
-        $code = I('code');
+        $lessoncode = I('lessoncode');
+
+        $session_user = session('user');
+        $user_id = $session_user['user_id'];
+
+        $order = Db::name('lesson_order')->where('order_sn', $order_sn)->find();
+        if($order['paystatus'] == 1) die(json_encode(array('code'=>0, 'msg'=>'已支付')));
+
+        // 检测课程码是否已使用
+        $count = Db::name('lessoncode_list')
+            ->where('code', $lessoncode)
+            ->where('is_used', 0)
+            ->count();
+
+        if($count == 0) die(json_encode(array('code'=>0, 'msg'=>'课程码无效')));
+
+        // 启动事务
+        Db::startTrans();
+        try{
+            // 更新课程订单状态
+            $updatedata = array(
+                'paystatus'=>1,
+                'paytime' => time(),
+                'paymethod' => 2,
+            );
+            Db::name('lesson_order')->where('order_sn', $order_sn)->update($updatedata);
+            // 更新课程码状态
+            Db::name('lessoncode_list')->where('code', $lessoncode)->update(array('is_used'=>1));
+            // 记录课程码使用日志
+            $lessoncode_log = array(
+                'lessoncode'=>$lessoncode,
+                'user_id' => $user_id,
+                'order_sn'=>$order_sn,
+            );
+
+            Db::name('lessoncode_log')->insert($lessoncode_log);
+            // 提交事务
+            Db::commit();
+            die(json_encode(array('code'=>1, 'msg'=>'支付成功')));
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+            die(json_encode(array('code'=>0, 'msg'=>'系统异常')));
+        }
+
+
+
+        
     }
 }

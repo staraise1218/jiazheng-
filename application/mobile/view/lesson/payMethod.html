@@ -89,11 +89,11 @@
 
         <div class="tanchuang-wrap" style="display: none">
             <div class="tanchuang">
-                <input class="code" type="text" name="code" value="" placeholder="请输入课程码">
+                <input class="code" type="text" name="lessoncode" value="" placeholder="请输入课程码">
                 
                 <div class="btncon">
                     <button class="cancel">取消</button>
-                   <button class="over">完成</button>
+                   <button class="over codepay">支付</button>
                 </div>
             </div>
         </div>
@@ -152,9 +152,39 @@
     }
 </script>
 <script type="text/javascript">
+   
+
     $(function(){
         $('.lessoncode').click(function(){
             $('.tanchuang-wrap').show();
+        })
+    })
+
+    // 支付
+    // 
+    var order_sn = "{$order_sn}";
+    $('.codepay').click(function(){
+        var lessoncode = $('input[name=lessoncode]').val();
+        if(lessoncode == '') return false;
+        layer.load(1);
+        $.ajax({
+            url: "{:U('mobile/pay/lessoncodepay')}",
+            type: 'post',
+            dataType: 'json',
+            data: {lessoncode: 'lessoncode', order_sn: order_sn},
+            success: function(res){
+                layer.closeAll();
+                if(res.code == 1){
+                    layer.msg('支付成功', {icon:1}, function(){
+                        window.history.back(-1);
+                    });
+
+                } else {
+                    $('input[name=lessoncode]').val('');
+                    $('.tanchuang-wrap').hide()
+                    layer.msg(res.msg);
+                }
+            }
         })
     })
 
