@@ -23,6 +23,7 @@ return	array(
 						array('name' => '考试名称', 'act'=>'contentList', 'op'=>'exam'),
 						array('name' => '考试地点', 'act'=>'region', 'op'=>'Tools'),
 						array('name' => '课程订单', 'act'=>'index', 'op'=>'lessonOrder'),
+						array('name' => '课程码', 'act'=>'index', 'op'=>'lessoncode'),
 				)),
 				array('name' => '阿姨','child'=>array(
 						array('name' => '阿姨列表', 'act'=>'index', 'op'=>'aunt'),

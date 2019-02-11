@@ -8,6 +8,7 @@ require_once "./plugins/weixin/WxPay.Config.php";
 
 class Pay {
 
+    // 微信jsapi 支付
 	// 统一下单 unifiedOrder
     public function unifiedOrder(){
         $order_sn = I('order_sn');
@@ -31,5 +32,10 @@ class Pay {
         $JsApiPay = new \JsApiPay();
         $jsApiParameters = $JsApiPay->GetJsApiParameters($order);
         echo $jsApiParameters;
+    }
+
+    public function lessoncode(){
+        $order_sn = I('order_sn');
+        $code = I('code');
     }
 }

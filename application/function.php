@@ -584,7 +584,7 @@ function pinyin_long($zh){
 
 function ajaxReturn($data)
 {
-    exit(json_encode($data, JSON_UNESCAPED_UNICODE));
+    exit(json_encode($data));
 }
 
 function flash_sale_time_space()
