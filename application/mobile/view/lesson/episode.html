@@ -53,7 +53,7 @@
                 <?php $episodeList = 'episodeList_page_'.$page; ?>
                 <li class="{$page == 1 ? 'active' : ''}">
                     {foreach name="$$episodeList" item="item"}
-                    <span class="video-btn" data-video="{$item.video}" lesson_episode_id="{$item.id}" number="{$item.number}">
+                    <span class="video-btn" data-video="{$item.video}" data-title="{$item.title}" lesson_episode_id="{$item.id}" number="{$item.number}">
                         {$item.number}
                     </span>
                     {/foreach}
@@ -63,13 +63,12 @@
         </div>
     </div>
 
-    <input class="lastplay_title" type="hidden" name="lastplay_title" value="{$lastplay.title}">
+    <!-- <input class="lastplay_title" type="hidden" name="lastplay_title" value="{$lastplay.title}">
     <input class="current_time" type="hidden" name="current_time" value="{$lastplay.current_time}">
     <input class="lesson_episode_id" type="hidden" name="lesson_episode_id" value="{$lastplay.lesson_episode_id}">
     <input class="lastplay_number" type="hidden" name="lastplay_number" value="{$lastplay.number}">
-
     <input class="lesson_id" type="hidden" name="lesson_id" value="{$lesson_id}">
-    <input class="order_id" type="hidden" name="order_id" value="{$order_id}">
+    <input class="order_id" type="hidden" name="order_id" value="{$order_id}"> -->
  
     <script src="__STATIC__/js/jquery.js"></script>
     <script>

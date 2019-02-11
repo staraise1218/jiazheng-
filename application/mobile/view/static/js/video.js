@@ -1,23 +1,19 @@
 let lastplay = {
     current_time : localStorage.getItem("lastplay.current_time") || 0,
-    number : localStorage.getItem("lastplay.number") || $(".lastplay_number").attr("value") || 1,
-    lesson_episode_id : $(".lesson_id").get(0).value,
-    lesson_episode_id : $(".lesson_episode_id").attr("value"),
-    lastplay_title : $(".lastplay_title").attr("value"),
-    lesson_id : $(".lesson_id").attr("value"),
-    ended: "",
-    order_id : $(".order_id").attr("value")
+    number : localStorage.getItem("lastplay.number") || 0,
+    // lesson_episode_id : $(".lesson_episode_id").attr("value"),
+    // lastplay_title : $(".lastplay_title").attr("value"),
+    // lesson_id : $(".lesson_id").attr("value"),
+    // ended: 0,
+    // order_id : $(".order_id").attr("value")
 }
 
 let $video = $(".video").get(0);
 function videoInit() {
     console.log(lastplay)
     // $(".video-play-btn").height($(".video").height())
-    $(".lastplay-number-con").text("第"+ (+lastplay.number+1) + "集 " + lastplay.current_time);
     $(".video").get(0).src = $(".wrap .video-btn").eq(lastplay.number ).attr("data-video");
-    // $video.currentTime = lastplay.current_time;
     $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
-    console.log(lastplay)
 }
 videoInit(); 
 
@@ -36,48 +32,22 @@ $(".video").on("touchstart", function () {
 
 // 点击分集按钮
 $(".wrap").delegate(".video-btn", "touchstart", function() {
-    console.log($(this))
-    console.log($(this).index())
     var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
 
     $(".video").prop("src", $src)
-    $(".video").get(0).currentTime = 0;
-    
-    console.log($(this).attr("data-video"))
-    console.log($(".video"))
-    console.log($(this))
-
     $(".btn_active").removeClass("btn_active");
     $(this).addClass("btn_active");
-    
     $(".video-play-btn").hide();
     $(".hint-wrap").hide();
-    
-    lastplay.number = $(".wrap .video-btn").index($(this));
-    lastplay.ended = 0;
-    localStorage.setItem("lastplay.number",lastplay.number);
-    localStorage.setItem("lastplay.ended",lastplay.ended);
 
+    lastplay.number = $(".wrap .video-btn").index($(this));
+    localStorage.setItem("lastplay.number",lastplay.number);
     $video.currentTime = 0;
     $video.play();
-    $.ajax({
-        type: 'POST',
-        data: lastplay,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function() {
-            console.log("ajax成功");
-            console.log(lastplay);
-        },
-        error: function(e) {
-            console.log("error");
-        }
-    })
 })
 
 // 开始播放
 $video.onplay = function () {
-    lastplay.ended = 0;
-    localStorage.setItem("lastplay.ended",lastplay.ended);
     $video.currentTime = lastplay.current_time;
 }
 
@@ -90,9 +60,7 @@ $video.onabort = function () {
 // 视频播放完
 $video.onended = function() {
     videoCtrl("stop");
-    lastplay.ended = 1;
     lastplay.current_time = 0;
-    localStorage.setItem("lastplay.ended",lastplay.ended);
     localStorage.setItem("lastplay.current_time",lastplay.current_time);
 }
 
@@ -101,18 +69,18 @@ window.onbeforeunload = function(e) {
     lastplay.current_time = Math.floor($video.currentTime);
     localStorage.setItem("lastplay.current_time", lastplay.current_time);
 
-    $.ajax({
-        type: 'POST',
-        data: lastplay,
-        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
-        success: function() {
-            console.log("ajax成功");
-            console.log(lastplay);
-        },
-        error: function(e) {
-            console.log("error");
-        }
-    })
+    // $.ajax({
+    //     type: 'POST',
+    //     data: lastplay,
+    //     url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+    //     success: function() {
+    //         console.log("ajax成功");
+    //         console.log(lastplay);
+    //     },
+    //     error: function(e) {
+    //         console.log("error");
+    //     }
+    // })
 }
 
 // video 播放控制函数
