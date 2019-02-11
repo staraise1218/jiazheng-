@@ -45,9 +45,7 @@
             border-bottom: 0.02rem solid rgba(0, 0, 0, 0.3);
         }
 
-        .tanchuang-wrap .tanchuang .user_name_text,
-        .tanchuang-wrap .tanchuang .user_code,
-        .tanchuang-wrap .tanchuang .tell_number {
+        .tanchuang-wrap .tanchuang .code {
             margin-top: 0.5rem;
         }
     </style>
@@ -62,7 +60,7 @@
 
         <div class="tanchuang-wrap">
             <div class="tanchuang">
-                <input class="user_code" type="text" name=" value="{$user}" placeholder="请输入身份证号">
+                <input class="code" type="text" name="code" value="" placeholder="请输入课程码">
                 
                 <div class="btncon">
                     <button class="cancel">取消</button>
@@ -126,9 +124,9 @@
 </script>
 <script type="text/javascript">
     $(function(){
-        $('.code').click(fucntion(){
-
-        })
+        // $('.code').click(function(){
+            
+        // })
     })
 </script>
 </body>
