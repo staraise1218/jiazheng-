@@ -41,7 +41,6 @@ $(".wrap").delegate(".video-btn", "touchstart", function() {
 
     $(".video").prop("src", $src)
     $(".video").get(0).currentTime = 0;
-    // .prop("currentTime",0);
     
     console.log($(this).attr("data-video"))
     console.log($(".video"))
@@ -60,6 +59,18 @@ $(".wrap").delegate(".video-btn", "touchstart", function() {
 
     $video.currentTime = 0;
     $video.play();
+    $.ajax({
+        type: 'POST',
+        data: lastplay,
+        url: 'http://jiazheng.staraise.com.cn/mobile/lesson/ajaxPlayedLog',
+        success: function() {
+            console.log("ajax成功");
+            console.log(lastplay);
+        },
+        error: function(e) {
+            console.log("error");
+        }
+    })
 })
 
 // 开始播放
