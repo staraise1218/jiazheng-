@@ -19,13 +19,14 @@
         <video class="video" 
             x5-playsinline="true" 
             preload="none" 
+            controls
             poster="__STATIC__/image/coursebroadcast.jpg" 
             src="{$episodeList_page_1[0]['video']}"
             style="object-fit:fill">
         </video>
-        <div class="video-play-btn">
+        <!-- <div class="video-play-btn">
             <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
-        </div>
+        </div> -->
     </div>
     <div class="hint-wrap" {if condition="empty($lastplay)" }style="display:none" {/if}>
         <!-- <div class="hint-bg">
