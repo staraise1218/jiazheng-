@@ -104,7 +104,7 @@ function videoCtrl(ctrl) {
 }
 
 // 分集导航切换
-$(".order ul").delegate("li", "click", function () {
+$(".order ul").delegate("li", "nativeclick", function () {
     $(".order ul .active").removeClass("active");
     $(this).addClass("item active");
     let $w = $(".wrap").width();
