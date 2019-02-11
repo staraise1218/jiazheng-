@@ -171,7 +171,7 @@
             url: "{:U('mobile/pay/lessoncodepay')}",
             type: 'post',
             dataType: 'json',
-            data: {lessoncode: 'lessoncode', order_sn: order_sn},
+            data: {lessoncode: lessoncode, order_sn: order_sn},
             success: function(res){
                 layer.closeAll();
                 if(res.code == 1){
