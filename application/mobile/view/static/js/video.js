@@ -11,11 +11,12 @@ let lastplay = {
 
 let $video = $(".video").get(0);
 function videoInit() {
+    console.log(lastplay)
     // $(".video-play-btn").height($(".video").height())
     $(".lastplay-number-con").text("第"+ (+lastplay.number+1) + "集 " + lastplay.current_time);
-    $(".video").get(0).src = $(".wrap .video-btn").eq(lastplay.number).attr("data-video");
+    $(".video").get(0).src = $(".wrap .video-btn").eq(lastplay.number - 1).attr("data-video");
     // $video.currentTime = lastplay.current_time;
-    $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
+    $(".wrap .video-btn").eq(lastplay.number - 1).addClass("btn_active");
     console.log(lastplay)
 }
 videoInit(); 
