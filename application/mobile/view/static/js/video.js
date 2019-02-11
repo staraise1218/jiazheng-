@@ -51,26 +51,26 @@ $(".wrap").delegate(".video-btn", "touchstart", function() {
 
 // 开始播放
 $video.onplay = function () {
-    $video.currentTime = lastplay.current_time;
+    // $video.currentTime = lastplay.current_time;
 }
 
 // 暂停
 $video.onabort = function () {
-    lastplay.current_time = Math.floor($video.currentTime);
-    localStorage.setItem("lastplay.current_time",lastplay.current_time);
+    // lastplay.current_time = Math.floor($video.currentTime);
+    // localStorage.setItem("lastplay.current_time",lastplay.current_time);
 }
 
 // 视频播放完
 $video.onended = function() {
     videoCtrl("stop");
-    lastplay.current_time = 0;
-    localStorage.setItem("lastplay.current_time",lastplay.current_time);
+    // lastplay.current_time = 0;
+    // localStorage.setItem("lastplay.current_time",lastplay.current_time);
 }
 
 // 监听页面关闭
 window.onbeforeunload = function(e) {
-    lastplay.current_time = Math.floor($video.currentTime);
-    localStorage.setItem("lastplay.current_time", lastplay.current_time);
+    // lastplay.current_time = Math.floor($video.currentTime);
+    // localStorage.setItem("lastplay.current_time", lastplay.current_time);
 
     // $.ajax({
     //     type: 'POST',
@@ -90,16 +90,15 @@ window.onbeforeunload = function(e) {
 function videoCtrl(ctrl) {
     // videoStatus();
     if(ctrl == "play") {
-        $video.currentTime = lastplay.current_time;
+        // $video.currentTime = lastplay.current_time;
         $(".video-play-btn").hide();
         $(".hint-wrap").hide();
-        localStorage.setItem("lastplay.ended",lastplay.ended);
         $video.play();
     }
     if(ctrl == "stop") {
         $(".video-play-btn").show();
-        lastplay.current_time = Math.floor($video.currentTime);
-        localStorage.setItem("lastplay.current_time",lastplay.current_time);
+        // lastplay.current_time = Math.floor($video.currentTime);
+        // localStorage.setItem("lastplay.current_time",lastplay.current_time);
         $video.pause();
     }
 }
