@@ -12,8 +12,10 @@ let $video = $(".video").get(0);
 function videoInit() {
     // $(".video-play-btn").height($(".video").height())
     console.log(lastplay)
-    $(".video").get(0).src = $(".wrap .video-btn").eq(lastplay.number ).attr("data-video");
-    $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
+    // $(".video").get(0).src = $(".wrap .video-btn").eq(lastplay.number ).attr("data-video");
+    // $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
+    $(".video").get(0).src = $(".wrap .video-btn").eq(0).attr("data-video");
+    $(".wrap .video-btn").eq(0).addClass("btn_active");
 }
 videoInit(); 
 
