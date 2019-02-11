@@ -1,6 +1,6 @@
 let lastplay = {
-    current_time : localStorage.getItem("lastplay.current_time") || 0,
     number : localStorage.getItem("lastplay.number") || 0,
+    // current_time : localStorage.getItem("lastplay.current_time") || 0,
     // lesson_episode_id : $(".lesson_episode_id").attr("value"),
     // lastplay_title : $(".lastplay_title").attr("value"),
     // lesson_id : $(".lesson_id").attr("value"),
@@ -10,8 +10,8 @@ let lastplay = {
 
 let $video = $(".video").get(0);
 function videoInit() {
-    console.log(lastplay)
     // $(".video-play-btn").height($(".video").height())
+    console.log(lastplay)
     $(".video").get(0).src = $(".wrap .video-btn").eq(lastplay.number ).attr("data-video");
     $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
 }
@@ -84,13 +84,12 @@ window.onbeforeunload = function(e) {
 }
 
 // video 播放控制函数
-function videoCtrl(ctrl,el) {
+function videoCtrl(ctrl) {
     // videoStatus();
     if(ctrl == "play") {
         $video.currentTime = lastplay.current_time;
         $(".video-play-btn").hide();
         $(".hint-wrap").hide();
-        lastplay.ended = 0;
         localStorage.setItem("lastplay.ended",lastplay.ended);
         $video.play();
     }
