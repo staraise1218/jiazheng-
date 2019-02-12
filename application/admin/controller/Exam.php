@@ -75,7 +75,7 @@ class Exam extends Base {
             ->field('u.fullname, u.mobile, ea.*')
             ->paginate(20, false, ['page'=>$page, 'path'=>U('admin/exam/applylist', array('exam_content_id'=>$exam_content_id))]);
 
-p($list);
+
         $this->assign('list', $list);
         return $this->fetch();
     }
