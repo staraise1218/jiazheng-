@@ -63,4 +63,20 @@ class Exam extends Base {
             $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
         }
     }
+
+    // 考生报名列表
+    public function applylist(){
+        $exam_content_id = I('exam_content_id');
+        $page = I('page', 1);
+
+        $list = M('exam_apply')->alias('ea')
+            ->join('users u', 'ea.user_id=u.user_id')
+            ->order('ea.id desc')
+            ->field('u.fullname, u.mobile, ea.*')
+            ->paginate(20, false, ['page'=>$page, 'path'=>U('admin/exam/applylist', array('exam_content_id'=>$exam_content_id))]);
+
+p($list);
+        $this->assign('list', $list);
+        return $this->fetch();
+    }
 }
