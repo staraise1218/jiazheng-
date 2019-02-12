@@ -174,14 +174,15 @@
             data: {lessoncode: lessoncode, order_sn: order_sn},
             success: function(res){
                 layer.closeAll();
+                
+                $('.tanchuang-wrap').hide()
+                $('input[name=lessoncode]').val('');
                 if(res.code == 1){
                     layer.msg('支付成功', {icon:1}, function(){
                         window.history.back(-1);
                     });
 
                 } else {
-                    $('input[name=lessoncode]').val('');
-                    $('.tanchuang-wrap').hide()
                     layer.msg(res.msg);
                 }
             }

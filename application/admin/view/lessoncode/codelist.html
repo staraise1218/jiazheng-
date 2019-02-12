@@ -22,14 +22,15 @@
     <div class="mDiv">
       <div class="ftitle">
         <h3>列表</h3>
-        <h5>(共{$pager->totalRows}条记录)</h5>
+        <h5>(共{$list->count()}条记录)</h5>
       </div>
       <div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
 	  <form class="navbar-form form-inline" action="{:U('Admin/lessoncode/codelist')}" method="post">      
       <div class="sDiv">
         <div class="sDiv2">
           
-          <input type="text" size="30" name="keywords" class="qsbox" placeholder="搜索标题">
+          <input type="text" size="30" name="keywords" class="qsbox" placeholder="搜索课程码">
+          <input type="hidden" name="lessoncode_id" value="{$lessoncode_id}">
           <input type="submit" class="btn" value="搜索">
         </div>
       </div>

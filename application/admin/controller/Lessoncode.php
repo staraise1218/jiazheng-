@@ -77,7 +77,7 @@ class Lessoncode extends Base {
         
         $where = "lessoncode_id = $lessoncode_id";
         $keywords = trim(I('keywords'));
-        $keywords && $where.=" and number = $keywords ";
+        $keywords && $where.=" and code = $keywords ";
        
         $list = M('lessoncode_list')
             ->where($where)

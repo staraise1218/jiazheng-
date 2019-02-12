@@ -42,7 +42,7 @@ html, body {overflow: visible;}
     });
     function verifyForm(){
         $('span.err').hide();
-        // layer.load(1);
+        layer.load(1);
         $.ajax({
             type: "POST",
             url: "{:U('lessoncode/codeadd')}",
