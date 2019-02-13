@@ -27,10 +27,21 @@ class Lesson extends Base{
 			->count()
 			;
 		$is_buyed = $is_buyed > 0 ? 1 : 0;
+        // 如果课程免费
+        if($info['price'] == 0) $is_buyed = 1;
+
+        // 判断是否收藏
+        $is_collect = Db::name('user_collect')
+                        ->where('user_id', $user_id)
+                        ->where('table_id', $id)
+                        ->where('table_name', 'lesson')
+                        ->count();
+        $is_collect = $is_collect > 0 ? 1 : 0;
 
         
 
-		$this->assign('is_buyed', $is_buyed);
+        $this->assign('is_buyed', $is_buyed);
+        $this->assign('is_collect', $is_collect);
         $this->assign('info', $info);
         $this->assign('user', $user);
     	return $this->fetch();

@@ -45,7 +45,11 @@
     </div>
 
     <footer class="footer">
+        {if condition="$is_collect eq 0"}
         <button class="collect">收藏</button>
+        {else/}
+        <button>已收藏</button>
+        {/if}
         {if condition="$is_buyed eq 0"}
         <button class="buy">立即购买</button>
         {else/}
