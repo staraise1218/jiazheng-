@@ -46,7 +46,11 @@
 
     <footer class="footer">
         <button class="collect">收藏</button>
-        {if condition="$is_buyed eq 0"}<button class="buy">立即购买</button>{/if}
+        {if condition="$is_buyed eq 0"}
+        <button class="buy">立即购买</button>
+        {else/}
+        <button>已购买</button>
+        {/if}
     </footer>
 
 <script src="__STATIC__/js/jquery.js"></script>
