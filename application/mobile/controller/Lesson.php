@@ -82,7 +82,7 @@ $page = 1;
 				->select();
 			$this->assign('episodeList_page_'.$page, $episodeList);
 		// }
-p($episodeList)
+p($episodeList);
 		// 获取该视频最后一次播放
 		$lastplay = Db::name('lesson_played')->alias('lp')
 			->join('lesson_episode le', 'lp.lesson_episode_id=le.id')
