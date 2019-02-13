@@ -53,6 +53,7 @@ class Lesson extends Base{
      */
     public function episode(){
     	$lesson_id = input('param.lesson_id');
+        p($lesson_id);
     	// $page = input('param.page', 1);
     	$user_id = $this->user_id;
 

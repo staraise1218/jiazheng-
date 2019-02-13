@@ -154,9 +154,9 @@ return $code;
         $domain = "dysmsapi.aliyuncs.com";
 
         // TODO 此处需要替换成开发者自己的AK (https://ak-console.aliyun.com/)
-        $accessKeyId = "LTAIoEgoBushEbTG"; // AccessKeyId
+        $accessKeyId = "LTAI0l3Pvbkg0aou"; // AccessKeyId
 
-        $accessKeySecret = "6vw9idElHspORFkKANuMh6IPQbqlis"; // AccessKeySecret
+        $accessKeySecret = "DCVPa1rQPMfEvQH4TYvvbGEaM7GDJZ"; // AccessKeySecret
 
         // 暂时不支持多Region
         $region = "cn-hangzhou";
