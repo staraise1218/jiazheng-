@@ -16,6 +16,7 @@ function videoInit() {
     // $(".wrap .video-btn").eq(lastplay.number).addClass("btn_active");
     $(".video").get(0).src = $(".wrap .video-btn").eq(0).attr("data-video");
     $(".wrap .video-btn").eq(0).addClass("btn_active");
+    $(".clas").text($(".wrap .video-btn").eq(0).attr("data-title"));
 }
 videoInit(); 
 
@@ -38,6 +39,9 @@ $(".wrap").delegate(".video-btn", "click", function() {
     var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
 
     $(".video").prop("src", $src)
+
+    $(".clas").text($(".wrap .video-btn").eq($(this).index).attr("data-title"))
+
     $(".btn_active").removeClass("btn_active");
     $(this).addClass("btn_active");
     // $(".video-play-btn").hide();

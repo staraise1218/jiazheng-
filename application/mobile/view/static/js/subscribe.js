@@ -134,13 +134,13 @@ function getScrollHeight() {
 
 //滚动事件触发
 window.onscroll = function() {
-        if (canAjax) {
-            if (getScrollTop() + getClientHeight() == getScrollHeight()) {
-                console.log(dataPost)
-                AjaxFunc()
-            }
+    if (canAjax) {
+        if (getScrollTop() + getClientHeight() == getScrollHeight()) {
+            console.log(dataPost)
+            AjaxFunc()
         }
     }
+}
     // if(getScrollTop() == 0) {
     //     AjaxFunc()
     // }
