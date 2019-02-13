@@ -70,6 +70,7 @@ class Exam extends Base {
         $page = I('page', 1);
 
         $list = M('exam_apply')->alias('ea')
+            ->where('exam_content_id', $exam_content_id)
             ->join('users u', 'ea.user_id=u.user_id')
             ->order('ea.id desc')
             ->field('u.fullname, u.mobile, ea.*')
