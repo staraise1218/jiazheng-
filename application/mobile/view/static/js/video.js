@@ -45,11 +45,6 @@ $(".wrap").delegate(".video-btn", "click", function() {
 
     $(".btn_active").removeClass("btn_active");
     $(this).addClass("btn_active");
-    // $(".video-play-btn").hide();
-    // $(".hint-wrap").hide();
-
-    // lastplay.number = $(".wrap .video-btn").index($(this));
-    // localStorage.setItem("lastplay.number",lastplay.number);
     $video.currentTime = 0;
     $video.play();
 })
