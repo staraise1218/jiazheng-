@@ -35,10 +35,10 @@
     <!-- 课程标题 -->
     <div class="clas" style="padding: 0.2rem;box-sizing:border-box;background:rgb(122, 190, 223);color:#fff;"></div>
     <div class="chapter">
-        <div class="chapter-title">
+        <!-- <div class="chapter-title">
             <p>课程集数:</p>
             <span>已购买</span>
-        </div>
+        </div> -->
         <div class="chapter-part">
             <div class="order">
                 <ul>
@@ -54,7 +54,7 @@
                 <li class="{$page == 1 ? 'active' : ''}">
                     {foreach name="$$episodeList" item="item"}
                     <span class="video-btn" data-video="{$item.video}" data-title="{$item.title}" lesson_episode_id="{$item.id}" number="{$item.number}">
-                        {$item.number}
+                        {$item.number} {$item.title}
                     </span>
                     {/foreach}
                 </li>
