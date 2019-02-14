@@ -101,7 +101,7 @@
                     if(result.code == 200){
                         var order_sn = result.data.order_sn;
                         var openid = "{$user.openid}"
-                        layer.msg('下单成功，去支付', {icon:1}, function(){
+                        layer.msg('下单成功，去支付', {icon:2}, function(){
                             window.location="/index.php/mobile/lesson/payMethod?order_sn="+order_sn;
                         });
                     } else {
