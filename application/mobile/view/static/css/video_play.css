@@ -161,7 +161,7 @@ li {
     /* padding: 0 0.2rem; */
     box-sizing: border-box;
     overflow-y: scroll;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
 }
 .wrap li span {
     width: 1.1rem;
