@@ -33,7 +33,7 @@ class Common extends Base {
         if($scene == '3'){
             $count = Db::name('users')->where("mobile=$mobile")
             	->count();
-            if($count) response_error('', '该手机号已注册');
+            if($count) response_error('', '该手机号已被占用');
         }
 
         $SmsLogic = new SmsLogic();
