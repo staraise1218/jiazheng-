@@ -54,7 +54,7 @@
                 <li class="{$page == 1 ? 'active' : ''}">
                     {foreach name="$$episodeList" item="item"}
                     <span class="video-btn" data-video="{$item.video}" data-title="{$item.title}" lesson_episode_id="{$item.id}" number="{$item.number}">
-                        第{$item.number}集  &nbsp;  标题:{$item.title}
+                        第{$item.number}集  &nbsp;  {$item.title}
                     </span>
                     {/foreach}
                 </li>
