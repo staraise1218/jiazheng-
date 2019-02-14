@@ -105,7 +105,13 @@
                             window.location="/index.php/mobile/lesson/payMethod?order_sn="+order_sn;
                         });
                     } else {
-                        layer.msg(result.msg);
+                        if(result.data.status==2){
+                            layer.msg(result.msg, {icon:1}, function(){
+                                window.location="/index.php/mobile/user/modify";
+                            })
+                        } else {
+                            layer.msg(result.msg);
+                        }
                     }
                 },
                 error: function(){

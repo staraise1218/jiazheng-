@@ -111,12 +111,13 @@ class Lesson extends Base{
         $lesson = Db::name('lesson')
             ->where('id', $lesson_id)
             ->find();
-        if(empty($lesson)) response_error('', '数据不存在');
+        if(empty($lesson)) response_error(array('status'=>1), '数据不存在');
 
         // 检测用户资料是否完善
         $user = Db::name('users')->where('user_id', $user_id)->find();
+
         if($user['head_pic'] == '' || $user['fullname']=='' || $user['mobile']=='' || $user['ID_number']==''){
-            response_error('', '请去个人中心完善资料');
+            response_error(array('status'=>2), '请完善个人资料');
         }
 
         // 检测是否购买
@@ -125,7 +126,7 @@ class Lesson extends Base{
             ->where('lesson_id', $lesson_id)
             ->where('paystatus', 1)
             ->count();
-        if($is_buy) response_error('', '您已购买');
+        if($is_buy) response_error(array('status'=>3), '您已购买');
 
         $order_sn = $this->generateOrderSn();
         $data = array(
@@ -142,7 +143,7 @@ class Lesson extends Base{
             );
             response_success($resultData, '下单成功');
         } else {
-            response_error('', '下单失败');
+            response_error(array('status'=>4), '下单失败');
         }
     }
 
