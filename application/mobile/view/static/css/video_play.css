@@ -114,7 +114,7 @@ li {
 .chapter-part {
     position: relative;
     width: 100%;
-    height: 4.75rem;
+    height: 6.15rem;
     overflow: hidden;
     font-size: 0;
     margin: 0 auto;
@@ -162,20 +162,16 @@ li {
     box-sizing: border-box;
 }
 .wrap li span {
-    float: left;
     width: 1.1rem;
-    height: 0.82rem;
-    background:rgba(255,255,255,1);
-    border:1px solid rgba(229,229,229,1);
-    border-radius: 0.04rem;
     margin-left: 0.3rem;
     text-align: center;
-    line-height: 0.82rem;
-    margin-top: 0.1rem;
+    line-height: 0.42rem;
     color: #3A3A3A;
     font-size: 0.25rem;
+    display: block;
+    width: 6.9rem;
+    text-align: left;
 }
-
 .wrap li span.btn_active {
     border: 1px solid #7abedf;
     color: #7abedf;
