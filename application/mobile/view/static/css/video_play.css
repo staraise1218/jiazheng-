@@ -172,6 +172,7 @@ li {
     display: block;
     width: 6.9rem;
     text-align: left;
+    padding: 0.03rem;
 }
 .wrap li span.btn_active {
     /* border: 1px solid #7abedf; */
