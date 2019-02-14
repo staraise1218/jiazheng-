@@ -106,7 +106,7 @@
                         });
                     } else {
                         if(result.data.status==2){
-                            layer.msg(result.msg, {icon:2}, function(){
+                            layer.msg(result.msg, {icon:2, time:2000}, function(){
                                 window.location="/index.php/mobile/user/modify";
                             })
                         } else {
