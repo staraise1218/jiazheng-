@@ -85,7 +85,7 @@
     <div class="header">
         <span>支付金额</span>
         <span class="money">
-            ￥<span>200.00</span>
+            ￥<span>{$price}</span>
         </span>
     </div>
     <i style="display:block;width:100%;background:#eee;height:10px;"></i>
@@ -96,18 +96,18 @@
                 <img src="__STATIC__/image/wx.png" alt="">
                 <p>微信支付</p>
             </div>
-            <i class="icon active"></i>
+            <i class="icon active" payMethod='weixin'></i>
         </div>
         <div class="item code-btn">
             <div>
                 <img src="__STATIC__/image/ant.png" alt="">
                 <p>课程码支付</p>
             </div>
-            <i class="icon"></i>
+            <i class="icon" payMethod='lessoncode'></i>
         </div>
     </div>
     <form class="pay-wrap" action="">
-        <input class="code" type="text" placeholder="请输入您的课程码" style="display:none">
+        <input class="code" name="lessoncode" type="text" placeholder="请输入您的课程码" style="display:none">
         <input class="pay" type="button" value="立即支付">
     </form>
 
@@ -132,19 +132,16 @@
     var order_sn = "{$order_sn}";
     var openid = "{$openid}";
     var jsApiParameters = {};
-    $(function(){
-        $('.wxpay').click(function(){
 
-            $.ajax({
-                url: "{:url('mobile/pay/unifiedOrder')}",
-                type: 'post',
-                dateType: 'json',
-                data: {order_sn:order_sn, openid:openid},
-                success:function(data){
-                    jsApiParameters = data;
-                    callpay();
-                }
-            })
+    $(function(){
+        $('.pay').click(function(){
+            if($('i.icon.active').attr('payMethod') == 'weixin'){
+                wxpay();
+            }
+            if($('i.icon.active').attr('payMethod') == 'lessoncode'){
+                lessoncodepay();
+            }
+            
         })
     })
 
@@ -176,22 +173,27 @@
             jsApiCall();
         }
     }
-</script>
-<script type="text/javascript">
-   
 
-    $(function(){
-        $('.lessoncode').click(function(){
-            $('.tanchuang-wrap').show();
+    // 微信支付
+    function wxpay(){
+        $.ajax({
+            url: "{:url('mobile/pay/unifiedOrder')}",
+            type: 'post',
+            dateType: 'json',
+            data: {order_sn:order_sn, openid:openid},
+            success:function(data){
+                jsApiParameters = data;
+                callpay();
+            }
         })
-    })
-
-    // 支付
-    // 
-    var order_sn = "{$order_sn}";
-    $('.codepay').click(function(){
+    }
+    // 课程码支付
+    function lessoncodepay(){
         var lessoncode = $('input[name=lessoncode]').val();
-        if(lessoncode == '') return false;
+        if(lessoncode == ''){
+            layer.msg('请输入课程码');
+            return false;
+        }
         layer.load(1);
         $.ajax({
             url: "{:U('mobile/pay/lessoncodepay')}",
@@ -201,7 +203,6 @@
             success: function(res){
                 layer.closeAll();
                 
-                $('.tanchuang-wrap').hide()
                 $('input[name=lessoncode]').val('');
                 if(res.code == 1){
                     layer.msg('支付成功', {icon:1}, function(){
@@ -213,12 +214,9 @@
                 }
             }
         })
-    })
-
-    $(document).delegate('.cancel', 'click', function(){
-        $('.tanchuang-wrap').hide();
-    })
+    }
 </script>
+
 
 </body>
 </html>

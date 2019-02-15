@@ -159,6 +159,7 @@ class Lesson extends Base{
 
         $this->assign('openid', $user['openid']);
         $this->assign('order_sn', $order_sn);
+        $this->assign('price', $order['price']);
         $this->assign('lesson_id', $lesson_id);
         return $this->fetch();
     }
