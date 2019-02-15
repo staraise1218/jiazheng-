@@ -129,8 +129,7 @@
             JSON.parse(jsApiParameters),
             function(res){
                 if(res.err_msg == "get_brand_wcpay_request:ok" ){
-                    window.history.go(-1);
-                    location.reload(); 
+                    window.history.href="{:U('mobile/lesson/detail', array('id'=>$lesson_id))}"
                 } else {
                     alert('支付失败')
                 }
@@ -180,8 +179,7 @@
                 $('input[name=lessoncode]').val('');
                 if(res.code == 1){
                     layer.msg('支付成功', {icon:1}, function(){
-                        window.history.go(-1);
-                        location.reload(); 
+                    window.history.href="{:U('mobile/lesson/detail', array('id'=>$lesson_id))}"
                     });
 
                 } else {

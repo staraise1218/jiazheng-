@@ -40,6 +40,7 @@ class Lesson extends Base{
 
         
 
+        $this->assign('lesson_id', $id);
         $this->assign('is_buyed', $is_buyed);
         $this->assign('is_collect', $is_collect);
         $this->assign('info', $info);
@@ -149,6 +150,7 @@ class Lesson extends Base{
 
     public function payMethod(){
         $order_sn = I('order_sn');
+        $lesson_id = I('lesson_id');
         // 获取订单信息
         $order = Db::name('order')->where('order_sn', $order_sn)->find();
         if($order['paystatus'] == '1') $this->error('已支付');
@@ -158,6 +160,7 @@ class Lesson extends Base{
 
         $this->assign('openid', $user['openid']);
         $this->assign('order_sn', $order_sn);
+        $this->assign('lesson_id', $lesson_id);
         return $this->fetch();
     }
 
