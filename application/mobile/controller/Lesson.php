@@ -40,7 +40,6 @@ class Lesson extends Base{
 
         
 
-        $this->assign('lesson_id', $id);
         $this->assign('is_buyed', $is_buyed);
         $this->assign('is_collect', $is_collect);
         $this->assign('info', $info);
