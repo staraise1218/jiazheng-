@@ -162,6 +162,8 @@ li {
     box-sizing: border-box;
     overflow-y: scroll;
     padding-bottom: 1rem;
+    border: 1px solid red;
+    overflow-x: scroll;
 }
 .wrap li span {
     width: 1.1rem;
