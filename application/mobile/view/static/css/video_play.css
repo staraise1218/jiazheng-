@@ -161,19 +161,18 @@ li {
     /* padding: 0 0.2rem; */
     box-sizing: border-box;
     overflow-y: scroll;
-    padding-bottom: 1rem;
-    border: 1px solid red;
     overflow-x: scroll;
+    padding-bottom: 1rem;
+    /* border: 1px solid red; */
 }
 .wrap li span {
-    width: 1.1rem;
     margin-left: 0.3rem;
     text-align: center;
     line-height: 0.42rem;
     color: #3A3A3A;
     font-size: 0.25rem;
     display: block;
-    width: 6.9rem;
+    width: 16.9rem;
     text-align: left;
     padding: 0.03rem;
     font-size: 0.26rem;
