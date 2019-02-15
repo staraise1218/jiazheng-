@@ -176,7 +176,7 @@ li {
     padding: 0.03rem;
     font-size: 0.26rem;
     word-wrap: break-word;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .wrap li span.btn_active {
     /* border: 1px solid #7abedf; */
