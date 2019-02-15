@@ -130,6 +130,7 @@
             function(res){
                 if(res.err_msg == "get_brand_wcpay_request:ok" ){
                     window.history.back(-1);
+                    location.reload(); 
                 } else {
                     alert('支付失败')
                 }
@@ -180,6 +181,7 @@
                 if(res.code == 1){
                     layer.msg('支付成功', {icon:1}, function(){
                         window.history.back(-1);
+                        location.reload(); 
                     });
 
                 } else {
