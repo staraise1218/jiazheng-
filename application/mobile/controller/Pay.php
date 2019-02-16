@@ -14,7 +14,7 @@ class Pay {
         $order_sn = I('order_sn');
         $openId = I('openid');
 
-        $order = Db::name('lesson_order')->where('order_sn', $order)->find();
+        $order = Db::name('lesson_order')->where('order_sn', $order_sn)->find();
 
     	//②、统一下单
         $input = new \WxPayUnifiedOrder();
