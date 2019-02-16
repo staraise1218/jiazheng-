@@ -202,8 +202,7 @@
             data: {lessoncode: lessoncode, order_sn: order_sn},
             success: function(res){
                 layer.closeAll();
-                
-                $('input[name=lessoncode]').val('');
+
                 if(res.code == 1){
                     layer.msg('支付成功', {icon:1}, function(){
                     window.location.href="{:U('mobile/lesson/detail', array('id'=>$lesson_id))}"
