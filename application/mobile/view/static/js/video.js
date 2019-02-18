@@ -37,7 +37,7 @@ $(".wrap").delegate(".video-btn", "click", function() {
 $(".order ul").delegate("li", "click", function () {
     $(".order ul .active").removeClass("active");
     $(this).addClass("item active");
-    let $w = $(".wrap").width();
-    let $lw = $(".wrap li").width();
-    $(".wrap").animate({"left":-($lw*$(this).index())})
+    // let $w = $(".wrap").width();
+    // let $lw = $(".wrap li").width();
+    // $(".wrap").animate({"left":-($lw*$(this).index())})
 })
