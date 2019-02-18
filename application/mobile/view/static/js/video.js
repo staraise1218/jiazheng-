@@ -41,6 +41,7 @@ $(".order ul").delegate("li", "click", function () {
     // let $lw = $(".wrap li").width();
     // $(".wrap").animate({"left":-($lw*$(this).index())})
     var index = $(this).index();
+    console.log(index)
     $('.wrap .liactive').removeClass('liactive')
     $('.wrap li:eq(index)').addClass('liactive')
 })
