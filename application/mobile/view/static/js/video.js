@@ -40,4 +40,7 @@ $(".order ul").delegate("li", "click", function () {
     // let $w = $(".wrap").width();
     // let $lw = $(".wrap li").width();
     // $(".wrap").animate({"left":-($lw*$(this).index())})
+    var index = $(this).index();
+    $('.wrap li.active').removeClass('active')
+    $('.wrap li:eq(index)').addClass('active')
 })
