@@ -15,29 +15,9 @@
 
 <body>
     <!-- 轮播图 -->
-    <!-- <div class="poster">
-        <ul class="img-box">
-            {foreach name="bannerList" item="item"}
-            <li><a href="{if condition="$item.ad_link != ''"}{$item.ad_link}{else/}javascript:;{/if}"><img src="{$item.ad_code}" alt=""></a></li>
-            {/foreach} 
-            <li><a href="{if condition="$bannerList[0].ad_link != ''"}{$bannerList[0].ad_link}{else/}javascript:;{/if}"><img src="{$bannerList[0]['ad_code']}" alt=""></a></li>
-        </ul>
-        <div class="order">
-            <ul>
-                {for start="0" end="count($bannerList)"}
-                <li class="item {$i == 0 ? 'active' : ''}"></li>
-                {/for}
-            </ul>
-        </div>
-    </div> -->
-    <!-- 轮播图结束 -->
-
-
-    <!-- 轮播图2 -->
     <section>
         <figure id="full_feature" class="swipslider">
             <ul class="sw-slides">
-
                 {foreach name="bannerList" item="item"}
                 <li class="sw-slide">
                     <a href="{if condition=" $item.ad_link !='' "}{$item.ad_link}{else/}javascript:;{/if}">
