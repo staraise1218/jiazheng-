@@ -14,12 +14,14 @@ class Pay {
         $order_sn = I('order_sn');
         $openId = I('openid');
 
+        $order = Db::name('lesson_order')->where('order_sn', $order_sn)->find();
+
     	//②、统一下单
         $input = new \WxPayUnifiedOrder();
         $input->SetBody("视频课程");
         $input->SetAttach("视频课程");
         $input->SetOut_trade_no($order_sn);
-        $input->SetTotal_fee("1");
+        $input->SetTotal_fee($order['price']*100);
         $input->SetTime_start(date("YmdHis"));
         $input->SetTime_expire(date("YmdHis", time() + 600));
         $input->SetGoods_tag("视频课程");

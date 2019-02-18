@@ -5,7 +5,7 @@ namespace app\mobile\controller;
 use think\Controller;
 use think\Db;
 
-class Aunt extends Base{
+class Aunt extends Controller{
 
     public function index(){
     	// 获取banner

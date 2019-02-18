@@ -151,7 +151,7 @@ class Lesson extends Base{
         $order_sn = I('order_sn');
         $lesson_id = I('lesson_id');
         // 获取订单信息
-        $order = Db::name('order')->where('order_sn', $order_sn)->find();
+        $order = Db::name('lesson_order')->where('order_sn', $order_sn)->find();
         if($order['paystatus'] == '1') $this->error('已支付');
 
         // 获取用户信息
@@ -159,6 +159,7 @@ class Lesson extends Base{
 
         $this->assign('openid', $user['openid']);
         $this->assign('order_sn', $order_sn);
+        $this->assign('price', $order['price']);
         $this->assign('lesson_id', $lesson_id);
         return $this->fetch();
     }
