@@ -37,7 +37,11 @@ $(".wrap").delegate(".video-btn", "click", function() {
 $(".order ul").delegate("li", "click", function () {
     $(".order ul .active").removeClass("active");
     $(this).addClass("item active");
-    let $w = $(".wrap").width();
-    let $lw = $(".wrap li").width();
-    $(".wrap").animate({"left":-($lw*$(this).index())})
+    // let $w = $(".wrap").width();
+    // let $lw = $(".wrap li").width();
+    // $(".wrap").animate({"left":-($lw*$(this).index())})
+    var index = $(this).index();
+    console.log(index)
+    $('.wrap .liactive').removeClass('liactive')
+    $('.wrap li').eq(index).addClass('liactive')
 })

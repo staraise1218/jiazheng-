@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" /> -->
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>课程播放</title>
     <script src="__STATIC__/js/rem.js"></script>
@@ -50,7 +50,7 @@
             <ul class="wrap">
                 {for start="1" end="$pageCount+1" name="page"}
                 <?php $episodeList = 'episodeList_page_'.$page; ?>
-                <li class="{$page == 1 ? 'active' : ''}">
+                <li class="{$page == 1 ? 'liactive' : ''}">
                     {foreach name="$$episodeList" item="item"}
                     <span class="video-btn" data-video="{$item.video}" data-title="{$item.title}" lesson_episode_id="{$item.id}" number="{$item.number}">
                         第{$item.number}集  &nbsp;  {$item.title}
