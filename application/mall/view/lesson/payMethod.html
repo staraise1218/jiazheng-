@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购买课程-支付</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header .money {
+            color: rgb(121,190,223);
+        }
+        .content {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .content .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .content .item  div {
+            display: flex;
+            align-items: center;
+        }
+        .content .item  div img {
+            border: 1px solid rgba(0,0,0,0.1);
+            margin-right: 10px;
+            border-radius: 5px;
+            padding: 5px;
+            width: 35px;
+            height: 35px;
+        }
+        .content i.icon {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url('__STATIC__/image/aa.png');
+            background-size: contain;
+        }
+        .content i.active {
+            background-image: url('__STATIC__/image/ac.png');
+        }
+        .pay-wrap {
+            /* border: 1px solid red; */
+        }
+        .code {
+            display: block;
+            padding: 15px 10px;
+            box-sizing: border-box;
+            width: 90%;
+            margin: 0 20px;
+            border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.1);
+            outline: none;
+        }
+        .pay {
+            display: block;
+            background-color: rgb(121,190,223);
+            color: #fff;
+            padding: 15px 10px;
+            width: 90%;
+            margin: 0 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span>支付金额</span>
+        <span class="money">
+            ￥<span>{$price}</span>
+        </span>
+    </div>
+    <i style="display:block;width:100%;background:#eee;height:10px;"></i>
+    <div class="content">
+        <p>支付方式</p>
+        <div class="item wx">
+            <div>
+                <img src="__STATIC__/image/wx.png" alt="">
+                <p>微信支付</p>
+            </div>
+            <i class="icon active" payMethod='weixin'></i>
+        </div>
+        <div class="item code-btn">
+            <div>
+                <img src="__STATIC__/image/ant.png" alt="">
+                <p>课程码支付</p>
+            </div>
+            <i class="icon" payMethod='lessoncode'></i>
+        </div>
+    </div>
+    <form class="pay-wrap" action="">
+        <input class="code" name="lessoncode" type="text" placeholder="请输入您的课程码" style="display:none">
+        <input class="pay" type="button" value="立即支付">
+    </form>
+
+
+    <script src="__STATIC__/js/jquery.js"></script>
+    <script>
+
+        $(".item").on('click', function() {
+            $(".active").removeClass('active');
+            $(this).find('.icon').addClass('active')
+        })
+        $(".wx").on('click', function () {
+            $(".code").slideUp('fast');
+        })
+        $(".code-btn").on('click', function () {
+            $(".code").slideDown('fast');
+        })
+
+    </script>
+<script src="/public/js/layer/layer.js"></script>
+<script type="text/javascript">
+    var order_sn = "{$order_sn}";
+    var openid = "{$openid}";
+    var jsApiParameters = {};
+
+    $(function(){
+        $('.pay').click(function(){
+            if($('i.icon.active').attr('payMethod') == 'weixin'){
+                wxpay();
+            }
+            if($('i.icon.active').attr('payMethod') == 'lessoncode'){
+                lessoncodepay();
+            }
+            
+        })
+    })
+
+    function jsApiCall()
+    {
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+            JSON.parse(jsApiParameters),
+            function(res){
+                if(res.err_msg == "get_brand_wcpay_request:ok" ){
+                    window.location.href="{:U('mobile/lesson/detail', array('id'=>$lesson_id))}"
+                } else {
+                    alert('支付失败')
+                }
+            }
+        );
+    }
+
+    function callpay()
+    {
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        }else{
+            jsApiCall();
+        }
+    }
+
+    // 微信支付
+    function wxpay(){
+        $.ajax({
+            url: "{:url('mobile/pay/unifiedOrder')}",
+            type: 'post',
+            dateType: 'json',
+            data: {order_sn:order_sn, openid:openid},
+            success:function(data){
+                jsApiParameters = data;
+                callpay();
+            }
+        })
+    }
+    // 课程码支付
+    function lessoncodepay(){
+        var lessoncode = $('input[name=lessoncode]').val();
+        if(lessoncode == ''){
+            layer.msg('请输入课程码');
+            return false;
+        }
+        layer.load(1);
+        $.ajax({
+            url: "{:U('mobile/pay/lessoncodepay')}",
+            type: 'post',
+            dataType: 'json',
+            data: {lessoncode: lessoncode, order_sn: order_sn},
+            success: function(res){
+                layer.closeAll();
+
+                if(res.code == 1){
+                    layer.msg('支付成功', {icon:1}, function(){
+                    window.location.href="{:U('mobile/lesson/detail', array('id'=>$lesson_id))}"
+                    });
+
+                } else {
+                    layer.msg(res.msg);
+                }
+            }
+        })
+    }
+</script>
+
+
+</body>
+</html>

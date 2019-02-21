@@ -99,13 +99,7 @@ class Goods extends Base {
                         //  编辑
                         $return_arr = array('status' => 0,'msg' => '上级分类不能为自己','data' => '',);
                         $this->ajaxReturn($return_arr);
-                    }
-                    if($GoodsCategory->commission_rate > 100)
-                    {
-                        //  编辑
-                        $return_arr = array('status' => -1,'msg'   => '分佣比例不得超过100%','data'  => '');
-                        $this->ajaxReturn($return_arr);                        
-                    }   
+                    } 
                    
                     if ($type == 2)
                     {

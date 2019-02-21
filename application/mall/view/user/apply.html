@@ -1,0 +1,358 @@
+<!-- 预约考试 -->
+<!-- 2019-01-04 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预约考试</title>
+    <script src="__STATIC__/js/rem.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/exam.css">
+    <script src="__STATIC__/js/jquery.js"></script>
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+        
+        .everyWeekDay .weekday,
+        .everyDay .days {
+            /*解决span不支持width属性*/
+            display: -moz-inline-box;
+            display: inline-block;
+            margin: 5px 0 0 20px;
+            text-align: center;
+            width: 20px;
+            border: 1px solid #F7F7F7;
+            cursor: pointer;
+        }
+        
+        .marginTop {
+            margin-top: 5px;
+        }
+        
+        .selectStyle {
+            padding-left: 10px;
+            border: none;
+            border-radius: 3px;
+            outline: none;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            margin: 0 10px 0 10px;
+            width: 60px;
+            border-color: #0FB9EF;
+            color: #0FB9EF;
+        }
+        /* 日历 */
+        
+        ul {
+            list-style: none;
+        }
+        
+        #schedule-box {
+            display: none;
+            width: 320px;
+            margin: 0 auto;
+            padding: 35px 20px;
+            font-size: 13px;
+            background: #fff;
+            position: absolute;
+            left: -10%;
+            top: 120%;
+            background: #fff;
+            box-shadow: 2px 10px 21px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .schedule-hd {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+        }
+        
+        .today {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .ul-box {
+            overflow: hidden;
+        }
+        
+        .ul-box>li {
+            float: left;
+            width: 14.28%;
+            text-align: center;
+            padding: 5px 0;
+        }
+        
+        .other-month {
+            color: #999999;
+        }
+        
+        .current-month {
+            color: #333333;
+        }
+        
+        .today-style {
+            border-radius: 50%;
+            background: #58d321;
+        }
+        
+        .arrow {
+            cursor: pointer;
+        }
+        
+        .dayStyle {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            cursor: pointer;
+        }
+        
+        .current-month>.dayStyle:hover {
+            background: #00BDFF;
+            color: #ffffff;
+        }
+        
+        .today-flag {
+            background: #00C2B1;
+            color: #fff;
+        }
+        
+        .boxshaw {
+            box-shadow: 2px 2px 15px 2px #e3e3e3;
+        }
+        
+        .selected-style {
+            background: #00BDFF;
+            color: #ffffff;
+        }
+        
+        #h3Ele {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        @font-face {
+            font-family: "iconfont";
+            src: url('//at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.eot?t=1505291076294');
+            /* IE9*/
+            src: url('//at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.eot?t=1505291076294#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAX8AAsAAAAACTgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW7kn1Y21hcAAAAYAAAAB7AAAByKBM3nNnbHlmAAAB/AAAAdkAAAKI/F6rY2hlYWQAAAPYAAAALwAAADYO3Vx+aGhlYQAABAgAAAAcAAAAJAfeA4dobXR4AAAEJAAAABMAAAAYF+kAAGxvY2EAAAQ4AAAADgAAAA4CmAHabWF4cAAABEgAAAAfAAAAIAEVAF1uYW1lAAAEaAAAAUUAAAJtPlT+fXBvc3QAAAWwAAAASwAAAHvQynezeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/sM4gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVLxgZ27438AQw9zA0AAUZgTJAQAlVQx5eJzFkcENhDAMBMckHCdEKVSCqOfE4zqhNP6BCvjCOoEHFbDRWNmVJUcxUANB9CKC/TFcP6WW80Cb88gg3/Gl0n1KS9rXeWuOQ+nT3TJ138dd0LQqT/nwmuy90U91uY6X8z1MF3piWgq+m7QXvGedC/pHtqZAPAGKWyEjAHicZZHPbtNAEMZ31nidFGeN/+3ajl3HMfGCShzhOi4qIlEkLlQckEBIHOEO11445ILEgQNq3gAhcekbtFLzBohHaOEFOMEpsE4itYTVSjPSSPN9v/mQitCfc+VU8ZCNbqG76CF6ghCQHehSHEEiyhzvgJuoLneoIlKRaGk3Vx4A7xKHFVWZcaIRAyhsw25SVCLHAoblCN+HgkUAfjt4avVCS/kIW57Yfrc4wJ/AjdPQGPUXj+6MnaJjNw51y/It60ODqGoD42sGhdecNdXmFll8Vo3APY1v4xh0XwSPX7Q6bevl+/JN1ONNgOkU7HaHfhmbgSn/24DZlq/daDW8oJXedODwx3XP1qPsO5IPS9bfyjP8SrIKhNSuyGEMIhsBi4E5NUVvryoHkMsuBo0wznaLCu5FXqCyoyOmDid8bttzvQNVXflkSNhsxkjgRWai2XwSHh+Hkz7xL7x974LScFl90l8NuE1rH1D7wF+XPlBPo5BuOMEncz0xa1V3NnNXqr/kukuB4NzbX/M8v+TJBpCVYxjJMAzgTCYjRjCAvSoHmRFx4jqlQgEz0Tfs//RXnZQ6c5wzPbFCjdJN9/8Drlm+rVlqyfRfG/hkfZ4rktPlKa6u/wsCdnMXAAAAeJxjYGRgYADiSYYxgvH8Nl8ZuFkYQODqfR4XBP3/IQsDswSQy8HABBIFAP0GCPIAeJxjYGRgYG7438AQw8IAAkCSkQEVsAEARwwCb3icY2FgYGB+ycDAwoCKARKfAQEAAAAAAAB2ALoA3gEgAUQAAHicY2BkYGBgYwhkYGUAASYg5gJCBob/YD4DABFIAXMAeJxlj01OwzAQhV/6B6QSqqhgh+QFYgEo/RGrblhUavdddN+mTpsqiSPHrdQDcB6OwAk4AtyAO/BIJ5s2lsffvHljTwDc4Acejt8t95E9XDI7cg0XuBeuU38QbpBfhJto41W4Rf1N2MczpsJtdGF5g9e4YvaEd2EPHXwI13CNT+E69S/hBvlbuIk7/Aq30PHqwj7mXle4jUcv9sdWL5xeqeVBxaHJIpM5v4KZXu+Sha3S6pxrW8QmU4OgX0lTnWlb3VPs10PnIhVZk6oJqzpJjMqt2erQBRvn8lGvF4kehCblWGP+tsYCjnEFhSUOjDFCGGSIyujoO1Vm9K+xQ8Jee1Y9zed0WxTU/3OFAQL0z1xTurLSeTpPgT1fG1J1dCtuy56UNJFezUkSskJe1rZUQuoBNmVXjhF6XNGJPyhnSP8ACVpuyAAAAHicY2BigAAuBuyAjZGJkZmRhZGVkY2RnYGxQsjQ0LQoMz2jJLGoKL88IzUxpVjQ0NAQzgPLAUXMclLTkNQIGBoaoYgwMAAACHYaswA=') format('woff'), url('//at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.ttf?t=1505291076294') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+            url('//at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.svg?t=1505291076294#iconfont') format('svg');
+            /* iOS 4.1- */
+        }
+        
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .icon-115rightarrowheads:before {
+            content: "\e79b";
+        }
+        
+        .icon-111arrowheadright:before {
+            content: "\e6db";
+        }
+        
+        .icon-116leftarrowheads:before {
+            content: "\e807";
+        }
+        
+        .icon-112leftarrowhead:before {
+            content: "\e6f6";
+        }
+    </style>
+
+</head>
+
+<body>
+    <form class="wrapper examApply" action="">
+
+        <div class="choose-content">
+            <span class="title choose-title">考试名称</span>
+            <span class="choose-wrap">
+                <select name="exam_content_id" id="exam_content_id">
+                    <option value="0">请选择</option>
+                    {foreach name="examName" item="item"}
+                    <option value="{$item.id}">{$item.name}</option>
+                    {/foreach}
+                </select>
+            </span>
+        </div>
+        <div class="time-wrap">
+            <span class="title tile-title">考试时间</span>
+            <span class="time-date">
+                <input id="txt_calendar" name="exam_date" type="text" value="" readonly="readonly">
+                <span class="date-icon">
+                    <img src="__STATIC__/image/rili.png" alt="">
+                </span>
+            </span>
+            <div id="schedule-box"></div>
+        </div>
+
+        <div class="location-wrap">
+            <div class="left">
+                <span class="title choose-title">考试位置</span>
+                <span class="choose-wrap" style="width:2rem;margin-left:0.1rem">
+                    <select name="province_id" id="province">
+                        <option value="0">请选择</option>
+                        {foreach name="region" item="item"}
+                        <option value="{$item.id}">{$item.name}</option>
+                        {/foreach}
+                    </select>
+                </span>
+            </div>
+            <div class="right">
+                <select name="city_id" id="city">
+                    <option value="0">请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="location-precise">
+            <span class="title choose-title">考 &nbsp;&nbsp;&nbsp; 点</span>
+            <span class="choose-wrap">
+                <select name="location_id" id="location">
+                    <option value="0">请选择</option>
+                </select>
+            </span>
+        </div>
+        <textarea name="remark" contenteditable="true" id="" cols="30" rows="10" placeholder="备注"></textarea>
+
+        <input class="sub_btn" type="button" value="提交报名">
+    </form>
+    <script src="/public/js/layer/layer.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('select[name=province_id]').change(function() {
+                var province_id = $(this).val();
+                if (province_id == 0) return false;
+
+                $.ajax({
+                    url: "{:U('mobile/user/ajaxGetRegion')}",
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        region_id: province_id
+                    },
+                    success: function(res) {
+                        var html = '<option value="0">请选择</option>';
+                        $.each(res.data, function() {
+                            html += '<option name="city_id" id="city_id" value=' + this.id + '>' + this.name + '</option';
+                        })
+                        $('select[name=city_id]').html(html);
+                    }
+                })
+            })
+            $('select[name=city_id]').change(function() {
+                var city_id = $(this).val();
+                if (city_id == 0) return false;
+
+                $.ajax({
+                    url: "{:U('mobile/user/ajaxGetRegion')}",
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        region_id: city_id
+                    },
+                    success: function(res) {
+                        var html = '<option value="0">请选择</option>';
+                        $.each(res.data, function() {
+                            html += '<option name="location_id" id="location_id" value=' + this.id + '>' + this.name + '</option';
+                        })
+                        $('select[name=location_id]').html(html);
+                    }
+                })
+            })
+
+            $('.sub_btn').click(function() {
+                if ($('select[name=exam_content_id]').val() == 0) {
+                    layer.msg('请选择考试名称');
+                    return fasle;
+                }
+                if ($('select[name=province_id]').val() == 0) {
+                    layer.msg('请选择考试位置');
+                    return false;
+                }
+                if ($('select[name=city_id]').val() == 0) {
+                    layer.msg('请选择考试位置');
+                    return false;
+                }
+                if ($('select[name=location_id]').val() == 0) {
+                    layer.msg('请选择考点');
+                    return false;
+                }
+
+                layer.load(1);
+                $.ajax({
+                    url: "{:U('mobile/user/apply')}",
+                    type: 'post',
+                    dataType: 'json',
+                    data: $('form').serialize(),
+                    success: function(res) {
+                        layer.closeAll('loading');
+                        if (res.code == 200) {
+                            layer.msg('报名成功', {
+                                icon: 1
+                            }, function() {
+                                window.location = "{:U('mobile/user/index')}";
+                            })
+                        } else {
+                            layer.msg('报名失败，请稍后再试');
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+
+
+    <!-- 日历 -->
+    <script src="__STATIC__/js/dateJs.fei.js"></script>
+    <script>
+        var mySchedule = new Schedule({
+            el: '#schedule-box',
+            //date: '2018-9-20',
+            clickCb: function(y, m, d) {
+                // document.querySelector('#schedule-box').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
+                document.querySelector('#schedule-box').style.display = 'none'
+            },
+            nextMonthCb: function(y, m, d) {
+                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
+            },
+            nextYeayCb: function(y, m, d) {
+                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
+            },
+            prevMonthCb: function(y, m, d) {
+                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
+            },
+            prevYearCb: function(y, m, d) {
+                // document.querySelector('#txt_calendar').value = y + '-' + m + '-' + d
+                $("#txt_calendar").val(y + '-' + m + '-' + d)
+            }
+        });
+        $("#txt_calendar").click(function() {
+            // document.getElementById("schedule-box").style.display = 'block'
+            document.querySelector('#schedule-box').style.display = 'block'
+        })
+    </script>
+</body>
+
+</html>

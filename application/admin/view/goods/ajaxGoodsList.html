@@ -26,10 +26,11 @@
                 </td>
                 <td align="center" axis="col0">
                   <div style="text-align: center; width: 100px;">{$list.goods_sn}</div>
-                </td><!-- 
+                </td>
                 <td align="center" axis="col0">
                   <div style="text-align: center; width: 100px;">{$catList[$list[cat_id]][name]}</div>
                 </td>
+                <!-- 
                 <td align="center" axis="col0">
                   <div style="text-align: center; width: 50px;">{$list.shop_price}</div>
                 </td>               
@@ -50,7 +51,7 @@
                       <span class="no" onClick="changeTableVal('goods','goods_id','{$list.goods_id}','is_new',this)" ><i class="fa fa-ban"></i>否</span>
                     </if>
                   </div>
-                </td>       
+                </td>              -->
                 <td align="center" axis="col0">
                   <div style="text-align: center; width: 30px;">
                     <if condition='$list[is_hot] eq 1'>
@@ -59,7 +60,7 @@
                       <span class="no" onClick="changeTableVal('goods','goods_id','{$list.goods_id}','is_hot',this)" ><i class="fa fa-ban"></i>否</span>
                     </if>
                   </div>
-                </td>        -->
+                </td> 
                 <td align="center" axis="col0">
                   <div style="text-align: center; width: 50px;">
                     <if condition='$list[is_on_sale] eq 1'>

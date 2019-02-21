@@ -51,12 +51,12 @@ return	array(
 	'shop'=>array('name'=>'商城','child'=>array(
 				array('name' => '商品','child' => array(
 				    array('name' => '商品列表', 'act'=>'goodsList', 'op'=>'Goods'),
-					// array('name' => '商品分类', 'act'=>'categoryList', 'op'=>'Goods'),
-					// array('name' => '库存日志', 'act'=>'stock_list', 'op'=>'Goods'),
-					// array('name' => '商品模型', 'act'=>'goodsTypeList', 'op'=>'Goods'),
-					// array('name' => '商品规格', 'act' =>'specList', 'op' => 'Goods'),
+					array('name' => '商品分类', 'act'=>'categoryList', 'op'=>'Goods'),
+					array('name' => '库存日志', 'act'=>'stock_list', 'op'=>'Goods'),
+					array('name' => '商品模型', 'act'=>'goodsTypeList', 'op'=>'Goods'),
+					array('name' => '商品规格', 'act' =>'specList', 'op' => 'Goods'),
 					// array('name' => '品牌列表', 'act'=>'brandList', 'op'=>'Goods'),
-					// array('name' => '商品属性', 'act'=>'goodsAttributeList', 'op'=>'Goods'),
+					array('name' => '商品属性', 'act'=>'goodsAttributeList', 'op'=>'Goods'),
 					// array('name' => '评论列表', 'act'=>'index', 'op'=>'Comment'),
 					// array('name' => '商品咨询', 'act'=>'ask_list', 'op'=>'Comment'),
 			)),

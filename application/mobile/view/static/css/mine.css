@@ -228,3 +228,8 @@
     border-radius: 50%;
     overflow: hidden;
 }
+
+.back {
+    margin-top: 50px;
+}
+.back button { background: rgba(122,190,223,1); width: 90%; height: 0.8rem; }
