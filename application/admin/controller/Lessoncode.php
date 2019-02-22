@@ -150,7 +150,10 @@ class Lessoncode extends Base {
         $strTable .= '<td>课程码</td>';
         $strTable .= '<td>是否使用</td>';
         $strTable .= '</tr>';
-        $count = M('lessoncode_list')->where('lessoncode_id', $lessoncode_id)->count();
+        $count = M('lessoncode_list')
+            ->where('lessoncode_id', $lessoncode_id)
+            ->where('is_used', 0)
+            ->count();
         $p = ceil($count/5000);
         for($i=0;$i<$p;$i++){
             $start = $i*5000;
