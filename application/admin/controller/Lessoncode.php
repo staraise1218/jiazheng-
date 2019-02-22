@@ -158,7 +158,10 @@ class Lessoncode extends Base {
         for($i=0;$i<$p;$i++){
             $start = $i*5000;
             $end = ($i+1)*5000;
-            $list = M('lessoncode_list')->where('lessoncode_id', $lessoncode_id)->limit($start.','.$end)->select();
+            $list = M('lessoncode_list')
+                ->where('lessoncode_id', $lessoncode_id)
+                ->where('is_used', 0)
+                ->limit($start.','.$end)->select();
             if(is_array($list)){
                 foreach($list as $k=>$val){
                     $strTable .= '<tr>';
