@@ -138,7 +138,6 @@ class Cart extends Base {
                 $buyGoods = $cartLogic->buyNow();
             }catch (TpshopException $t){
                 $error = $t->getErrorArr();
-                p($error);
                 $this->error($error['msg']);
             }
             $cartList['cartList'][0] = $buyGoods;
