@@ -4,7 +4,7 @@ namespace app\mall\controller;
 
 use think\Controller;
 use think\Db;
-use app\mobile\Logic\WeixinPublicLogic;
+use app\mall\Logic\WeixinPublicLogic;
 
 class Weixin {
 
