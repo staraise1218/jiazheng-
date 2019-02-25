@@ -36,7 +36,7 @@ class Goods extends Controller{
         // $goods_collect_count = M('goods_collect')->where(array("goods_id"=>$goods_id))->count(); //商品收藏数
         // $this->assign('collect',$collect);
         // $this->assign('commentStatistics',$commentStatistics);//评论概览
-
+p($goods);
         $this->assign('goods_attribute',$goods_attribute);//属性值     
         $this->assign('goods_attr_list',$goods_attr_list);//属性列表
         $this->assign('filter_spec',$filter_spec);//规格参数
