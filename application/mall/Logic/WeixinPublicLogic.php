@@ -1,5 +1,5 @@
 <?php
-namespace app\mobile\logic;
+namespace app\mall\logic;
 
 use think\Db;
 
