@@ -1,6 +1,6 @@
 <?php
 
-namespace app\mobile\controller;
+namespace app\mall\controller;
 
 use think\Controller;
 
@@ -10,7 +10,7 @@ class Base extends Controller{
         
     	parent::__construct();
 
-    	$this->checkLogin();//
+    	$this->checkLogin();
     }
 
     public function checkLogin(){
@@ -28,7 +28,7 @@ class Base extends Controller{
 
         } else {
 
-        	header("Location:/index.php/mobile/weixin/get_code");
+        	header("Location:/index.php/mall/weixin/get_code");
         	die();
         }
     }

@@ -1,0 +1,181 @@
+<!-- 商品介绍 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品介绍</title>
+    <script>
+        //designWidth:设计稿的实际宽度值，需要根据实际设置
+        //maxWidth:制作稿的最大宽度值，需要根据实际设置
+        //这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750)
+        (function(designWidth, maxWidth) {
+            var doc = document,
+            win = window,
+            docEl = doc.documentElement,
+            remStyle = document.createElement("style"),
+            tid;
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                maxWidth = maxWidth || 540;
+                width>maxWidth && (width=maxWidth);
+                var rem = width * 100 / designWidth;
+                remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+            }
+
+            if (docEl.firstElementChild) {
+                docEl.firstElementChild.appendChild(remStyle);
+            } else {
+                var wrap = doc.createElement("div");
+                wrap.appendChild(remStyle);
+                doc.write(wrap.innerHTML);
+                wrap = null;
+            }
+            //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+            refreshRem();
+            win.addEventListener("resize", function() {
+                clearTimeout(tid); //防止执行两次
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+
+            win.addEventListener("pageshow", function(e) {
+                if (e.persisted) { // 浏览器后退的时候重新计算
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+
+            if (doc.readyState === "complete") {
+                doc.body.style.fontSize = "16px";
+            } else {
+                doc.addEventListener("DOMContentLoaded", function(e) {
+                    doc.body.style.fontSize = "16px";
+                }, false);
+            }
+        })(750, 750);
+    </script>
+    <link rel="stylesheet" href="__STATIC__/css/pub.css">
+    <link rel="stylesheet" href="__STATIC__/css/store.css">
+    
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background: #F6F6F6;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="introduce-poster-wrap">
+        <div class="poster">
+            <img src="{$goods_images_list[0]['image_url']}" alt="">
+        </div>
+        <div class="introduce-title">
+            <strong style="font-size:0.34rem;color:#1C1C1C;margin-right:0.3rem">{$goods.goods_name}</strong>
+        </div>
+        <!-- <div class="introduce-title">
+            <span style="margin-right:0.3rem"><i>264</i>人已经购买</span>
+            <span>好评度<i>98%</i></span>
+        </div> -->
+        <div class="price" style="padding: 0 0.2rem;box-sizing:border-box;font-size:0.36rem;color:#EDBA6B;margin-bottom:0.2rem">
+            ￥<span>{$goods.shop_price}</span>
+        </div>
+    </div>
+    <div class="particular-introduce-wrap">
+        <div class="item">
+            <div class="particular-title">
+                <p>PRODUCT INDRODUCE</p>
+                <div>
+                    <img src="__STATIC__/img/course details_line@2x.png" alt="">
+                    <strong>商品介绍</strong>
+                    <img src="__STATIC__/img/course details_line@2x.png" alt="">
+                </div>
+            </div>
+            <div>
+                {$goods.goods_content|htmlspecialchars_decode}             
+            </div>
+        </div>
+    </div>
+    <div class="gopay-wrap">
+        <div class="gouwuche">
+            <i>
+                <img src="__STATIC__/img/7847db4e4b4e90ed7415bf7b356c2ba.png" alt="">
+            </i>
+            <span>购物车</span>
+        </div>
+        <div class="goupay"  onclick="buy_now();">立即购买</div>
+        <div class="addpay">加入购物车</div>
+    </div>
+
+    <form name="buy_goods_form" method="post" id="buy_goods_form">
+        <input type="hidden" name="goods_id" value="{$goods.goods_id}"><!-- 商品id -->
+        <input type="hidden" name="activity_is_on" value="{$goods.activity_is_on}"><!-- 活动是否进行中 -->
+        <input type="hidden" name="goods_prom_type" value="{$goods.prom_type}"/><!-- 活动类型 -->
+        <input type="hidden" name="shop_price" value="{$goods.shop_price}"/><!-- 活动价格 -->
+        <input type="hidden" name="store_count" value="{$goods.store_count}"/><!-- 活动库存 -->
+        <input type="hidden" name="market_price" value="{$goods.market_price}"/><!-- 商品原价 -->
+        <input type="hidden" name="start_time" value="{$goods.start_time}"/><!-- 活动开始时间 -->
+        <input type="hidden" name="end_time" value="{$goods.end_time}"/><!-- 活动结束时间 -->
+        <input type="hidden" name="activity_title" value="{$goods.activity_title}"/><!-- 活动标题 -->
+        <input type="hidden" name="item_id" value="{$Request.param.item_id}"/><!-- 商品规格id -->
+        <input type="hidden" name="prom_id" value="{$goods.prom_id}"/><!-- 活动ID -->
+        <input type="hidden" name="exchange_integral" value="{$goods.exchange_integral}"/><!-- 积分 -->
+        <input type="hidden" name="point_rate" value="{$point_rate}"/><!-- 积分兑换比 -->
+        <input type="hidden" name="is_virtual" value="{$goods.is_virtual}"/><!-- 是否是虚拟商品 -->
+
+        <input type="hidden" class="num buyNum" id="number" residuenum="{$goods.store_count}" name="goods_num" value="1" min="1" max="{$goods.store_count}">
+    </form>
+
+<script type="text/javascript" src="/public/js/jquery-1.10.2.min.js"></script>
+<script src="/public/js/layer/layer.js"></script>
+<script type="text/javascript">
+    /**
+     * 立即购买
+     */
+    function buy_now(){
+        var store_count = $("input[name='store_count']").attr('value');// 商品原始库存
+        var buyNum = parseInt($("input[name='goods_num']").val());
+        var goods_id = parseInt($("input[name='goods_id']").val());
+        var item_id = $("input[name='item_id']").val();
+        if (buyNum <= store_count) {
+            location.href = "/index.php?m=mall&c=Cart&a=cart2&action=buy_now&goods_num="+buyNum+"&goods_id="+goods_id+"&item_id="+item_id;
+        } else {
+            layer.msg('购买数量超过此商品购买上限', {icon: 3});
+        }
+    }
+
+    /**
+     * 将商品加入购物车
+     * @param goods_id|商品id
+     * @param num|商品数量
+     * @constructor
+     */
+    function AjaxAddCart(goods_id, num) {
+
+        $.ajax({
+            type: "POST",
+            url: "{:U('mall/cart/ajaxAddCart')}",
+            data: {goods_id: goods_id, goods_num: num},
+            dataType: 'json',
+            success: function (data) {
+                if(data.status == 1){
+                    layer.msg('加入购物车成功');
+                    return false;
+                }
+                if (data.status <= 0) {
+                    layer.msg(data.msg);
+                    return false;
+                }
+            },
+            error:function(){
+                layer.msg('服务器错误');
+            }
+        });
+    }
+</script>
+</body>
+</html>

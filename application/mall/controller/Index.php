@@ -1,11 +1,11 @@
 <?php
 
-namespace app\mobile\controller;
+namespace app\mall\controller;
 
 use think\Controller;
 use think\Db;
 
-class Index extends Controller{
+class Index extends Base{
 
     public function index(){
     	
@@ -17,16 +17,16 @@ class Index extends Controller{
 			->order('orderby desc, ad_id desc')
 			->select();
 
-		// 获取常规课程
-		// $lessonList = Db::name('goods')
-		// 	->where('is_open', 1)
-		// 	->where('is_delete', 0)
-		// 	->limit(4)
-		// 	->field('id, title, thumb, price')
-		// 	->select();
+		// 商品列表
+		$list = Db::name('goods')
+    		->where('is_hot', 1)
+    		->where('is_on_sale', 1)
+    		->field('goods_id, original_img, goods_name, shop_price, market_price, store_count')
+    		->limit(10)
+    		->select();
 
+    	$this->assign('list', $list);
 		$this->assign('bannerList', $bannerList);
-		// $this->assign('lessonList', $lessonList);
-    	return $this->fetch('index');
+    	return $this->fetch();
     }
 }

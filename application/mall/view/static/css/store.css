@@ -97,6 +97,45 @@
     width: 1.3rem;
     border-radius: 0.2rem
 }
-
+.gopay-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* padding: 10px 0; */
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+.gopay-wrap .gouwuche {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 2;
+    text-align: center;
+}
+.gopay-wrap .gouwuche  i {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid red; */
+}
+.gopay-wrap .gouwuche  i img {
+    width: 100%;
+}
+.gopay-wrap .goupay {
+    background: rgb(247, 195, 112);
+    color: #fff;
+    height: 100%;
+    padding: 20px 0;
+    flex: 2.5;
+    text-align: center;
+}
+.gopay-wrap .addpay {
+    background: rgb(252, 162, 24);
+    color: #fff;
+    height: 100%;
+    padding: 20px 0;
+    flex: 4;
+    text-align: center;
+}
 
 

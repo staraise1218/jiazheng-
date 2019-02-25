@@ -1,6 +1,6 @@
 <?php
 
-namespace app\mobile\controller;
+namespace app\mall\controller;
 
 use think\Controller;
 use think\Db;
@@ -48,7 +48,7 @@ class Weixin {
         	}
         }
 
-        header("Location:/index.php/mobile/index/index");
+        header("Location:/index.php/mall/index/index");
         die();
     }
 }

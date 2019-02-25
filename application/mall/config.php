@@ -9,7 +9,7 @@ return $home_config = [
 	'dispatch_success_tmpl' => 'public:dispatch_jump', 
 	'view_replace_str'  =>  [
         '__PUBLIC__'=>'/public',
-        '__STATIC__' => '/application/mobile/view/static',
+        '__STATIC__' => '/application/mall/view/static',
         '__ROOT__'=>''
     ]
 ];

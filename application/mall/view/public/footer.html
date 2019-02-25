@@ -1,16 +1,17 @@
-<div class="nav">
-    <ul>
-        <li class="index {if condition="CONTROLLER_NAME eq 'Index'"}active{/if}">
-            <a href="/">
-                <span ></span>
-                <p>首页</p>
-            </a>
+
+<div class="footer-wrap">
+    <ul class="footer">
+        <li class="active item" onclick="window.location='{:U('mall/index/index')}'">
+            <i class="icon shouye shouye-active"></i>
+            <span>首页</span>
         </li>
-        <li class="mine {if condition="CONTROLLER_NAME eq 'User'"}active{/if}">
-            <a href="{:url('mobile/user/index')}">
-                <span></span>
-                <p>我的</p>
-            </a>
+        <li class="item"  onclick="window.location='{:U('mall/cart/index')}'">
+            <i class="icon gouwu"></i>
+            <span>购物车</span>
+        </li>
+        <li class="item"  onclick="window.location='{:U('mall/user/index')}'">
+            <i class="icon mine"></i>
+            <span>我的</span>
         </li>
     </ul>
 </div>
