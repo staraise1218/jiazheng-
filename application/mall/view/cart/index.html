@@ -1,42 +1,42 @@
-<include file="public/header" title="购物车" body=""/>
-<include file="public/header_nav" title="购物车" href="javascript:history.back(-1);"/>
+{include file="public/header" title="购物车" body=""/}
+{include file="public/header_nav" title="购物车" href="javascript:history.back(-1);"/}
 <style>
     .get_mp span.disable {
         cursor: default;
         color: #e9e9e9;
     }
 </style>
-<if condition="empty($user['user_id'])">
+{if condition="empty($user['user_id'])"}
     <!--###用户未登录###-->
     <div class="loginlater">
         <img src="__STATIC__/images/small_car.png"/>
         <span>登录后可同步电脑和手机购物车</span>
-        <a href="{:U('Mobile/User/loagin')}">登录</a>
+        <a href="{:U('mall/User/loagin')}">登录</a>
     </div>
-</if>
+{/if}
     <div class="cart_list">
         <!--购物车没有商品-s-->
-        <div class="nonenothing" <notempty name="cartList">style="display: none"</notempty>>
+        <div class="nonenothing" {notempty name="cartList"}style="display: none"{/notempty}>
             <img src="__STATIC__/images/nothing.png"/>
             <p>购物车暂无商品</p>
-            <a href="{:U('Mobile/Index/index')}">去逛逛</a>
+            <a href="{:U('mall/Index/index')}">去逛逛</a>
         </div>
         <!--购物车没有商品-e-->
-        <volist name="cartList" id="cart">
+        {volist name="cartList" id="cart"}
             <div class="orderlistshpop p" id="cart_list_{$cart.id}">
                 <div class="maleri30">
                     <!--商品列表-s-->
                     <div class="sc_list">
                         <div class="radio fl ">
                             <!--商品勾选按钮-->
-                            <span onClick="checkGoods(this)" <if condition="$cart[selected] eq 1" >class="che check_t"<else/>class="che"</if>>
+                            <span onClick="checkGoods(this)" {if condition="$cart[selected] eq 1" }class="che check_t"{else/}class="che"{/if}>
                              <i>
-                                 <input name="checkItem" type="checkbox" style="display:none;" value="{$cart.id}" <if condition="$cart[selected] eq 1">checked="checked"</if>>
+                                 <input name="checkItem" type="checkbox" style="display:none;" value="{$cart.id}" {if condition="$cart[selected] eq 1"}checked="checked"{/if}>
                              </i>
                              </span>
                         </div>
                         <div class="shopimg fl">
-                            <a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$cart[goods_id]))}">
+                            <a href="{:U('mall/Goods/goodsInfo',array('id'=>$cart[goods_id]))}">
                                 <!--商品图片-->
                                 <img src="{$cart.goods_id|goods_thum_images=200,200}">
                             </a>
@@ -45,7 +45,7 @@
                             <div class="deletes">
                                 <!--商品名-->
                                 <span class="similar-product-text fl">
-                                    <a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$cart[goods_id]))}">{$cart[goods_name]}</a>
+                                    <a href="{:U('mall/Goods/goodsInfo',array('id'=>$cart[goods_id]))}">{$cart[goods_name]}</a>
                                 </span>
                                 <!--删除按钮-->
                                 <a href="javascript:void(0);" class="delescj deleteGoods" data-cart-id="{$cart['id']}"><img src="__STATIC__/images/dele.png"/></a>
@@ -74,7 +74,7 @@
                     <!--商品列表-e-->
                 </div>
             </div>
-        </volist>
+        {/volist}
         <!--提交栏-s-->
         <notempty name="cartList">
             <div class="foohi foohiext">
@@ -87,8 +87,8 @@
                             <span class="all">全选</span>
                         </div>
                         <div class="youbia">
-                            <p><span class="pmo">总计：</span><span>￥</span><span id="total_fee">0.00</span></p>
-                            <p class="lastime"><span id="goods_fee">节省：￥0.00</span></p>
+                            <p style="line-height: 2.06rem"><span class="pmo">总计：</span><span>￥</span><span id="total_fee">0.00</span></p>
+                            <p class="lastime" style="display: none"><span id="goods_fee">节省：￥0.00</span></p>
                         </div>
                     </div>
                     <div class="fr">
@@ -105,34 +105,8 @@
             </script>
          </notempty>
     </div>
-<!--看看热卖-start-->
-<div class="hotshop seehotsho">
-    <div class="thirdlogin">
-        <h4>看看热卖</h4>
-    </div>
-</div>
-<div class="floor guesslike">
-    <div class="likeshop">
-        <ul>
-            <foreach name="hot_goods" item="good">
-                <li>
-                    <a href="{:U('Mobile/goods/goodsInfo',array('id'=>$good[goods_id]))}">
-                        <div class="similer-product">
-                            <img src="{$good[goods_id]|goods_thum_images=200,200}"/>
-                            <span class="similar-product-text">{$good[goods_name]|getsubstr=0,20}</span>
-                                <span class="similar-product-price">
-                                    ¥<span class="big-price">{$good[shop_price]}</span>
-                                    <!--<span class="small-price">.00</span>-->
-                                </span>
-                        </div>
-                    </a>
-                </li>
-            </foreach>
-        </ul>
-    </div>
-    <div class="add">热卖商品实时更新，常回来看看哟~</div>
-</div>
-<!--看看热卖-end-->
+
+
 <script type="text/javascript">
     $(document).ready(function(){
         AsyncUpdateCart();
@@ -147,7 +121,7 @@
         //选择数大于0
         if (j > 0) {
             //跳转订单页面
-            window.location.href = "{:U('Mobile/Cart/cart2')}"
+            window.location.href = "{:U('mall/Cart/cart2')}"
         } else {
             layer.open({content: '请选择要结算的商品！', time: 2});
             return false;
@@ -176,7 +150,7 @@
         })
         $.ajax({
             type : "POST",
-            url:"{:U('Mobile/Cart/AsyncUpdateCart')}",//,
+            url:"{:U('mall/Cart/AsyncUpdateCart')}",//,
             dataType:'json',
             data: {cart: cart},
             success: function(data){
@@ -310,7 +284,7 @@
         var cart = new CartItem(cart_id, goods_num, 1);
         $.ajax({
             type: "POST",
-            url: "{:U('Mobile/Cart/changeNum')}",//+tab,
+            url: "{:U('mall/Cart/changeNum')}",//+tab,
             dataType: 'json',
             data: {cart: cart},
             success: function (data) {
@@ -341,7 +315,7 @@
                     layer.close(index);
                     $.ajax({
                         type : "POST",
-                        url:"{:U('Mobile/Cart/delete')}",
+                        url:"{:U('mall/Cart/delete')}",
                         dataType:'json',
                         data: {cart_ids: cart_ids},
                         success: function(data){

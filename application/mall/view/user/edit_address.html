@@ -31,7 +31,7 @@
     </div>
 </div>
 <div class="floor my p edit">
-    <form action="{:U('Mobile/User/edit_address')}" method="post" id="addressForm">
+    <form action="{:U('mall/User/edit_address')}" method="post" id="addressForm">
         <div class="content">
             <div class="floor list7">
                 <div class="myorder p">
@@ -69,15 +69,15 @@
                                 <div class="fl">
                                     <span>所在地区: </span>
                                             <span id="area">
-                                                <volist name="province" id="sub">
-                                                    <if condition="$address['province'] eq $sub['id']"> {$sub.name}</if>
-                                                </volist>
-                                                <volist name="city" id="sub">
-                                                    <if condition="$address['city'] eq $sub['id']"> {$sub.name}</if>
-                                                </volist>
-                                                <volist name="district" id="sub">
-                                                    <if condition="$address['district'] eq $sub['id']"> {$sub.name}</if>
-                                                </volist>
+                                                {volist name="province" id="sub"}
+                                                    {if condition="$address['province'] eq $sub['id']"} {$sub.name}{/if}
+                                                {/volist}
+                                                {volist name="city" id="sub"}
+                                                    {if condition="$address['city'] eq $sub['id']"}{$sub.name}{/if}
+                                                {/volist}
+                                                {volist name="district" id="sub"}
+                                                    {if condition="$address['district'] eq $sub['id']"} {$sub.name}{/if}
+                                                {/volist}
                                             </span>
                                     <input type="hidden" value="{$address['province']}" name="province" class="hiddle_area"/>
                                     <input type="hidden" value="{$address['city']}" name="city" class="hiddle_area"/>
@@ -126,7 +126,7 @@
 <div class="edita">
     <div class="content30">
         <?php $source = I('source');?>
-        <notempty name="$source"> <!--如果是下订单时提交过了的页面-->
+        {notempty name="$source"} <!--如果是下订单时提交过了的页面-->
             <input type="button" value="保存并使用该地址" class="dotm_btn1 beett" onclick="checkForm()" />
             <input type="hidden" name="source" value="{$Request.param.source}" />
             <input type="hidden" name="order_id" value="{$Request.param.order_id}" />
@@ -134,9 +134,9 @@
             <input type="hidden" name="goods_num" value="{$Request.param.goods_num}" />
             <input type="hidden" name="goods_id" value="{$Request.param.goods_id}" />
             <input type="hidden" name="item_id" value="{$Request.param.item_id}" />
-            <else/>
+            {else/}
             <input type="button" value="保存该地址" class="dotm_btn1 beett" onclick="checkForm()" />
-        </notempty>
+        {/notempty}
     </div>
 </div>
 </form>
@@ -169,7 +169,7 @@
     <div class="sfk">是否删除该地址?</div>
     <div class="lineq">
         <span class="clos">取消</span>
-        <span class="sur"><a href="{:U('/Mobile/User/del_address',array('id'=>$address[address_id]))}'">确定</a></span>
+        <span class="sur"><a href="{:U('/mall/User/del_address',array('id'=>$address[address_id]))}'">确定</a></span>
     </div>
 </div>
 <div class="mask-filter-div" style="display: none;"></div>
@@ -215,7 +215,7 @@
         }
         $.ajax({
             type : "POST",
-            url:"{:U('Mobile/User/edit_address')}",//+tab,
+            url:"{:U('mall/User/edit_address')}",//+tab,
             dataType:'JSON',
             data :$('#addressForm').serialize(),
             success: function(data)

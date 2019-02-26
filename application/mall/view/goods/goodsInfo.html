@@ -101,14 +101,14 @@
         </div>
     </div>
     <div class="gopay-wrap">
-        <div class="gouwuche">
+        <div class="gouwuche" onclick="window.location='{:U('mall/cart/index')}'">
             <i>
                 <img src="__STATIC__/img/7847db4e4b4e90ed7415bf7b356c2ba.png" alt="">
             </i>
             <span>购物车</span>
         </div>
         <div class="goupay"  onclick="buy_now();">立即购买</div>
-        <div class="addpay">加入购物车</div>
+        <div class="addpay" onClick="AjaxAddCart({$goods.goods_id},1)">加入购物车</div>
     </div>
 
     <form name="buy_goods_form" method="post" id="buy_goods_form">

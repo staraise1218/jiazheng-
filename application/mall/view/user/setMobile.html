@@ -1,5 +1,5 @@
-<include file="public/header" title="手机号" body=""/>
-<include file="public/header_nav" title="手机号"  href="{:U('Mobile/User/userinfo')}"/>
+{include file="public/header" title="手机号" body=""/}
+{include file="public/header_nav" title="手机号"  href="/index.php/mall/User/userinfo"/}
 <style>
    /* .fetchcode{
         background-color: #ec5151;
@@ -19,19 +19,19 @@
     }*/
 </style>
 		<div class="loginsingup-input">
-            <form action="{:U('Mobile/User/setMobile')}" method="post" onsubmit="return submitverify(this)">
+            <form action="{:U('mall/User/setMobile')}" method="post" onsubmit="return submitverify(this)">
                 <div class="reset-pwd-title">修改绑定手机号码</div>
 				<div class="lsu">
                     <input type="hidden" name="source" value="{$Request.param.source}"/>
 					<span class="ico ico-telephone"></span>
-                    <if condition="$user.mobile && $status neq 1">
+                   {if condition="$user.mobile && $status neq 1"}
                         <input type="text" name="mobile" value="{$user.mobile}" id="tel" readonly/>
                         <input type="hidden" name="status" value="1"/>
-                    <else/>
+                    {else/}
                         <input type="text" name="mobile"  id="tel" onBlur="checkMobilePhone(this.value);" maxlength="11"/>
                         <input type="hidden" name="validate" value="1"/>
                         <input type="hidden" name="status" value="0"/>
-                    </if>
+                    {/if}
 				</div>
                 <div class="v-identity m-t-40">
                     <span class="v-til">验证码 :</span>
@@ -41,11 +41,11 @@
                     </div>
                 </div>
 				<div class="lsu-submit">
-                    <if condition="$user.mobile && $status neq 1">
+                   {if condition="$user.mobile && $status neq 1"}
                         <input type="submit" name=""  value="下一步" />
-                    <else/>
+                    {else/}
                         <input type="submit" name="" id="" value="确认修改" />
-                    </if>
+                    {/if}
 				</div>
 			</form>
 		</div>
@@ -59,7 +59,7 @@
             $.ajax({
                 type: "GET",
                 url: "/index.php?m=Home&c=Api&a=issetMobile",//+tab,
-//			url:"{:U('Mobile/User/comment',array('status'=>$_GET['status']),'')}/is_ajax/1/p/"+page,//+tab,
+//			url:"{:U('mall/User/comment',array('status'=>$_GET['status']),'')}/is_ajax/1/p/"+page,//+tab,
                 data: {mobile: mobile},// 你的formid 搜索表单 序列化提交
                 success: function (data) {
                     if (data == '0') {

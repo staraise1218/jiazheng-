@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>商城首页</title>
     <link rel="stylesheet" href="__STATIC__/css/main.css">
+    <link rel="stylesheet" href="__STATIC__/css/common.css">
 </head>
 <body>
 
@@ -32,14 +33,14 @@
                     <p> <a href="{:U('mall/goods/goodsInfo', array('id'=>$goods.goods_id))}">{$goods.goods_name}</a></p>
                     <div class="price-wrap">
                          <a href="{:U('mall/goods/goodsInfo', array('id'=>$goods.goods_id))}"><div>￥<span class="price">{$goods.shop_price}</span> <del>￥ <span class="before-price">{$goods.market_price}</span> </del> </div></a>
-                        <i class="icon-addpay"></i>
+                        <!-- <i class="icon-addpay"></i> -->
                     </div>
                 </li>
                 {/foreach}
             </ul>
         </li>
     </ul>
-    {include file="public/footer"}
+    {include file="public/footer_nav"}
 
 </body>
 </html>
