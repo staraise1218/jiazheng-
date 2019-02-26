@@ -1,5 +1,5 @@
-<include file="public/header" title="新增收货地址" body="pore_add"/>
-<include file="public/header_nav" title="新增收货地址" href="javascript:history.back(-1)"/>
+{include file="public/header" title="新增收货地址" body="pore_add"/}
+{include file="public/header_nav" title="新增收货地址" href="javascript:history.back(-1)"/}
 <div class="floor my p edit">
     <form action="{:U('Mobile/User/add_address')}" method="post" id="addressForm">
         <div class="content">
@@ -41,15 +41,15 @@
                                 </div>
                                 <div class="fl">
                                      <span id="area">
-                                        <volist name="province" id="sub">
+                                        {volist name="province" id="sub"}
                                             <if condition="$address['province'] eq $sub['id']"> {$sub.name}</if>
-                                        </volist>
-                                        <volist name="city" id="sub">
+                                        {/volist}
+                                        {volist name="city" id="sub"}
                                             <if condition="$address['city'] eq $sub['id']"> {$sub.name}</if>
-                                        </volist>
-                                        <volist name="district" id="sub">
+                                        {/volist}
+                                        {volist name="district" id="sub"}
                                             <if condition="$address['district'] eq $sub['id']"> {$sub.name}</if>
-                                        </volist>
+                                        {/volist}
                                     </span>
                                     <input type="hidden" value="{$address['province']}" name="province" class="hiddle_area"/>
                                     <input type="hidden" value="{$address['city']}" name="city" class="hiddle_area"/>
@@ -96,7 +96,7 @@
         <input type="hidden" name="id" value="{$address.address_id}" />
         <div class="edita">
             <div class="content30">
-                <notempty name="$source"> <!--如果是下订单时提交过了的页面-->
+            {notempty name="$source"} <!--如果是下订单时提交过了的页面-->
                     <input type="button" value="保存并使用该地址" class="dotm_btn1 beett" onclick="checkForm()" />
                     <input type="hidden" name="source" value="{$Request.param.source}" />
                     <input type="hidden" name="order_id" value="{$Request.param.order_id}" />
@@ -107,7 +107,7 @@
                     <input type="hidden" name="action" value="{$Request.param.action}" />
                     <else/>
                     <input type="button" value="保存该地址" class="dotm_btn1 beett" onclick="checkForm()" />
-                </notempty>
+            {/notempty}
             </div>
         </div>
     </form>
