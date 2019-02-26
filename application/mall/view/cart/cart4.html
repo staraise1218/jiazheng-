@@ -112,7 +112,7 @@
             JSON.parse(jsApiParameters),
             function(res){
                 if(res.err_msg == "get_brand_wcpay_request:ok" ){
-                    window.location.href="{:U('mobile/lesson/detail', array('id'=>$lesson_id))}"
+                    window.location.href="{:U('mall/index/index)}"
                 } else {
                     alert('支付失败')
                 }
