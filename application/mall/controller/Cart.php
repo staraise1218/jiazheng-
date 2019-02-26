@@ -187,6 +187,7 @@ class Cart extends Base {
         $action = input("action"); // 立即购买
         $payPwd =  I("payPwd",''); // 支付密码
         strlen($user_note) > 50 && exit(json_encode(['status'=>-1,'msg'=>"备注超出限制可输入字符长度！",'result'=>null]));
+        if($address == '') $this->ajaxReturn(['status'=>-1,'msg'=>'请选择收货地址','result'=>'');
         $address = Db::name('UserAddress')->where("address_id", $address_id)->find();
         $cartLogic = new CartLogic();
         $pay = new Pay();
