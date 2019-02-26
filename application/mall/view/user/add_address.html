@@ -42,13 +42,13 @@
                                 <div class="fl">
                                      <span id="area">
                                         {volist name="province" id="sub"}
-                                            <if condition="$address['province'] eq $sub['id']"> {$sub.name}</if>
+                                            {if condition="$address['province'] eq $sub['id']"}{$sub.name}{/if}
                                         {/volist}
                                         {volist name="city" id="sub"}
-                                            <if condition="$address['city'] eq $sub['id']"> {$sub.name}</if>
+                                            {if condition="$address['city'] eq $sub['id']"}{$sub.name}{/if}
                                         {/volist}
                                         {volist name="district" id="sub"}
-                                            <if condition="$address['district'] eq $sub['id']"> {$sub.name}</if>
+                                            {if condition="$address['district'] eq $sub['id']"}{$sub.name}{/if}
                                         {/volist}
                                     </span>
                                     <input type="hidden" value="{$address['province']}" name="province" class="hiddle_area"/>
@@ -84,7 +84,7 @@
                                     <span>设为默认地址</span>
                                 </div>
                                 <div class="fr">
-                                    <i id='default_addr' class="Mright turnoff <if condition="$address.is_default == 1">turnup</if>"></i>
+                                    <i id='default_addr' class="Mright turnoff {if condition="$address.is_default == 1"}turnup{/if}"></i>
                                 </div>
                             </div>
                             <input type="hidden" name="is_default" value="{$address.is_default}"/>
