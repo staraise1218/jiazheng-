@@ -1948,7 +1948,7 @@ function ajaxProvince(){
 function ajaxCity(parent_id) {
   $.ajax({
     type: "get",
-    url: "/index.php?m=Home&c=Api&a=getRegionByParentId",
+    url: "/index.php?m=mall&c=Api&a=getRegionByParentId",
     dataType: "json",
     data: {parent_id: parent_id},
     success: function (data) {
@@ -1972,7 +1972,7 @@ function ajaxCity(parent_id) {
 function ajaxDistrict(parent_id) {
   $.ajax({
     type: "get",
-    url: "/index.php?m=Home&c=Api&a=getRegionByParentId",
+    url: "/index.php?m=mall&c=Api&a=getRegionByParentId",
     dataType: "json",
     data: {parent_id: parent_id},
     success: function (data) {
@@ -2007,7 +2007,7 @@ function ajaxDispatching() {
       type: "POST",
       dataType: 'json',
       data: {goods_id: goods_id, region_id: region_id},
-      url: "/index.php?m=Home&c=Goods&a=dispatching",
+      url: "/index.php?m=mall&c=Goods&a=dispatching",
       success: function (data) {
         if (data.status == 1) {
             //有货
