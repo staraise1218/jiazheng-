@@ -1928,7 +1928,7 @@ $(function(){
 function ajaxProvince(){
   $.ajax({
     type : "get",
-    url: "/index.php?m=Home&c=Api&a=getProvince",
+    url: "/index.php?m=mall&c=Api&a=getProvince",
     dataType:"json",
     success: function(data){
       var province_html = '';
