@@ -35,7 +35,7 @@
             background-image: url('application/mobile/view/static/image/ac.png');
         }
 </style>
-<form action="{:U('Mobile/Payment/getCode')}" method="post" name="cart4_form" id="cart4_form">
+<form action="" method="post" name="cart4_form" id="cart4_form">
     <div class="ddmoney">
         <div class="maleri30">
             <span class="fl">订单号</span>
@@ -80,7 +80,7 @@
     <div class="paiton">
         <div class="maleri30">
             <input type="hidden" name="order_id" value="{$order['order_id']}" />
-            <a class="soon" href="javascript:void(0);" onClick="pay()"><span>立即支付</span></a>
+            <a class="soon pay" href="javascript:void(0);""><span>立即支付</span></a>
             <!--<p class="fr"><a href="javascript:void(0);" class="lossbq">支付失败？</a></p>-->
         </div>
     </div>
@@ -100,9 +100,6 @@
         $('.pay').click(function(){
             if($('i.icon.active').attr('payMethod') == 'weixin'){
                 wxpay();
-            }
-            if($('i.icon.active').attr('payMethod') == 'lessoncode'){
-                lessoncodepay();
             }
             
         })
