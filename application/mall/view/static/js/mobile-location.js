@@ -1871,7 +1871,7 @@ window.$ === undefined && (window.$ = Zepto)
 var province_id,city_id,district_id,province_name,city_name,district_name;
 locationInitialize();
 ajaxProvince();
-ajaxDispatching();
+// ajaxDispatching();
 //选择省 start
 $('body').on('click', '.province-list p', function () {
   province_id = $(this).attr('data-id');

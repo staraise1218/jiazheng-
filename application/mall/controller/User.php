@@ -43,9 +43,9 @@ class User extends Base
         $is_bind_account = tpCache('basic.is_bind_account');
         if (!$this->user_id && !in_array(ACTION_NAME, $nologin)) {
             if(strstr($_SERVER['HTTP_USER_AGENT'],'MicroMessenger') && $is_bind_account){
-                header("location:" . U('Mobile/User/bind_guide'));//微信浏览器, 调到绑定账号引导页面
+                header("location:" . U('mall/User/bind_guide'));//微信浏览器, 调到绑定账号引导页面
             }else{
-                header("location:" . U('Mobile/User/login'));
+                header("location:" . U('mall/User/login'));
             }
             exit;
         }
@@ -88,8 +88,8 @@ class User extends Base
         setcookie('cn','',time()-3600,'/');
         setcookie('user_id','',time()-3600,'/');
         setcookie('PHPSESSID','',time()-3600,'/');
-        //$this->success("退出成功",U('Mobile/Index/index'));
-        header("Location:" . U('Mobile/Index/index'));
+        //$this->success("退出成功",U('mall/Index/index'));
+        header("Location:" . U('mall/Index/index'));
         exit();
     }
 
@@ -170,9 +170,9 @@ class User extends Base
     {
         if ($this->user_id > 0) {
 //
-//            header("Location: " . U('Mobile/User/index'));
+//            header("Location: " . U('mall/User/index'));
         }
-        $referurl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : U("Mobile/User/index");
+        $referurl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : U("mall/User/index");
         $this->assign('referurl', $referurl);
         return $this->fetch();
     }
@@ -220,7 +220,7 @@ class User extends Base
     {
 
         if($this->user_id > 0) {
-            $this->redirect(U('Mobile/User/index'));
+            $this->redirect(U('mall/User/index'));
         }
         $reg_sms_enable = tpCache('sms.regis_sms_enable');
         $reg_smtp_enable = tpCache('sms.regis_smtp_enable');
@@ -361,7 +361,7 @@ class User extends Base
                 $userlogic = new OrderLogic();//登录后将超时未支付订单给取消掉
                 $userlogic->setUserId($res['result']['user_id']);
                 $userlogic->abolishOrder();
-                return $this->success("绑定成功", U('Mobile/User/index'));
+                return $this->success("绑定成功", U('mall/User/index'));
             }else{
                 return $this->error("绑定失败,失败原因:".$res['msg']);
             }
@@ -400,19 +400,19 @@ class User extends Base
             if ($data['status'] != 1){
                 $this->error($data['msg']);
             } elseif ($source == 'cart2') {
-                $data['url']=U('/Mobile/Cart/cart2', array('address_id' => $data['result'],'goods_id'=>$goods_id,'goods_num'=>$goods_num,'item_id'=>$item_id,'action'=>$action));
+                $data['url']=U('/mall/Cart/cart2', array('address_id' => $data['result'],'goods_id'=>$goods_id,'goods_num'=>$goods_num,'item_id'=>$item_id,'action'=>$action));
                 $this->ajaxReturn($data);
             } elseif ($_POST['source'] == 'integral') {
-                $data['url']=U('/Mobile/Cart/integral', array('address_id' => $data['result'],'goods_id'=>$goods_id,'goods_num'=>$goods_num,'item_id'=>$item_id));
+                $data['url']=U('/mall/Cart/integral', array('address_id' => $data['result'],'goods_id'=>$goods_id,'goods_num'=>$goods_num,'item_id'=>$item_id));
                 $this->ajaxReturn($data);
             } elseif($source == 'pre_sell_cart'){
-                $data['url']=U('/Mobile/Cart/pre_sell_cart', array('address_id' => $data['result'],'act_id'=>$post_data['act_id'],'goods_num'=>$post_data['goods_num']));
+                $data['url']=U('/mall/Cart/pre_sell_cart', array('address_id' => $data['result'],'act_id'=>$post_data['act_id'],'goods_num'=>$post_data['goods_num']));
                 $this->ajaxReturn($data);
             } elseif($_POST['source'] == 'team'){
-                $data['url']= U('/Mobile/Team/order', array('address_id' => $data['result'],'order_id'=>$order_id));
+                $data['url']= U('/mall/Team/order', array('address_id' => $data['result'],'order_id'=>$order_id));
                 $this->ajaxReturn($data);
             }else{
-                $data['url']= U('/Mobile/User/address_list');
+                $data['url']= U('/mall/User/address_list');
                 $this->ajaxReturn($data);
             } 
             
@@ -442,19 +442,19 @@ class User extends Base
             $logic = new UsersLogic();
             $data = $logic->add_address($this->user_id, $id, $post_data);
             if ($post_data['source'] == 'cart2') {
-                $data['url']=U('/Mobile/Cart/cart2', array('address_id' => $data['result'],'goods_id'=>$goods_id,'goods_num'=>$goods_num,'item_id'=>$item_id,'action'=>$action));
+                $data['url']=U('/mall/Cart/cart2', array('address_id' => $data['result'],'goods_id'=>$goods_id,'goods_num'=>$goods_num,'item_id'=>$item_id,'action'=>$action));
                 $this->ajaxReturn($data);
             } elseif ($_POST['source'] == 'integral') {
-                $data['url'] = U('/Mobile/Cart/integral', array('address_id' => $data['result'],'goods_id'=>$goods_id,'goods_num'=>$goods_num,'item_id'=>$item_id));
+                $data['url'] = U('/mall/Cart/integral', array('address_id' => $data['result'],'goods_id'=>$goods_id,'goods_num'=>$goods_num,'item_id'=>$item_id));
                 $this->ajaxReturn($data);
             } elseif($source == 'pre_sell_cart'){
-                $data['url'] = U('/Mobile/Cart/pre_sell_cart', array('address_id' => $data['result'],'act_id'=>$post_data['act_id'],'goods_num'=>$post_data['goods_num']));
+                $data['url'] = U('/mall/Cart/pre_sell_cart', array('address_id' => $data['result'],'act_id'=>$post_data['act_id'],'goods_num'=>$post_data['goods_num']));
                 $this->ajaxReturn($data);
             } elseif($_POST['source'] == 'team'){
-                $data['url']= U('/Mobile/Team/order', array('address_id' => $data['result'],'order_id'=>$order_id));
+                $data['url']= U('/mall/Team/order', array('address_id' => $data['result'],'order_id'=>$order_id));
                 $this->ajaxReturn($data);
             } else{
-                $data['url']= U('/Mobile/User/address_list');
+                $data['url']= U('/mall/User/address_list');
                 $this->ajaxReturn($data);
             }
         }
@@ -483,10 +483,10 @@ class User extends Base
         M('user_address')->where(array('user_id' => $this->user_id))->save(array('is_default' => 0));
         $row = M('user_address')->where(array('user_id' => $this->user_id, 'address_id' => $id))->save(array('is_default' => 1));
         if ($source == 'cart2') {
-            header("Location:" . U('Mobile/Cart/cart2'));
+            header("Location:" . U('mall/Cart/cart2'));
             exit;
         } else {
-            header("Location:" . U('Mobile/User/address_list'));
+            header("Location:" . U('mall/User/address_list'));
         }
     }
 
@@ -838,12 +838,12 @@ class User extends Base
             $data = $logic->get_info($this->user_id);
             $user = $data['result'];
             if ($user['mobile'] == '' && $user['email'] == '')
-                $this->ajaxReturn(['status'=>-1,'msg'=>'请先绑定手机或邮箱','url'=>U('/Mobile/User/index')]);
+                $this->ajaxReturn(['status'=>-1,'msg'=>'请先绑定手机或邮箱','url'=>U('/mall/User/index')]);
             $userLogic = new UsersLogic();
             $data = $userLogic->password($this->user_id, I('post.old_password'), I('post.new_password'), I('post.confirm_password'));
             if ($data['status'] == -1)
                 $this->ajaxReturn(['status'=>-1,'msg'=>$data['msg']]);
-            $this->ajaxReturn(['status'=>1,'msg'=>$data['msg'],'url'=>U('/Mobile/User/index')]);
+            $this->ajaxReturn(['status'=>1,'msg'=>$data['msg'],'url'=>U('/mall/User/index')]);
             exit;
         }
         return $this->fetch();
@@ -895,7 +895,7 @@ class User extends Base
     public function set_pwd()
     {
         if ($this->user_id > 0) {
-            $this->redirect('Mobile/User/index');
+            $this->redirect('mall/User/index');
         }
         $check = session('validate_code');
         if (empty($check)) {
