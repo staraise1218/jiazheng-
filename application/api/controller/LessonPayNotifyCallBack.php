@@ -15,7 +15,7 @@ require_once './plugins/weixin/lib/WxPay.Notify.php';
 require_once "./plugins/weixin/WxPay.Config.php";
 // require_once 'log.php';
 
-class GoodsPayNotifyCallBack extends \WxPayNotify
+class LessonPayNotifyCallBack extends \WxPayNotify
 {
 
 	// 执行回调
