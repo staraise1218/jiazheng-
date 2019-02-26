@@ -1,6 +1,6 @@
 <?php
 
-namespace app\mobile\controller;
+namespace app\mall\controller;
 use think\Db;
 require_once "./plugins/weixin/lib/WxPay.Api.php";
 require_once "./plugins/weixin/WxPay.JsApiPay.php";
