@@ -207,7 +207,7 @@ class Cart extends Base {
                 $cartList = array_merge_recursive($cartList,$userCartList);
                 $pay->payCart($cartList);
             }
-            $pay->delivery($address['district']);
+            // $pay->delivery($address['district']);
             $pay->orderPromotion();
             $pay->useCouponById($coupon_id);
             $pay->useUserMoney($user_money);
@@ -244,6 +244,10 @@ class Cart extends Base {
         if(empty($this->user_id)){
             $this->redirect('User/login');
         }
+
+        $user = Db::name('users')->where('user_id', $this->user_id)->find();
+
+
         $order_id = I('order_id/d');
         $order_sn= I('order_sn/s','');
         $order_where = ['user_id'=>$this->user_id];
@@ -256,16 +260,16 @@ class Cart extends Base {
         $order = M('Order')->where($order_where)->find();
         empty($order) && $this->error('订单不存在！');
         if($order['order_status'] == 3){
-            $this->error('该订单已取消',U("Mobile/Order/order_detail",array('id'=>$order['order_id'])));
+            $this->error('该订单已取消',U("mall/Order/order_detail",array('id'=>$order['order_id'])));
         }
         if(empty($order) || empty($this->user_id)){
-            $order_order_list = U("User/login");
+            $order_order_list = U("mall/index/index");
             header("Location: $order_order_list");
             exit;
         }
         // 如果已经支付过的订单直接到订单详情页面. 不再进入支付页面
         if($order['pay_status'] == 1){
-            $order_detail_url = U("Mobile/Order/order_detail",array('id'=>$order['order_id']));
+            $order_detail_url = U("mall/Order/order_detail",array('id'=>$order['order_id']));
             header("Location: $order_detail_url");
             exit;
         }
@@ -309,12 +313,13 @@ class Cart extends Base {
             }
         }
 
-        $bank_img = include APP_PATH.'home/bank.php'; // 银行对应图片
+        // $bank_img = include APP_PATH.'home/bank.php'; // 银行对应图片
         $this->assign('paymentList',$paymentList);
-        $this->assign('bank_img',$bank_img);
+        // $this->assign('bank_img',$bank_img);
         $this->assign('order',$order);
-        $this->assign('bankCodeList',$bankCodeList);
-        $this->assign('pay_date',date('Y-m-d', strtotime("+1 day")));
+        // $this->assign('bankCodeList',$bankCodeList);
+        // $this->assign('pay_date',date('Y-m-d', strtotime("+1 day")));
+        $this->assign('openid', $user['openid']);
         return $this->fetch();
     }
 

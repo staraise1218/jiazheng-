@@ -15,7 +15,7 @@ require_once './plugins/weixin/lib/WxPay.Notify.php';
 require_once "./plugins/weixin/WxPay.Config.php";
 // require_once 'log.php';
 
-class GoodsPayNotifyCallBack extends \WxPayNotify
+class LessonPayNotifyCallBack extends \WxPayNotify
 {
 
 	// 执行回调
@@ -99,15 +99,13 @@ class GoodsPayNotifyCallBack extends \WxPayNotify
 		// Log::DEBUG("call back:" . json_encode($data));
 		
 		$order_sn = $data['out_trade_no'];
-		$order = Db::name('lesson_order')->where('order_sn', $order_sn)->find();
-		if($order['paystatus'] == 1) return true;
+		$order = Db::name('order')->where('order_sn', $order_sn)->find();
+		if($order['pay_status'] == 1) return true;
 		$updatedata = array(
-			'paystatus'=>1,
-			'paytime' => time(),
-			'paymethod' => 1,
-		);
-
-		Db::name('lesson_order')->where('order_sn', $order_sn)->update($updatedata);
+            'pay_status' => 1,
+            'pay_time' => time(),
+        );
+        Db::name('order')->where('order_sn', $order_sn)->update($updatedata);
 		return true;
 		
 		
