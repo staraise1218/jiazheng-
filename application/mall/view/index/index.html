@@ -8,18 +8,30 @@
     <title>商城首页</title>
     <link rel="stylesheet" href="__STATIC__/css/main.css">
     <link rel="stylesheet" href="__STATIC__/css/common.css">
+
 </head>
 <body>
 
-    <div class="poster-wrapper">
-        <img src="__STATIC__/img/cat1.jpg" alt="">
-    </div>
+    <section>
+        <figure id="full_feature" class="swipslider">
+            <ul class="sw-slides">
+
+                {foreach name="bannerList" item="item"}
+                <li class="sw-slide">
+                    <a href="{if condition=" $item.ad_link !='' "}{$item.ad_link}{else/}javascript:;{/if}">
+                        <img src="{$item.ad_code}" alt="">
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+        </figure>
+    </section>
 
     <ul class="order-wrap">
-        <li class="active">热销商品</li>
-        <li>热销商品</li>
-        <li>蔬菜</li>
-        <li>母婴用品</li>
+        <li {if $cat_id == ''}class="active"{/if} onclick="window.location='{:U('mall/index/index')}'">热销</li>
+        {foreach name="categoryList" item="category"}
+        <li {if $cat_id == $category.id}class="active"{/if} onclick="window.location='{:U('mall/index/index', array('cat_id'=>$category.id))}'">{$category.name}</li>
+        {/foreach}
     </ul>
 
     <ul class="content-list">
@@ -42,5 +54,24 @@
     </ul>
     {include file="public/footer_nav"}
 
+    <script src="__STATIC__/js/jquery.js"></script>
+    <script src="__STATIC__/js/poster.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#full_feature').swipeslider();
+            $('#content_slider').swipeslider({
+                transitionDuration: 600,
+                autoPlayTimeout: 10000,
+                sliderHeight: '300px'
+            });
+            $('#responsiveness').swipeslider();
+            $('#customizability').swipeslider({
+                transitionDuration: 1500,
+                autoPlayTimeout: 4000,
+                timingFunction: 'cubic-bezier(0.38, 0.96, 0.7, 0.07)',
+                sliderHeight: '30%'
+            });
+        });
+    </script>
 </body>
 </html>

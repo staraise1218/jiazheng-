@@ -60,19 +60,19 @@ return	array(
 					// array('name' => '评论列表', 'act'=>'index', 'op'=>'Comment'),
 					// array('name' => '商品咨询', 'act'=>'ask_list', 'op'=>'Comment'),
 			)),
-			/*array('name' => '订单','child'=>array(
+			array('name' => '订单','child'=>array(
 					array('name' => '订单列表', 'act'=>'index', 'op'=>'Order'),
-					array('name' => '虚拟订单', 'act'=>'virtual_list', 'op'=>'Order'),
+					// array('name' => '虚拟订单', 'act'=>'virtual_list', 'op'=>'Order'),
 					array('name' => '发货单', 'act'=>'delivery_list', 'op'=>'Order'),
-					array('name' => '退款单', 'act'=>'refund_order_list', 'op'=>'Order'),
-					array('name' => '退换货', 'act'=>'return_list', 'op'=>'Order'),
-					array('name' => '添加订单', 'act'=>'add_order', 'op'=>'Order'),
+					// array('name' => '退款单', 'act'=>'refund_order_list', 'op'=>'Order'),
+					// array('name' => '退换货', 'act'=>'return_list', 'op'=>'Order'),
+					// array('name' => '添加订单', 'act'=>'add_order', 'op'=>'Order'),
 					array('name' => '订单日志','act'=>'order_log','op'=>'Order'),
-					array('name' => '发票管理','act'=>'index', 'op'=>'Invoice'),
-			        array('name' => '拼团列表','act'=>'team_list','op'=>'Team'),
-			        array('name' => '拼团订单','act'=>'order_list','op'=>'Team'),
+					// array('name' => '发票管理','act'=>'index', 'op'=>'Invoice'),
+			        // array('name' => '拼团列表','act'=>'team_list','op'=>'Team'),
+			        // array('name' => '拼团订单','act'=>'order_list','op'=>'Team'),
 			)),
-			array('name' => '促销','child' => array(
+			/*array('name' => '促销','child' => array(
 					array('name' => '抢购管理', 'act'=>'flash_sale', 'op'=>'Promotion'),
 					array('name' => '团购管理', 'act'=>'group_buy_list', 'op'=>'Promotion'),
 					array('name' => '优惠促销', 'act'=>'prom_goods_list', 'op'=>'Promotion'),
@@ -80,27 +80,27 @@ return	array(
 					array('name' => '优惠券','act'=>'index', 'op'=>'Coupon'),
 					array('name' => '预售管理','act'=>'pre_sell_list', 'op'=>'Promotion'),
 					array('name' => '拼团管理','act'=>'index', 'op'=>'Team'),
-			)),
+			)),*/
 			
-			array('name' => '分销','child' => array(
+			/*array('name' => '分销','child' => array(
 					array('name' => '分销商品列表', 'act'=>'goods_list', 'op'=>'Distribut'),
 					array('name' => '分销商列表', 'act'=>'distributor_list', 'op'=>'Distribut'),
 					array('name' => '分销关系', 'act'=>'tree', 'op'=>'Distribut'),
 					array('name' => '分销商等级', 'act'=>'grade_list', 'op'=>'Distribut'),
 					array('name' => '分成日志', 'act'=>'rebate_log', 'op'=>'Distribut'),
-			)),
+			)),*/
 	     
-    	    array('name' => '微信','child' => array(
+    	    /*array('name' => '微信','child' => array(
     	        array('name' => '公众号配置', 'act'=>'index', 'op'=>'Wechat'),
     	        array('name' => '微信菜单管理', 'act'=>'menu', 'op'=>'Wechat'),
     	        array('name' => '自动回复', 'act'=>'auto_reply', 'op'=>'Wechat'),
                 array('name' => '粉丝列表', 'act'=>'fans_list', 'op'=>'Wechat'),
                 array('name' => '模板消息', 'act'=>'template_msg', 'op'=>'Wechat'),
                 array('name' => '素材管理', 'act'=>'materials', 'op'=>'Wechat'),
-    	    )),
+    	    )),*/
 
 			
-			array('name' => '统计','child' => array(
+			/*array('name' => '统计','child' => array(
 					array('name' => '销售概况', 'act'=>'index', 'op'=>'Report'),
 					array('name' => '销售排行', 'act'=>'saleTop', 'op'=>'Report'),
 					array('name' => '会员排行', 'act'=>'userTop', 'op'=>'Report'),
