@@ -14,10 +14,10 @@ class Base extends Controller{
     }
 
     public function checkLogin(){
-            $user = M('users')->where("user_id", 1)->find();
-            session('user', $user);  //覆盖session 中的 user
-            $this->user = $user;
-            $this->user_id = $user['user_id'];
+            // $user = M('users')->where("user_id", 1)->find();
+            // session('user', $user);  //覆盖session 中的 user
+            // $this->user = $user;
+            // $this->user_id = $user['user_id'];
 
             $this->assign('user', $user); //存储用户信息
     	if (session('?user')) {
