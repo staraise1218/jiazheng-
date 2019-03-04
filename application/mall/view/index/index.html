@@ -38,7 +38,7 @@
         <li class="item hot">
             <ul>
                 {foreach name="list" item="goods"}
-                <li onclick="window.location='U('mall/goods/goodsInfo', array('id'=>$goods.goods_id))'">
+                <li onclick="window.location='{U('mall/goods/goodsInfo', array('id'=>$goods.goods_id))}'">
                     <div class="poster-wrapper">
                         <img src="{$goods.original_img}" alt="">
                     </div>
