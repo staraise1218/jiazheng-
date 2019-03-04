@@ -38,13 +38,13 @@
         <li class="item hot">
             <ul>
                 {foreach name="list" item="goods"}
-                <li>
+                <li onclick="window.location='U('mall/goods/goodsInfo', array('id'=>$goods.goods_id))'">
                     <div class="poster-wrapper">
-                        <a href="{:U('mall/goods/goodsInfo', array('id'=>$goods.goods_id))}"><img src="{$goods.original_img}" alt=""></a>
+                        <img src="{$goods.original_img}" alt="">
                     </div>
-                    <p> <a href="{:U('mall/goods/goodsInfo', array('id'=>$goods.goods_id))}">{$goods.goods_name}</a></p>
+                    <p>{$goods.goods_name}</p>
                     <div class="price-wrap">
-                         <a href="{:U('mall/goods/goodsInfo', array('id'=>$goods.goods_id))}"><div>￥<span class="price">{$goods.shop_price}</span> <del>￥ <span class="before-price">{$goods.market_price}</span> </del> </div></a>
+                         <div>￥<span class="price">{$goods.shop_price}</span> <del>￥ <span class="before-price">{$goods.market_price}</span> </del> </div>
                         <!-- <i class="icon-addpay"></i> -->
                     </div>
                 </li>
