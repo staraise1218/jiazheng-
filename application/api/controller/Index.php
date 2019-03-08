@@ -17,7 +17,7 @@ class Index extends Base {
 
 	public function lessonList(){
 		$page = I('page', 1);
-		// 获取banner
+		// 获取
 		$lessonList = Db::name('lesson')
 			->where('is_open', 1)
 			->where('is_delete', 0)

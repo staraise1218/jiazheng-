@@ -21,7 +21,7 @@ class Index extends Base{
 		$lessonList = Db::name('lesson')
 			->where('is_open', 1)
 			->where('is_delete', 0)
-			->limit(4)
+			->limit(10)
 			->field('id, title, thumb, price')
 			->select();
 

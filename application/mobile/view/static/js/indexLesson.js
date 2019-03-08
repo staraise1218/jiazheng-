@@ -16,7 +16,7 @@ function init() {
 function AjaxFunc() {
     $.ajax({
         type: "POST",
-        url: "http://jiazheng.staraise.com.cn/index.php/api/index/lessonList",
+        url: "/index.php/api/index/lessonList",
         data: dataPost,
         success: function (data) {
             if(data.data != 0) {

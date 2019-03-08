@@ -15,6 +15,8 @@ class Base extends Controller{
 
     public function checkLogin(){
 
+/*$user = M('users')->where("user_id", 6)->find();
+session('user', $user);*/ // 本地测试用
     	if (session('?user')) {
             $session_user = session('user');
             $select_user = M('users')->where("user_id", $session_user['user_id'])->find();

@@ -69,7 +69,7 @@ class Lesson extends Base{
 		}
 
 		$limit = 15; // 每页显示15条
-		$totalCount = Db::name('lesson_episode')->where('lesson_id', $lesson_id)->count();
+		$totalCount = Db::name('lesson_episode')->where('lesson_id', $lesson_id)->where('is_delete', 0)->count();
 		$pageCount = ceil($totalCount/$limit); // 总页数
 
 		// 分页获取所有的集
