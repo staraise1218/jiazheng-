@@ -28,13 +28,7 @@
     /* border: 1px solid red; */
     background-size: contain;
 }
-.footer-wrap .footer .footer_icon_user {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    background-size: contain;
 
-}
 .footer-wrap .footer .shouye {
     background-image: url('../img/1362a1a4810eba0495cb77c5da50cc4.png');
 }
@@ -53,8 +47,21 @@
 .footer-wrap .footer .mine-active {
     background-image: url('../img/0a5e4d77a7e11aac81d5e27a16918c1.png');
 }
+
 .footer-wrap span {
     font-size: 0.7rem;
+}
+
+
+.footer-wrap_2 .footer .footer_icon_user {
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.9rem;
+    background-size: contain;
+}
+
+.footer-wrap_2 span {
+    font-size: 0.5rem;
 }
 
 /* 轮播图 */
