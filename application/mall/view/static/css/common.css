@@ -23,8 +23,8 @@
 }
 .footer-wrap .footer .icon {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 1.3rem;
+    height: 1.3rem;
     /* border: 1px solid red; */
     background-size: contain;
 }
@@ -47,7 +47,7 @@
     background-image: url('../img/0a5e4d77a7e11aac81d5e27a16918c1.png');
 }
 .footer span {
-    font-size: 12px;
+    font-size: 0.7rem;
 }
 
 /* 轮播图 */
