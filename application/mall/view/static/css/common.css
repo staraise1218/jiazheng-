@@ -9,7 +9,7 @@
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    padding: 4px 0;
+    padding: 10px 0;
     box-sizing: border-box;
     background: #fff;
 }
@@ -21,14 +21,13 @@
     flex-direction: column;
     align-items: center;
 }
-.footer-wrap .footer .footer_icon {
+.footer-wrap .footer .icon {
     display: inline-block;
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 20px;
+    height: 20px;
     /* border: 1px solid red; */
     background-size: contain;
 }
-
 .footer-wrap .footer .shouye {
     background-image: url('../img/1362a1a4810eba0495cb77c5da50cc4.png');
 }
@@ -47,22 +46,99 @@
 .footer-wrap .footer .mine-active {
     background-image: url('../img/0a5e4d77a7e11aac81d5e27a16918c1.png');
 }
-
 .footer-wrap span {
-    font-size: 0.7rem;
+    font-size: 12px;
 }
 
 
-.footer-wrap_2 .footer .footer_icon_user {
+
+
+
+
+
+
+
+
+
+.footer-wrap_2 {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+.footer-wrap_2 span {
+    font-size: 8px;
+}
+.footer-wrap_2 .footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    box-sizing: border-box;
+    background: #fff;
+}
+.footer-wrap_2 .footer .active span {
+    color: rgb(144, 200, 228);
+}
+.footer-wrap_2 .footer li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-wrap_2 .footer .icon {
     display: inline-block;
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 10px;
+    height: 10px;
     background-size: contain;
 }
-
-.footer-wrap_2 span {
-    font-size: 0.5rem;
+.footer-wrap_2 .footer .shouye {
+    background-image: url('../img/1362a1a4810eba0495cb77c5da50cc4.png');
 }
+.footer-wrap_2 .footer .shouye-active {
+    background-image: url('../img/d0b8f588dc1aea05c5ed8a2ac90396f.png');
+}
+.footer-wrap_2 .footer .gouwu {
+    background-image: url('../img/7847db4e4b4e90ed7415bf7b356c2ba.png');
+}
+.footer-wrap_2 .footer .gouwu-active {
+    background-image: url('../img/97d8375398fb58cd40a000e36a3c23b.png');
+}
+.footer-wrap_2 .footer .mine {
+    background-image: url('../img/3f9061586ab1ece7f562e5dff6c9e29.png');
+}
+.footer-wrap_2 .footer .mine-active {
+    background-image: url('../img/0a5e4d77a7e11aac81d5e27a16918c1.png');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 轮播图 */
         
