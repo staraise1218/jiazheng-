@@ -28,6 +28,13 @@
     /* border: 1px solid red; */
     background-size: contain;
 }
+.footer-wrap .footer .footer_icon_user {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background-size: contain;
+
+}
 .footer-wrap .footer .shouye {
     background-image: url('../img/1362a1a4810eba0495cb77c5da50cc4.png');
 }
