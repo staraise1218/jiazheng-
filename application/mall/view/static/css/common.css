@@ -67,7 +67,7 @@
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 .footer-wrap_2 span {
-    font-size: 8px;
+    font-size: 20px;
 }
 .footer-wrap_2 .footer {
     display: flex;
@@ -87,8 +87,8 @@
 }
 .footer-wrap_2 .footer .icon {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 45px;
+    height: 50px;
     background-size: contain;
 }
 .footer-wrap_2 .footer .shouye {
