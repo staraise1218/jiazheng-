@@ -81,6 +81,7 @@
 }
 .footer-wrap_2 .footer span {
     font-size: 0.5rem;
+    margin-top: 0.1rem;
 }
 .footer-wrap_2 .footer li {
     display: flex;
