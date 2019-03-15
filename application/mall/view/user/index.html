@@ -1,100 +1,22 @@
-
-
 {include file="public/header" title="个人中心" body="g4"/}
 <style>
-    /* .my .content .floor_order ul li {
+    .my .content .floor_order ul li {
         width: 25%;
-    } */
+    }
 </style>
-<script>
-    (function (designWidth, maxWidth) {
-        var doc = document,
-            win = window;
-        var docEl = doc.documentElement;
-        var metaEl,
-            metaElCon;
-        var styleText,
-            remStyle = document.createElement("style");
-        var tid;
-
-        function refreshRem() {
-            // var width = parseInt(window.screen.width); // uc有bug
-            var width = docEl.getBoundingClientRect().width;
-            if (!maxWidth) {
-                maxWidth = 540;
-            };
-            if (width > maxWidth) { // 淘宝做法：限制在540的屏幕下，这样100%就跟10rem不一样了
-                width = maxWidth;
-            }
-            var rem = width * 100 / designWidth;
-            // var rem = width / 10; // 如果要兼容vw的话分成10份 淘宝做法
-            //docEl.style.fontSize = rem + "px"; //旧的做法，在uc浏览器下面会有切换横竖屏时定义了font-size的标签不起作用的bug
-            remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
-        }
-
-        // 设置 viewport ，有的话修改 没有的话设置
-        metaEl = doc.querySelector('meta[name="viewport"]');
-        // 20171219修改：增加 viewport-fit=cover ，用于适配iphoneX
-        metaElCon = "width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover";
-        if (metaEl) {
-            metaEl.setAttribute("content", metaElCon);
-        } else {
-            metaEl = doc.createElement("meta");
-            metaEl.setAttribute("name", "viewport");
-            metaEl.setAttribute("content", metaElCon);
-            if (docEl.firstElementChild) {
-                docEl.firstElementChild.appendChild(metaEl);
-            } else {
-                var wrap = doc.createElement("div");
-                wrap.appendChild(metaEl);
-                doc.write(wrap.innerHTML);
-                wrap = null;
-            }
-        }
-
-        //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
-        refreshRem();
-
-        if (docEl.firstElementChild) {
-            docEl.firstElementChild.appendChild(remStyle);
-        } else {
-            var wrap = doc.createElement("div");
-            wrap.appendChild(remStyle);
-            doc.write(wrap.innerHTML);
-            wrap = null;
-        }
-
-        win.addEventListener("resize", function () {
-            clearTimeout(tid); //防止执行两次
-            tid = setTimeout(refreshRem, 300);
-        }, false);
-
-        win.addEventListener("pageshow", function (e) {
-            if (e.persisted) { // 浏览器后退的时候重新计算
-                clearTimeout(tid);
-                tid = setTimeout(refreshRem, 300);
-            }
-        }, false);
-
-        if (doc.readyState === "complete") {
-            doc.body.style.fontSize = "16px";
-        } else {
-            doc.addEventListener("DOMContentLoaded", function (e) {
-                doc.body.style.fontSize = "16px";
-            }, false);
-        }
-    })(750, 750);
-</script>
-<link rel="stylesheet" href="__STATIC__/css/common.css">
-<div class="myhearder">
-    <div class="person">
-        <!--<a href="">-->
-        <div class="fl personicon">
-            <div class="personicon">
-                <img src="{$user[head_pic]|default=" __STATIC__/images/user68.jpg"}"/> </div> </div> <div class="fl lors">
-                <span>{$user['nickname']}</span>
-
-            </div>
+    <link rel="stylesheet" href="__STATIC__/css/common.css">
+    <div class="myhearder">
+        <div class="person">
+            <!--<a href="">-->
+                <div class="fl personicon">
+                    <div class="personicon">
+                        <img src="{$user[head_pic]|default="__STATIC__/images/user68.jpg"}"/>
+                    </div>
+                </div>
+                <div class="fl lors">
+                    <span>{$user['nickname']}</span>
+                    
+                </div>
             <!--</a>-->
         </div>
         <div class="set">
@@ -128,7 +50,7 @@
                 <div class="content30">
                     <div class="order">
                         <div class="fl">
-                            <img src="__STATIC__/images/mlist.png" />
+                            <img src="__STATIC__/images/mlist.png"/>
                             <span>我的订单</span>
                         </div>
                         <div class="fr">
@@ -163,7 +85,7 @@
                             <p>待评价</p>
                         </a>
                     </li> -->
-                    <!--  <li>
+                   <!--  <li>
                         <a href="{:U('mall/Order/return_goods_list',array('type'=>1))}">
                             <span>{$user.return_count}</span>
                             <img src="__STATIC__/images/q4.png" alt="" />
@@ -180,7 +102,7 @@
                         <a href="{:U('mall/User/address_list')}">
                             <div class="order">
                                 <div class="fl">
-                                    <img src="__STATIC__/images/w8.png" />
+                                    <img src="__STATIC__/images/w8.png"/>
                                     <span>地址管理</span>
                                 </div>
                                 <div class="fr">
@@ -191,15 +113,15 @@
                     </div>
                 </div>
 
-
+               
             </div>
         </div>
-
+        
     </div>
 
     <!--底部导航-start-->
-    {include file="public/footer_nav"/}
-    <!-- 
+    <!-- {include file="public/footer_nav"/} -->
+
 <div class="footer-wrap_2">
     <ul class="footer">
         <li class=" item" onclick="window.location='{:U('mall/index/index')}'">
@@ -215,13 +137,12 @@
             <span>我的</span>
         </li>
     </ul>
-</div> -->
+</div>
 
 
 
 
     <!--底部导航-end-->
     <script src="__STATIC__/js/style.js" type="text/javascript" charset="utf-8"></script>
-    </body>
-
-    </html>
+</body>
+</html>
