@@ -602,7 +602,7 @@ function logOrder($order_id,$action_note,$status_desc,$user_id = 0)
  * 获取地区列表
  */
 function get_region_list(){
-    return M('region')->cache(true)->getField('id,name');
+    return M('region2')->cache(true)->getField('id,name');
 }
 /*
  * 获取用户地址列表
