@@ -97,7 +97,7 @@
                                 <a class="shop-rebuy " onClick="cancel_order({$list.order_id})">取消订单</a>
                             {/if}
                             {if condition="$list.pay_status eq 1"}
-                                <a class="shop-rebuy" href="{:U('Order/refund_order', ['order_id'=>$list['order_id']])}">取消订单</a>
+                                <!-- <a class="shop-rebuy" href="{:U('Order/refund_order', ['order_id'=>$list['order_id']])}">退换货</a> -->
                             {/if}
                         {/if}
                         {if condition="$list.receive_btn eq 1"}
