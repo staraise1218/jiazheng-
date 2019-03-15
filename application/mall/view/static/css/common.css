@@ -79,6 +79,7 @@
 }
 .footer-wrap_2 .footer .active span {
     color: rgb(144, 200, 228);
+    font-size: 40px;
 }
 .footer-wrap_2 .footer li {
     display: flex;
@@ -87,8 +88,8 @@
 }
 .footer-wrap_2 .footer .icon {
     display: inline-block;
-    width: 45px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     background-size: contain;
 }
 .footer-wrap_2 .footer .shouye {
