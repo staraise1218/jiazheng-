@@ -9,7 +9,7 @@
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    padding: 0.4rem 0;
+    padding: 0.1rem 0;
     box-sizing: border-box;
     background: #fff;
 }
@@ -23,8 +23,8 @@
 }
 .footer-wrap .footer .icon {
     display: inline-block;
-    width: 1.35rem;
-    height: 1.35rem;
+    width: 0.5rem;
+    height: 0.5rem;
     background-size: contain;
 }
 .footer-wrap .footer .shouye {
@@ -46,7 +46,7 @@
     background-image: url('../img/0a5e4d77a7e11aac81d5e27a16918c1.png');
 }
 .footer-wrap span {
-    font-size: 0.12rem;
+    font-size: 0.25rem;
 }
 
 
