@@ -9,7 +9,7 @@
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    padding: 7px 0;
+    padding: 0.07rem 0;
     box-sizing: border-box;
     background: #fff;
 }
@@ -23,8 +23,8 @@
 }
 .footer-wrap .footer .icon {
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 0.25rem;
+    height: 0.25rem;
     /* border: 1px solid red; */
     background-size: contain;
 }
@@ -47,7 +47,7 @@
     background-image: url('../img/0a5e4d77a7e11aac81d5e27a16918c1.png');
 }
 .footer-wrap span {
-    font-size: 12px;
+    font-size: 0.12rem;
 }
 
 
@@ -67,7 +67,7 @@
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 .footer-wrap_2 span {
-    font-size: 20px;
+    font-size: 0.2rem;
 }
 .footer-wrap_2 .footer {
     display: flex;
