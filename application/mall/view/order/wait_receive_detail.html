@@ -1,5 +1,5 @@
-<include file="public/header" title="待收货详情" body="f3"/>
-<include file="public/header_nav" title="待收货详情" href="javascript:history.back(-1)"/>
+{include file="public/header" title="待收货详情" body="f3"/}
+{include file="public/header_nav" title="待收货详情" href="javascript:history.back(-1)"/}
 <div class="quedbox overdeta">
     <div class="shpmi p">
         <div class="maleri30">
@@ -7,7 +7,7 @@
                 <span class="naem">订单号：<em>{$order_info.order_sn}</em></span>
                 <span class="red">{$order_info.order_status_desc}</span>
             </div>
-            <if condition="$order_info.shipping_status gt 0">
+            {if condition="$order_info.shipping_status gt 0"}
                 <a href="{:U('Order/express',array('order_id'=>$order_info['order_id']))}">
                     <!--物流信息-s-->
                     <div class="wuliumess">
@@ -35,7 +35,7 @@
                         </script>
                     </div>
                 </a>
-            </if>
+            {/if}
         </div>
     </div>
 
@@ -63,7 +63,7 @@
         <!--</div>-->
     <!--</div>-->
 <!--订单商品-s-->
-    <foreach name="$order_info.goods_list" item="good">
+    {foreach name="$order_info.goods_list" item="good"}
         <div class="fukcuid oversetimh">
             <div class="maleri30">
                 <div class="shopprice">
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-    </foreach>
+    {/foreach}
 <!--订单商品-e-->
     <div class="liaxkf">
         <div class="maleri30">
@@ -169,12 +169,12 @@
 <div class="shijefu backba p">
     <div class="maleri30">
         <p class="butna">
-            <if condition="$order_info.receive_btn eq 1">
+            {if condition="$order_info.receive_btn eq 1"}
                 <a class="red receipt" href="javascript:void(0);" onclick="confirmReceive('{$order_info.order_id}'">确认收货</a>
-                </if>
-            <if condition="$order_info.shipping_btn eq 1">
+                {/if}
+            {if condition="$order_info.shipping_btn eq 1"}
                 <a href="{:U('Order/express',array('order_id'=>$order_info['order_id']))}" class="on_comment">查看物流</a>
-            </if>
+            {/if}
         </p>
     </div>
 </div>

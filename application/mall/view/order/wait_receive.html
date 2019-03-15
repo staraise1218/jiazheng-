@@ -1,13 +1,14 @@
-<include file="public/header" title="待收货订单" body="f3"/>
-<include file="public/header_nav" title="待收货订单" href="javascript:history.back(-1)"/>
-<if condition="empty($order_list)">
+{include file="public/header" title="待收货订单" body="f3"/}
+{include file="public/header_nav" title="待收货订单" href="javascript:history.back(-1)"/}
+<!-- <link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css"> -->
+{if condition="empty($order_list)"}
     <div class="nonenothing">
         <img src="__STATIC__/images/nothing.png"/>
         <p>暂无待收货商品</p>
-        <a href="{:U('Mobile/Index/index')}">去逛逛</a>
+        <a href="{:U('mall/Index/index')}">去逛逛</a>
     </div>
-<else/>
-    <foreach name="order_list" key="k" item="order">
+{else/}
+    {foreach name="order_list" key="k" item="order"}
         <div class="quedbox">
             <div class="shpmi p">
                 <div class="maleri30">
@@ -17,7 +18,7 @@
                     </div>
                     <!--物流信息-s-->
                     <div class="wuliumess" id="wuliumess{$order.order_id}">
-                        <if condition="$order.shipping_status gt 0">
+                        {if condition="$order.shipping_status gt 0"}
                         <script>
                             queryExpress();
                             function queryExpress()
@@ -41,12 +42,12 @@
                                 });
                             }
                         </script>
-                        </if>
+                        {/if}
                     </div>
                     <!--物流信息-e-->
                 </div>
             </div>
-            <foreach name="order.goods_list" item="good">
+            {foreach name="order.goods_list" item="good"}
                 <div class="fukcuid">
                     <div class="maleri30">
                         <div class="shopprice">
@@ -61,14 +62,14 @@
                              <!--   <if condition="($order[return_btn] eq 1) and ($good[is_send] lt 2)">
                                     <a href="{:U('Mobile/Order/return_goods',['rec_id'=>$good['rec_id']])}">申请售后</a>
                                 </if>-->
-                                <if condition="$good[is_send] gt 1">
+                                {if condition="$good[is_send] gt 1"}
                                     <a class="applyafts">已申请售后</a>
-                                </if>
+                                {/if}
                             </div>
                         </div>
                     </div>
                 </div>
-            </foreach>
+            {/foreach}
             <div class="shijefu">
                 <div class="maleri30">
                     <p>
@@ -105,8 +106,8 @@
             </div>
         </div>
         <!--确认收货弹窗-e-->
-    </foreach>
-</if>
+    {/foreach}
+{/if}
 <div class="mask-filter-div" style="display: none;"></div>
 <script>
     var  page = 1;
