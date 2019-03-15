@@ -5708,6 +5708,7 @@ float: left
     width: 8.53333rem;
     margin: 0 auto;
     text-align: center;
+    padding-top: 2rem;
 }
 
 .nonenothing img {
@@ -6006,7 +6007,7 @@ float: left
     height: 1.83467rem;
     text-align: center;
     position: absolute;
-    bottom: 2.56rem;
+    bottom: 5.56rem;
     left: 50%;
     right: 50%;
     margin-left: -3.84rem;

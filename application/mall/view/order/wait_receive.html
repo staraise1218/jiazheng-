@@ -1,11 +1,11 @@
-<include file="public/header" title="待收货订单" body="f3"/>
-<include file="public/header_nav" title="待收货订单" href="javascript:history.back(-1)"/>
-<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+{include file="public/header" title="待收货订单" body="f3"/}
+{include file="public/header_nav" title="待收货订单" href="javascript:history.back(-1)"/}
+<!-- <link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css"> -->
 {if condition="empty($order_list)"}
     <div class="nonenothing">
         <img src="__STATIC__/images/nothing.png"/>
         <p>暂无待收货商品</p>
-        <a href="{:U('Mobile/Index/index')}">去逛逛</a>
+        <a href="{:U('mall/Index/index')}">去逛逛</a>
     </div>
 {else/}
     {foreach name="order_list" key="k" item="order"}
