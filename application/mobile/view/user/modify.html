@@ -30,17 +30,17 @@
                 <input type="file" name="file">
             </form>
         </li>
-        <li>
+        <li class="user_name_btn">
             <span class="title">姓名</span>
-            <span class="user_name_btn">{$user.fullname ? $user.fullname : '请输入姓名'}</span>
+            <span>{$user.fullname ? $user.fullname : '请输入姓名'}</span>
         </li>
-        <li>
+        <li class="user_tell_number">
             <span class="title">手机号</span>
-            <span class="user_tell_number">{$user.mobile ? $user.mobile : '请输入手机号'}</span>
+            <span>{$user.mobile ? $user.mobile : '请输入手机号'}</span>
         </li>
-        <li>
+        <li class="user_code_click">
             <span class="title">身份证号</span>
-            <span class="user_code_click">{$user.ID_number ? $user.ID_number : '请输入身份证号'}</span>
+            <span>{$user.ID_number ? $user.ID_number : '请输入身份证号'}</span>
         </li>
         <div class="tanchuang-wrap fullname" style="display:none">
             <div class="tanchuang">
