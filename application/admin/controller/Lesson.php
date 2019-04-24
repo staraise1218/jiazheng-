@@ -72,4 +72,61 @@ class Lesson extends Base {
             $this->ajaxReturn(['status' => 0, 'msg' => '操作失败']);
         }
     }
+
+    // 获取用户的播放课程
+    public function lessonPlayed(){
+        $user_id = I('user_id');
+
+        $where = array(
+            'lp.user_id' => $user_id,
+        );
+
+        $keywords = trim(I('keywords'));
+        $keywords && $where['title'] = array('like', "%$keywords%");
+
+        $list = M('lesson_played')->alias('lp')
+            ->join('lesson l', 'l.id=lp.lesson_id')
+            ->where($where)
+            ->group('lesson_id')
+            ->order('lp.id desc')
+            ->field('lesson_id, title')
+            ->paginate(20, false, ['page'=>$page, 'path'=>U('admin/lesson/lessonPlayed', array('user_id'=>$user_id))]);
+
+        $this->assign('user_id', $user_id);
+        $this->assign('keywords', $keywords);
+        $this->assign('list',$list);
+        return $this->fetch();
+    }
+
+    // 获取用户的播放课程集数记录
+    public function lessonEpisodePlayed(){
+        $user_id = I('user_id');
+        $lesson_id = I('lesson_id');
+
+        $where = array(
+            'lp.user_id' => $user_id,
+        );
+
+        $list = M('lesson_episode')->alias('le')
+            ->where('le.lesson_id', $lesson_id)
+            ->where('le.is_delete', 0)
+            ->order('le.number asc')
+            ->field("le.id lesson_episode_id, le.title, number") 
+            // ->fetchSql(true)
+            ->select();
+
+        if(!empty($list)){
+            foreach ($list as &$item) {
+                $count = M('lesson_played')
+                    ->where('user_id', $user_id)
+                    ->where('lesson_episode_id', $item['lesson_episode_id'])
+                    ->count();
+                $item['is_played'] = $count ? 1 : 0;
+            }
+        }
+
+        $this->assign('user_id', $user_id);
+        $this->assign('list',$list);
+        return $this->fetch();
+    }
 }
