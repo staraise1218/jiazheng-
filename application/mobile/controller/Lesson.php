@@ -168,25 +168,23 @@ class Lesson extends Base{
     // 记录播放课程、集数、时间
     public function ajaxPlayedLog(){
     	$data['user_id'] = $this->user_id;
-    	$data['order_id'] = input('order_id');
+    	// $data['order_id'] = input('order_id');
     	$data['lesson_id'] = input('lesson_id');
     	$data['lesson_episode_id'] = input('lesson_episode_id');
-    	$data['number'] = input('number');
-    	$data['current_time'] = input('current_time');
-    	$data['ended'] = input('ended');
-
-    	
+    	// $data['number'] = input('number');
+    	// $data['current_time'] = input('current_time');
+    	// $data['ended'] = input('ended');
 
     	// 判断是否记录
 
     	$count = Db::name('lesson_played')
     		->where('user_id', $data['user_id'])
-    		->where('order_id', $data['order_id'])
+    		// ->where('order_id', $data['order_id'])
     		->where('lesson_id', $data['lesson_id'])
     		->where('lesson_episode_id', $data['lesson_episode_id'])
     		->count();
     	if($count){
-    		$updatedata = array(
+    		/*$updatedata = array(
 				'number' => $data['number'],
 				'current_time' => $data['current_time'],
 				'ended' => $data['ended'],
@@ -196,7 +194,7 @@ class Lesson extends Base{
 	    		->where('order_id', $data['order_id'])
 	    		->where('lesson_id', $data['lesson_id'])
 	    		->where('lesson_episode_id', $data['lesson_episode_id'])
-    			->update($updatedata);
+    			->update($updatedata);*/
     	} else {
     		$data['add_time'] = time();
     		Db::name('lesson_played')->insert($data);
@@ -231,7 +229,7 @@ class Lesson extends Base{
         }
     }
 
-   private function generateOrderSn(){
+    private function generateOrderSn(){
         $order_sn = date('YmdHis').mt_rand(1000, 9999);
 
         $count = Db::name('lesson_order')->where('order_sn', $order_sn)->count();
