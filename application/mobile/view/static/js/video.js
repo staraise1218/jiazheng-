@@ -30,7 +30,7 @@ $(".wrap").delegate(".video-btn", "click", function(e) {
     console.log($(this).attr('number'))
     $.ajax({
         type: "POST",
-        url: "http://jiazheng.staraise.com.cn/index.php/api/mobile/ajaxPlayedLog",
+        url: "http://jiazheng.staraise.com.cn/api/mobile/ajaxPlayedLog",
         data: {
             // user_id: '',        // 用户id
             lesson_id: $(this).attr('lesson_episode_id'),      // 课程id
