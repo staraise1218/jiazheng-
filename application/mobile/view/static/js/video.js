@@ -24,6 +24,7 @@ $(".video").on("click", function () {
 // 点击分集按钮
 $(".wrap").delegate(".video-btn", "click", function(e) {
     console.log(e)
+    console.log($(this))
     // $.ajax({
     //     type: "POST",
     //     url: "http://jiazheng.staraise.com.cn/index.php/api/mobile/ajaxPlayedLog",
