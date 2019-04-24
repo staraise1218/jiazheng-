@@ -24,30 +24,25 @@ $(".video").on("click", function () {
 // 点击分集按钮
 $(".wrap").delegate(".video-btn", "click", function(e) {
     console.log(e)
-    console.log($(this))
-    // $.ajax({
-    //     type: "POST",
-    //     url: "http://jiazheng.staraise.com.cn/index.php/api/mobile/ajaxPlayedLog",
-    //     data: {
-    //         user_id: '',        // 用户id
-    //         lesson_id: '',      // 课程id
-    //         lesson_episode_id: '',// 课程集数id
-    //     },
-    //     success: function(data) {
-    //         if (data.data != 0) {
-    //             createDom(data.data)
-    //             console.log(data)
-    //             console.log("ajax 数据获取成功")
-    //             dataPost.page++;
-    //         } else {
-    //             console.log("ajax 没有更多数据");
-    //             canAjax = false;
-    //         }
-    //     },
-    //     error: function() {
-    //         console.log("error")
-    //     }
-    // })
+    console.log($(this).attr('data-video'))
+    console.log($(this).attr('lesson_episode_id'))
+    console.log($(this).attr('data-title'))
+    console.log($(this).attr('number'))
+    $.ajax({
+        type: "POST",
+        url: "http://jiazheng.staraise.com.cn/index.php/api/mobile/ajaxPlayedLog",
+        data: {
+            // user_id: '',        // 用户id
+            lesson_id: $(this).attr('lesson_episode_id'),      // 课程id
+            lesson_episode_id: $(this).attr('number'),// 课程集数id
+        },
+        success: function(res) {
+            console.log(res)
+        },
+        error: function(error) {
+            console.log(error)
+        }
+    })
     // var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
     // $(".video").prop("src", $src)
     // console.log($(".wrap .video-btn").eq($(this).index()).attr("data-title"))
