@@ -43,14 +43,14 @@ $(".wrap").delegate(".video-btn", "click", function(e) {
             console.log(error)
         }
     })
-    // var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
-    // $(".video").prop("src", $src)
-    // console.log($(".wrap .video-btn").eq($(this).index()).attr("data-title"))
-    // $(".clas").text($(".wrap .video-btn").eq($(this).index()).attr("data-title"))
-    // $(".btn_active").removeClass("btn_active");
-    // $(this).addClass("btn_active");
-    // $video.currentTime = 0;
-    // $video.play();
+    var $src = "http://jiazheng.staraise.com.cn" + $(this).attr("data-video");
+    $(".video").prop("src", $src)
+    console.log($(".wrap .video-btn").eq($(this).index()).attr("data-title"))
+    $(".clas").text($(".wrap .video-btn").eq($(this).index()).attr("data-title"))
+    $(".btn_active").removeClass("btn_active");
+    $(this).addClass("btn_active");
+    $video.currentTime = 0;
+    $video.play();
 })
 
 // 分集导航切换
