@@ -29,7 +29,7 @@ class Index extends Base{
 		$list = Db::name('goods')
     		->where($goods_where)
     		->field('goods_id, original_img, goods_name, shop_price, market_price, store_count')
-    		->limit(10)
+    		->limit(50)
     		->select();
         // 获取商品一级分类
        $categoryList = Db::name('goods_category')
