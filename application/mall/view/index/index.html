@@ -208,6 +208,7 @@
                     contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                     contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback :function(){
+                        page=1;
                         setTimeout(function(){
                             mui.ajax(url,{
                                 data:{
