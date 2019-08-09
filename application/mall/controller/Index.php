@@ -47,6 +47,7 @@ class Index extends Base{
 
     public function ajaxGetList(){
          $cat_id = I('cat_id');
+         $page = I('page', 1);
 
         // 商品列表
         $goods_where['is_on_sale'] = 1; // 上架商品
@@ -60,6 +61,7 @@ class Index extends Base{
             ->where($goods_where)
             ->field('goods_id, original_img, goods_name, shop_price, market_price, store_count')
             ->limit(10)
+            ->page($page)
             ->select();
 
         response_success($list);
