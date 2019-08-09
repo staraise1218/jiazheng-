@@ -103,9 +103,17 @@
                 </li>
                 {/foreach}
             </ul>
+            
         </figure>
     </section>
-
+<div class="mui-slider">
+  <div class="mui-slider-group">
+    <div class="mui-slider-item"><a href="#"><img src="1.jpg" /></a></div>
+    <div class="mui-slider-item"><a href="#"><img src="2.jpg" /></a></div>
+    <div class="mui-slider-item"><a href="#"><img src="3.jpg" /></a></div>
+    <div class="mui-slider-item"><a href="#"><img src="4.jpg" /></a></div>
+  </div>
+</div>
     <ul class="order-wrap">
         <li {if $cat_id=='' }class="active" {/if} onclick="window.location='{:U('mall/index/index')}'">热销</li>
         {foreach name="categoryList" item="category"}
@@ -162,41 +170,6 @@
 		var cat_id='{$cat_id}';
 
         var page = 1;
-        
-		/*mui.init({
-			pullRefresh : {
-				container:".content-list",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
-				down : {
-					style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
-					color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
-					height:'50px',//可选,默认50px.下拉刷新控件的高度,
-					range:'100px', //可选 默认100px,控件可下拉拖拽的范围
-					offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
-					auto: false,//可选,默认false.首次加载自动上拉刷新一次
-					callback :function(){
-						mui.ajax(url,{
-							data:{
-								cat_id: cat_id,
-							},
-							dataType:'json',//服务器返回json格式数据
-							type:'post',//HTTP请求类型
-							timeout:10000,//超时时间设置为10秒；
-							headers:{'Content-Type':'application/json'},	              
-							success:function(data){
-								//服务器返回响应，根据响应结果，分析是否登录成功；
-								mui('.content-list').pullRefresh().endPulldown();
-							},
-							error:function(xhr,type,errorThrown){
-								//异常处理；
-								console.log(type);
-								mui('.content-list').pullRefresh().endPulldown();
-							}
-						});
-						
-					} //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
-				}
-			}
-		});*/
 
         mui.init({
             pullRefresh : {
@@ -234,8 +207,8 @@
                                         </li>`;
                                      })
                                      $('.listBox').html(html);
-                                    mui('.content-wrap').pullRefresh().endPulldownToRefresh();
-                                    mui('.content-wrap').pullRefresh().refresh(true);
+                                    mui('.content-wrap').pullRefresh().endPulldownToRefresh(); // 
+                                    mui('.content-wrap').pullRefresh().refresh(true); // 重置上拉加载更多
                                 },
                                 error:function(xhr,type,errorThrown){
                                     //异常处理；
@@ -284,9 +257,9 @@
                                      $('.listBox').append(html);
                                      console.log(data.data.length);
                                     if(data.data.length > 0){
-                                        mui('.content-wrap').pullRefresh().endPullupToRefresh(false);
+                                        mui('.content-wrap').pullRefresh().endPullupToRefresh(false); // 还可以继续上拉
                                     } else {
-                                        mui('.content-wrap').pullRefresh().endPullupToRefresh(true);
+                                        mui('.content-wrap').pullRefresh().endPullupToRefresh(true); // 没有更多内容了，禁止上拉
                                     }
                                 },
                                 error:function(xhr,type,errorThrown){
