@@ -112,8 +112,8 @@
         <li {if $cat_id==$category.id}class="active" {/if} onclick="window.location='{:U('mall/index/index', array('cat_id'=>$category.id))}'">{$category.name}</li>
         {/foreach}
     </ul>
-    <div class="content-wrap" style="position: absolute; width: 100%; overflow-y: scroll;">
-        <ul class="content-list">
+    <div class="content-wrap" style="position: relative; width: 100%; overflow-y: scroll;">
+        <ul class="content-list" style="overflow-y: scroll;">
             <li class="item hot">
                 <ul>
                     {foreach name="list" item="goods"}
