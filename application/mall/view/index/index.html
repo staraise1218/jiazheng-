@@ -208,38 +208,40 @@
                     contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                     contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback :function(){
-                        mui.ajax(url,{
-                            data:{
-                                cat_id: cat_id,
-                            },
-                            dataType:'json',//服务器返回json格式数据
-                            type:'post',//HTTP请求类型
-                            timeout:10000,//超时时间设置为10秒；
-                            // headers:{'Content-Type':'application/json'},                  
-                            success:function(data){
-                                //服务器返回响应，根据响应结果，分析是否登录成功；
-                                var html = '';
-                                 $.each(data.data, function(i){
-                                    html += `<li goods_id="${this.goods_id}">
-                                        <div class="poster-wrapper">
-                                            <img src="${this.original_img}" alt="">
-                                        </div>
-                                        <p>${this.goods_name}</p>
-                                        <div class="price-wrap">
-                                            <div>￥<span class="price">${this.shop_price}</span> <del>￥ <span class="before-price">${this.market_price}</span>
-                                                </del> </div>
-                                        </div>
-                                    </li>`;
-                                 })
-                                 $('.listBox').html(html);
-                                mui('.content-wrap').pullRefresh().endPulldownToRefresh();
-                            },
-                            error:function(xhr,type,errorThrown){
-                                //异常处理；
-                                console.log(type);
-                                mui('.content-wrap').pullRefresh().pullRefresh().endPulldownToRefresh();
-                            }
-                        });
+                        setTimeout(function(){
+                            mui.ajax(url,{
+                                data:{
+                                    cat_id: cat_id,
+                                },
+                                dataType:'json',//服务器返回json格式数据
+                                type:'post',//HTTP请求类型
+                                timeout:10000,//超时时间设置为10秒；
+                                // headers:{'Content-Type':'application/json'},                  
+                                success:function(data){
+                                    //服务器返回响应，根据响应结果，分析是否登录成功；
+                                    var html = '';
+                                     $.each(data.data, function(i){
+                                        html += `<li goods_id="${this.goods_id}">
+                                            <div class="poster-wrapper">
+                                                <img src="${this.original_img}" alt="">
+                                            </div>
+                                            <p>${this.goods_name}</p>
+                                            <div class="price-wrap">
+                                                <div>￥<span class="price">${this.shop_price}</span> <del>￥ <span class="before-price">${this.market_price}</span>
+                                                    </del> </div>
+                                            </div>
+                                        </li>`;
+                                     })
+                                     $('.listBox').html(html);
+                                    mui('.content-wrap').pullRefresh().endPulldownToRefresh();
+                                },
+                                error:function(xhr,type,errorThrown){
+                                    //异常处理；
+                                    console.log(type);
+                                    mui('.content-wrap').pullRefresh().pullRefresh().endPulldownToRefresh();
+                                }
+                            });
+                        }, 1500)
                         
                     } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                 },
@@ -249,44 +251,47 @@
                     contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
                     contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
                     callback :function(){
-                        page ++;
-                         mui.ajax(url,{
-                            data:{
-                                cat_id: cat_id,
-                                page: page,
-                            },
-                            dataType:'json',//服务器返回json格式数据
-                            type:'post',//HTTP请求类型
-                            timeout:10000,//超时时间设置为10秒；
-                            // headers:{'Content-Type':'application/json'},                  
-                            success:function(data){
-                                //服务器返回响应，根据响应结果，分析是否登录成功；
-                                var html = '';
-                                 $.each(data.data, function(i){
-                                    html += `<li goods_id="${this.goods_id}">
-                                        <div class="poster-wrapper">
-                                            <img src="${this.original_img}" alt="">
-                                        </div>
-                                        <p>${this.goods_name}</p>
-                                        <div class="price-wrap">
-                                            <div>￥<span class="price">${this.shop_price}</span> <del>￥ <span class="before-price">${this.market_price}</span>
-                                                </del> </div>
-                                        </div>
-                                    </li>`;
-                                 })
-                                 $('.listBox').append(html);
-                                if(data.data){
-                                    mui('.content-wrap').pullRefresh().endPullupToRefresh(false);
-                                } else {
-                                    mui('.content-wrap').pullRefresh().endPullupToRefresh(true);
+                        setTimeout(function() {
+                            page ++;
+                            mui.ajax(url,{
+                                data:{
+                                    cat_id: cat_id,
+                                    page: page,
+                                },
+                                dataType:'json',//服务器返回json格式数据
+                                type:'post',//HTTP请求类型
+                                timeout:10000,//超时时间设置为10秒；
+                                // headers:{'Content-Type':'application/json'},                  
+                                success:function(data){
+                                    //服务器返回响应，根据响应结果，分析是否登录成功；
+                                    var html = '';
+                                     $.each(data.data, function(i){
+                                        html += `<li goods_id="${this.goods_id}">
+                                            <div class="poster-wrapper">
+                                                <img src="${this.original_img}" alt="">
+                                            </div>
+                                            <p>${this.goods_name}</p>
+                                            <div class="price-wrap">
+                                                <div>￥<span class="price">${this.shop_price}</span> <del>￥ <span class="before-price">${this.market_price}</span>
+                                                    </del> </div>
+                                            </div>
+                                        </li>`;
+                                     })
+                                     $('.listBox').append(html);
+                                    if(data.data){
+                                        mui('.content-wrap').pullRefresh().endPullupToRefresh(false);
+                                    } else {
+                                        mui('.content-wrap').pullRefresh().endPullupToRefresh(true);
+                                    }
+                                },
+                                error:function(xhr,type,errorThrown){
+                                    //异常处理；
+                                    console.log(type);
+                                    mui('.content-wrap').pullRefresh().pullRefresh().endPulldownToRefresh();
                                 }
-                            },
-                            error:function(xhr,type,errorThrown){
-                                //异常处理；
-                                console.log(type);
-                                mui('.content-wrap').pullRefresh().pullRefresh().endPulldownToRefresh();
-                            }
-                        });
+                            });
+
+                        }, 1500)
                     } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                 }
             }
