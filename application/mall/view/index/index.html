@@ -276,9 +276,9 @@
                                  })
                                  $('.listBox').append(html);
                                 if(data.data){
-                                    mui('.content-wrap').endPullupToRefresh(false);
+                                    mui('.content-wrap').pullRefresh().endPullupToRefresh(false);
                                 } else {
-                                    mui('.content-wrap').endPullupToRefresh(true);
+                                    mui('.content-wrap').pullRefresh().endPullupToRefresh(true);
                                 }
                             },
                             error:function(xhr,type,errorThrown){
