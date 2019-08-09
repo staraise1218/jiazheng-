@@ -92,7 +92,7 @@
 </head>
 
 <body>
-    <section>
+    <!-- <section>
         <figure id="full_feature" class="swipslider">
             <ul class="sw-slides">
                 {foreach name="bannerList" item="item"}
@@ -103,15 +103,14 @@
                 </li>
                 {/foreach}
             </ul>
-            
+    
         </figure>
-    </section>
+    </section> -->
 <div class="mui-slider">
   <div class="mui-slider-group">
-    <div class="mui-slider-item"><a href="#"><img src="1.jpg" /></a></div>
-    <div class="mui-slider-item"><a href="#"><img src="2.jpg" /></a></div>
-    <div class="mui-slider-item"><a href="#"><img src="3.jpg" /></a></div>
-    <div class="mui-slider-item"><a href="#"><img src="4.jpg" /></a></div>
+    {foreach name="bannerList" item="item"}
+    <div class="mui-slider-item"><a href="#"><img src="{$item.ad_code}" /></a></div>
+    {/foreach}
   </div>
 </div>
     <ul class="order-wrap">
