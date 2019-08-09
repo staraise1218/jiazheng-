@@ -216,9 +216,11 @@
                             // headers:{'Content-Type':'application/json'},                  
                             success:function(data){
                                 //服务器返回响应，根据响应结果，分析是否登录成功；
-                                var html = ``;
+                                var html = '';
+                                console.log(html);
+                                console.log(data.data);
                                  $.each(data.data, function(i){
-                                    var html += `<li onclick="">
+                                    html += `<li onclick="window.location='http://jiazheng.localhost.com/mall/index/index/cat_id/${cat_id}'">
                                         <div class="poster-wrapper">
                                             <img src="${this.original_img}" alt="">
                                         </div>
@@ -227,8 +229,9 @@
                                             <div>￥<span class="price">${this.shop_price}</span> <del>￥ <span class="before-price">${this.market_price}</span>
                                                 </del> </div>
                                         </div>
-                                    </li>`
+                                    </li>`;
                                  })
+                                 console.log(html);
                                  $('.listBox').html(html);
                                 mui('.content-wrap').pullRefresh().endPulldownToRefresh();
                             },
