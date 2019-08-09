@@ -113,7 +113,7 @@
         {/foreach}
     </ul>
     <div class="content-wrap" style="position: relative; overflow: scroll;">
-        <ul class="content-list" style="overflow: scroll;">
+        <ul class="content-list">
             <li class="item hot">
                 <ul>
                     {foreach name="list" item="goods"}
@@ -198,7 +198,7 @@
 
         mui.init({
             pullRefresh : {
-                container:"body",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+                container:".content-wrap",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
                 down : {
                     height:50,//可选,默认50.触发下拉刷新拖动距离,
                     auto: true,//可选,默认false.首次加载自动下拉刷新一次
@@ -216,12 +216,12 @@
                             headers:{'Content-Type':'application/json'},                  
                             success:function(data){
                                 //服务器返回响应，根据响应结果，分析是否登录成功；
-                                mui('body').pullRefresh().endPulldownToRefresh();
+                                mui('.content-wrap').pullRefresh().endPulldownToRefresh();
                             },
                             error:function(xhr,type,errorThrown){
                                 //异常处理；
                                 console.log(type);
-                                mui('body').pullRefresh().pullRefresh().endPulldownToRefresh();
+                                mui('.content-wrap').pullRefresh().pullRefresh().endPulldownToRefresh();
                             }
                         });
                         
