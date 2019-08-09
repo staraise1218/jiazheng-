@@ -217,10 +217,8 @@
                             success:function(data){
                                 //服务器返回响应，根据响应结果，分析是否登录成功；
                                 var html = '';
-                                console.log(html);
-                                console.log(data.data);
                                  $.each(data.data, function(i){
-                                    html += `<li onclick="window.location='http://jiazheng.localhost.com/mall/index/index/cat_id/${cat_id}'">
+                                    html += `<li goods_id="${this.goods_id}">
                                         <div class="poster-wrapper">
                                             <img src="${this.original_img}" alt="">
                                         </div>
@@ -231,7 +229,6 @@
                                         </div>
                                     </li>`;
                                  })
-                                 console.log(html);
                                  $('.listBox').html(html);
                                 mui('.content-wrap').pullRefresh().endPulldownToRefresh();
                             },
@@ -246,6 +243,11 @@
                 }
             }
         });
+
+        mui('.listBox').on('tap', 'li', function(){
+            var goods_id = $(this).attr('goods_id');
+            window.location="/mall/goods/goodsInfo/goods_id/"+goods_id
+        })
 
 	</script>
 </body>
