@@ -106,13 +106,13 @@
     
         </figure>
     </section> -->
-<div class="mui-slider">
-  <div class="mui-slider-group">
-    {foreach name="bannerList" item="item"}
-    <div class="mui-slider-item"><a href="#"><img src="{$item.ad_code}" /></a></div>
-    {/foreach}
-  </div>
-</div>
+    <div class="mui-slider">
+      <div class="mui-slider-group">
+        {foreach name="bannerList" item="item"}
+        <div class="mui-slider-item"><a href="{if condition=" $item.ad_link !='' "}{$item.ad_link}{else/}javascript:;{/if}"><img src="{$item.ad_code}" /></a></div>
+        {/foreach}
+      </div>
+    </div>
     <ul class="order-wrap">
         <li {if $cat_id=='' }class="active" {/if} onclick="window.location='{:U('mall/index/index')}'">热销</li>
         {foreach name="categoryList" item="category"}
