@@ -275,7 +275,11 @@
                                     </li>`;
                                  })
                                  $('.listBox').append(html);
-                                mui('.content-wrap').endPullupToRefresh();
+                                if(data.data){
+                                    mui('.content-wrap').endPullupToRefresh(false);
+                                } else {
+                                    mui('.content-wrap').endPullupToRefresh(true);
+                                }
                             },
                             error:function(xhr,type,errorThrown){
                                 //异常处理；
