@@ -44,4 +44,26 @@ class Index extends Base{
         $this->assign('cat_id', $cat_id);
     	return $this->fetch();
     }
+
+    public function ajaxGetList(){
+         $cat_id = I('cat_id');
+
+        // 商品列表
+        $goods_where['is_on_sale'] = 1; // 上架商品
+        empty($cat_id) && $goods_where['is_hot'] = 1; // 热销商品
+        if($cat_id) {
+            $cat_id_arr = getCatGrandson ($cat_id);
+            $goods_where['cat_id'] = array('in', $cat_id_arr);
+        }
+
+        $list = Db::name('goods')
+            ->where($goods_where)
+            ->field('goods_id, original_img, goods_name, shop_price, market_price, store_count')
+            ->limit(10)
+            ->select();
+
+        response_success($list);
+    }
 }
+
+
