@@ -238,7 +238,7 @@
                                 error:function(xhr,type,errorThrown){
                                     //异常处理；
                                     console.log(type);
-                                    mui('.content-wrap').pullRefresh().pullRefresh().endPulldownToRefresh();
+                                    mui('.content-wrap').pullRefresh().endPulldownToRefresh();
                                 }
                             });
                         }, 1500)
@@ -288,7 +288,7 @@
                                 error:function(xhr,type,errorThrown){
                                     //异常处理；
                                     console.log(type);
-                                    mui('.content-wrap').pullRefresh().pullRefresh().endPulldownToRefresh();
+                                    mui('.content-wrap').pullRefresh().endPulldownToRefresh(true);
                                 }
                             });
 
