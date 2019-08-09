@@ -229,7 +229,7 @@
                                         </div>
                                     </li>`;
                                  })
-                                 $('.listBox').html(html);
+                                 // $('.listBox').html(html);
                                 mui('.content-wrap').pullRefresh().endPulldownToRefresh();
                             },
                             error:function(xhr,type,errorThrown){
@@ -246,7 +246,7 @@
 
         mui('.listBox').on('tap', 'li', function(){
             var goods_id = $(this).attr('goods_id');
-            window.location="/mall/goods/goodsInfo/goods_id/"+goods_id
+            window.location="/mall/goods/goodsInfo/id/"+goods_id
         })
 
 	</script>
