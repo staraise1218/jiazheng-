@@ -280,8 +280,8 @@
                                         </li>`;
                                      })
                                      $('.listBox').append(html);
-                                     console.log(Number(data.data));
-                                    if(Number(data.data)){
+                                     console.log(data.data.length);
+                                    if(data.data.length > 0){
                                         mui('.content-wrap').pullRefresh().endPullupToRefresh(false);
                                     } else {
                                         mui('.content-wrap').pullRefresh().endPullupToRefresh(true);
