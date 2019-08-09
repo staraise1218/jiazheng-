@@ -235,6 +235,7 @@
                                      })
                                      $('.listBox').html(html);
                                     mui('.content-wrap').pullRefresh().endPulldownToRefresh();
+                                    mui('.content-wrap').pullRefresh().endPullupToRefresh(false);
                                 },
                                 error:function(xhr,type,errorThrown){
                                     //异常处理；
